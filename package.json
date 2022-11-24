@@ -1,0 +1,24 @@
+{
+  "name": "actions",
+  "version": "1.0.0",
+  "description": "Update readme",
+  "main": "index.js",
+  "scripts": {
+    "update-readme": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nach131/get_next_line.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nach131/get_next_line/issues"
+  },
+  "homepage": "https://github.com/nach131/get_next_line#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1"
+  }
+}
