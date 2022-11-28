@@ -51,3 +51,11 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# nacho
+.DS_Store
+._.DS_Store
+.env
+node_modules/
+.psd
+images/estudio
+.gif

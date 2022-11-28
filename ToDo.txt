@@ -1,0 +1,10 @@
+https://ezgif.com/
+
+32x32
+
+640x480		->	20x15
+1024×768	->	32x24
+2048×1024	->	64x32
+
+colocación ramdom
+mancha rotar 90,180
