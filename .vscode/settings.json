@@ -1,0 +1,14 @@
+{
+  "makefile.extensionOutputFolder": "./.vscode",
+  "files.associations": {
+    "*.js": "javascriptreact",
+    "*.hbs": "handlebars",
+    "*.c": "c",
+    "sstream": "c",
+    "stdio.h": "c",
+    "limits.h": "c",
+    "minitalk.h": "c"
+  },
+  "C_Cpp.errorSquiggles": "Disabled",
+  "cSpell.words": ["BYELLOW", "lstsize"]
+}
