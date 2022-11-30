@@ -21,12 +21,66 @@ todas menos primera y ultima
 
 ultima lista
 
+Moviemiento enemigos y busqueda del camino correcto
+https://es.wikipedia.org/wiki/Algoritmo_de_Dijkstra 
+
 //===========================================================================================
 Map como en get net line
 	define 	X = 32
 	define	Y = 24
 
+	https://stackoverflow.com/questions/3911400/how-to-pass-2d-array-matrix-in-a-function-in-c
+
 ===========DONE=========
 en la libreria realizar control de flag con enum\
 	TRUE = 1
 	FALSE - 0
+//===========================================================================================
+OTRA OPCION
+poner todo el mapa en un string
+guardar numero de cols y rows en una structura
+guaradar len de cols y rows
+
+hacer structuras por coleccionable y guardar la posicion de el
+com lista;
+X = 7
+Y = 19
+
+
+void func(int** array, int rows, int cols)
+{
+  int i, j;
+
+  for (i=0; i<rows; i++)
+  {
+    for (j=0; j<cols; j++)
+    {
+      array[i][j] = i*j;
+    }
+  }
+}
+
+int main()
+{
+  int rows, cols, i;
+  int **x;
+
+  /* obtain values for rows & cols */
+
+  /* allocate the array */
+  x = malloc(rows * sizeof *x);
+  for (i=0; i<rows; i++)
+  {
+    x[i] = malloc(cols * sizeof *x[i]);
+  }
+
+  /* use the array */
+  func(x, rows, cols);
+
+  /* deallocate the array */
+  for (i=0; i<rows; i++)
+  {
+    free(x[i]);
+  }
+  free(x);
+}
