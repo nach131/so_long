@@ -18,7 +18,7 @@ CC			= gcc
 AR 			= ar -rcs
 RM			= rm -rf
 MKDIR		= -mkdir -p
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 # ═══ DIRECTORIES ═════════════════════════════════════════════════════════════#
 
@@ -35,8 +35,8 @@ UTILS_DIR	= utils/
 
 LIBSFT = $(LIBFT_DIR)libft.a
 
-MAIN_FILES	=	tomate
-UTILS_FILES	= arr_to_lst
+MAIN_FILES	=	main
+UTILS_FILES	= arr_to_lst maps
 # SERVER_FILES	= server
 # CLIENT_FILES_BONUS	= client_bonus
 # SERVER_FILES_BONUS	= server_bonus

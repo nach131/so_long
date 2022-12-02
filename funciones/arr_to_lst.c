@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_to_lst.c                                      :+:      :+:    :+:   */
+/*   arr_to_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:25:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/11/29 16:42:28 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:15:58 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int main(void)
 	t_list *con = map;
 	while (con)
 	{
-		ft_printf("list: %s\n", con->content);
 		ft_printf("list: %s\n", con->content);
 		con = con->next;
 	}

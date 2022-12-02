@@ -12,6 +12,15 @@
       "args": ["../sources/maps/veinte.ber"],
       "stopOnEntry": false,
       "cwd": "${fileDirname}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "so_long",
+      "program": "${workspaceFolder}/sources/so_long",
+      "args": ["${workspaceFolder}/sources/maps/veinte.ber"],
+      "stopOnEntry": false,
+      "cwd": "${fileDirname}"
     }
 	]
 }

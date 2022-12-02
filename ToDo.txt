@@ -11,16 +11,21 @@ mancha rotar 90,180
 
 
 get next line par leer map
+	primera pasada para calcular tamaño del arry mapa
+	detectar los errores del mapa
+		Lineas difenteres longitud
+		falta algun elemento, player, salida
+		Controlar el camino
+get next line	segunda pasada
+	colocar el mapa en la array
+
 listas para introducir cada Linea	
-
+//===========================================================================================
 primera lista
-
 todas menos primera y ultima
 1 char	--- ultimo char	
-
-
 ultima lista
-
+//===========================================================================================
 Moviemiento enemigos y busqueda del camino correcto
 https://es.wikipedia.org/wiki/Algoritmo_de_Dijkstra 
 

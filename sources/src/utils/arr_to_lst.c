@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:25:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/02 15:19:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/02 22:59:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 
 void arr_to_lst(void)
 {
-
-	// char *s0 = "11111111111111111111";
-	// char *s1 = "100000001000000000C1";
-	// char *s2 = "10000000011111000001";
-	// char *s3 = "1P0000110E0000000001";
-	// char *s4 = "11111111111111111111";
-	// ft_printf("%s\n", s0);
 
 	char arr[5][21] = {"11111111111111111111",
 					   "100000001000000000C1",
@@ -56,7 +49,6 @@ void arr_to_lst(void)
 	t_list *con = map;
 	while (con)
 	{
-		ft_printf("list: %s\n", con->content);
 		ft_printf("list: %s\n", con->content);
 		con = con->next;
 	}

@@ -8,6 +8,9 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+// esto esta PROHIBIDO por la norma
+// es VLAs - Variable Length Arrays
+
 #define ROWS 5
 #define COLS 21
 
