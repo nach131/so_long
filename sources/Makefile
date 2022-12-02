@@ -1,6 +1,6 @@
 # ═══ NAMES ═══════════════════════════════════════════════════════════════════#
 
-NAME				= so_long
+NAME		= so_long
 # NAME_BONUS	= minitalk_bonus
 
 # ═══ COLORS ══════════════════════════════════════════════════════════════════#
@@ -15,10 +15,10 @@ WHITE		=\033[0;37m
 # ═══ COMPILATE ═══════════════════════════════════════════════════════════════#
 
 CC			= gcc
-CFLAGS	= -Wall -Wextra -Werror
 AR 			= ar -rcs
-RM			= rm -f
+RM			= rm -rf
 MKDIR		= -mkdir -p
+CFLAGS	= -Wall -Wextra -Werror
 
 # ═══ DIRECTORIES ═════════════════════════════════════════════════════════════#
 
@@ -35,13 +35,14 @@ UTILS_DIR	= utils/
 
 LIBSFT = $(LIBFT_DIR)libft.a
 
+MAIN_FILES	=	tomate
 UTILS_FILES	= arr_to_lst
-EXE_FILE	= tomate
 # SERVER_FILES	= server
 # CLIENT_FILES_BONUS	= client_bonus
 # SERVER_FILES_BONUS	= server_bonus
 
-SRC_FILES+=$(addprefix $(UTILS_DIR),$(UTILS_FILES))
+SRC_MAIN_FILES	+=$(MAIN_FILES)
+SRC_UTILS_FILES	+=$(addprefix $(UTILS_DIR),$(UTILS_FILES))
 # SRC_FILES+=$(addprefix $(SERVER_DIR),$(SERVER_FILES))
 
 # SRC_FILES_BONUS+=$(addprefix $(CLIENT_DIR),$(CLIENT_FILES_BONUS))
@@ -54,12 +55,13 @@ SRC_FILES+=$(addprefix $(UTILS_DIR),$(UTILS_FILES))
 # EXE_FILES_BONUS+=$(addprefix $(CLIENT_DIR),$(CLIENT_FILES_BONUS))
 # EXE_FILES_BONUS+=$(addprefix $(SERVER_DIR),$(SERVER_FILES_BONUS))
 
-
-SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-DEPS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
+SRCS_MAIN = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_MAIN_FILES)))
+OBJS_MAIN = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_MAIN_FILES)))
+DEPS_MAIN = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_MAIN_FILES)))
+SRCS_UTILS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_UTILS_FILES)))
+OBJS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_UTILS_FILES)))
+DEPS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_UTILS_FILES)))
 # EXECS = $(addprefix $(EXE_DIR), $(EXE_FILES))
-EXEC = $(EXE_FILE)
 
 # SRCS_CLIENT_BONUS += $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES_BONUS)))
 # OBJS_BONUS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES_BONUS)))
@@ -72,36 +74,40 @@ EXEC = $(EXE_FILE)
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 			@$(MKDIR) $(dir $@)
 			@echo "$(ORANGE) Compilando objetos  ➟  $(BLUE)$< $(WHITE)"
-			@$(CC) -MT $@ -MMD -MP $(CFLAGS) -I$(INCLUDES) -c $< -o $@
+			@$(CC) -MMD -MP $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
 all: LIBFS $(NAME)
 
 LIBFS:
 			@make -C $(LIBFT_DIR)
 
-$(NAME) : $(OBJS) $(EXEC)
+#$(NAME) : $(OBJS) $(EXEC)
 
-$(EXE_DIR)% : $(OBJ_DIR)%.o
-			@$(MKDIR) $(dir $@)
-			@$(CC) $(CFLAGS) -MMD -MP $(LIBSFT) $< -o $@
-			@echo "$(ORANGE) Compilando Ejecutables  ➟  $(BLUE)$< $(WHITE)"
+$(NAME):	$(OBJS_MAIN) $(OBJS_UTILS)
+			@$(CC) $(CFLAGS) $(LIBSFT) $^ -o $@
+			@echo "$(ORANGE) Compilando Ejecutables  ➟  $(BLUE)$@ $(WHITE)"
 
-bonus: LIBFS $(NAME_BONUS)
+#$(EXE_DIR)% : $(OBJ_DIR)%.o
+#			@$(MKDIR) $(dir $@)
+#			@$(CC) $(CFLAGS) -MMD -MP $(LIBSFT) $< -o $@
+#			@echo "$(ORANGE) Compilando Ejecutables  ➟  $(BLUE)$< $(WHITE)"
 
-$(NAME_BONUS) : $(OBJS_BONUS) $(EXECS_BONUS)
+#bonus: LIBFS $(NAME_BONUS)
 
-$(EXE_DIR)% :
-			@$(MKDIR) $(dir $@)
-			$(CC) $(CFLAGS) -MMD -MP $(LIBSFT) -I$(INCLUDES) $< -o $@
+#$(NAME_BONUS) : $(OBJS_BONUS) $(EXECS_BONUS)
+
+#$(EXE_DIR)% :
+#			@$(MKDIR) $(dir $@)
+#			$(CC) $(CFLAGS) -MMD -MP $(LIBSFT) -I$(INCLUDES) $< -o $@
 
 clean :
 			@make clean -s -C $(LIBFT_DIR)
-			@$(RM) -rf $(OBJ_DIR)
-# @$(RM) -rf $(EXE_DIR)
+			@$(RM) $(OBJ_DIR)
 			@echo "$(RED)\n ✗ Archivos objetos Minitalk borrados.‼️\n$(WHITE)";
+# @$(RM) -rf $(EXE_DIR)
 
 fclean : clean
-			@$(RM) -f $(NAME)
+			@$(RM) $(NAME)
 			@echo "$(BLUE) Todo Super limpito...✌🏼$(WHITE)"
 
 re: fclean all
@@ -113,4 +119,4 @@ norm:
 -include $(DEPS)
 
 # Non-file targets
-.PHONY: all clean fclean re norm LIBFS bonus
+.PHONY: all clean fclean re norm bonus
