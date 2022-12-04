@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   nach.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/03 02:25:56 by nmota-bu         ###   ########.fr       */
+/*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
+/*   Updated: 2022/12/03 19:26:16 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,14 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include "so_long.h"
+#include <stdlib.h>
 
-int main(int argc, char **argv)
+// #define x 10
+// #define y 10
+
+int main(int n, char **str)
 {
-	t_all all;
-
-	// if (!all)
-	// 	all = (t_all *)ft_calloc(1, sizeof(t_all));
-	// if (!all)
-	// 	exit(EXIT_FAILURE);
-	if (argc < 2)
-	{
-		ft_message(DANGER, MSG_DAN_0);
-		return (EXIT_FAILURE);
-	}
-	else if (argc > 2)
-	{
-		ft_message(DANGER, MSG_DAN_1);
-		return (EXIT_FAILURE);
-	}
-
-	open_map(argv[1], &all.map);
-	open_map(argv[1], &all.map);
-	ft_printf("\nrows:%d, cols:%d\n", all.map.rows, all.map.cols);
+	int x = atoi(str[1]);
+	int y = atoi(str[2]);
+	int arr[x][y];
 }
