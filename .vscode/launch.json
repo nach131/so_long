@@ -8,8 +8,9 @@
       "type": "lldb",
       "request": "launch",
       "name": "lldb active file",
-      "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-      "args": ["../sources/maps/veinte.ber"],
+      "program": "${fileDirname}/a.out",
+      // "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+      // "args": ["../sources/maps/veinte.ber"],
       "stopOnEntry": false,
       "cwd": "${fileDirname}"
     },
