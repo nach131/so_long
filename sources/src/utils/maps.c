@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/04 02:30:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/05 22:19:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,46 +40,52 @@ static void ctrl_map(t_map *map, char *line)
 	}
 }
 
-// void static write_map()
-// {
-// }
+void static write_map(t_map *map, char *line, int i)
+{
+	if (!map->map)
+		map->map = (char **)calloc(map->rows + 1, sizeof(char *));
+	map->map[i] = ft_strdup(line);
+
+	// ft_printf("%s", line);
+}
 
 void open_map(char *path, t_map *map)
 {
 	int fd;
 	char *line;
+	int rows;
 
 	if (!map->cols)
 		map->cols = 0;
 	fd = open(path, O_RDONLY);
+	rows = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 		{
-			// FUNCION close_map todo esto
+			// separar a FUNCION close_map todo esto
 			map->open = TRUE;
 			close(fd);
-			if (map->map)
+			if (map->write)
 				break;
-			// open_map(path, map);
+			open_map(path, map);
 		}
 		else if (line)
 		{
-			if (map->open == 0)
+			if (map->open == FALSE)
 			{
 				ctrl_map(&(*map), line);
-				// ft_printf("%s", line);
 				map->rows += 1;
 			}
 			else
 			{
-				ft_printf(ORANGE "\ntoma");
+				write_map(&(*map), line, rows);
+				map->write = TRUE;
+				rows += 1;
 			}
 			if (line)
 				free(line);
 		}
 	}
-	// HACERLA RECURSIVA que se llame y vuelva asi no la pongo dos veces
-	// en la segunda vuelta a poener a 0 el flag
 }

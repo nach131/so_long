@@ -6,6 +6,9 @@ https://ezgif.com/
 1024×768	->	32x24
 2048×1024	->	64x32
 
+50x7
+
+
 colocación ramdom
 mancha rotar 90,180
 
@@ -40,7 +43,7 @@ Map como en get net line
 en la libreria realizar control de flag con enum\
 	TRUE = 1
 	FALSE - 0
-//===========================================================================================
+//=====================================================================================
 OTRA OPCION
 poner todo el mapa en un string
 guardar numero de cols y rows en una structura
