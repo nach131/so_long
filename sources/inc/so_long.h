@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/05 23:02:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/05 23:21:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 #define MSG_DAN_0 "Error 0: Missing map"
 #define MSG_DAN_1 "Error 1: Too many arguments"
+#define MSG_DAN_2 "Error 2: File map does not have the extension .ber"
 #define MSG_WAR_0 "Warning 0: Different length of lines"
 
 #define WALL '1'
@@ -62,7 +63,7 @@ typedef struct s_game
 } t_game;
 
 void arr_to_lst(void);
-void err_file(int n);
+void err_file(int n, char *file);
 void open_map(char *path, t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/05 22:51:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/06 00:03:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,40 @@ void static write_map(t_map *map, char *line, int i)
 	map->map[i] = ft_strdup(line);
 }
 
+void static is_line(char *line, t_map *map, int *rows)
+{
+	if (map->open == FALSE)
+	{
+		ctrl_map(&(*map), line);
+		map->rows += 1;
+	}
+	else
+	{
+		write_map(&(*map), line, *rows);
+		map->write = TRUE;
+		*rows += 1;
+	}
+	if (line)
+		free(line);
+}
+
 void open_map(char *path, t_map *map)
 {
 	int fd;
 	char *line;
 	int rows;
+	int *ptr;
 
+	ptr = &rows;
+	*ptr = 0;
 	if (!map->cols)
 		map->cols = 0;
 	fd = open(path, O_RDONLY);
-	rows = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 		{
-			// separar a FUNCION close_map todo esto
 			map->open = TRUE;
 			close(fd);
 			if (map->write)
@@ -70,20 +88,6 @@ void open_map(char *path, t_map *map)
 			open_map(path, map);
 		}
 		else if (line)
-		{
-			if (map->open == FALSE)
-			{
-				ctrl_map(&(*map), line);
-				map->rows += 1;
-			}
-			else
-			{
-				write_map(&(*map), line, rows);
-				map->write = TRUE;
-				rows += 1;
-			}
-			if (line)
-				free(line);
-		}
+			is_line(line, &(*map), ptr);
 	}
 }
