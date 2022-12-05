@@ -36,7 +36,7 @@ UTILS_DIR	= utils/
 LIBSFT = $(LIBFT_DIR)libft.a
 
 MAIN_FILES	=	main
-UTILS_FILES	= arr_to_lst maps
+UTILS_FILES	= arr_to_lst maps errors
 # SERVER_FILES	= server
 # CLIENT_FILES_BONUS	= client_bonus
 # SERVER_FILES_BONUS	= server_bonus

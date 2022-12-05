@@ -1,0 +1,24 @@
+===========DONE=========
+en la libreria realizar control de flag con enum\
+	TRUE = 1
+	FALSE - 0
+
+	OTRA OPCION
+poner todo el mapa en un string
+guardar numero de cols y rows en una structura
+guaradar len de cols y rows
+
+
+primera lista
+todas menos primera y ultima
+1 char	--- ultimo char	
+ultima lista
+
+ERRORS
+	Lineas difenteres longitud
+
+//========================================================================
+
+
+get next line	segunda pasada
+	colocar el mapa en la array
