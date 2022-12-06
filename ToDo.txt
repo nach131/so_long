@@ -17,6 +17,7 @@ get next line par leer map
 	primera pasada para calcular tamaño del arry mapa
 	detectar los errores del mapa
 		falta algun elemento, player, salida
+    error si no es un rectangulo
 		Controlar el camino
 
 listas para introducir cada Linea	
@@ -35,6 +36,7 @@ hacer structuras por coleccionable y guardar la posicion de el
 com lista;
 X = 7
 Y = 19
+
 
 
 
