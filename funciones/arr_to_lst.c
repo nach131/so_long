@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:25:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/02 23:15:58 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:41:29 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@
 #include "../sources/libft/inc/libft.h"
 #include "../sources/libft/inc/ft_printf.h"
 
+// void del(void *tmp)
+// {
+// 	//    write(STDOUT_FILENO, "o", 1);
+// 	free(tmp);
+// 	//    write(STDOUT_FILENO, "k\n", 2);
+// 	printf("\e[3;31m✗ El elemento pasado ha sido borrado.\e[0m\n");
+// }
+
 int main(void)
 {
-
-	// char *s0 = "11111111111111111111";
-	// char *s1 = "100000001000000000C1";
-	// char *s2 = "10000000011111000001";
-	// char *s3 = "1P0000110E0000000001";
-	// char *s4 = "11111111111111111111";
-	// ft_printf("%s\n", s0);
 
 	char arr[5][21] = {"11111111111111111111",
 					   "100000001000000000C1",
@@ -60,6 +61,7 @@ int main(void)
 		ft_printf("list: %s\n", con->content);
 		con = con->next;
 	}
+	ft_lstclear(&map, ft_delitem);
 }
 
 // typedef struct s_list

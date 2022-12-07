@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_to_lst.c                                      :+:      :+:    :+:   */
+/*   file_to_lst-copy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:25:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/06 23:57:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/06 23:10:47 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,21 @@
 #include "../sources/libft/inc/colors.h"
 #include <fcntl.h>
 
-void printLista(t_list *lst)
-{
-	while (lst)
-	{
-		// printf("\e[5;32m%s\e[0m", lst->content);
-		ft_printf(GREEN "%s", lst->content);
-		lst = lst->next;
-	}
-}
+// void printLista(t_list *lst)
+// {
+// 	while (lst)
+// 	{
+// 		// printf("\e[5;32m%s\e[0m", lst->content);
+// 		ft_printf(GREEN "%s", lst->content);
+// 		lst = lst->next;
+// 	}
+// }
 
 int main(int argc, char **argv)
 {
 	char *line;
 	int fd;
+	int i = 0;
 
 	// fd = open(argv[1], O_RDONLY);
 	fd = open("../sources/maps/veinte.ber", O_RDONLY);
@@ -41,25 +42,25 @@ int main(int argc, char **argv)
 	t_list *map;
 	t_list *tmp;
 
-	while (1)
+	fd = open("../sources/maps/veinte.ber", O_RDONLY);
+
+	// while (i < 6)
+	// {
+	// 	tmp = ft_lstnew(get_next_line(fd));
+	// 	ft_lstadd_back(&map, tmp);
+	// 	i++;
+	// }
+	line = get_next_line(fd);
+	printf("%s", line);
+	while (line)
 	{
+		free(line);
 		line = get_next_line(fd);
-
-		if (line == NULL)
-			break;
-		else if (line)
-		{
-			tmp = ft_lstnew(line); // FUNCIONA PERO HAY LEAKS
-
-			ft_lstadd_back(&map, tmp);
-
-			free(line);
-		}
+		printf("%s", line);
 	}
-	printLista(map);
-	ft_lstclear(&map, ft_delitem);
-	printLista(map);
-	ft_printf(ORANGE "\nFIN\n" WHITE);
+
+	// printLista(map);
+	// ft_lstclear(&map, ft_delitem);
 }
 
 // 11111111111111111111

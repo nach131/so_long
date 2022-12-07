@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_to_lst.c                                      :+:      :+:    :+:   */
+/*   file_to_lst_3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:25:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/06 23:57:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/07 00:50:45 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 {
 	char *line;
 	int fd;
+	int i = 0;
 
 	// fd = open(argv[1], O_RDONLY);
 	fd = open("../sources/maps/veinte.ber", O_RDONLY);
@@ -41,25 +42,15 @@ int main(int argc, char **argv)
 	t_list *map;
 	t_list *tmp;
 
-	while (1)
+	while (i < 6)
 	{
-		line = get_next_line(fd);
-
-		if (line == NULL)
-			break;
-		else if (line)
-		{
-			tmp = ft_lstnew(line); // FUNCIONA PERO HAY LEAKS
-
-			ft_lstadd_back(&map, tmp);
-
-			free(line);
-		}
+		tmp = ft_lstnew(get_next_line(fd));
+		ft_lstadd_back(&map, tmp);
+		i++;
 	}
+
 	printLista(map);
 	ft_lstclear(&map, ft_delitem);
-	printLista(map);
-	ft_printf(ORANGE "\nFIN\n" WHITE);
 }
 
 // 11111111111111111111

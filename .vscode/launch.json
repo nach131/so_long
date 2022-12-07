@@ -7,7 +7,7 @@
 		{
       "type": "lldb",
       "request": "launch",
-      "name": "Active a.out",
+      "name": "a.out",
       "program": "${fileDirname}/a.out",
       // "program": "${fileDirname}/${fileBasenameNoExtension}.out",
       // "args": ["../sources/maps/veinte.ber"],

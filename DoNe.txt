@@ -22,3 +22,6 @@ ERRORS
 
 get next line	segunda pasada
 	colocar el mapa en la array
+
+
+valgrind --track-origins=yes ./arr_to_lst.out
