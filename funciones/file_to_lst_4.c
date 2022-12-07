@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:25:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/07 02:16:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/07 02:48:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,18 @@ void ft_item_add_back(t_list **lst, char *str)
 	ft_printf("nada\n");
 }
 
+t_list *nach_lstnew(char *content)
+{
+	t_list *new;
+
+	new = (t_list *)malloc(sizeof(t_list) * 1);
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}
+
 int main(int argc, char **argv)
 {
 	char *line;
@@ -80,7 +92,9 @@ int main(int argc, char **argv)
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_item_add_back(&map, line);
+		// ft_item_add_back(&map, line);
+		tmp = nach_lstnew(line);
+		ft_lstadd_back(&map, tmp);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -94,3 +108,7 @@ int main(int argc, char **argv)
 // 	void			*content;
 // 	struct s_list	*next;
 // }	t_list;
+
+// https://www.learn-c.org/en/Linked_lists
+
+// https://stackoverflow.com/questions/46820999/code-to-add-element-to-the-beginning-of-a-list-in-c-whats-the-error
