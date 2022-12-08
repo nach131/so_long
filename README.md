@@ -16,7 +16,7 @@
 <!-- ![mapa](so_long.png) -->
 </h1>
 
-## instalar MiniLibX en MocOs
+## instalar MiniLibX en MacOs
 
 Es necesario tener [homebrew](https://brew.sh/)
 
