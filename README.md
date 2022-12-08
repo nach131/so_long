@@ -13,5 +13,37 @@
 </p>
 
 <h1 align="center">
-
 <!-- ![mapa](so_long.png) -->
+</h1>
+
+Para instalar la libreria MXL es necesario tener [homebrew](https://brew.sh/) instalar X11 con `brew install Xquartx`.
+
+Ahora ya podemos descomprimir `minilibx_opengl.tgz` e instalarlo.
+
+	cd minilibx_opengl
+	make
+	sudo cp mlx.h /usr/local/include
+	sudo cp libmlx.a /usr/local/lib
+	sudo reboot
+
+Instalar man de MLX en MacOs
+
+[minilibx-linux](https://github.com/42Paris/minilibx-linux)
+
+	sudo cp minilibx-linux/man/man3/* /usr/share/man/man3/
+
+## MiniLibX
+
+>`flag`: -lmlx -lXext -lX11
+```c
+mlx_init ();
+```
+>`mlx_new_window`      : manage windows
+
+>`mlx_new_image`       : manipulate images
+
+>`mlx_loop`            : handle keyboard or mouse events
+
+```c
+
+```
