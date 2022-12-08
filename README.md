@@ -20,7 +20,7 @@
 
 Es necesario tener [homebrew](https://brew.sh/)
 
-Instalar X11 con
+Instalar X11.
 
 	brew install Xquartx
 
@@ -32,7 +32,7 @@ Ahora ya podemos descomprimir [minilibx_opengl.tgz](https://github.com/nach131/s
 	sudo cp libmlx.a /usr/local/lib
 	sudo reboot
 
-Instalar man de MLX en MacOs
+Instalar man de MLX en MacOs.
 
 [minilibx-linux](https://github.com/42Paris/minilibx-linux)
 
@@ -40,9 +40,16 @@ Instalar man de MLX en MacOs
 
 ## MiniLibX
 
->`flag`: -lmlx -lXext -lX11
+Permite crear software gráfico de una manera sencialla y con simples funciones. Permitiendo dibujar y gestionar imagenes con eventos básicos (teclado, ratón).
+
+flag de compilación.
+
+> -lmlx -lXext -lX11
+
+Para inicialiar la conexión entre el software y la pantalla, asignaremos ```mlx_init```, de esta manera se creara una conexión entre la ventana y los evento realiados por el usuario.
+
 ```c
-mlx_init ();
+void *mlx_init();
 ```
 >`mlx_new_window`      : manage windows
 
