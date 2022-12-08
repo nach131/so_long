@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/07 17:48:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:22:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int main(int argc, char **argv)
 {
 	t_game game;
 
-	printf("\nVALOR DE BOOL: |%zu|\n", sizeof(_Bool));
 	err_file(argc, argv[1]);
 	open_map(argv[1], &game.map);
 	ft_printf("\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);

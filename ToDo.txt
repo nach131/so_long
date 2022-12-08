@@ -40,5 +40,7 @@ Y = 19
 
 
 
+valgrind --track-origins=yes ./arr_to_lst.out // MEJOR ESTE
+valgrind --leak-check=yes ./arr_to_lst.out
 
 leaks -atExit -- ./so_long maps/nach131.ber

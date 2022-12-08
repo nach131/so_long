@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/07 17:38:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:07:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,17 @@
 #include "../../libft/inc/get_next_line.h"
 #include <fcntl.h>
 
-static int strlen_line(char *line)
+int strlen_line(char *line)
 {
 	int i;
 
 	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
 		i++;
-	// AQUI SE PODRIA CONTROLAR LA SALIDA, PLAYER, COLECCIONABLE...
-	return (i);
-}
 
-static void ctrl_map(t_map *map, char *line)
-{
-	if (!map->cols)
-		map->cols = strlen_line(line);
-	if (map->cols != strlen_line(line))
-	{
-		ft_message(WARNING, MSG_WAR_0);
-		exit(EXIT_FAILURE);
-	}
+	// AQUI SE PODRIA CONTROLAR LA SALIDA, PLAYER, COLECCIONABLE...
+
+	return (i);
 }
 
 void static write_map(t_map *map, char *line, int i)
@@ -49,7 +40,7 @@ void static write_map(t_map *map, char *line, int i)
 
 void static is_line(char *line, t_map *map, int *rows)
 {
-	if (map->open == FALSE)
+	if (map->control == FALSE)
 	{
 		ctrl_map(&(*map), line);
 		map->rows += 1;
@@ -78,7 +69,8 @@ void open_map(char *path, t_map *map)
 
 		if (line == NULL)
 		{
-			map->open = TRUE;
+			ctrl_square(map);
+			map->control = TRUE;
 			close(fd);
 			if (map->write)
 				break;

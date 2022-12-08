@@ -22,3 +22,8 @@ ERRORS
 
 get next line	segunda pasada
 	colocar el mapa en la array
+
+
+	printf("\nVALOR DE BOOL: |%zu|\n", sizeof(_Bool));
+	printf("\nVALOR DE TRUE: |%zu|\n", sizeof(TRUE));
+	printf("\nVALOR DE game: |%zu|\n", sizeof(game));
