@@ -16,9 +16,15 @@
 <!-- ![mapa](so_long.png) -->
 </h1>
 
-Para instalar la libreria MXL es necesario tener [homebrew](https://brew.sh/) instalar X11 con `brew install Xquartx`.
+## instalar MiniLibX en MocOs
 
-Ahora ya podemos descomprimir `minilibx_opengl.tgz` e instalarlo.
+Es necesario tener [homebrew](https://brew.sh/)
+
+Instalar X11 con
+
+	brew install Xquartx
+
+Ahora ya podemos descomprimir [minilibx_opengl.tgz](https://github.com/nach131/so_long/blob/main/grafic_lib/minilibx_opengl.tgz) e instalarlo.
 
 	cd minilibx_opengl
 	make
