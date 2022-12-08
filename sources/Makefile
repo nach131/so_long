@@ -17,11 +17,13 @@ CC			= gcc
 AR 			= ar -rcs
 RM			= rm -rf
 MKDIR		= -mkdir -p
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror -g3 
+MLXFLAGS = -framework OpenGL -framework AppKit
 
 # ═══ DIRECTORIES ═════════════════════════════════════════════════════════════#
 
 LIBFT_DIR = libft/
+LIBMLX_DIR	= mlx/
 INCLUDES 	= inc/
 SRC_DIR 	= src/
 OBJ_DIR 	= obj/
@@ -31,7 +33,7 @@ UTILS_DIR	= utils/
 
 # ═══ SOURCES ═════════════════════════════════════════════════════════════════#
 
-LIBSFT = $(LIBFT_DIR)libft.a
+LIBSFT = $(LIBFT_DIR)libft.a $(LIBMLX_DIR)libmlx.a
 
 MAIN_FILES	=	main
 UTILS_FILES	= maps errors
@@ -59,7 +61,7 @@ DEPS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_UTILS_FILES)))
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 			@$(MKDIR) $(dir $@)
 			@echo "$(ORANGE) Compilando objetos  ➟  $(BLUE)$< $(WHITE)"
-			@$(CC) -MMD -MP $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+			@$(CC) -MMD -MP $(CFLAGS) $(MLXFLAGS) -I $(INCLUDES) -c $< -o $@
 
 all: LIBFS $(NAME)
 
@@ -67,7 +69,7 @@ LIBFS:
 			@make -C $(LIBFT_DIR)
 
 $(NAME):	$(OBJS_MAIN) $(OBJS_UTILS)
-			@$(CC) $(CFLAGS) $(LIBSFT) $^ -o $@
+			@$(CC) $(CFLAGS) $(MLXFLAGS) $(LIBSFT) $^ -o $@
 			@echo "$(ORANGE) Compilando Ejecutables  ➟  $(BLUE)$@ $(WHITE)"
 
 clean :

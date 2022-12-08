@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/08 14:07:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:09:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "../libft/inc/colors.h"
 #include "../libft/inc/ft_printf.h"
 #include "../libft/inc/error.h"
+// #include "mlx.h"
 
 #define MSG_DAN_0 "Error 0: Missing map"
 #define MSG_DAN_1 "Error 1: Too many arguments"

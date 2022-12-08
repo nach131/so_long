@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/08 13:22:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:26:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
 #include "so_long.h"
+#include "../mlx/mlx.h"
 
 void print_arr_map(t_map *map)
 {
@@ -50,8 +51,15 @@ int main(int argc, char **argv)
 {
 	t_game game;
 
+	void *mlx_tmp;
+	void *win_tmp;
+
 	err_file(argc, argv[1]);
 	open_map(argv[1], &game.map);
+	// read_map(&game.map);
+	mlx_tmp = mlx_init();
+	win_tmp = mlx_new_window(mlx_tmp, 640, 480, "nach131 So Long");
+
 	ft_printf("\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	print_arr_map(&game.map);
 	ft_free_map(&game.map); // 11 leaks
