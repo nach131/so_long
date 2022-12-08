@@ -58,16 +58,17 @@ void *mlx_init();
 ```c
 void	*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
 
-int		mlx_clear_window ( void *mlx_ptr, void *win_ptr );
+int	mlx_clear_window ( void *mlx_ptr, void *win_ptr );
 
-int		mlx_destroy_window ( void *mlx_ptr, void *win_ptr );
+int	mlx_destroy_window ( void *mlx_ptr, void *win_ptr );
 ```
 
-La función ```mlx_new_window()``` crea una nueva ventana en la pantalla, utilizando los parametros ```size_x``` y ```size_y``` para determinar el tamaño y el título de la ventana.
+La función ```mlx_new_window()``` crea una nueva ventana en la pantalla, utilizando los parametros ```size_x``` y ```size_y``` para determinar el tamaño y `*title` para el título de la ventana.
 
 ```mlx_new_window()``` devuelve un indicador de ventana ```void *``` que se pude usar con otras llamadas de MiniLibX, ya que la libreria puede usar un numero arbitrario de ventanas separadas.
 
-`mlx_clear_window () `y `mlx_destroy_window ()` respectivamente limpian (en negro) y destruyen la ventana dada.
+`mlx_clear_window() `y `mlx_destroy_window()` respectivamente limpian (en negro) y destruyen la ventana dada.
+
 `mlx_ptr` es el identificador de conexión de pantalla y `win_ptr` es un identificador de ventana.
 
 
