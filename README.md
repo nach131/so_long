@@ -40,7 +40,7 @@ Instalar man de MLX en MacOs.
 
 ## MiniLibX
 
-Permite crear software gráfico de una manera sencialla y con simples funciones. Permitiendo dibujar y gestionar imagenes con eventos básicos (teclado, ratón).
+Permite crear software gráfico de una manera sencilla y con simples funciones. Permitiendo dibujar y gestionar imagenes con eventos básicos (teclado, ratón).
 
 flag de compilación.
 
@@ -71,13 +71,70 @@ La función ```mlx_new_window()``` crea una nueva ventana en la pantalla, utiliz
 
 `mlx_ptr` es el identificador de conexión de pantalla y `win_ptr` es un identificador de ventana.
 
+## mlx_new_image
 
-
-
->`mlx_new_image`       : manipulate images
-
->`mlx_loop`            : handle keyboard or mouse events
+Control de imagenes.
 
 ```c
 
+
+
+
+
+
 ```
+### mlx_new_image()
+```c
+void	*mlx_new_image ( void *mlx_ptr, int width, int height );
+```
+Pone una imagen en la memoria, devolviendo un puntero, para poder procesar la imagen, necesita el tamaño de la imagen y el conector de `mlx_ptr`
+
+### XPM images
+
+```c
+void	*mlx_xpm_to_image ( void *mlx_ptr, char **xpm_data, int *width, int *height );
+
+void	*mlx_xpm_file_to_image ( void *mlx_ptr, char *filename, int *width, int *height );
+```
+
+
+
+### mlx_put_image_to_window
+
+```c
+int	mlx_put_image_to_window ( void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y );
+```
+La imagen se podra mostrar en cualquier ventana especificando el identificador de la conexión, la ventana y la imagen `(mlx_ptr, win_ptr, and img_ptr)` con  `mlx_put_image_to_window() `, son necesarios las cordenadas x,y para definir donde debe colocarse la imagen.
+
+### mlx_get_data_addr()
+```c
+char	*mlx_get_data_addr ( void *img_ptr, int *bits_per_pixel, int *size_line, int *endian );
+```
+Devuelve información sobre la imagen para poder ser manipulada, `img_ptr` especifica la imagen a usar.
+
+`bits_per_pixel` se llenara con el número de bits necesarios para representrar un color de pixel.
+
+`size_line` es el número de bytes necesarios para almacenar una línea de la imagen en la memoria, es necesario para poder moverse de una línea a otra en la imagen.
+
+`endian` el color de pixel de la imagen debe almacenarse en little endian (endian == 0) o big endian (endian == 1)
+
+Devuelve una dirección de `char *` que representa el comienzo del área de momoria dende se almacena la imagen.
+
+Apartir de esta dirección, los primeros `bits_per_pixel` representan el color del primer pixel en la primera linea de la imagen.
+
+El segundo grupo de `bits_per_pixel` representan el segundo pixel de la primera línea y asi...
+
+### int	mlx_destroy_image()
+```c
+int	mlx_destroy_image ( void *mlx_ptr, void *img_ptr );
+```
+Destruye la imagen pasada por `img_ptr`
+
+## mlx_loop
+: handle keyboard or mouse events
+
+### mlx_get_color_value()
+```c
+unsigned int	mlx_get_color_value ( void *mlx_ptr, int color );
+```
+Para control el color de píxel, (no lo uso).
