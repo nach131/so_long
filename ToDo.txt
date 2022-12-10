@@ -8,6 +8,9 @@ https://ezgif.com/
 
 50x7
 
+Pantalla inicio selecionnado hero. tamaño fijo toda una immagen ,1,2,3
+	personajes saltando esperando a ser elejidos
+Pantalla final con game over triste, game won contento saltando
 
 colocación ramdom
 mancha rotar 90,180
@@ -17,6 +20,7 @@ get next line par leer map
 	primera pasada para calcular tamaño del arry mapa
 	detectar los errores del mapa
 		falta algun elemento, player, salida
+		empty map
     error si no es un rectangulo
 		Controlar el camino
 

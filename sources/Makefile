@@ -33,7 +33,8 @@ UTILS_DIR	= utils/
 
 # ═══ SOURCES ═════════════════════════════════════════════════════════════════#
 
-LIBSFT = $(LIBFT_DIR)libft.a $(LIBMLX_DIR)libmlx.a
+LIBSFT = $(LIBFT_DIR)libft.a
+# LIBSFT = $(LIBFT_DIR)libft.a $(LIBMLX_DIR)libmlx.a
 
 MAIN_FILES	=	main
 UTILS_FILES	= maps errors
