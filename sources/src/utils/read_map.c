@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 18:32:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:46:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "images.h"
 #include "mlx.h"
 
-void put_img(void *mlx, void *win, int x, int y, char *path)
+void static put_img(void *mlx, void *win, int x, int y, char *path)
 {
 	void *image;
 	int img_width;
@@ -28,22 +28,30 @@ void put_img(void *mlx, void *win, int x, int y, char *path)
 	mlx_put_image_to_window(mlx, win, image, y, x);
 }
 
-void wall(t_game *game, int x, int y)
+void static wall(t_game *game, int x, int y)
 {
 
 	int h = (game->map.rows * 32) - 32;
 	int v = (game->map.cols * 32) - 32;
-	ft_printf(RED "rows:%i,cols:%i " WHITE, h, v);
 
 	if (x == 0 && y == 0)
 		put_img(game->grafic.mlx, game->grafic.win, 0, 0, WELL_TL);
 	else if (x == h && y == v && x != 0 && y != 0)
 		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_BR);
-
+	else if (y == v && x == 0)
+		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_TR);
+	else if (x == h && y == 0)
+		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_BL);
+	else if (x == h)
+		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_BC);
+	else if (y == v)
+		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_CR);
+	else if (y == 0)
+		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_CL);
 	else if (x == 0)
 		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_TC);
-
-	printf("x:%d, y:%d\n", x, y);
+	else
+		put_img(game->grafic.mlx, game->grafic.win, x, y, ROCKS);
 }
 
 void filter_map(t_game *game, int x, int y, char ch)
@@ -56,18 +64,13 @@ void filter_map(t_game *game, int x, int y, char ch)
 	}
 
 	if (ch == '1')
-	{
-		// put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_TC);
-		// put_img(grafic.mlx, grafic.win, x, y, WELL_TL);
-		// ft_printf("x:%d, y:%d\n", x, y);
 		wall(game, x, y);
-	}
 	if (ch == '0')
 		put_img(game->grafic.mlx, game->grafic.win, x, y, GRASS);
 	if (ch == 'P')
 		put_img(game->grafic.mlx, game->grafic.win, x, y, FROG_F);
 	if (ch == 'E')
-		put_img(game->grafic.mlx, game->grafic.win, x, y, GRASS);
+		put_img(game->grafic.mlx, game->grafic.win, x, y, DOORC);
 	if (ch == 'C')
 		put_img(game->grafic.mlx, game->grafic.win, x, y, ICOL);
 }

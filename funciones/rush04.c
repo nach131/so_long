@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 10:19:40 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 16:37:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:04:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void rush(int h, int v)
 			// center right
 			else if (rows == h)
 				ft_putchar('G');
+			// button center
 			else if (cols == v)
 				ft_putchar('F');
+			// top center
 			else if (cols == 1)
 				ft_putchar('H');
 			else
