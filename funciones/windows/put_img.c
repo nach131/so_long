@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/09 19:38:47 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 04:07:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include "../../sources/mlx/mlx.h"
+#include <mlx.h>
 int ft_free_map(void *mlx)
 {
 
@@ -32,12 +32,12 @@ int main(void)
 	void *img_rabbit_back;
 	void *img_shark_back;
 	void *img_frog_back;
-	char *path_rabbit = "./rabbit_front.xpm";
-	char *path_shark = "./shark_front.xpm";
-	char *path_frog = "./frog_front.xpm";
-	char *path_rabbit_b = "./rabbit_back.xpm";
-	char *path_shark_b = "./shark_back.xpm";
-	char *path_frog_b = "./frog_back.xpm";
+	char *path_rabbit = "xpm/rabbit_front.xpm";
+	char *path_shark = "xpm/shark_front.xpm";
+	char *path_frog = "xpm/frog_front.xpm";
+	char *path_rabbit_b = "xpm/rabbit_back.xpm";
+	char *path_shark_b = "xpm/shark_back.xpm";
+	char *path_frog_b = "xpm/frog_back.xpm";
 	int img_width;
 	int img_height;
 
