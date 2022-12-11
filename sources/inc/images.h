@@ -34,4 +34,6 @@
 #define HOLE "xpm/mis/hole.xpm"
 #define STAIN "xpm/mis/stain.xpm"
 
+#define TOKEMO ROCKS
+
 #endif

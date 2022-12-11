@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 19:46:36 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 20:51:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void static wall(t_game *game, int x, int y)
 	else if (x == 0)
 		put_img(game->grafic.mlx, game->grafic.win, x, y, WELL_TC);
 	else
-		put_img(game->grafic.mlx, game->grafic.win, x, y, ROCKS);
+		put_img(game->grafic.mlx, game->grafic.win, x, y, TMOLES);
 }
 
 void filter_map(t_game *game, int x, int y, char ch)
