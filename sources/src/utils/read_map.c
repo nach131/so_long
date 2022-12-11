@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 15:53:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 16:58:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void static put_img(void *mlx, void *win, int x, int y, char *path)
 	mlx_put_image_to_window(mlx, win, image, y, x);
 }
 
+void wall(t_grafic grafic, int x, int y)
+{
+	put_img(grafic.mlx, grafic.win, x, y, TMOLES);
+	printf("x:%d, y:%d\n", x, y);
+}
+
 void filter_map(t_grafic grafic, int x, int y, char ch)
 {
 
@@ -39,8 +45,9 @@ void filter_map(t_grafic grafic, int x, int y, char ch)
 
 	if (ch == '1')
 	{
-		put_img(grafic.mlx, grafic.win, x, y, WELL_TL);
-		printf("x:%d, y:%d\n", x, y);
+		// put_img(grafic.mlx, grafic.win, x, y, WELL_TL);
+		// printf("x:%d, y:%d\n", x, y);
+		wall(grafic, x, y);
 	}
 	if (ch == '0')
 		put_img(grafic.mlx, grafic.win, x, y, GRASS);
