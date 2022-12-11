@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 12:13:23 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 13:21:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:10:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@ enum
 	ON_DESTROY = 17
 };
 
+#define ROWS 6
+
 #define ROCKS "../xpm/rocks.xpm"
 #define FROG_F "../xpm/frog_front.xpm"
 #define GRASS "../xpm/central.xpm"
 #define TGREEN "../xpm/tree_GREEN.xpm"
+#define DOORC "../xpm/door_closed.xpm"
+#define COL "../xpm/3d_1.xpm"
 
 int ft_free_map(void *mlx)
 {
@@ -65,40 +69,33 @@ void filter(void *mlx, void *win, int x, int y, char ch)
 
 	if (ch == '1')
 	{
-		// img_frog = mlx_xpm_file_to_image(mlx, TGREEN, &img_width, &img_height);
-		// mlx_put_image_to_window(mlx, win, img_frog, y, x);
 		put_img(mlx, win, x, y, TGREEN);
-
 		printf("x:%d, y:%d\n", x, y);
 	}
 	if (ch == '0')
-	{
-		// img_frog = mlx_xpm_file_to_image(mlx, GRASS, &img_width, &img_height);
-		// mlx_put_image_to_window(mlx, win, img_frog, y, x);
 		put_img(mlx, win, x, y, GRASS);
-	}
 	if (ch == 'P')
-	{
 		put_img(mlx, win, x, y, FROG_F);
-
-		// img_frog = mlx_xpm_file_to_image(mlx, FROG_F, &img_width, &img_height);
-		// mlx_put_image_to_window(mlx, win, img_frog, y, x);
-	}
+	if (ch == 'E')
+		put_img(mlx, win, x, y, DOORC);
+	if (ch == 'C')
+		put_img(mlx, win, x, y, COL);
 }
 
 void windows(void *mlx)
 {
-	char arr[5][21] = {"11111111111111111111",
-					   "100000001000000000C1",
-					   "10010000011100000001",
-					   "1P0000110E0000000001",
-					   "11111111111111111111"};
+	char arr[ROWS][21] = {"11111111111111111111",
+						  "100000001000000000C1",
+						  "10010000011100000001",
+						  "11000000000000000001",
+						  "1P0000110E0000000001",
+						  "11111111111111111111"};
 	int i = 0;
 	int j;
 
 	void *win;
-	win = mlx_new_window(mlx, 20 * 32, 5 * 32, "nach131 So Long");
-	while (i < 5)
+	win = mlx_new_window(mlx, 20 * 32, ROWS * 32, "nach131 So Long");
+	while (i < ROWS)
 	{
 		j = 0;
 		while (arr[i][j])

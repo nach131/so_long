@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/08 21:23:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:25:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@
 #define ENEMY 'X'
 #define SQUARE 32
 
-#define WIN_CLOSE 17
+typedef enum e_events
+{
+	ON_KEYPRESS = 2,
+	ON_KEYRELEASE = 3,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+} t_events;
 
 // sistema de coordenadas personales
 
@@ -71,5 +77,6 @@ void ctrl_square(t_map *map);
 void err_file(int n, char *file);
 void ctrl_map(t_map *map, char *line);
 void open_map(char *path, t_map *map);
+void filter_map(t_grafic grafic, int x, int y, char ch);
 
 #endif

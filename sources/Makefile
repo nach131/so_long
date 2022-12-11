@@ -37,7 +37,7 @@ LIBSFT = $(LIBFT_DIR)libft.a
 # LIBSFT = $(LIBFT_DIR)libft.a $(LIBMLX_DIR)libmlx.a
 
 MAIN_FILES	=	main
-UTILS_FILES	= maps errors
+UTILS_FILES	= maps errors read_map
 # CLIENT_FILES_BONUS	= client_bonus
 # SERVER_FILES_BONUS	= server_bonus
 
