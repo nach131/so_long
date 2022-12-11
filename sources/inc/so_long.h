@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 15:25:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:07:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void ctrl_square(t_map *map);
 void err_file(int n, char *file);
 void ctrl_map(t_map *map, char *line);
 void open_map(char *path, t_map *map);
-void filter_map(t_grafic grafic, int x, int y, char ch);
+void filter_map(t_game *game, int x, int y, char ch);
 
 #endif

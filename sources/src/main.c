@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 15:21:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:07:23 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void put_windows(t_game *game)
 		while (game->map.map[i][j])
 		{
 			// ft_printf("r:%d, c:%d\n", i, j);
-			filter_map(game->grafic, i, j, game->map.map[i][j]);
+			filter_map(game, i, j, game->map.map[i][j]);
 			j++;
 		}
 		i++;

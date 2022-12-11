@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 16:58:30 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:09:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void wall(t_grafic grafic, int x, int y)
 	printf("x:%d, y:%d\n", x, y);
 }
 
-void filter_map(t_grafic grafic, int x, int y, char ch)
+void filter_map(t_game *game, int x, int y, char ch)
 {
 
 	if (x != 0 || y != 0)
@@ -47,14 +47,15 @@ void filter_map(t_grafic grafic, int x, int y, char ch)
 	{
 		// put_img(grafic.mlx, grafic.win, x, y, WELL_TL);
 		// printf("x:%d, y:%d\n", x, y);
-		wall(grafic, x, y);
+		wall(game->grafic, x, y);
 	}
 	if (ch == '0')
-		put_img(grafic.mlx, grafic.win, x, y, GRASS);
+		put_img(game->grafic.mlx, game->grafic.win, x, y, GRASS);
 	if (ch == 'P')
-		put_img(grafic.mlx, grafic.win, x, y, FROG_F);
+		put_img(game->grafic.mlx, game->grafic.win, x, y, FROG_F);
 	if (ch == 'E')
-		put_img(grafic.mlx, grafic.win, x, y, GRASS);
+		put_img(game->grafic.mlx, game->grafic.win, x, y, GRASS);
 	if (ch == 'C')
-		put_img(grafic.mlx, grafic.win, x, y, ICOL);
+		put_img(game->grafic.mlx, game->grafic.win, x, y, ICOL);
 }
+
