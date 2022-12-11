@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 15:24:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:53:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void filter_map(t_grafic grafic, int x, int y, char ch)
 
 	if (ch == '1')
 	{
-		put_img(grafic.mlx, grafic.win, x, y, TGREEN);
+		put_img(grafic.mlx, grafic.win, x, y, WELL_TL);
 		printf("x:%d, y:%d\n", x, y);
 	}
 	if (ch == '0')
@@ -47,7 +47,7 @@ void filter_map(t_grafic grafic, int x, int y, char ch)
 	if (ch == 'P')
 		put_img(grafic.mlx, grafic.win, x, y, FROG_F);
 	if (ch == 'E')
-		put_img(grafic.mlx, grafic.win, x, y, DOORC);
+		put_img(grafic.mlx, grafic.win, x, y, GRASS);
 	if (ch == 'C')
 		put_img(grafic.mlx, grafic.win, x, y, ICOL);
 }
