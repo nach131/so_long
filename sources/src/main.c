@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 10:44:12 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:43:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,15 @@ int main(int argc, char **argv)
 
 	err_file(argc, argv[1]);
 	open_map(argv[1], &game.map);
-	// read_map(&game.map);
+	read_map(&game);
 	game.grafic.mlx = mlx_init();
 
+	// ft_printf(GREEN "%i", game.objets.goals);
 	put_windows(&game);
+	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
+	ft_printf("coleccion:%d\n", game.map.objets.goals);
 	mlx_loop(game.grafic.mlx);
 
-	// ft_printf("\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	// print_arr_map(&game.map);
 	// ft_free_map(&game.map);
 }

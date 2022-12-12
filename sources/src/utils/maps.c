@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/08 14:07:36 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:51:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void static is_line(char *line, t_map *map, int *rows)
 	if (map->control == FALSE)
 	{
 		ctrl_map(&(*map), line);
-		map->rows += 1;
+		map->rows += 1; // AQUI SUMO
 	}
 	else
 	{
@@ -61,7 +61,11 @@ void open_map(char *path, t_map *map)
 
 	ptr = 0;
 	if (!map->cols)
+	{
+		map->control = FALSE;
+		map->write = FALSE;
 		map->cols = 0;
+	}
 	fd = open(path, O_RDONLY);
 	while (1)
 	{

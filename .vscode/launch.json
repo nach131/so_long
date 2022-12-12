@@ -7,10 +7,10 @@
 		{
       "type": "lldb",
       "request": "launch",
-      "name": "Active a.out",
+      "name": "a.out",
       "program": "${fileDirname}/a.out",
       // "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-      // "args": ["../sources/maps/veinte.ber"],
+      // "args": ["../sources/maps/min.ber"],
       "stopOnEntry": false,
       "cwd": "${fileDirname}"
     },
@@ -19,7 +19,7 @@
       "request": "launch",
       "name": "so_long",
       "program": "${workspaceFolder}/sources/so_long",
-      "args": ["${workspaceFolder}/sources/maps/veinte.ber"],
+      "args": ["${workspaceFolder}/sources/maps/min.ber"],
       "stopOnEntry": false,
       "cwd": "${fileDirname}"
     }

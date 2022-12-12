@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 23:01:07 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 11:33:45 by nmota-bu         ###   ########.fr       */
+/*   Created: 2022/12/12 10:51:19 by nmota-bu          #+#    #+#             */
+/*   Updated: 2022/12/12 11:50:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,22 @@
 
 #include "so_long.h"
 
-void	err_file(int n, char *file)
+void read_map(t_game *game)
 {
-	int	len;
+	int i;
+	int j;
 
-	if (n < 2)
+	i = 0;
+	while (i < game->map.rows)
 	{
-		ft_message(DANGER, MSG_DAN_0);
-		exit(EXIT_FAILURE);
-	}
-	else if (n > 2)
-	{
-		ft_message(DANGER, MSG_DAN_1);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		len = ft_strlen(file);
-		if (!ft_strnstr(&file[len - 4], ".ber", 4))
+		j = 0;
+		while (game->map.map[i][j])
 		{
-			ft_message(DANGER, MSG_DAN_2);
-			exit(EXIT_FAILURE);
+			printf(RED "r:%i, c:%i\n", i, j);
+			if (game->map.map[i][j] == 'C')
+				game->map.objets.goals += 1;
+			j++;
 		}
-	}
-}
-
-void ctrl_map(t_map *map, char *line)
-{
-	if (!map->cols)
-		map->cols = strlen_line(line);
-	if (map->cols != strlen_line(line))
-	{
-		ft_message(WARNING, MSG_WAR_0);
-		exit(EXIT_FAILURE);
-	}
-}
-
-void ctrl_square(t_map *map)
-{
-	if (map->cols == map->rows)
-	{
-		ft_message(WARNING, MSG_WAR_1);
-		exit(EXIT_FAILURE);
+		i++;
 	}
 }

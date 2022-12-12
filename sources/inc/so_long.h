@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 19:46:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:51:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef struct s_scp
 	int y;
 } t_scp;
 
+typedef struct s_objs
+{
+	int goals;
+	t_scp exit;
+	t_scp player;
+} t_objs;
+
 typedef struct s_map
 {
 	int control;
@@ -56,7 +63,7 @@ typedef struct s_map
 	char **map;
 	int cols;
 	int rows;
-	t_scp player;
+	t_objs objets;
 } t_map;
 
 typedef struct s_grafic
@@ -78,5 +85,6 @@ void err_file(int n, char *file);
 void ctrl_map(t_map *map, char *line);
 void open_map(char *path, t_map *map);
 void filter_map(t_game *game, int x, int y, char ch);
+void read_map(t_game *game);
 
 #endif
