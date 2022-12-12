@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 11:51:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/12 18:46:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ int strlen_line(char *line)
 	i = 0;
 	while (line[i] != '\n' && line[i] != '\0')
 		i++;
-
-	// AQUI SE PODRIA CONTROLAR LA SALIDA, PLAYER, COLECCIONABLE...
-
 	return (i);
 }
 

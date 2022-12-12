@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 11:43:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/12 19:45:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,19 @@ void put_windows(t_game *game)
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, ft_free_map, game);
 }
 
+// void init_game(t_game *game)
+// {
+// 	game->map.objets.player.is = 0;
+// 	game->map.objets.exit.is = 0;
+// }
+
 int main(int argc, char **argv)
 {
 	t_game game;
 
 	err_file(argc, argv[1]);
 	open_map(argv[1], &game.map);
+	// init_game(&game);
 	read_map(&game);
 	game.grafic.mlx = mlx_init();
 
@@ -88,6 +95,8 @@ int main(int argc, char **argv)
 	put_windows(&game);
 	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	ft_printf("coleccion:%d\n", game.map.objets.goals);
+	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
+	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
 	mlx_loop(game.grafic.mlx);
 
 	// print_arr_map(&game.map);
