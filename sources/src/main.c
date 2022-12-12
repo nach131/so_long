@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 18:14:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:44:12 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,19 @@ int ft_free_map(t_map *map)
 void put_windows(t_game *game)
 {
 	char *str;
-	int i = 0;
+	int i;
 	int j;
 
 	str = "nach131 So Long";
-	game->grafic.win = mlx_new_window(game->grafic.mlx, game->map.cols * SQUARE,
+	game->grafic.win = mlx_new_window(game->grafic.mlx,
+									  game->map.cols * SQUARE,
 									  game->map.rows * SQUARE, str);
+	i = 0;
 	while (i < game->map.rows)
 	{
 		j = 0;
 		while (game->map.map[i][j])
 		{
-			// ft_printf("r:%d, c:%d\n", i, j);
 			filter_map(game, i, j, game->map.map[i][j]);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:01:07 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/08 15:55:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:45:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,3 @@ void ctrl_square(t_map *map)
 		exit(EXIT_FAILURE);
 	}
 }
-
-// void read_map(t_map *map)
-// {
-// }
