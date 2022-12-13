@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 12:20:30 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:03:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,17 @@ void open_map(char *path, t_map *map)
 	int ptr;
 
 	ptr = 0;
-	if (!map->cols)
-	{
-		map->control = FALSE;
-		map->write = FALSE;
-		map->cols = 0;
-	}
 	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_message(DANGER, MSG_DAN_3);
+		exit(EXIT_FAILURE);
+	}
 	while (1)
 	{
 		line = get_next_line(fd);
-
 		if (line == NULL)
 		{
-			// ctrl_square(map);
 			map->control = TRUE;
 			close(fd);
 			if (map->write)

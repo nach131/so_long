@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 13:40:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:00:17 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,6 @@
 // 	}
 // }
 
-// int ft_free_map(t_map *map)
-// {
-// 	int i = 0;
-
-// 	while (i < map->rows)
-// 	{
-// 		free(map->map[i]);
-// 		map->map[i] = NULL;
-// 		i++;
-// 	}
-// 	map->rows = 0;
-// 	map->cols = 0;
-// 	free(map->map);
-// 	map->map = NULL;
-// 	exit(EXIT_SUCCESS);
-// 	return (0);
-// }
 int ft_free_map(t_game *game)
 {
 	int i = 0;
@@ -60,14 +43,12 @@ int ft_free_map(t_game *game)
 		game->map.map[i] = NULL;
 		i++;
 	}
-	// ft_lstclear((t_img **)&game->grafic.img, ft_delitem);
-	// mlx_destroy_image(game->grafic.mlx, game->grafic.img);
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	free(game->grafic.mlx);
 	free(game->map.map);
 	game->map.map = NULL;
 	exit(EXIT_SUCCESS);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 void put_windows(t_game *game)
@@ -94,19 +75,23 @@ void put_windows(t_game *game)
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, ft_free_map, game);
 }
 
-// void init_game(t_game *game)
-// {
-// 	game->map.objets.player.is = 0;
-// 	game->map.objets.exit.is = 0;
-// }
+void init_game(t_game *game)
+{
+	// game->map.objets.player.is = 0;
+	// game->map.objets.exit.is = 0;
+	game->map.control = FALSE;
+	game->map.write = FALSE;
+	game->map.cols = 0;
+}
 
 int main(int argc, char **argv)
 {
 	t_game game;
 
 	err_file(argc, argv[1]);
+	init_game(&game);
 	open_map(argv[1], &game.map);
-	// init_game(&game);
+
 	read_map(&game);
 	game.grafic.mlx = mlx_init();
 
