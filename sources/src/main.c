@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 16:00:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:11:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void put_windows(t_game *game)
 
 void init_game(t_game *game)
 {
-	// game->map.objets.player.is = 0;
-	// game->map.objets.exit.is = 0;
 	game->map.control = FALSE;
 	game->map.write = FALSE;
 	game->map.cols = 0;
@@ -102,7 +100,4 @@ int main(int argc, char **argv)
 	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
 	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
 	mlx_loop(game.grafic.mlx);
-
-	// print_arr_map(&game.map);
-	// ft_free_map(&game.map);
 }
