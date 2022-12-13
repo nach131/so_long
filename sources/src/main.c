@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 19:45:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 08:53:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,37 @@
 // 	}
 // }
 
-int ft_free_map(t_map *map)
+// int ft_free_map(t_map *map)
+// {
+// 	int i = 0;
+
+// 	while (i < map->rows)
+// 	{
+// 		free(map->map[i]);
+// 		map->map[i] = NULL;
+// 		i++;
+// 	}
+// 	map->rows = 0;
+// 	map->cols = 0;
+// 	free(map->map);
+// 	map->map = NULL;
+// 	exit(EXIT_SUCCESS);
+// 	return (0);
+// }
+int ft_free_map(t_game *game)
 {
 	int i = 0;
 
-	while (i < map->rows)
+	while (i < game->map.rows)
 	{
-		free(map->map[i]);
-		map->map[i] = NULL;
+		free(game->map.map[i]);
+		game->map.map[i] = NULL;
 		i++;
 	}
-	map->rows = 0;
-	map->cols = 0;
-	free(map->map);
-	map->map = NULL;
+	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
+	free(game->grafic.mlx);
+	free(game->map.map);
+	game->map.map = NULL;
 	exit(EXIT_SUCCESS);
 	return (0);
 }
@@ -71,7 +88,6 @@ void put_windows(t_game *game)
 		}
 		i++;
 	}
-
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, ft_free_map, game);
 }
 
