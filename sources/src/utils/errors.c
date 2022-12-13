@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:01:07 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 12:41:12 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:21:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,11 @@ void ctrl_map(t_map *map, char *line)
 	}
 }
 
-void ctrl_square(t_map *map)
-{
-	if (map->cols == map->rows)
-	{
-		ft_message(WARNING, MSG_WAR_1);
-		exit(EXIT_FAILURE);
-	}
-}
-
+// void ctrl_square(t_map *map)
+// {
+// 	if (map->cols == map->rows)
+// 	{
+// 		ft_message(WARNING, MSG_WAR_1);
+// 		exit(EXIT_FAILURE);
+// 	}
+// }

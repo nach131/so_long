@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 08:53:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:40:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 #include "so_long.h"
 #include "images.h"
-#include "mlx.h"
+// #include "mlx.h"
+#include "../mlx/mlx.h"
 
 // void print_arr_map(t_map *map)
 // {
@@ -59,6 +60,8 @@ int ft_free_map(t_game *game)
 		game->map.map[i] = NULL;
 		i++;
 	}
+	// ft_lstclear((t_img **)&game->grafic.img, ft_delitem);
+	// mlx_destroy_image(game->grafic.mlx, game->grafic.img);
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	free(game->grafic.mlx);
 	free(game->map.map);

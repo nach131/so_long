@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 19:45:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:20:51 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct s_game
 } t_game;
 
 int strlen_line(char *line);
-void ctrl_square(t_map *map);
+// void ctrl_square(t_map *map);
 void err_file(int n, char *file);
 void ctrl_map(t_map *map, char *line);
 void open_map(char *path, t_map *map);

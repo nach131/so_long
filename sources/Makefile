@@ -70,7 +70,8 @@ LIBFS:
 			@make -C $(LIBFT_DIR)
 
 $(NAME):	$(OBJS_MAIN) $(OBJS_UTILS)
-			@$(CC) $(CFLAGS) $(MLXFLAGS) $(LIBSFT) -lmlx mlx/libmlx.a $^ -o $@
+# @$(CC) $(CFLAGS) $(MLXFLAGS) $(LIBSFT) -lmlx mlx/libmlx.a $^ -o $@
+			@$(CC) $(CFLAGS) $(MLXFLAGS) $(LIBSFT) mlx/libmlx.a $^ -o $@
 			@echo "$(ORANGE) Compilando Ejecutables  ➟  $(BLUE)$@ $(WHITE)"
 
 clean :

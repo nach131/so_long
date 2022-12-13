@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 18:46:30 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:20:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void open_map(char *path, t_map *map)
 
 		if (line == NULL)
 		{
-			ctrl_square(map);
+			// ctrl_square(map);
 			map->control = TRUE;
 			close(fd);
 			if (map->write)
