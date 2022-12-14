@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 16:11:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:40:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@
 // 		}
 // 	}
 // }
+
+int key_hook(int keycode, t_game *game)
+{
+	(void)game;
+	printf("Keycode: %d\n", keycode);
+	if (keycode == 53)
+		exit(0);
+	else if (keycode == 13) // W
+		;
+	else if (keycode == 0)
+		;
+	else if (keycode == 1)
+		;
+	return (0);
+}
 
 int ft_free_map(t_game *game)
 {
@@ -99,5 +114,6 @@ int main(int argc, char **argv)
 	ft_printf("coleccion:%d\n", game.map.objets.goals);
 	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
 	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
+	mlx_key_hook(game.grafic.win, key_hook, &game);
 	mlx_loop(game.grafic.mlx);
 }
