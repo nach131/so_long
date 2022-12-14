@@ -21,7 +21,8 @@
       "program": "${workspaceFolder}/sources/so_long",
       // "args": ["${workspaceFolder}/sources/maps/min.ber"],
       // "args": ["${workspaceFolder}/sources/maps/fail/_no_player.ber"],
-      "args": ["${workspaceFolder}/sources/maps/fail/multi_player.ber"],
+      // "args": ["${workspaceFolder}/sources/maps/fail/multi_player.ber"],
+      "args": ["${workspaceFolder}/sources/maps/min_plus.ber"],
       "stopOnEntry": false,
       "cwd": "${fileDirname}"
     }

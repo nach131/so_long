@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 16:11:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 23:16:12 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ int main(int argc, char **argv)
 	game.grafic.mlx = mlx_init();
 
 	// ft_printf(GREEN "%i", game.objets.goals);
+
+	// PRIMERA VENTANDA PARA REALIZAR UN SELECCION DE PERSONAJE
+	//  EN UNA INT
 	put_windows(&game);
 	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	ft_printf("coleccion:%d\n", game.map.objets.goals);

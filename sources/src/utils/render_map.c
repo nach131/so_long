@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:16:05 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 16:44:36 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/13 23:16:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 
 #include "so_long.h"
 #include "images.h"
-// #include "mlx.h"
 #include "../../mlx/mlx.h"
+#include <stdlib.h>
+#include <time.h>
 
 void static put_img(t_game *game, int x, int y, char *path)
 {
@@ -40,6 +41,24 @@ void static put_img(t_game *game, int x, int y, char *path)
 											 path, &img_width, &img_height);
 	mlx_put_image_to_window(game->grafic.mlx,
 							game->grafic.win, game->grafic.img, y, x);
+}
+
+void random_item(t_game *game, int x, int y)
+{
+	int number = rand() % 5;
+	// char arr[6][24];
+
+	// usleep(10000);
+
+	srand(time(NULL));
+	char arr[6][24] = {"xpm/mis/rocks.xpm",
+					   "xpm/mis/rock.xpm",
+					   "xpm/mis/tree_green.xpm",
+					   "xpm/mis/tree_moles.xpm",
+					   "xpm/mis/tree_orange.xpm",
+					   "xpm/mis/tree_ping.xpm"};
+
+	put_img(game, x, y, arr[number]);
 }
 
 void static wall(t_game *game, int x, int y)
@@ -66,7 +85,9 @@ void static wall(t_game *game, int x, int y)
 	else if (x == 0)
 		put_img(game, x, y, WELL_TC);
 	else
-		put_img(game, x, y, TMOLES);
+		// AQUI FUNCION PONGO ALEATORIO
+		// put_img(game, x, y, TMOLES);
+		random_item(game, x, y);
 }
 
 void filter_map(t_game *game, int x, int y, char ch)
@@ -81,6 +102,7 @@ void filter_map(t_game *game, int x, int y, char ch)
 	if (ch == '0')
 		put_img(game, x, y, GRASS);
 	if (ch == 'P')
+		// segun el personeje eleguido se cargara la imagen
 		put_img(game, x, y, FROG_F);
 	if (ch == 'E')
 		put_img(game, x, y, DOORC);
