@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maps.c                                             :+:      :+:    :+:   */
+/*   NO_doble_ptr_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/15 01:50:16 by nmota-bu         ###   ########.fr       */
+/*   Created: 2022/12/14 23:57:48 by nmota-bu          #+#    #+#             */
+/*   Updated: 2022/12/15 08:23:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,34 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include "so_long.h"
-#include "../../libft/inc/get_next_line.h"
-#include <fcntl.h>
+#include <stdio.h>
 
-void static write_map(t_map *map, char *line, int i)
+void hija(char ***doble_puntero)
 {
-	if (!map->map)
-		map->map = ft_calloc(map->rows + 1, sizeof(char *));
-	map->map[i] = ft_substr(line, 0, 0xffffffff);
+	// Declara una variable local que apunte al valor del doble puntero
+	char **puntero = *doble_puntero;
+
+	// Accede al elemento del array que deseas modificar y asigna un nuevo valor
+	puntero[1] = "Hola";
+
+	// Actualiza el valor del doble puntero en la función padre
+	**doble_puntero = *puntero;
 }
 
-void static is_line(char *line, t_map *map, int *rows)
+int main(void)
 {
-	if (map->control == FALSE)
-	{
-		ctrl_map(&(*map), line);
-		map->rows += 1; // AQUI SUMO
-	}
-	else
-	{
-		write_map(&(*map), line, *rows);
-		map->write = TRUE;
-		*rows += 1;
-	}
-}
+	// Declara un array de cadenas
+	char *strings[] = {"Adiós", "Mundo"};
 
-void open_map(char *path, t_map *map)
-{
-	int fd;
-	char *line;
-	int ptr;
+	// Declara un puntero a un array de cadenas
+	char **puntero = strings;
 
-	ptr = 0;
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_message(DANGER, MSG_DAN_3);
-		exit(EXIT_FAILURE);
-	}
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-		{
-			map->control = TRUE;
-			close(fd);
-			if (map->write)
-				break;
-			open_map(path, map);
-		}
-		else if (line)
-			is_line(line, &(*map), &ptr);
-		free(line);
-	}
+	// Imprime el valor original del elemento
+	printf("Valor original: %s\n", puntero[1]);
+
+	// Llama a la función hija y le pasa el doble puntero
+	hija(&puntero);
+
+	// Imprime el valor actualizado del elemento
+	printf("Valor actualizado: %s\n", puntero[1]);
 }

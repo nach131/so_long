@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 16:04:14 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:04:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,23 @@ typedef enum e_events
 
 // sistema de coordenadas personales
 
+typedef struct s_img
+{
+	char **img;
+	int height;
+	int width;
+} t_img;
+
+typedef struct s_texture
+{
+	t_img tree_green;
+	t_img tree_moles;
+	t_img tree_orange;
+	t_img tree_ping;
+	t_img rocks;
+	t_img rock;
+} t_texture;
+
 typedef struct s_scp
 {
 	int x;
@@ -85,7 +102,7 @@ typedef struct s_game
 	t_map map;
 } t_game;
 
-int strlen_line(char *line);
+// int strlen_line(char *line);
 // void ctrl_square(t_map *map);
 void err_file(int n, char *file);
 void ctrl_map(t_map *map, char *line);

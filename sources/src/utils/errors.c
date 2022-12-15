@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:01:07 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 12:21:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/15 01:49:44 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ void	err_file(int n, char *file)
 			exit(EXIT_FAILURE);
 		}
 	}
+}
+
+int static strlen_line(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i] != '\n' && line[i] != '\0')
+		i++;
+	return (i);
 }
 
 void ctrl_map(t_map *map, char *line)
