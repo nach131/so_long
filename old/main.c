@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/16 18:16:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:04:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@
 #include "images.h"
 // #include "mlx.h"
 #include "../mlx/mlx.h"
+
+// void print_arr_map(t_map *map)
+// {
+// 	int i = 0;
+
+// 	if (map->map)
+// 	{
+// 		while (map->map[i])
+// 		{
+// 			ft_printf("%s", map->map[i]);
+// 			i++;
+// 		}
+// 	}
+// }
 
 int key_hook(int keycode, t_game *game)
 {
@@ -76,12 +90,19 @@ void put_windows(t_game *game)
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, ft_free_map, game);
 }
 
+void init_game(t_game *game)
+{
+	game->map.control = FALSE;
+	game->map.write = FALSE;
+	game->map.cols = 0;
+}
+
 int main(int argc, char **argv)
 {
 	t_game game;
-	ft_bzero(&game, sizeof(t_game));
 
 	err_file(argc, argv[1]);
+	init_game(&game);
 	open_map(argv[1], &game.map);
 
 	read_map(&game);

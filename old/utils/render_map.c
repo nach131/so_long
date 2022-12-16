@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:16:05 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/16 17:41:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:46:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ void static put_img(t_game *game, int x, int y, char *path)
 	int img_width;
 	int img_height;
 
-	// ESTO PARA CARGAR LA IMAGEN EN EL JUEGO
 	game->grafic.img = mlx_xpm_file_to_image(game->grafic.mlx,
 											 path, &img_width, &img_height);
-	// AQUI PARA PONER LA IMGEN EN EL MAPA
 	mlx_put_image_to_window(game->grafic.mlx,
 							game->grafic.win, game->grafic.img, y, x);
 }
