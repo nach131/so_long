@@ -17,6 +17,8 @@
 #include <mlx.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 enum
 {
@@ -90,14 +92,8 @@ void load_images(void *mlx, char **textures)
 	textures[COL] = mlx_xpm_file_to_image(mlx, "../xpm/3d_1.xpm", &width, &height);
 }
 
-void windows(void *mlx, char **images)
+void windows(void *mlx, char *images[], char *arr[])
 {
-	char arr[ROWS][21] = {"11111111111111111111",
-						  "100000001000000000C1",
-						  "10010000011100000001",
-						  "11000000000000000001",
-						  "1P0000110E0000000001",
-						  "11111111111111111111"};
 	int i = 0;
 	int j;
 
@@ -121,11 +117,19 @@ int main(void)
 {
 
 	void *mlx;
-	char **textures[5];
+	char *textures[5];
+
+	char *map[] = {"11111111111111111111",
+				   "100000001000000000C1",
+				   "10010000011100000001",
+				   "11000000000000000001",
+				   "1P0000110E0000000001",
+				   "11111111111111111111"};
 
 	mlx = mlx_init();
+	// load_images(mlx, (char **)&textures);
 	load_images(mlx, textures);
-	windows(mlx, textures);
+	windows(mlx, textures, map);
 	mlx_loop(mlx);
 }
 
