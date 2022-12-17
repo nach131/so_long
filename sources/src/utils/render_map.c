@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 15:16:05 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/16 17:41:52 by nmota-bu         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/13 15:15:16 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:46:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +30,12 @@ void static put_img(t_game *game, int x, int y, char *path)
 	// AQUI PARA PONER LA IMGEN EN EL MAPA
 	mlx_put_image_to_window(game->grafic.mlx,
 							game->grafic.win, game->grafic.img, y, x);
+}
+
+void static put_gwall(t_game *game, int x, int y)
+{
+	mlx_put_image_to_window(game->grafic.mlx,
+							game->grafic.win, game->images.g_wall[0], y, x);
 }
 
 void static wall(t_game *game, int x, int y)
@@ -68,7 +62,8 @@ void static wall(t_game *game, int x, int y)
 	else if (x == 0)
 		put_img(game, x, y, WELL_TC);
 	else
-		put_img(game, x, y, TMOLES);
+		// put_img(game, x, y, ROCK);
+		put_gwall(game, x, y);
 }
 
 void filter_map(t_game *game, int x, int y, char ch)

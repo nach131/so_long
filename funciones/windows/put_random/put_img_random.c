@@ -51,6 +51,25 @@ int ft_free_map(void *mlx, void *win)
 	return (0);
 }
 
+int key_hook(int keycode, char *map[], char *textures, void *win, void *mlx)
+{
+	printf("Keycode: %d\n", keycode);
+	if (keycode == 53)
+		exit(0);
+	else if (keycode == 13) // W
+	{
+		// map[4][1] = '0';
+		// map[4][2] = 'P';
+		mlx_put_image_to_window(mlx, win, textures[GRASS], 4, 2);
+		// mlx_put_image_to_window(mlx, win, textures[GRASS], 4, 2);
+	}
+	else if (keycode == 0)
+		;
+	else if (keycode == 1)
+		;
+	return (0);
+}
+
 void filter(void *mlx, void *win, int x, int y, char ch, char **images)
 {
 	void *img_frog;
@@ -92,13 +111,13 @@ void load_images(void *mlx, char **textures)
 	textures[COL] = mlx_xpm_file_to_image(mlx, "../xpm/3d_1.xpm", &width, &height);
 }
 
-void windows(void *mlx, char *images[], char *arr[])
+void windows(void *mlx, void *win, char *images[], char *arr[])
 {
 	int i = 0;
 	int j;
 
-	void *win;
-	win = mlx_new_window(mlx, 20 * 32, ROWS * 32, "nach131 So Long");
+	// void *win;
+	// win = mlx_new_window(mlx, 20 * 32, ROWS * 32, "nach131 So Long");
 	while (i < ROWS)
 	{
 		j = 0;
@@ -109,7 +128,7 @@ void windows(void *mlx, char *images[], char *arr[])
 		}
 		i++;
 	}
-
+	mlx_string_put(mlx, win, 20, 25, 11001101, "toma"); // NACH ESTO ES EL MARCADOR
 	mlx_hook(win, ON_DESTROY, 1L << 0, ft_free_map, mlx);
 }
 
@@ -117,19 +136,22 @@ int main(void)
 {
 
 	void *mlx;
+	void *win;
 	char *textures[5];
 
 	char *map[] = {"11111111111111111111",
 				   "100000001000000000C1",
 				   "10010000011100000001",
-				   "11000000000000000001",
+				   "10000000000000000001",
 				   "1P0000110E0000000001",
 				   "11111111111111111111"};
 
 	mlx = mlx_init();
+	win = mlx_new_window(mlx, 20 * 32, ROWS * 32, "nach131 So Long");
 	// load_images(mlx, (char **)&textures);
 	load_images(mlx, textures);
-	windows(mlx, textures, map);
+	windows(mlx, win, textures, map);
+	mlx_key_hook(win, key_hook, map);
 	mlx_loop(mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/16 15:44:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:20:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,40 +33,26 @@
 #define MSG_WAR_5 "Warning 5: The map is not closed"
 #define MSG_WAR_6 "Warning 6: More than one (exit or player) found"
 
-#define WALL '1'
-#define EMPTY '0'
-#define COL 'C'
-#define EXIT 'E'
-#define PLAYER 'P'
-#define ENEMY 'X'
+// #define WALL '1'
+// #define EMPTY '0'
+// #define COL 'C'
+// #define EXIT 'E'
+// #define PLAYER 'P'
+// #define ENEMY 'X'
 #define SQUARE 32
 
-typedef enum e_events
+enum
 {
 	ON_KEYPRESS = 2,
 	ON_KEYRELEASE = 3,
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
-} t_events;
+};
 
-// sistema de coordenadas personales
-
-typedef struct s_img
+typedef struct s_images
 {
-	char **img;
-	int height;
-	int width;
-} t_img;
-
-typedef struct s_texture
-{
-	t_img tree_green;
-	t_img tree_moles;
-	t_img tree_orange;
-	t_img tree_ping;
-	t_img rocks;
-	t_img rock;
-} t_texture;
+	char *g_wall[5];
+} t_images;
 
 typedef struct s_scp
 {
@@ -102,6 +88,7 @@ typedef struct s_game
 {
 	t_grafic grafic;
 	t_map map;
+	t_images images;
 } t_game;
 
 // int strlen_line(char *line);
@@ -111,5 +98,6 @@ void ctrl_map(t_map *map, char *line);
 void open_map(char *path, t_map *map);
 void filter_map(t_game *game, int x, int y, char ch);
 void read_map(t_game *game);
+void init_img(void *mlx, t_images *images);
 
 #endif

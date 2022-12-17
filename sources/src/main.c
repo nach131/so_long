@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/16 18:16:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:21:23 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ int main(int argc, char **argv)
 	game.grafic.mlx = mlx_init();
 
 	// ft_printf(GREEN "%i", game.objets.goals);
+	init_img(game.grafic.mlx, &game.images);
 	put_windows(&game);
+
 	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	ft_printf("coleccion:%d\n", game.map.objets.goals);
 	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
