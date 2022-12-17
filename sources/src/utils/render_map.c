@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/17 15:46:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:20:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void static put_img(t_game *game, int x, int y, char *path)
 void static put_gwall(t_game *game, int x, int y)
 {
 	mlx_put_image_to_window(game->grafic.mlx,
-							game->grafic.win, game->images.g_wall[0], y, x);
+							game->grafic.win, game->images.gwall[TMOLES], y, x);
 }
 
 void static wall(t_game *game, int x, int y)

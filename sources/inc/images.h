@@ -8,19 +8,11 @@ enum
 	TGREEN,
 	TORANGE,
 	TPING,
+	TMOLES,
 };
 
 // #define TREE_PING "../xmp/tree_ping.xpm"
 #define FROG_F "xpm/frog/frog_front.xpm"
-
-// Variables de muro interior 1
-
-#define ROCK "xpm/gwall/gwall0.xpm"
-// #define ROCKS "xpm/mis/rocks.xpm"
-// #define TGREEN "xpm/mis/tree_green.xpm"
-// #define TORANGE "xpm/mis/tree_orange.xpm"
-// #define TPING "xpm/mis/tree_ping.xpm"
-#define TMOLES "xpm/mis/tree_moles.xpm"
 
 #define DOORC "xpm/mis/door_closed.xpm"
 #define DOORO "xpm/mis/door_open.xpm"

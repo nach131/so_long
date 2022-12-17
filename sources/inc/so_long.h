@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/17 15:20:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 19:21:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ enum
 
 typedef struct s_images
 {
-	char *g_wall[5];
+	char *gwall[6];
 } t_images;
 
 typedef struct s_scp

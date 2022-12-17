@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/17 15:21:23 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 18:45:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,28 @@ int key_hook(int keycode, t_game *game)
 	return (0);
 }
 
+// void free_img(t_images *img, int nb)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (i++ < nb)
+// 	{
+// 		free(img->g_wall[i]);
+// 		// ft_printf(RED "%s", img->g_wall[i]);
+// 	}
+// }
+
 int ft_free_map(t_game *game)
 {
 	int i = 0;
 
-	while (i < game->map.rows)
-	{
+	while (i++ < game->map.rows)
 		free(game->map.map[i]);
-		game->map.map[i] = NULL;
-		i++;
-	}
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	free(game->grafic.mlx);
 	free(game->map.map);
 	game->map.map = NULL;
-	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
 
