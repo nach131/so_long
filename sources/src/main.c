@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/17 18:45:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 20:49:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int ft_free_map(t_game *game)
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	free(game->grafic.mlx);
 	free(game->map.map);
-	game->map.map = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -95,7 +94,7 @@ int main(int argc, char **argv)
 	game.grafic.mlx = mlx_init();
 
 	// ft_printf(GREEN "%i", game.objets.goals);
-	init_img(game.grafic.mlx, &game.images);
+	init_img(&game);
 	put_windows(&game);
 
 	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);

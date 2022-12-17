@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/17 19:21:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/17 21:33:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,16 @@ enum
 	ON_DESTROY = 17
 };
 
+enum
+{
+	GWALL,
+	FLOOR,
+};
+
 typedef struct s_images
 {
 	char *gwall[6];
+	char *floor[7];
 } t_images;
 
 typedef struct s_scp
@@ -98,6 +105,6 @@ void ctrl_map(t_map *map, char *line);
 void open_map(char *path, t_map *map);
 void filter_map(t_game *game, int x, int y, char ch);
 void read_map(t_game *game);
-void init_img(void *mlx, t_images *images);
+void init_img(t_game *game);
 
 #endif

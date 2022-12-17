@@ -7,11 +7,10 @@ enum
 	ROCKS,
 	TGREEN,
 	TORANGE,
-	TPING,
 	TMOLES,
+	TPING,
 };
 
-// #define TREE_PING "../xmp/tree_ping.xpm"
 #define FROG_F "xpm/frog/frog_front.xpm"
 
 #define DOORC "xpm/mis/door_closed.xpm"
