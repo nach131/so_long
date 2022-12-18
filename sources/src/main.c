@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 12:27:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/18 15:46:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ int key_hook(int keycode, t_game *game)
 // 		// ft_printf(RED "%s", img->g_wall[i]);
 // 	}
 // }
+
+int count_rows(char **map)
+{
+	int i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
 
 int ft_free_map(t_game *game)
 {
@@ -87,10 +95,11 @@ int main(int argc, char **argv)
 	t_game game;
 	ft_bzero(&game, sizeof(t_game));
 
-	char **toma = ft_file_to_dptr(argv[1]);
-	(void)toma;
+	// game.map.map = ft_file_to_dptr(argv[1], 1);
 
-	err_file(argc, argv[1]);
+	// game.map.rows = count_rows(game.map.map);
+
+	err_file(argc, argv[1]); // esto se puede quitar por la nueva funcion.
 	open_map(argv[1], &game.map);
 
 	read_map(&game);

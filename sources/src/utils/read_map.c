@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:51:19 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 19:45:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:14:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void read_map(t_game *game)
 	int j;
 
 	i = 0;
-	game->map.objets.goals = 0;
 	while (i < game->map.rows)
 	{
 		j = 0;
