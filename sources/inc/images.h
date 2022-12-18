@@ -8,6 +8,8 @@ enum
 	TGREEN,
 	TORANGE,
 	TMOLES,
+	HOLE,
+	XINA,
 	TPING,
 };
 

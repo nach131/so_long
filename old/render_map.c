@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 11:51:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/18 11:31:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void static put_gwall(t_game *game, int x, int y, int type)
 	if (type == 0)
 		mlx_put_image_to_window(game->grafic.mlx,
 								game->grafic.win,
-								game->images.gwall[random_num(7)], y, x);
-	// if (type == 1)
-	// 	mlx_put_image_to_window(game->grafic.mlx,
-	// 							game->grafic.win,
-	// 							game->images.floor[random_num(7)], y, x);
+								game->images.gwall[random_num(5)], y, x);
+	if (type == 1)
+		mlx_put_image_to_window(game->grafic.mlx,
+								game->grafic.win,
+								game->images.floor[random_num(7)], y, x);
 }
 
 void static wall(t_game *game, int x, int y)
@@ -80,6 +80,24 @@ void static wall(t_game *game, int x, int y)
 		put_gwall(game, x, y, GWALL);
 }
 
+void put_floor(t_game *game, int x, int y)
+{
+	int static i;
+
+	if (!i)
+		i = 0;
+	i++;
+	if (i == 14)
+	{
+		put_gwall(game, x, y, FLOOR);
+		i = 0;
+	}
+	else
+		mlx_put_image_to_window(game->grafic.mlx,
+								game->grafic.win,
+								game->images.floor[0], y, x);
+}
+
 void filter_map(t_game *game, int x, int y, char ch)
 {
 	if (x != 0 || y != 0)
@@ -90,9 +108,9 @@ void filter_map(t_game *game, int x, int y, char ch)
 	if (ch == '1')
 		wall(game, x, y);
 	if (ch == '0')
-		mlx_put_image_to_window(game->grafic.mlx,
-								game->grafic.win,
-								game->images.floor[0], y, x);
+		// put_gwall(game, x, y, FLOOR);
+		put_floor(game, x, y);
+	// put_img(game, x, y, GRASS);
 	if (ch == 'P')
 		put_img(game, x, y, FROG_F);
 	if (ch == 'E')

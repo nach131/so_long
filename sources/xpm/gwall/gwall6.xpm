@@ -6,8 +6,8 @@ static char *result[] = {
 ". c #557D55",
 "X c #8B9150",
 "o c #EEB551",
-"O c #7C6DA2",
-"+ c #947A9D",
+"O c #BC87A5",
+"+ c #D9A6A6",
 "@ c #EDE4DA",
 /* pixels */
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
