@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 11:51:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:33:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 #include "so_long.h"
 #include "images.h"
-// #include "mlx.h"
 #include "../../mlx/mlx.h"
 
 void static put_img(t_game *game, int x, int y, char *path)

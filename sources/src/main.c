@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/17 20:49:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:27:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ int main(int argc, char **argv)
 {
 	t_game game;
 	ft_bzero(&game, sizeof(t_game));
+
+	char **toma = ft_file_to_dptr(argv[1]);
+	(void)toma;
 
 	err_file(argc, argv[1]);
 	open_map(argv[1], &game.map);
