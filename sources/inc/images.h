@@ -30,10 +30,8 @@ enum
 #define WELL_TR "xpm/well/top_right.xpm"
 
 // vacio
-#define GRASS "xpm/mis/central.xpm"
-#define HOLE "xpm/mis/hole.xpm"
-#define STAIN "xpm/mis/stain.xpm"
-
-#define TOKEMO ROCKS
+// #define GRASS "xpm/mis/central.xpm"
+// #define HOLE "xpm/mis/hole.xpm"
+// #define STAIN "xpm/mis/stain.xpm"
 
 #endif

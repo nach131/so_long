@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/17 21:36:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/18 11:31:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void static put_gwall(t_game *game, int x, int y, int type)
 	if (type == 1)
 		mlx_put_image_to_window(game->grafic.mlx,
 								game->grafic.win,
-								game->images.floor[random_num(6)], y, x);
+								game->images.floor[random_num(7)], y, x);
 }
 
 void static wall(t_game *game, int x, int y)
@@ -87,7 +87,7 @@ void put_floor(t_game *game, int x, int y)
 	if (!i)
 		i = 0;
 	i++;
-	if (i == 9)
+	if (i == 14)
 	{
 		put_gwall(game, x, y, FLOOR);
 		i = 0;
