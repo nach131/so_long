@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:51:19 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 14:14:24 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/19 10:56:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int ctrl_wall(t_map map, int rows, int cols, char ch)
 	int v = map.cols - 1;
 
 	if ((rows == 0 && cols <= v) && ch != '1')
-		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+		ft_printf(GREEN "\t1 row:%d col:%d\n" WHITE, rows, cols);
 	else if ((rows > 0 && cols == 0) && ch != '1')
-		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+		ft_printf(GREEN "\t2 row:%d col:%d\n" WHITE, rows, cols);
 	else if ((rows > 0 && cols == v) && ch != '1')
-		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+		ft_printf(GREEN "\t3 row:%d col:%d\n" WHITE, rows, cols);
 	else if ((rows == h && cols <= v) && ch != '1')
-		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+		ft_printf(GREEN "\t4 row:%d col:%d\n" WHITE, rows, cols);
 	else
 		return (0);
 	return (1);

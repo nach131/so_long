@@ -7,7 +7,8 @@
     "sstream": "c",
     "stdio.h": "c",
     "limits.h": "c",
-    "minitalk.h": "c"
+    "minitalk.h": "c",
+    "libft.h": "c"
   },
   "C_Cpp.errorSquiggles": "Disabled",
   "cSpell.words": ["BYELLOW", "lstsize"]

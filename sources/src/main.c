@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 15:46:03 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:22:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int key_hook(int keycode, t_game *game)
 // 	}
 // }
 
-int count_rows(char **map)
-{
-	int i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
+// int count_rows(char **map)
+// {
+// 	int i = 0;
+// 	while (map[i])
+// 		i++;
+// 	return (i);
+// }
 
 int ft_free_map(t_game *game)
 {
@@ -63,6 +63,7 @@ int ft_free_map(t_game *game)
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	free(game->grafic.mlx);
 	free(game->map.map);
+	exit(0);
 	return (EXIT_SUCCESS);
 }
 
@@ -94,12 +95,11 @@ int main(int argc, char **argv)
 {
 	t_game game;
 	ft_bzero(&game, sizeof(t_game));
+	err_file(argc, argv[1]); // esto se puede quitar por la nueva funcion.
 
 	// game.map.map = ft_file_to_dptr(argv[1], 1);
-
 	// game.map.rows = count_rows(game.map.map);
 
-	err_file(argc, argv[1]); // esto se puede quitar por la nueva funcion.
 	open_map(argv[1], &game.map);
 
 	read_map(&game);

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 12:33:50 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:12:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,7 @@ void filter_map(t_game *game, int x, int y, char ch)
 	if (ch == '1')
 		wall(game, x, y);
 	if (ch == '0')
-		mlx_put_image_to_window(game->grafic.mlx,
-								game->grafic.win,
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 								game->images.floor[0], y, x);
 	if (ch == 'P')
 		put_img(game, x, y, FROG_F);
