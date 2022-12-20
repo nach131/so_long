@@ -82,7 +82,8 @@ int key_hook(int keycode, t_game *game)
 		// map[4][1] = '0';
 		// map[4][2] = 'P';
 		ft_printf(ORANGE "%c\n" WHITE, game->map[1][1]);
-		game->map[1][1] = '0';
+		game->map[4][1] = '0';
+		game->map[1][1] = 'P';
 	}
 	else if (keycode == 1)
 		;
@@ -199,11 +200,16 @@ void put_logo(t_game *game, int x, int y)
 	x *= 32;
 	y *= 32;
 	mlx_put_image_to_window(game->mlx, game->win, game->logo[i], y, x);
-	usleep(35000);
+	usleep(40000);
 	if (i == 38)
 		i = 0;
 	i++;
 	// ft_printf(RED "\tloop" WHITE);
+}
+
+void put_grass(t_game *game, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win, game->textures[GRASS], y * 32, x * 32);
 }
 
 void loop_logo(t_game *game)
@@ -218,8 +224,9 @@ void loop_logo(t_game *game)
 		{
 			if (game->map[i][j] == 'C')
 				put_logo(game, i, j);
-			// mlx_put_image_to_window(game->mlx, game->win, game->logo[1], 512, 64);
-			// ft_printf(RED "coleccion %i,%i" WHITE, i, j);
+			if (game->map[i][j] == '0')
+				put_grass(game, i, j);
+
 			j++;
 		}
 		i++;
