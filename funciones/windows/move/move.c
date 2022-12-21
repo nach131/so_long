@@ -95,7 +95,7 @@ void filter(t_game *game, int x, int y, char ch)
 	void *img_frog;
 	int img_width;
 	int img_height;
-	int number = rand() % 4;
+	// int number = rand() % 4;
 
 	if (x != 0 || y != 0)
 	{
@@ -105,7 +105,7 @@ void filter(t_game *game, int x, int y, char ch)
 
 	if (ch == '1')
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->textures[number], y, x);
+		mlx_put_image_to_window(game->mlx, game->win, game->textures[ROCKS], y, x);
 		printf("x:%d, y:%d\n", x, y);
 	}
 	if (ch == '0')
@@ -186,8 +186,8 @@ void windows(t_game *game)
 		}
 		i++;
 	}
-	mlx_string_put(game->mlx, game->win, 10, 10, 00001010, "toma");	  // NACH ESTO ES EL MARCADOR
-	mlx_string_put(game->mlx, game->win, 10, 20, 0xffffffff, "0/12"); // NACH ESTO ES EL MARCADOR
+	// mlx_string_put(game->mlx, game->win, 10, 12, 00001010, "toma");	  // NACH ESTO ES EL MARCADOR
+	// mlx_string_put(game->mlx, game->win, 10, 22, 0xffffffff, "0/12"); // NACH ESTO ES EL MARCADOR
 	mlx_hook(game->win, ON_DESTROY, 1L << 0, ft_free_map, game->mlx);
 }
 
@@ -234,6 +234,12 @@ void loop_logo(t_game *game)
 	}
 }
 
+void los_dos(t_game *game)
+{
+	windows(game);
+	loop_logo(game);
+}
+
 int main(void)
 {
 	t_game game;
@@ -246,8 +252,11 @@ int main(void)
 	game.win = mlx_new_window(game.mlx, 20 * 32, ROWS * 32, "nach131 So Long");
 	load_images(&game);
 	windows(&game);
+	mlx_string_put(game.mlx, game.win, 10, 12, 00001010, "toma");	// NACH ESTO ES EL MARCADOR
+	mlx_string_put(game.mlx, game.win, 10, 22, 0xffffffff, "0/12"); // NACH ESTO ES EL MARCADOR
 	mlx_key_hook(game.win, key_hook, &game);
-	mlx_loop_hook(game.mlx, loop_logo, &game);
+	mlx_loop_hook(game.mlx, los_dos, &game);
+	// mlx_loop_hook(game.mlx, loop_logo, &game);
 	mlx_loop(game.mlx);
 }
 
