@@ -1,5 +1,5 @@
 /* XPM */
-static char *_087f353859e4dbbb695ec04c45d5d6crOTqM0Rp3EqoldUJ[] = {
+static char *result[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 16 1 ",
 "  c #353540",
@@ -24,16 +24,16 @@ static char *_087f353859e4dbbb695ec04c45d5d6crOTqM0Rp3EqoldUJ[] = {
 "::::::::::::::::::::::::::::::::",
 "::::::::::::::::::::::::::::::::",
 "::::::::::::::::::::::::::::::::",
-"::::::::::::::::::::::::::::::::",
-"::::::::::::::::::::::::::::::::",
-"::::::::::::::::::::::::::::::::",
-";;;;::::::::=------;::::::::::::",
+";;;;::::::::=-------::::::::::::",
 "      ::::            ::::      ",
-"      ::::            ;:::      ",
+"      ::::            ::::      ",
 "****....    ********        ****",
-"****....    *$$$$$$*        @O**",
-"oo************oooo*$*@$*@$$*$@oo",
+"****....    &&%%%$%&        +O**",
+"oo************oooX*&*+&&@#&*%@oo",
 "oo************oooo************oo",
+"oooooooooooooooooooooooooooooooo",
+"oooooooooooooooooooooooooooooooo",
+"oooooooooooooooooooooooooooooooo",
 "oooooooooooooooooooooooooooooooo",
 "oooooooooooooooooooooooooooooooo",
 "oooooooooooooooooooooooooooooooo",
