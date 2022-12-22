@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/21 19:10:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:17:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,14 @@ int main(int argc, char **argv)
 {
 	t_game game;
 	ft_bzero(&game, sizeof(t_game));
-	// err_file(argc, argv[1]); // esto se puede quitar por la nueva funcion.
+	err_file(argc, argv[1]);
+	game.map.map = ft_file_to_dptr(argv[1], 0);
+	control_map(&game);
 
-	game.map.map = ft_file_to_dptr(argv[1], 1);
-	// game.map.rows = count_rows(game.map.map);
-
-	open_map(argv[1], &game.map);
-
+	//=============================================================================
 	read_map(&game);
 	game.grafic.mlx = mlx_init();
 
-	// ft_printf(GREEN "%i", game.objets.goals);
 	init_img(&game);
 	put_windows(&game);
 

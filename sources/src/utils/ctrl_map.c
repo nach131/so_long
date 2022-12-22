@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maps.c                                             :+:      :+:    :+:   */
+/*   ctrl_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 23:07:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/15 01:50:16 by nmota-bu         ###   ########.fr       */
+/*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
+/*   Updated: 2022/12/22 23:12:02 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,57 +15,37 @@
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
 #include "so_long.h"
-#include "../../libft/inc/get_next_line.h"
-#include <fcntl.h>
 
-void static write_map(t_map *map, char *line, int i)
+int static len_rows(char **map)
 {
-	if (!map->map)
-		map->map = ft_calloc(map->rows + 1, sizeof(char *));
-	map->map[i] = ft_substr(line, 0, 0xffffffff);
+	int i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
 
-void static is_line(char *line, t_map *map, int *rows)
+void static len_cols(t_map *map)
 {
-	if (map->control == FALSE)
-	{
-		ctrl_map(&(*map), line);
-		map->rows += 1; // AQUI SUMO
-	}
-	else
-	{
-		write_map(&(*map), line, *rows);
-		map->write = TRUE;
-		*rows += 1;
-	}
-}
+	int i;
 
-void open_map(char *path, t_map *map)
-{
-	int fd;
-	char *line;
-	int ptr;
-
-	ptr = 0;
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	if (!map->cols)
+		map->cols = ft_strlen(map->map[0]);
+	i = 1;
+	while (i < map->rows)
 	{
-		ft_message(DANGER, MSG_DAN_3);
-		exit(EXIT_FAILURE);
-	}
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
+		if (map->cols != ft_strlen(map->map[i]))
 		{
-			map->control = TRUE;
-			close(fd);
-			if (map->write)
-				break;
-			open_map(path, map);
+			ft_message(WARNING, MSG_WAR_0);
+			exit(EXIT_FAILURE);
 		}
-		else if (line)
-			is_line(line, &(*map), &ptr);
-		free(line);
+		i++;
 	}
+}
+
+void control_map(t_game *game)
+{
+	game->map.rows = len_rows(game->map.map);
+	len_cols(&game->map);
 }

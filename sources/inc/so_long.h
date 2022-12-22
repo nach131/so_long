@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 11:44:51 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/22 23:11:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 #define MSG_DAN_0 "Error 0: Missing map"
 #define MSG_DAN_1 "Error 1: Too many arguments"
 #define MSG_DAN_2 "Error 2: File map does not have the extension .ber"
-
-#define MSG_DAN_3 "File not found"
 
 #define MSG_WAR_0 "Warning 0: Different length of lines"
 #define MSG_WAR_1 "Warning 1: The map cannot be square"
@@ -101,10 +99,11 @@ typedef struct s_game
 // int strlen_line(char *line);
 // void ctrl_square(t_map *map);
 void err_file(int n, char *file);
-void ctrl_map(t_map *map, char *line);
-void open_map(char *path, t_map *map);
+// void ctrl_map(t_map *map, char *line);
+// void open_map(char *path, t_map *map);
 void filter_map(t_game *game, int x, int y, char ch);
 void read_map(t_game *game);
 void init_img(t_game *game);
+void control_map(t_game *game);
 
 #endif
