@@ -26,7 +26,6 @@ static char *result[] = {
 "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
 "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
 "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
-"OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
 "OOooooooooooooOOOOooooooooooooOO",
 "OOooooooooooooOOOOooooooooooooOO",
 "oooo        oooooooo        oooo",
@@ -40,6 +39,7 @@ static char *result[] = {
 "......@@@@............@@@@......",
 "......@@@@............@@@@......",
 "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-"@@@@++++++++@@@@@@@@++++++++@@@@"
+"@@@@++++++++@@@@@@@@++++++++@@@@",
+"++++++++++++++++++++++++++++++++",
+"++++++++++++++++++++++++++++++++"
 };

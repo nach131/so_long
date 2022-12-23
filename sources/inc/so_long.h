@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/22 23:11:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/23 14:17:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct s_scp
 typedef struct s_objs
 {
 	int goals;
+	// int c_player;
+	// int c_exit;
+	// int c_enemy;
 	t_scp exit;
 	t_scp player;
 } t_objs;

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/22 23:17:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/23 14:02:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ int main(int argc, char **argv)
 	ft_printf("coleccion:%d\n", game.map.objets.goals);
 	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
 	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
-	mlx_string_put(game.grafic.mlx, game.grafic.win, 18, 20, 00001010, "toma");	  // NACH ESTO ES EL MARCADOR
-	mlx_string_put(game.grafic.mlx, game.grafic.win, 18, 30, 0xffffffff, "0/12"); // NACH ESTO ES EL MARCADOR
+	mlx_string_put(game.grafic.mlx, game.grafic.win, 3, 14, 0xffffffff, "toma"); // NACH ESTO ES EL MARCADOR
+	mlx_string_put(game.grafic.mlx, game.grafic.win, 3, 28, 0xffffffff, "7/12"); // NACH ESTO ES EL MARCADOR
 	mlx_key_hook(game.grafic.win, key_hook, &game);
 	mlx_loop(game.grafic.mlx);
 }

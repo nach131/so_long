@@ -1,5 +1,5 @@
 /* XPM */
-static char *_d7127dc1d824f62993b25ed343ebdaa1tCH2tUxscpV4kTu[] = {
+static char *result[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 7 1 ",
 "  c #5D483C",
@@ -10,9 +10,9 @@ static char *_d7127dc1d824f62993b25ed343ebdaa1tCH2tUxscpV4kTu[] = {
 "+ c #5C699F",
 "@ c #6FA6A5",
 /* pixels */
-"++++++@@@@..OOoooooooooooooooooo",
-"++++++@@@@..OOOOoooooooooooooooo",
-"++++++@@@@..OOOOoooooooooooooooo",
+"++++++++@@..OOoooooooooooooooooo",
+"++++++++@@..OOOOoooooooooooooooo",
+"++++++++@@..OOOOoooooooooooooooo",
 "++++++@@@@..  OOoooooooooooooooo",
 "++++++@@@@..  OOoooooooooooooooo",
 "++++++@@@@..XXOOoooooooooooooooo",
@@ -30,7 +30,7 @@ static char *_d7127dc1d824f62993b25ed343ebdaa1tCH2tUxscpV4kTu[] = {
 "++++++++@@..OOoooooooooooooooooo",
 "++++++++@@..OOOOoooooooooooooooo",
 "++++++++@@..OOOOoooooooooooooooo",
-"++++++@@@@..OOOOoooooooooooooooo",
+"++++++++@@..OOOOoooooooooooooooo",
 "++++++@@@@..  OOoooooooooooooooo",
 "++++++@@@@..  OOoooooooooooooooo",
 "++++++@@@@..XXOOoooooooooooooooo",

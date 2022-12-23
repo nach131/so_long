@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/18 11:52:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/23 09:06:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ char static *path_img(char *name_img, int n)
 
 void static load_img(t_game *game, char *name, int num, int type)
 {
-	int i = -1;
+	int i;
 	int w;
 	int h;
+
+	i = -1;
 	while (++i < num)
 	{
 		char *path = path_img(name, i);
