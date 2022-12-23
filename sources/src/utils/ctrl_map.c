@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/23 14:18:36 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/23 16:28:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,34 +44,45 @@ void static len_cols(t_map *map)
 	}
 }
 
-// void is_player(t_game *game, int x, int y, char ch)
-// {
-// 	(void)x;
-// 	(void)y;
-// 	if (ch == 'P')
-// 		game->map.objets.c_player++;
-// }
+void static is_player_exit(t_game *game, int x, int y, char ch)
+{
+	(void)x;
+	(void)y;
+	(void)game;
+	int static p = 0;
+	int static e = 0;
+	if (ch == 'P')
+		p++;
+	if (ch == 'E')
+		e++;
+	if (p >= 2 || e >= 2)
+	{
+		ft_message(WARNING, MSG_WAR_6);
+		exit(EXIT_FAILURE);
+	}
+}
 
-// void lap_map(t_game *game, void (*function)(t_game *, int, int, char))
-// {
-// 	int i = 0;
-// 	int j;
+void lap_map(t_game *game, void (*function)(t_game *, int, int, char))
+{
+	int i;
+	int j;
 
-// 	while (i < game->map.rows)
-// 	{
-// 		j = 0;
-// 		while (game->map.map[i][j])
-// 		{
-// 			function(game, i, j, game->map.map[i][j]);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
+	i = 0;
+	while (i < game->map.rows)
+	{
+		j = 0;
+		while (game->map.map[i][j])
+		{
+			function(game, i, j, game->map.map[i][j]);
+			j++;
+		}
+		i++;
+	}
+}
 
 void control_map(t_game *game)
 {
 	game->map.rows = len_rows(game->map.map);
 	len_cols(&game->map);
-	// lap_map(game, is_player);
+	lap_map(game, is_player_exit);
 }

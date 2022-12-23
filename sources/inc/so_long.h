@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/23 14:17:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/23 16:24:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@
 #define MSG_DAN_2 "Error 2: File map does not have the extension .ber"
 
 #define MSG_WAR_0 "Warning 0: Different length of lines"
-#define MSG_WAR_1 "Warning 1: The map cannot be square"
+#define MSG_WAR_6 "Warning 6: More than one (exit or player) found"
+
 #define MSG_WAR_2 "Warning 2: There is no player on the map"
 #define MSG_WAR_3 "Warning 3: There is no exit on the map"
 #define MSG_WAR_4 "Warning 4: There is no collectable on the map"
+
 #define MSG_WAR_5 "Warning 5: The map is not closed"
-#define MSG_WAR_6 "Warning 6: More than one (exit or player) found"
+
+#define MSG_WAR_1 "Warning 1: The map cannot be square"
 
 // #define WALL '1'
 // #define EMPTY '0'
@@ -68,17 +71,12 @@ typedef struct s_scp
 typedef struct s_objs
 {
 	int goals;
-	// int c_player;
-	// int c_exit;
-	// int c_enemy;
 	t_scp exit;
 	t_scp player;
 } t_objs;
 
 typedef struct s_map
 {
-	int control;
-	int write;
 	char **map;
 	int cols;
 	int rows;
