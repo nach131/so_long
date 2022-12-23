@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:51:19 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/12 19:45:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/23 20:00:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,24 @@ void position(t_scp *pos, int x, int y)
 	pos->y = y;
 }
 
-void ctrl_obj(t_objs *objets)
-{
-	if (objets->player.x == 0 && objets->player.y == 0)
-	{
-		ft_message(WARNING, MSG_WAR_2);
-		exit(EXIT_FAILURE);
-	}
-	if (objets->exit.x == 0 && objets->exit.y == 0)
-	{
-		ft_message(WARNING, MSG_WAR_3);
-		exit(EXIT_FAILURE);
-	}
-	if (objets->goals == 0)
-	{
-		ft_message(WARNING, MSG_WAR_4);
-		exit(EXIT_FAILURE);
-	}
-}
+// void ctrl_obj(t_objs *objets)
+// {
+// 	if (objets->player.x == 0 && objets->player.y == 0)
+// 	{
+// 		ft_message(WARNING, MSG_WAR_2);
+// 		exit(EXIT_FAILURE);
+// 	}
+// 	if (objets->exit.x == 0 && objets->exit.y == 0)
+// 	{
+// 		ft_message(WARNING, MSG_WAR_3);
+// 		exit(EXIT_FAILURE);
+// 	}
+// 	if (objets->goals == 0)
+// 	{
+// 		ft_message(WARNING, MSG_WAR_4);
+// 		exit(EXIT_FAILURE);
+// 	}
+// }
 
 int ctrl_wall(t_map map, int rows, int cols, char ch)
 {
@@ -86,5 +86,6 @@ void read_map(t_game *game)
 		}
 		i++;
 	}
-	ctrl_obj(&game->map.objets);
+	// ctrl_obj(&game->map.objets);
 }
+
