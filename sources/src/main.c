@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 12:14:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 12:38:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-int ft_free_map(t_game *game)
+int free_map(t_game *game)
 {
 	int i = 0;
 
@@ -48,14 +48,9 @@ int ft_free_map(t_game *game)
 
 void put_windows(t_game *game)
 {
-	char *str;
 	int i;
 	int j;
 
-	str = "nach131 So Long";
-	game->grafic.win = mlx_new_window(game->grafic.mlx,
-									  game->map.cols * SQUARE,
-									  game->map.rows * SQUARE, str);
 	i = 0;
 	while (i < game->map.rows)
 	{
@@ -67,7 +62,17 @@ void put_windows(t_game *game)
 		}
 		i++;
 	}
-	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, ft_free_map, game);
+}
+
+void window(t_game *game)
+{
+	char *str;
+
+	str = "nach131 So Long";
+	game->grafic.win = mlx_new_window(game->grafic.mlx,
+									  game->map.cols * SQUARE,
+									  game->map.rows * SQUARE, str);
+	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, free_map, game);
 }
 
 int main(int argc, char **argv)
@@ -82,6 +87,7 @@ int main(int argc, char **argv)
 	game.grafic.mlx = mlx_init();
 
 	init_img(&game);
+	window(&game);
 	put_windows(&game);
 
 	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
