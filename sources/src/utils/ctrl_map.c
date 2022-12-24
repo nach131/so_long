@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/23 20:24:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 11:14:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void static len_cols(t_map *map)
 	}
 }
 
-int lap_map(t_game *game, char ch)
+int static lap_map(t_game *game, char ch)
 {
 	int i;
 	int j;
@@ -58,6 +58,11 @@ int lap_map(t_game *game, char ch)
 		{
 			if (game->map.map[i][j] == ch)
 				count++;
+			if (ctrl_wall(game->map, i, j, game->map.map[i][j]))
+			{
+				ft_message(WARNING, MSG_WAR_5);
+				exit(EXIT_FAILURE);
+			}
 			j++;
 		}
 		i++;
@@ -65,7 +70,7 @@ int lap_map(t_game *game, char ch)
 	return (count);
 }
 
-void different_char(t_game *game)
+void static different_char(t_game *game)
 {
 	int i;
 	int j;

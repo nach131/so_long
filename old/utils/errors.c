@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:01:07 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/23 19:09:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 11:09:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,22 @@ void	err_file(int n, char *file)
 			exit(EXIT_FAILURE);
 		}
 	}
+}
+
+int ctrl_wall(t_map map, int rows, int cols, char ch)
+{
+	int h = map.rows - 1;
+	int v = map.cols - 1;
+
+	if ((rows == 0 && cols <= v) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else if ((rows > 0 && cols == 0) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else if ((rows > 0 && cols == v) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else if ((rows == h && cols <= v) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else
+		return (0);
+	return (1);
 }

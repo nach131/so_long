@@ -10,7 +10,7 @@
       "name": "a.out",
       "program": "${fileDirname}/a.out",
       // "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-      "args": ["min.ber"],
+      // "args": ["min.ber"],
       "stopOnEntry": false,
       "cwd": "${fileDirname}"
     },
