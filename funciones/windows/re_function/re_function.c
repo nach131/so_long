@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 19:44:06 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/23 14:21:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:51:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void cuenta(t_game *game, int x, int y, char ch)
 	game->rows++;
 }
 
-void windows(t_game *game, void (*funcion)(t_game *, int, int, char))
+void windows(t_game *game, void (*funcion)())
 {
 	int i = 0;
 	int j;

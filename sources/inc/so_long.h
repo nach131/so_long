@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 15:00:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 19:55:51 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,10 @@ void filter_map(t_game *game, int x, int y, char ch);
 void init_img(t_game *game);
 void control_map(t_game *game);
 int ctrl_wall(t_map map, int rows, int cols, char ch);
+int reload_loop(t_game *game);
+void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch));
+
+void re_floor(t_game *game, int x, int y, char ch);
+void pasada_dos(t_game *game, int x, int y, char ch);
 
 #endif
