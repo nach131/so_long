@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/23 09:06:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:02:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void static load_img(t_game *game, char *name, int num, int type)
 		else if (type == 1)
 			game->images.floor[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														  path, &w, &h);
+		else if (type == 2)
+			game->images.wall[i] = mlx_xpm_file_to_image(game->grafic.mlx,
+														 path, &w, &h);
 		free(path);
 	}
 }
@@ -64,4 +67,5 @@ void init_img(t_game *game)
 
 	load_img(game, "gwall", 8, GWALL);
 	load_img(game, "floor", 1, FLOOR);
+	load_img(game, "wall", 9, WALL);
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 11:14:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:03:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ void static put_gwall(t_game *game, int x, int y, int type)
 	// 							game->images.floor[random_num(7)], y, x);
 }
 
+void static put_wall(t_game *game, char *path, int x, int y)
+{
+	mlx_put_image_to_window(game->grafic.mlx,
+							game->grafic.win, path, y, x);
+}
+
 void static wall(t_game *game, int x, int y)
 {
 	int h;
@@ -60,23 +66,25 @@ void static wall(t_game *game, int x, int y)
 	h = (game->map.rows * 32) - 32;
 	v = (game->map.cols * 32) - 32;
 	if (x == 0 && y == 0)
-		put_img(game, 0, 0, WELL_TL);
+		put_wall(game, game->images.wall[WALL_TL], x, y);
 	else if (x == h && y == v && x != 0 && y != 0)
-		put_img(game, x, y, WELL_BR);
+		put_wall(game, game->images.wall[WALL_BR], x, y);
 	else if (y == v && x == 0)
-		put_img(game, x, y, WELL_TR);
+		put_wall(game, game->images.wall[WALL_TR], x, y);
 	else if (x == h && y == 0)
-		put_img(game, x, y, WELL_BL);
+		put_wall(game, game->images.wall[WALL_BL], x, y);
 	else if (x == h)
-		put_img(game, x, y, WELL_BC);
+		put_wall(game, game->images.wall[WALL_BC], x, y);
 	else if (y == v)
-		put_img(game, x, y, WELL_CR);
+		put_wall(game, game->images.wall[WALL_CR], x, y);
 	else if (y == 0)
-		put_img(game, x, y, WELL_CL);
+		put_wall(game, game->images.wall[WALL_CL], x, y);
 	else if (x == 0)
-		put_img(game, x, y, WELL_TC);
+		put_wall(game, game->images.wall[WALL_TC], x, y);
 	else
 		put_gwall(game, x, y, GWALL);
+	if (x == 0 && y == 32)
+		put_wall(game, game->images.wall[WALL_SP], x, y);
 }
 
 void filter_map(t_game *game, int x, int y, char ch)

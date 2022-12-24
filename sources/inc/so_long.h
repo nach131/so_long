@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 11:14:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:00:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ enum
 {
 	GWALL,
 	FLOOR,
+	WALL,
 };
 
 typedef struct s_images
 {
 	char *gwall[8];
 	char *floor[1];
+	char *wall[9];
 } t_images;
 
 typedef struct s_scp
