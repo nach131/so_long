@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:01:07 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/22 23:07:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 11:58:51 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,20 @@ void	err_file(int n, char *file)
 	}
 }
 
-//===================Hecho============================================================
-// int static strlen_line(char *line)
-// {
-// 	int i;
+int ctrl_wall(t_map map, int rows, int cols, char ch)
+{
+	int h = map.rows - 1;
+	int v = map.cols - 1;
 
-// 	i = 0;
-// 	while (line[i] != '\n' && line[i] != '\0')
-// 		i++;
-// 	return (i);
-// }
-
-// void ctrl_map(t_map *map, char *line)
-// {
-// 	if (!map->cols)
-// 		map->cols = strlen_line(line);
-// 	if (map->cols != strlen_line(line))
-// 	{
-// 		ft_message(WARNING, MSG_WAR_0);
-// 		exit(EXIT_FAILURE);
-// 	}
-// }
-
-// void ctrl_square(t_map *map)
-// {
-// 	if (map->cols == map->rows)
-// 	{
-// 		ft_message(WARNING, MSG_WAR_1);
-// 		exit(EXIT_FAILURE);
-// 	}
-// }
+	if ((rows == 0 && cols <= v) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else if ((rows > 0 && cols == 0) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else if ((rows > 0 && cols == v) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else if ((rows == h && cols <= v) && ch != '1')
+		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
+	else
+		return (0);
+	return (1);
+}

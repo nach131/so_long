@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 11:08:14 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/24 12:14:01 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 #include "so_long.h"
 #include "images.h"
-// #include "mlx.h"
 #include "../mlx/mlx.h"
 
 int key_hook(int keycode, t_game *game)
@@ -33,26 +32,6 @@ int key_hook(int keycode, t_game *game)
 		;
 	return (0);
 }
-
-// void free_img(t_images *img, int nb)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (i++ < nb)
-// 	{
-// 		free(img->g_wall[i]);
-// 		// ft_printf(RED "%s", img->g_wall[i]);
-// 	}
-// }
-
-// int count_rows(char **map)
-// {
-// 	int i = 0;
-// 	while (map[i])
-// 		i++;
-// 	return (i);
-// }
 
 int ft_free_map(t_game *game)
 {
@@ -100,7 +79,6 @@ int main(int argc, char **argv)
 	control_map(&game);
 
 	//=============================================================================
-	// read_map(&game);
 	game.grafic.mlx = mlx_init();
 
 	init_img(&game);
