@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 17:29:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:37:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int key_hook(int keycode, t_game *game)
 {
 	int x = game->map.objets.player.x;
 	int y = game->map.objets.player.y;
-	game->map.map[x][y] = '0';
 
+	game->map.map[x][y] = '0';
 	printf("Keycode: %d\n", keycode);
 	if (keycode == 53)
 		exit(0);

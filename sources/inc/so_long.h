@@ -70,7 +70,6 @@ typedef struct s_objs
 {
 	int goals;
 	int get;
-	t_scp exit;
 	t_scp player;
 } t_objs;
 
