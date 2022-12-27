@@ -109,6 +109,6 @@ void pasada_dos(t_game *game, int x, int y, char ch);
 
 void locate(t_game *game, int x, int y, char ch);
 
-void move_plus(t_game *game, int x, int y, int type);
-void move(t_game *game, int key);
+void move(t_game *game, int x, int y, int type);
+// void move(t_game *game, int key);
 #endif

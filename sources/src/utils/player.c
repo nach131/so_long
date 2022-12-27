@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 17:28:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:30:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,60 +52,7 @@ void put_player(t_game *game, int type)
 							game->map.objets.player.x * SQUARE);
 }
 
-// void move_bis(t_game *game, int key, int x, int y)
-// {
-// 	// if (key == 1 || key == 125)
-// 	// {
-// 	// 	if (game->map.map[x + 1][y] == 'C')
-// 	// 		game->map.objets.get++;
-// 	// 	if (game->map.map[x + 1][y] != '1')
-// 	// 	{
-// 	// 		game->map.map[x + 1][y] = 'P';
-// 	// 		put_player(game, 2);
-// 	// 	}
-// 	// }
-// 	if (key == 13 || key == 126)
-// 	{
-// 		if (game->map.map[x - 1][y] == 'C')
-// 			game->map.objets.get++;
-// 		if (game->map.map[x - 1][y] != '1')
-// 		{
-// 			game->map.map[x - 1][y] = 'P';
-// 			put_player(game, 3);
-// 		}
-// 	}
-// }
-
-// void move(t_game *game, int key)
-// {
-// 	int x = game->map.objets.player.x;
-// 	int y = game->map.objets.player.y;
-
-// 	// game->map.map[x][y] = '0';
-// 	// if (key == 2 || key == 124)
-// 	// {
-// 	// 	if (game->map.map[x][y + 1] == 'C')
-// 	// 		game->map.objets.get++;
-// 	// 	if (game->map.map[x][y + 1] != '1')
-// 	// 	{
-// 	// 		game->map.map[x][y + 1] = 'P';
-// 	// 		put_player(game, 0);
-// 	// 	}
-// 	// }
-// 	// else if (key == 0 || key == 123)
-// 	// {
-// 	// 	if (game->map.map[x][y - 1] == 'C')
-// 	// 		game->map.objets.get++;
-// 	// 	if (game->map.map[x][y - 1] != '1')
-// 	// 	{
-// 	// 		game->map.map[x][y - 1] = 'P';
-// 	// 		put_player(game, 1);
-// 	// 	}
-// 	// }
-// 	move_bis(game, key, x, y);
-// }
-
-void move_plus(t_game *game, int x, int y, int type)
+void move(t_game *game, int x, int y, int type)
 {
 	// game->map.map[x][y] = '0';
 
