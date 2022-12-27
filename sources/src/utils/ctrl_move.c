@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reload.c                                           :+:      :+:    :+:   */
+/*   ctrl_move.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 20:09:47 by nmota-bu         ###   ########.fr       */
+/*   Created: 2022/12/27 18:49:52 by nmota-bu          #+#    #+#             */
+/*   Updated: 2022/12/27 20:15:02 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,24 @@
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
 #include "so_long.h"
-#include "../../mlx/mlx.h"
-#include "images.h"
+#include "../mlx/mlx.h"
 
-void pasada_dos(t_game *game, int x, int y, char ch)
+void ctrl_move(t_game *game)
 {
-	if (x != 0 || y != 0)
-	{
-		x *= SQUARE;
-		y *= SQUARE;
-	}
-	if (ch == '0')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.hero[2], y, x);
-}
+	int i;
+	char *total;
 
-void re_floor(t_game *game, int x, int y, char ch)
-{
-	x *= SQUARE;
-	y *= SQUARE;
-	if (ch == '0')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.floor[0], y, x);
-}
+	total = ft_itoa(game->map.objets.goals);
+	game->map.objets.move++;
+	ft_printf(ORANGE "Movements: %d" WHITE, game->map.objets.move);
+	game->map.objets.movements = ft_itoa(game->map.objets.move);
+	i = -1;
+	while (++i < (ft_strlen(game->map.objets.movements) + 11))
+		write(1, "\b", 1);
+	// mlx_string_put(game->grafic.mlx, game->grafic.win, 25, 14, 0xFFFFFFFF,
+	// 			   game->map.objets.movements);									   // NACH ESTO ES EL MARCADOR
+	// mlx_string_put(game->grafic.mlx, game->grafic.win, 25, 28, 0xffffffff, total); // NACH ESTO ES EL MARCADOR
 
-int reload_loop(t_game *game)
-{
-	// ft_printf("reload ");
-	lap_map(game, re_floor);
-
-	return (0);
+	free(total);
+	free(game->map.objets.movements);
 }

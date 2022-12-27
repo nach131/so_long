@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 17:37:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:18:23 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void locate(t_game *game, int x, int y, char ch)
 	{
 		game->map.objets.player.x = x;
 		game->map.objets.player.y = y;
-		ft_printf(RED "\tchar:%c\n", game->map.map[x][y]);
 	}
 }
 
@@ -59,6 +58,7 @@ void move(t_game *game, int x, int y, int type)
 	if (game->map.map[x][y] == 'E' &&
 		(game->map.objets.get == game->map.objets.goals))
 		exit(0);
+	// free_map(game);
 	// ft_printf(RED "CONSEGUIDO");
 }
 

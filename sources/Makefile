@@ -37,7 +37,7 @@ LIBSFT = $(LIBFT_DIR)libft.a
 # LIBSFT = $(LIBFT_DIR)libft.a $(LIBMLX_DIR)libmlx.a
 
 MAIN_FILES	=	main
-UTILS_FILES	= errors render_map load_img ctrl_map reload player
+UTILS_FILES	= errors render_map load_img ctrl_map reload player ctrl_move
 # CLIENT_FILES_BONUS	= client_bonus
 # SERVER_FILES_BONUS	= server_bonus
 

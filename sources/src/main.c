@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 17:37:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 20:11:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int key_hook(int keycode, t_game *game)
 	int y = game->map.objets.player.y;
 
 	game->map.map[x][y] = '0';
-	printf("Keycode: %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 2 || keycode == 124)
@@ -35,12 +34,7 @@ int key_hook(int keycode, t_game *game)
 		move(game, x + 1, y, 2);
 	if (keycode == 13 || keycode == 126)
 		move(game, x - 1, y, 3);
-
-	// move(game, keycode);
-	// AKI LOS MOVIMIENTOS PRINTF
-	ft_printf("conseguidos:%d\n", game->map.objets.get);
-	ft_printf("coleccion:%d\n", game->map.objets.goals);
-
+	ctrl_move(game);
 	return (0);
 }
 
@@ -48,12 +42,12 @@ int free_map(t_game *game)
 {
 	int i = 0;
 
+	exit(0); // CUIDADO
 	while (i++ < game->map.rows)
 		free(game->map.map[i]);
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	free(game->grafic.mlx);
 	free(game->map.map);
-	exit(0);
 	return (EXIT_SUCCESS);
 }
 
@@ -102,16 +96,16 @@ int main(int argc, char **argv)
 	//=============================================================================
 	// reload_loop(&game);
 
-	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
-	ft_printf(GREEN "player: %i\n", game.map.objets.player);
-	ft_printf("coleccion:%d\n", game.map.objets.goals);
-	ft_printf("conseguidos:%d\n", game.map.objets.get);
-	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
-	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
+	// ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
+	// ft_printf(GREEN "player: %i\n", game.map.objets.player);
+	// ft_printf("coleccion:%d\n", game.map.objets.goals);
+	// ft_printf("conseguidos:%d\n", game.map.objets.get);
+	// ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
+	// // ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
 
 	// hay que pasar gols a string y juntara todo como con los archivos
-	mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 14, 0xffffffff, "toma"); // NACH ESTO ES EL MARCADOR
-	mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 28, 0xffffffff, "7/12"); // NACH ESTO ES EL MARCADOR
+	// mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 14, 0xffffffff, "toma"); // NACH ESTO ES EL MARCADOR
+	// mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 28, 0xffffffff, "7/12"); // NACH ESTO ES EL MARCADOR
 	mlx_key_hook(game.grafic.win, key_hook, &game);
 	// mlx_loop_hook(game.grafic.mlx, reload_loop, &game);
 	mlx_loop(game.grafic.mlx);

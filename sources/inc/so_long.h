@@ -28,12 +28,6 @@
 #define MSG_WAR_4 "Warning 4: Invalid character in map"
 #define MSG_WAR_5 "Warning 5: The map is not closed"
 
-// #define WALL '1'
-// #define EMPTY '0'
-// #define COL 'C'
-// #define EXIT 'E'
-// #define PLAYER 'P'
-// #define ENEMY 'X'
 #define SQUARE 32
 
 enum
@@ -70,6 +64,8 @@ typedef struct s_objs
 {
 	int goals;
 	int get;
+	int move;
+	char *movements;
 	t_scp player;
 } t_objs;
 
@@ -96,6 +92,7 @@ typedef struct s_game
 } t_game;
 
 void err_file(int n, char *file);
+int free_map(t_game *game);
 void filter_map(t_game *game, int x, int y, char ch);
 void init_img(t_game *game);
 void control_map(t_game *game);
@@ -109,5 +106,5 @@ void pasada_dos(t_game *game, int x, int y, char ch);
 void locate(t_game *game, int x, int y, char ch);
 
 void move(t_game *game, int x, int y, int type);
-// void move(t_game *game, int key);
+void ctrl_move(t_game *game);
 #endif
