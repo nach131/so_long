@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 16:26:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:28:16 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,27 @@
 
 int key_hook(int keycode, t_game *game)
 {
+	int x = game->map.objets.player.x;
+	int y = game->map.objets.player.y;
+	game->map.map[x][y] = '0';
+
 	printf("Keycode: %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
-	move(game, keycode);
+	if (keycode == 2 || keycode == 124)
+		move_plus(game, x, y + 1, 0);
+	if (keycode == 0 || keycode == 123)
+		move_plus(game, x, y - 1, 1);
+	if (keycode == 1 || keycode == 125)
+		move_plus(game, x + 1, y, 2);
+	if (keycode == 13 || keycode == 126)
+		move_plus(game, x - 1, y, 3);
+
+	// move(game, keycode);
+	// AKI LOS MOVIMIENTOS PRINTF
+	ft_printf("conseguidos:%d\n", game->map.objets.get);
+	ft_printf("coleccion:%d\n", game->map.objets.goals);
+
 	return (0);
 }
 
@@ -88,6 +105,7 @@ int main(int argc, char **argv)
 	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	ft_printf(GREEN "player: %i\n", game.map.objets.player);
 	ft_printf("coleccion:%d\n", game.map.objets.goals);
+	ft_printf("conseguidos:%d\n", game.map.objets.get);
 	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
 	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
 

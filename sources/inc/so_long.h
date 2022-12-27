@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 15:32:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:52:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_scp
 typedef struct s_objs
 {
 	int goals;
+	int get;
 	t_scp exit;
 	t_scp player;
 } t_objs;
@@ -108,5 +109,6 @@ void pasada_dos(t_game *game, int x, int y, char ch);
 
 void locate(t_game *game, int x, int y, char ch);
 
+void move_plus(t_game *game, int x, int y, int type);
 void move(t_game *game, int key);
 #endif
