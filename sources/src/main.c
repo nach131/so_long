@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 19:55:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:29:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@ int key_hook(int keycode, t_game *game)
 	printf("Keycode: %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
-	else if (keycode == 0 || keycode == 123) // I
-		lap_map(game, pasada_dos);
-	else if (keycode == 2 || keycode == 124) // D
-		lap_map(game, re_floor);
-	else if (keycode == 1 || keycode == 125) // S
-		write(1, "abajo", 5);
-	else if (keycode == 13 || keycode == 126) // W
-		write(1, "arriba", 6);
+	// else if (keycode == 0 || keycode == 123) // A
+	// 	// lap_map(game, pasada_dos);
+	// 	move_a(game);
+	// else if (keycode == 2 || keycode == 124) // D
+	// 	// lap_map(game, re_floor);
+	// 	move_d(game);
+	// else if (keycode == 1 || keycode == 125) // S
+	// move_s(game);
+	move(game, keycode);
+	// else if (keycode == 13 || keycode == 126) // W
+	// move(game, keycode);
+	// move_w(game);
 	return (0);
 }
 
@@ -88,6 +92,7 @@ int main(int argc, char **argv)
 	init_img(&game);
 	window(&game);
 	lap_map(&game, filter_map);
+	lap_map(&game, locate);
 
 	//=============================================================================
 	// reload_loop(&game);
@@ -102,6 +107,6 @@ int main(int argc, char **argv)
 	mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 14, 0xffffffff, "toma"); // NACH ESTO ES EL MARCADOR
 	mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 28, 0xffffffff, "7/12"); // NACH ESTO ES EL MARCADOR
 	mlx_key_hook(game.grafic.win, key_hook, &game);
-	// mlx_loop_hook(game.grafic.mlx, reload_loop, &game);
+	mlx_loop_hook(game.grafic.mlx, reload_loop, &game);
 	mlx_loop(game.grafic.mlx);
 }

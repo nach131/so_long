@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 11:14:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 13:39:16 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void static len_cols(t_map *map)
 	}
 }
 
-int static lap_map(t_game *game, char ch)
+int static lap_map_count(t_game *game, char ch)
 {
 	int i;
 	int j;
@@ -96,17 +96,17 @@ void control_map(t_game *game)
 {
 	game->map.rows = len_rows(game->map.map);
 	len_cols(&game->map);
-	if (lap_map(game, 'P') != 1)
+	if (lap_map_count(game, 'P') != 1)
 	{
 		ft_message(WARNING, MSG_WAR_1);
 		exit(EXIT_FAILURE);
 	}
-	if (lap_map(game, 'E') != 1)
+	if (lap_map_count(game, 'E') != 1)
 	{
 		ft_message(WARNING, MSG_WAR_2);
 		exit(EXIT_FAILURE);
 	}
-	game->map.objets.goals = lap_map(game, 'C');
+	game->map.objets.goals = lap_map_count(game, 'C');
 	if (game->map.objets.goals == 0)
 	{
 		ft_message(WARNING, MSG_WAR_3);

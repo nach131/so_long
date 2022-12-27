@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 19:55:51 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:29:34 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ enum
 	GWALL,
 	FLOOR,
 	WALL,
+	HERO,
 };
 
 typedef struct s_images
@@ -56,6 +57,7 @@ typedef struct s_images
 	char *gwall[8];
 	char *floor[1];
 	char *wall[9];
+	char *hero[4];
 } t_images;
 
 typedef struct s_scp
@@ -104,4 +106,10 @@ void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch)
 void re_floor(t_game *game, int x, int y, char ch);
 void pasada_dos(t_game *game, int x, int y, char ch);
 
+void locate(t_game *game, int x, int y, char ch);
+// void move_w(t_game *game);
+// // void move_s(t_game *game);
+// void move_d(t_game *game);
+// void move_a(t_game *game);
+void move(t_game *game, int key);
 #endif

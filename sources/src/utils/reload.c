@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/24 19:56:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:30:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void pasada_dos(t_game *game, int x, int y, char ch)
 	}
 	if (ch == '0')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.gwall[TPING], y, x);
+								game->images.hero[2], y, x);
 }
 
 void re_floor(t_game *game, int x, int y, char ch)
@@ -41,8 +41,8 @@ void re_floor(t_game *game, int x, int y, char ch)
 
 int reload_loop(t_game *game)
 {
-	ft_printf("reload ");
-	lap_map(game, pasada_dos);
+	// ft_printf("reload ");
+	lap_map(game, re_floor);
 
 	return (0);
 }
