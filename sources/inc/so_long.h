@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 15:29:34 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:32:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,6 @@ void re_floor(t_game *game, int x, int y, char ch);
 void pasada_dos(t_game *game, int x, int y, char ch);
 
 void locate(t_game *game, int x, int y, char ch);
-// void move_w(t_game *game);
-// // void move_s(t_game *game);
-// void move_d(t_game *game);
-// void move_a(t_game *game);
+
 void move(t_game *game, int key);
 #endif

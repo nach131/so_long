@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 15:29:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:33:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,10 @@
 
 int key_hook(int keycode, t_game *game)
 {
-	(void)game;
 	printf("Keycode: %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
-	// else if (keycode == 0 || keycode == 123) // A
-	// 	// lap_map(game, pasada_dos);
-	// 	move_a(game);
-	// else if (keycode == 2 || keycode == 124) // D
-	// 	// lap_map(game, re_floor);
-	// 	move_d(game);
-	// else if (keycode == 1 || keycode == 125) // S
-	// move_s(game);
 	move(game, keycode);
-	// else if (keycode == 13 || keycode == 126) // W
-	// move(game, keycode);
-	// move_w(game);
 	return (0);
 }
 

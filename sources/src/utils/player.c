@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 15:31:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:33:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,51 +32,6 @@ void locate(t_game *game, int x, int y, char ch)
 		game->map.objets.exit.y = y;
 	}
 }
-
-// void move_w(t_game *game)
-// {
-// 	game->map.objets.player.x -= 1;
-// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-// 							game->images.hero[3],
-// 							game->map.objets.player.y * SQUARE,
-// 							game->map.objets.player.x * SQUARE);
-// }
-
-// void move_s(t_game *game)
-// {
-// 	ft_printf(RED "\tx%d, y%d\n",
-// 			  game->map.objets.player.x, game->map.objets.player.y);
-
-// 	// int x = game->map.objets.player.x;
-// 	// int y = game->map.objets.player.y + 1;
-// 	game->map.map[2][1] = '0';
-// 	game->map.map[3][1] = 'P';
-// 	game->map.objets.player.x += 1;
-// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-// 							game->images.hero[2],
-// 							game->map.objets.player.y * SQUARE,
-// 							game->map.objets.player.x * SQUARE);
-// 	ft_printf(CYAN "\tx%d, y%d\n",
-// 			  game->map.objets.player.x, game->map.objets.player.y);
-// }
-
-// void move_a(t_game *game)
-// {
-// 	game->map.objets.player.y -= 1;
-// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-// 							game->images.hero[1],
-// 							game->map.objets.player.y * SQUARE,
-// 							game->map.objets.player.x * SQUARE);
-// }
-
-// void move_d(t_game *game)
-// {
-// 	game->map.objets.player.y += 1;
-// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-// 							game->images.hero[0],
-// 							game->map.objets.player.y * SQUARE,
-// 							game->map.objets.player.x * SQUARE);
-// }
 
 void put_player(t_game *game, int type)
 {
