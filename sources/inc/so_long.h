@@ -27,6 +27,7 @@
 #define MSG_WAR_3 "Warning 3: There is no collectable on the map"
 #define MSG_WAR_4 "Warning 4: Invalid character in map"
 #define MSG_WAR_5 "Warning 5: The map is not closed"
+#define MSG_WAR_6 "Warning 6: The map does not have a correct path"
 
 #define SQUARE 32
 

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 15:10:21 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:40:43 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 
 #include "so_long.h"
 
-void findA(t_game *game, char **arr, int row, int col, int *gols)
+void findA(t_game *game, int row, int col, int *gols)
 {
 	int ROWS = game->map.rows;
 	int COLS = game->map.cols;
+	char **arr = game->map.tmp;
 	// int gols = game->map.objets.goals;
 
 	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols < 0))
@@ -34,42 +35,54 @@ void findA(t_game *game, char **arr, int row, int col, int *gols)
 	arr[row][col] = '@';
 
 	// Buscamos A en las celdas adyacentes
-	findA(game, arr, row - 1, col, gols); // arriba
-	findA(game, arr, row, col + 1, gols); // derecha
-	findA(game, arr, row + 1, col, gols); // abajo
-	findA(game, arr, row, col - 1, gols); // izquierda
+	findA(game, row - 1, col, gols); // arriba
+	findA(game, row, col + 1, gols); // derecha
+	findA(game, row + 1, col, gols); // abajo
+	findA(game, row, col - 1, gols); // izquierda
+}
+
+void err_path(t_game *game)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < game->map.rows)
+	{
+		j = 0;
+		while (j < game->map.cols)
+		{
+			if (game->map.tmp[i][j] == 'P' || game->map.tmp[i][j] == 'C' || game->map.tmp[i][j] == 'E')
+			{
+				ft_message(WARNING, MSG_WAR_6);
+				exit(EXIT_FAILURE);
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void ctrl_path(t_game *game)
 {
 
 	int gols;
+	int i;
+	int j;
 
 	gols = game->map.objets.goals;
-
-	char **tmp;
-	tmp = ft_cp_dptr(game->map.map);
-
-	int i = 0;
-	int j;
+	game->map.tmp = ft_cp_dptr(game->map.map);
+	i = 0;
 	while (i < game->map.rows)
 	{
 		j = 0;
 		while (j < game->map.cols)
 		{
-			if (tmp[i][j] == 'P')
-				findA(game, tmp, i, j, &gols);
+			if (game->map.tmp[i][j] == 'P')
+				findA(game, i, j, &gols);
 			j++;
 		}
 		i++;
 	}
-
-	i = 0;
-	while (tmp[i])
-	{
-		ft_printf(RED "%s\n" WHITE, tmp[i]);
-		i++;
-	}
-
-	ft_free_dptr(tmp);
+	err_path(game);
 }
