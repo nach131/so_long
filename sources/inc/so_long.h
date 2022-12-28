@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 20:30:23 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 20:50:49 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_objs
 	int move;
 	char *movements;
 	t_scp player;
+	t_scp exit;
 } t_objs;
 
 typedef struct s_map
@@ -99,8 +100,8 @@ void locate(t_game *game, int x, int y, char ch);
 void move(t_game *game, int x, int y, int type);
 
 //	CUIDA SIN USO
+int reload(t_game *game);
 void pasada_dos(t_game *game, int x, int y, char ch);
 void re_floor(t_game *game, int x, int y, char ch);
-int reload_loop(t_game *game);
 int free_map(t_game *game);
 #endif

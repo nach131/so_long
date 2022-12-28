@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 19:18:23 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:00:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void move(t_game *game, int x, int y, int type)
 		game->map.map[x][y] = 'P';
 		put_player(game, type);
 	}
+	if (game->map.objets.goals == game->map.objets.get)
+		ft_printf(MAGENTA "ya puedes salir melon");
+
 	if (game->map.map[x][y] == 'E' &&
 		(game->map.objets.get == game->map.objets.goals))
 		exit(0);

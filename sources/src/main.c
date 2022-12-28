@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 20:26:40 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 20:58:28 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,7 @@ int main(int argc, char **argv)
 	// // ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
 
 	// hay que pasar gols a string y juntara todo como con los archivos
-	// mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 14, 0xffffffff, "toma"); // NACH ESTO ES EL MARCADOR
-	// mlx_string_put(game.grafic.mlx, game.grafic.win, 25, 28, 0xffffffff, "7/12"); // NACH ESTO ES EL MARCADOR
 	mlx_key_hook(game.grafic.win, key_hook, &game);
-	// mlx_loop_hook(game.grafic.mlx, reload_loop, &game);
+	// mlx_loop_hook(game.grafic.mlx, reload, &game);
 	mlx_loop(game.grafic.mlx);
 }
