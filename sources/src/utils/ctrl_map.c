@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/27 18:48:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 20:26:26 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void static different_char(t_game *game)
 	}
 }
 
-void control_map(t_game *game)
+void ctrl_map(t_game *game)
 {
 	game->map.rows = len_rows(game->map.map);
 	len_cols(&game->map);

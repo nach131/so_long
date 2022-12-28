@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 19:35:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 20:30:23 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,19 @@ typedef struct s_game
 } t_game;
 
 void err_file(int n, char *file);
-int free_map(t_game *game);
-void filter_map(t_game *game, int x, int y, char ch);
 void init_img(t_game *game);
-void control_map(t_game *game);
+void filter_map(t_game *game, int x, int y, char ch);
+void ctrl_map(t_game *game);
 int ctrl_wall(t_map map, int rows, int cols, char ch);
-int reload_loop(t_game *game);
-void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch));
-
-void re_floor(t_game *game, int x, int y, char ch);
-void pasada_dos(t_game *game, int x, int y, char ch);
-
-void locate(t_game *game, int x, int y, char ch);
-
-void move(t_game *game, int x, int y, int type);
-void ctrl_move(t_game *game);
 void ctrl_path(t_game *game);
+void ctrl_move(t_game *game);
+void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch));
+void locate(t_game *game, int x, int y, char ch);
+void move(t_game *game, int x, int y, int type);
+
+//	CUIDA SIN USO
+void pasada_dos(t_game *game, int x, int y, char ch);
+void re_floor(t_game *game, int x, int y, char ch);
+int reload_loop(t_game *game);
+int free_map(t_game *game);
 #endif
