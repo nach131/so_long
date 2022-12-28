@@ -56,6 +56,7 @@ dkms.conf
 ._.DS_Store
 .env
 node_modules/
+_estudio/
 *.psd
 images/estudio
 .gif
