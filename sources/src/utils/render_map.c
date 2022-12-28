@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 19:08:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 19:14:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,6 @@
 #include "so_long.h"
 #include "images.h"
 #include "../../mlx/mlx.h"
-
-// void static put_img(t_game *game, int x, int y, char *path)
-// {
-// 	int img_width;
-// 	int img_height;
-
-// 	// ESTO PARA CARGAR LA IMAGEN EN EL JUEGO
-// 	game->grafic.img = mlx_xpm_file_to_image(game->grafic.mlx,
-// 											 path, &img_width, &img_height);
-
-// 	// AQUI PARA PONER LA IMGEN EN EL MAPA
-// 	mlx_put_image_to_window(game->grafic.mlx,
-// 							game->grafic.win, game->grafic.img, y, x);
-// }
 
 int random_num(int n)
 {
@@ -63,8 +49,8 @@ void static wall(t_game *game, int x, int y)
 	int h;
 	int v;
 
-	h = (game->map.rows * 32) - 32;
-	v = (game->map.cols * 32) - 32;
+	h = (game->map.rows * SQUARE) - SQUARE;
+	v = (game->map.cols * SQUARE) - SQUARE;
 	if (x == 0 && y == 0)
 		put_wall(game, game->images.wall[WALL_TL], x, y);
 	else if (x == h && y == v && x != 0 && y != 0)
@@ -83,7 +69,7 @@ void static wall(t_game *game, int x, int y)
 		put_wall(game, game->images.wall[WALL_TC], x, y);
 	else
 		put_gwall(game, x, y, GWALL);
-	if (x == 0 && y == 32)
+	if (x == 0 && y == SQUARE)
 		put_wall(game, game->images.wall[WALL_SP], x, y);
 }
 
@@ -102,11 +88,9 @@ void filter_map(t_game *game, int x, int y, char ch)
 	if (ch == 'P')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 								game->images.hero[0], y, x);
-	// put_img(game, x, y, FROG_F);
 	if (ch == 'E')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 								game->images.door[0], y, x);
-	// put_img(game, x, y, DOORC);
 	if (ch == 'C')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 								game->images.logo[0], y, x);
