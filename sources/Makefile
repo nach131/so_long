@@ -1,8 +1,8 @@
-# ═══ NAMES ═══════════════════════════════════════════════════════════════════#
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ NAMES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 NAME		= so_long
 
-# ═══ COLORS ══════════════════════════════════════════════════════════════════#
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ COLORS ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 GREEN		=\033[0;32m
 BLUE 		=\033[0;34m
@@ -11,7 +11,7 @@ RED			=\033[0;31m
 YELLOW	=\033[0;33m
 WHITE		=\033[0;37m
 
-# ═══ COMPILATE ═══════════════════════════════════════════════════════════════#
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ COMPILATE ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 CC			= gcc
 AR 			= ar -rcs
@@ -20,32 +20,25 @@ MKDIR		= -mkdir -p
 CFLAGS	= -Wall -Wextra -Werror -g3
 MLXFLAGS = -framework OpenGL -framework AppKit
 
-# ═══ DIRECTORIES ═════════════════════════════════════════════════════════════#
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ DIRECTORIES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 LIBFT_DIR = libft/
 LIBMLX_DIR	= mlx/
 INCLUDES 	= inc/
 SRC_DIR 	= src/
 OBJ_DIR 	= obj/
-# EXE_DIR		= exe/
-
 UTILS_DIR	= utils/
 
-# ═══ SOURCES ═════════════════════════════════════════════════════════════════#
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ SOURCES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 LIBSFT = $(LIBFT_DIR)libft.a
-# LIBSFT = $(LIBFT_DIR)libft.a $(LIBMLX_DIR)libmlx.a
 
 MAIN_FILES	=	main
-UTILS_FILES	= errors render_map load_img ctrl_map reload player ctrl_move ctrl_path
-# CLIENT_FILES_BONUS	= client_bonus
-# SERVER_FILES_BONUS	= server_bonus
+UTILS_FILES	= errors render_map load_img ctrl_map reload player ctrl_move \
+			  ctrl_path
 
 SRC_MAIN_FILES	+=$(MAIN_FILES)
 SRC_UTILS_FILES	+=$(addprefix $(UTILS_DIR),$(UTILS_FILES))
-
-# SRC_FILES_BONUS+=$(addprefix $(CLIENT_DIR),$(CLIENT_FILES_BONUS))
-# SRC_FILES_BONUS+=$(addprefix $(SERVER_DIR),$(SERVER_FILES_BONUS))
 
 SRCS_MAIN = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_MAIN_FILES)))
 OBJS_MAIN = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_MAIN_FILES)))
@@ -54,10 +47,18 @@ SRCS_UTILS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_UTILS_FILES)))
 OBJS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_UTILS_FILES)))
 DEPS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_UTILS_FILES)))
 
+# ▖▖▖▖▖▖▖▖▖▖▖▖▖▖ BONUS ▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖▖#
+
+# CLIENT_FILES_BONUS	= client_bonus
+# SERVER_FILES_BONUS	= server_bonus
+
+# SRC_FILES_BONUS+=$(addprefix $(CLIENT_DIR),$(CLIENT_FILES_BONUS))
+# SRC_FILES_BONUS+=$(addprefix $(SERVER_DIR),$(SERVER_FILES_BONUS))
+
 # OBJS_BONUS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES_BONUS)))
 # DEPS_BONUS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES_BONUS)))
 
-# ═══ RULES ══════════════════════════════════════════════════════════════════#
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ RULES ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c
 			@$(MKDIR) $(dir $@)
@@ -81,7 +82,7 @@ clean :
 
 fclean : clean
 			@$(RM) $(NAME)
-			@echo "$(BLUE) Todo Super limpito...✌🏼$(WHITE)"
+			@echo "$(BLUE) Todo Super limpito...✌🏼 $(WHITE)" 
 
 re: fclean all
 			@echo "$(YELLOW) Borrado todo y recompilado...✌🏼$(WHITE)"
@@ -91,5 +92,6 @@ norm:
 
 -include $(DEPS)
 
-# Non-file targets
+# ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ Non-file targets▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
+
 .PHONY: all clean fclean re norm bonus
