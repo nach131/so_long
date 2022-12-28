@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 18:46:02 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/03 18:51:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/27 21:02:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 
 // https://www.geeksforgeeks.org/c-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
 
-// A C++ program for Dijkstra's single source shortest path algorithm.
-// The program is for adjacency matrix representation of the graph
+// Un programa en C++ para el algoritmo de ruta más corta de fuente única de Dijkstra.
+// El programa es para la representación matricial de adyacencia del gráfico.
 
 #include <limits.h>
 #include <stdio.h>
 #include <stdbool.h>
 
-// Number of vertices in the graph
+// Número de vértices en el gráfico
 #define V 9
 
-// A utility function to find the vertex with minimum distance value, from
-// the set of vertices not yet included in shortest path tree
+// Una función de utilidad para encontrar el vértice con valor de distancia mínima, de
+// el conjunto de vértices aún no incluidos en el árbol de ruta más corta
 int minDistance(int dist[], bool sptSet[])
 {
 	// Initialize min value
@@ -40,7 +40,7 @@ int minDistance(int dist[], bool sptSet[])
 	return min_index;
 }
 
-// A utility function to print the constructed distance array
+// Una función de utilidad para imprimir la matriz de distancia construida
 void printSolution(int dist[], int n)
 {
 	printf("Vertex Distance from Source\n");
@@ -48,15 +48,15 @@ void printSolution(int dist[], int n)
 		printf("%d \t\t %d\n", i, dist[i]);
 }
 
-// Function that implements Dijkstra's single source shortest path algorithm
-// for a graph represented using adjacency matrix representation
+// Función que implementa el algoritmo de ruta más corta de fuente única de Dijkstra
+// para un gráfico representado usando representación de matriz de adyacencia
 void dijkstra(int graph[V][V], int src)
 {
-	int dist[V]; // The output array. dist[i] will hold the shortest
+	int dist[V]; // La matriz de salida. dist[i] tendrá el más corto
 	// distance from src to i
 
-	bool sptSet[V]; // sptSet[i] will be true if vertex i is included in shortest
-	// path tree or shortest distance from src to i is finalized
+	bool sptSet[V]; // sptSet[i] será verdadero si el vértice i se incluye en el más corto
+	// Se finaliza el árbol de ruta o la distancia más corta desde src hasta i.
 
 	// Initialize all distances as INFINITE and stpSet[] as false
 	for (int i = 0; i < V; i++)
