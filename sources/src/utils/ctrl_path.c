@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 15:40:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:42:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,17 @@ void findA(t_game *game, int row, int col, int *gols)
 	int ROWS = game->map.rows;
 	int COLS = game->map.cols;
 	char **arr = game->map.tmp;
-	// int gols = game->map.objets.goals;
 
 	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols < 0))
-	{
-		// Si el índice está fuera del rango del arreglo, si encontramos un muro o si ya hemos visitado esta celda, entonces retornamos
 		return;
-	}
 
-	// Marcamos la celda como visitada
 	if (arr[row][col] == 'C')
 		*gols -= 1;
 	arr[row][col] = '@';
-
-	// Buscamos A en las celdas adyacentes
-	findA(game, row - 1, col, gols); // arriba
-	findA(game, row, col + 1, gols); // derecha
-	findA(game, row + 1, col, gols); // abajo
-	findA(game, row, col - 1, gols); // izquierda
+	findA(game, row - 1, col, gols);
+	findA(game, row, col + 1, gols);
+	findA(game, row + 1, col, gols);
+	findA(game, row, col - 1, gols);
 }
 
 void err_path(t_game *game)
