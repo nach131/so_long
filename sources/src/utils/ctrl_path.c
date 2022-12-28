@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 15:42:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:45:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "so_long.h"
 
-void findA(t_game *game, int row, int col, int *gols)
+void static find_path(t_game *game, int row, int col, int *gols)
 {
 	int ROWS = game->map.rows;
 	int COLS = game->map.cols;
@@ -28,13 +28,13 @@ void findA(t_game *game, int row, int col, int *gols)
 	if (arr[row][col] == 'C')
 		*gols -= 1;
 	arr[row][col] = '@';
-	findA(game, row - 1, col, gols);
-	findA(game, row, col + 1, gols);
-	findA(game, row + 1, col, gols);
-	findA(game, row, col - 1, gols);
+	find_path(game, row - 1, col, gols);
+	find_path(game, row, col + 1, gols);
+	find_path(game, row + 1, col, gols);
+	find_path(game, row, col - 1, gols);
 }
 
-void err_path(t_game *game)
+void static err_path(t_game *game)
 {
 	int i;
 	int j;
@@ -72,7 +72,7 @@ void ctrl_path(t_game *game)
 		while (j < game->map.cols)
 		{
 			if (game->map.tmp[i][j] == 'P')
-				findA(game, i, j, &gols);
+				find_path(game, i, j, &gols);
 			j++;
 		}
 		i++;
