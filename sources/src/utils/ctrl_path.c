@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nach_6_ptr.c                                       :+:      :+:    :+:   */
+/*   ctrl_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 14:30:03 by nmota-bu         ###   ########.fr       */
+/*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
+/*   Updated: 2022/12/28 15:10:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* ╔════════════════════════════════════════════════════════════════════════╗ */
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
-#include <stdio.h>
-#include <stdbool.h>
-#include "../../sources/libft/inc/libft.h"
 
-// #define ROWS 10
-// #define COLS 5
-int ROWS = 0;
-int COLS = 0;
+#include "so_long.h"
 
-void findA(char **arr, int row, int col, int *gols)
+void findA(t_game *game, char **arr, int row, int col, int *gols)
 {
+	int ROWS = game->map.rows;
+	int COLS = game->map.cols;
+	// int gols = game->map.objets.goals;
+
 	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols < 0))
 	{
 		// Si el índice está fuera del rango del arreglo, si encontramos un muro o si ya hemos visitado esta celda, entonces retornamos
@@ -36,70 +34,42 @@ void findA(char **arr, int row, int col, int *gols)
 	arr[row][col] = '@';
 
 	// Buscamos A en las celdas adyacentes
-	findA(arr, row - 1, col, gols); // arriba
-	findA(arr, row, col + 1, gols); // derecha
-	findA(arr, row + 1, col, gols); // abajo
-	findA(arr, row, col - 1, gols); // izquierda
+	findA(game, arr, row - 1, col, gols); // arriba
+	findA(game, arr, row, col + 1, gols); // derecha
+	findA(game, arr, row + 1, col, gols); // abajo
+	findA(game, arr, row, col - 1, gols); // izquierda
 }
 
-int main()
+void ctrl_path(t_game *game)
 {
-	// int ROWS = 0;
-	// int COLS = 0;
-	char **arr;
-
-	// arr = ft_file_to_dptr("../../sources/maps/min.ber", 0);
-	arr = ft_file_to_dptr("../../sources/maps/fail/_imposible_col.ber", 0);
-
-	while (arr[ROWS])
-		ROWS++;
-	while (arr[0][COLS])
-		COLS++;
 
 	int gols;
-	// contar cuantos Coleccionables
-	for (int i = 0; i < ROWS; i++)
+
+	gols = game->map.objets.goals;
+
+	char **tmp;
+	tmp = ft_cp_dptr(game->map.map);
+
+	int i = 0;
+	int j;
+	while (i < game->map.rows)
 	{
-		for (int j = 0; j < COLS; j++)
+		j = 0;
+		while (j < game->map.cols)
 		{
-			if (arr[i][j] == 'C')
-			{
-				gols++;
-			}
+			if (tmp[i][j] == 'P')
+				findA(game, tmp, i, j, &gols);
+			j++;
 		}
+		i++;
 	}
 
-	// Buscamos A desde P hasta E
-	for (int i = 0; i < ROWS; i++)
+	i = 0;
+	while (tmp[i])
 	{
-		for (int j = 0; j < COLS; j++)
-		{
-			if (arr[i][j] == 'P')
-			{
-				findA(arr, i, j, &gols);
-			}
-		}
+		ft_printf(RED "%s\n" WHITE, tmp[i]);
+		i++;
 	}
 
-	// Imprimimos el resultado
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			printf("%c ", arr[i][j]);
-		}
-		printf("\n");
-	}
-
-	return 0;
+	ft_free_dptr(tmp);
 }
-
-// 1 1 1 1 1 1 1 1 1
-// 1 @ @ @ @ @ @ @ 1
-// 1 @ @ 1 @ @ 1 1 1
-// 1 1 @ @ @ 1 0 C 1
-// 1 @ @ @ @ 1 1 1 1
-// 1 @ @ @ @ @ @ @ 1
-// 1 1 1 1 1 1 1 1 1
-
-// ../../sources/libft/libft.a

@@ -72,6 +72,7 @@ typedef struct s_objs
 typedef struct s_map
 {
 	char **map;
+	char **tmp;
 	int cols;
 	int rows;
 	t_objs objets;
@@ -107,4 +108,5 @@ void locate(t_game *game, int x, int y, char ch);
 
 void move(t_game *game, int x, int y, int type);
 void ctrl_move(t_game *game);
+void ctrl_path(t_game *game);
 #endif
