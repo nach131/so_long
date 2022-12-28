@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 14:56:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:51:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int main(int argc, char **argv)
 	game.map.map = ft_file_to_dptr(argv[1], 0);
 	control_map(&game);
 	ctrl_path(&game);
-	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
+	// ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 
 	game.grafic.mlx = mlx_init();
 	init_img(&game);
@@ -100,7 +100,7 @@ int main(int argc, char **argv)
 	// reload_loop(&game);
 
 	// ft_printf(GREEN "player: %i\n", game.map.objets.player);
-	ft_printf("coleccion:%d\n", game.map.objets.goals);
+	// ft_printf("coleccion:%d\n", game.map.objets.goals);
 	// ft_printf("conseguidos:%d\n", game.map.objets.get);
 	// ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
 	// // ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/25 11:34:30 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/28 19:08:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 #include "images.h"
 #include "../../mlx/mlx.h"
 
-void static put_img(t_game *game, int x, int y, char *path)
-{
-	int img_width;
-	int img_height;
+// void static put_img(t_game *game, int x, int y, char *path)
+// {
+// 	int img_width;
+// 	int img_height;
 
-	// ESTO PARA CARGAR LA IMAGEN EN EL JUEGO
-	game->grafic.img = mlx_xpm_file_to_image(game->grafic.mlx,
-											 path, &img_width, &img_height);
+// 	// ESTO PARA CARGAR LA IMAGEN EN EL JUEGO
+// 	game->grafic.img = mlx_xpm_file_to_image(game->grafic.mlx,
+// 											 path, &img_width, &img_height);
 
-	// AQUI PARA PONER LA IMGEN EN EL MAPA
-	mlx_put_image_to_window(game->grafic.mlx,
-							game->grafic.win, game->grafic.img, y, x);
-}
+// 	// AQUI PARA PONER LA IMGEN EN EL MAPA
+// 	mlx_put_image_to_window(game->grafic.mlx,
+// 							game->grafic.win, game->grafic.img, y, x);
+// }
 
 int random_num(int n)
 {
@@ -100,9 +100,14 @@ void filter_map(t_game *game, int x, int y, char ch)
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 								game->images.floor[0], y, x);
 	if (ch == 'P')
-		put_img(game, x, y, FROG_F);
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+								game->images.hero[0], y, x);
+	// put_img(game, x, y, FROG_F);
 	if (ch == 'E')
-		put_img(game, x, y, DOORC);
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+								game->images.door[0], y, x);
+	// put_img(game, x, y, DOORC);
 	if (ch == 'C')
-		put_img(game, x, y, ICOL);
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+								game->images.logo[0], y, x);
 }

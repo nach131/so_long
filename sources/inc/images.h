@@ -26,9 +26,9 @@ enum
 	WALL_SP,
 };
 
-#define FROG_F "xpm/frog/frog_front.xpm"
-#define DOORC "xpm/mis/door_closed.xpm"
-#define DOORO "xpm/mis/door_open.xpm"
+// #define FROG_F "xpm/frog/frog_front.xpm"
+// #define DOORC "xpm/mis/door_closed.xpm"
+// #define DOORO "xpm/mis/door_open.xpm"
 #define ICOL "xpm/col/3d_1.xpm"
 
 #endif
