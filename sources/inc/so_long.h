@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 20:20:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:21:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_images
 	char *hero[4];
 	char *door[2];
 	char *logo[1];
+	char *header[2];
 } t_images;
 
 typedef struct s_scp
@@ -99,6 +100,7 @@ void ctrl_move(t_game *game);
 void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch));
 void locate(t_game *game, int x, int y, char ch);
 void move(t_game *game, int x, int y, int type);
+void header(t_game *game);
 
 //	CUIDA SIN USO
 int reload(t_game *game);

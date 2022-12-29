@@ -9,6 +9,7 @@ enum
 	HERO,
 	DOOR,
 	LOGO,
+	IHEADER,
 };
 
 enum

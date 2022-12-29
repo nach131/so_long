@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 19:45:40 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 21:21:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ void static load_img(t_game *game, char *name, int num, int type)
 		else if (type == 5)
 			game->images.logo[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														 path, &w, &h);
+		else if (type == 6)
+			game->images.header[i] = mlx_xpm_file_to_image(game->grafic.mlx,
+														   path, &w, &h);
 		free(path);
 	}
 }
@@ -78,4 +81,5 @@ void init_img(t_game *game)
 	load_img(game, "frog", 4, HERO);
 	load_img(game, "door", 2, DOOR);
 	load_img(game, "logo", 1, LOGO);
+	load_img(game, "header", 2, IHEADER);
 }
