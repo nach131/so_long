@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 20:50:49 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:20:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 #define MSG_WAR_6 "Warning 6: The map does not have a correct path"
 
 #define SQUARE 32
+#define HEADER 64
 
 enum
 {
@@ -43,7 +44,7 @@ typedef struct s_images
 {
 	char *gwall[8];
 	char *floor[1];
-	char *wall[9];
+	char *wall[8];
 	char *hero[4];
 	char *door[2];
 	char *logo[1];

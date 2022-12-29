@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 21:00:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:18:34 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void put_player(t_game *game, int type)
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 							game->images.floor[0],
 							game->map.objets.player.y * SQUARE,
-							game->map.objets.player.x * SQUARE);
+							game->map.objets.player.x * SQUARE + HEADER);
 	if (type == 0)
 		game->map.objets.player.y += 1;
 	else if (type == 1)
@@ -43,7 +43,7 @@ void put_player(t_game *game, int type)
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 							game->images.hero[type],
 							game->map.objets.player.y * SQUARE,
-							game->map.objets.player.x * SQUARE);
+							game->map.objets.player.x * SQUARE + HEADER);
 }
 
 void move(t_game *game, int x, int y, int type)

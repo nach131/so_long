@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 12:00:49 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:09:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,25 @@ void static wall(t_game *game, int x, int y)
 	h = (game->map.rows * SQUARE) - SQUARE;
 	v = (game->map.cols * SQUARE) - SQUARE;
 	if (x == 0 && y == 0)
-		put_wall(game, game->images.wall[WALL_TL], x, y);
+		put_wall(game, game->images.wall[WALL_TL], x + HEADER, y);
 	else if (x == h && y == v && x != 0 && y != 0)
-		put_wall(game, game->images.wall[WALL_BR], x, y);
+		put_wall(game, game->images.wall[WALL_BR], x + HEADER, y);
 	else if (y == v && x == 0)
-		put_wall(game, game->images.wall[WALL_TR], x, y);
+		put_wall(game, game->images.wall[WALL_TR], x + HEADER, y);
 	else if (x == h && y == 0)
-		put_wall(game, game->images.wall[WALL_BL], x, y);
+		put_wall(game, game->images.wall[WALL_BL], x + HEADER, y);
 	else if (x == h)
-		put_wall(game, game->images.wall[WALL_BC], x, y);
+		put_wall(game, game->images.wall[WALL_BC], x + HEADER, y);
 	else if (y == v)
-		put_wall(game, game->images.wall[WALL_CR], x, y);
+		put_wall(game, game->images.wall[WALL_CR], x + HEADER, y);
 	else if (y == 0)
-		put_wall(game, game->images.wall[WALL_CL], x, y);
+		put_wall(game, game->images.wall[WALL_CL], x + HEADER, y);
 	else if (x == 0)
-		put_wall(game, game->images.wall[WALL_TC], x, y);
+		put_wall(game, game->images.wall[WALL_TC], x + HEADER, y);
 	else
-		put_gwall(game, x, y, GWALL);
-	if (x == 0 && y == SQUARE)
-		put_wall(game, game->images.wall[WALL_SP], x, y);
+		put_gwall(game, x + HEADER, y, GWALL);
+	// if (x == 0 && y == SQUARE)
+	// 	put_wall(game, game->images.wall[WALL_SP], x, y);
 }
 
 void filter_map(t_game *game, int x, int y, char ch)
@@ -84,14 +84,14 @@ void filter_map(t_game *game, int x, int y, char ch)
 		wall(game, x, y);
 	if (ch == '0')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.floor[0], y, x);
+								game->images.floor[0], y, x + HEADER);
 	if (ch == 'P')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.hero[0], y, x);
+								game->images.hero[0], y, x + HEADER);
 	if (ch == 'E')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.door[0], y, x);
+								game->images.door[0], y, x + HEADER);
 	if (ch == 'C')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.logo[0], y, x);
+								game->images.logo[0], y, x + HEADER);
 }
