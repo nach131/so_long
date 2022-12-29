@@ -6,7 +6,7 @@ static char *result[] = {
 ". c #353540",
 "X c #735B42",
 "o c #557D55",
-"O c #8B9150",
+"O c #6a9150",
 "+ c #BDA351",
 "@ c #5C699F",
 "# c #6FA6A5",

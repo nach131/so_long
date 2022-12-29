@@ -4,7 +4,7 @@ static char *result[] = {
 "32 32 7 1 ",
 "  c #353540",
 ". c #557D55",
-"X c #8B9150",
+"X c #6a9150",
 "o c #EEB551",
 "O c #BC87A5",
 "+ c #D9A6A6",

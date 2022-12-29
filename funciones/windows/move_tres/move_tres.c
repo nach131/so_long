@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_dos.c                                         :+:      :+:    :+:   */
+/*   move_tres.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:04:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 15:04:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:40:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_game
 	char *logo[40];
 	char *mom[4];
 	char **map;
-	int flag;
 } t_game;
 
 #define ROWS 6
@@ -69,13 +68,12 @@ int ft_free_map(void *mlx, void *win)
 void move_r(t_game *game)
 {
 	int i = -1;
+
 	mlx_put_image_to_window(game->mlx, game->win, game->hero[1], 1 * 40, 4 * 32);
 
 	mlx_put_image_to_window(game->mlx, game->win, game->hero[2], 1 * 48, 4 * 32);
 
 	mlx_put_image_to_window(game->mlx, game->win, game->hero[3], 1 * 56, 4 * 32);
-
-	game->flag = 1;
 }
 
 void move_l(t_game *game)
@@ -87,8 +85,6 @@ void move_l(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->hero[2], 1 * 48, 4 * 32);
 
 	mlx_put_image_to_window(game->mlx, game->win, game->hero[3], 1 * 40, 4 * 32);
-
-	game->flag = 1;
 }
 // int key_hook(int keycode, char *map[], t_game *game)
 int key_hook(int keycode, t_game *game)
@@ -197,10 +193,10 @@ void load_images(t_game *game)
 	game->logo[37] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo37.xpm", &width, &height);
 	game->logo[38] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo38.xpm", &width, &height);
 	game->logo[39] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo39.xpm", &width, &height);
-	game->hero[0] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/frog0.xpm", &width, &height);
-	game->hero[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/frog1.xpm", &width, &height);
-	game->hero[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/frog2.xpm", &width, &height);
-	game->hero[3] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/frog3.xpm", &width, &height);
+	game->hero[0] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/move_r/frog0.xpm", &width, &height);
+	game->hero[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/move_r/frog1.xpm", &width, &height);
+	game->hero[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/move_r/frog2.xpm", &width, &height);
+	game->hero[3] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/move_r/frog3.xpm", &width, &height);
 	game->mom[0] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom0.xpm", &width, &height);
 	game->mom[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom1.xpm", &width, &height);
 	game->mom[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom2.xpm", &width, &height);
@@ -227,8 +223,6 @@ void windows(t_game *game)
 
 void put_logo(t_game *game, int x, int y)
 {
-	int w;
-	int h;
 	int static i;
 	int static fps = 0;
 
@@ -253,25 +247,26 @@ void put_logo(t_game *game, int x, int y)
 
 void put_hero(t_game *game, int x, int y)
 {
-	int w;
-	int h;
 	int static i;
-	int tiempo = 0;
+	int static fps = 0;
+
 	if (!i)
 		i = 0;
 	x *= 32;
 	y *= 32;
 
-	int frames = 0;
-	while (frames < 1000)
+	if (!(fps % 25))
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->hero[i], y, x);
-		frames++;
+		if (i == 3)
+			i = 0;
+		i++;
+		fps = 1;
 	}
-	if (i == 3)
-		i = 0;
-	i++;
-	// ft_printf(RED "\tloop" WHITE);
+	else
+	{
+		fps++;
+	}
 }
 
 void put_grass(t_game *game, int x, int y)
@@ -291,9 +286,8 @@ void loop_logo(t_game *game)
 		{
 			if (game->map[i][j] == 'C')
 				put_logo(game, i, j);
-			// if (game->map[i][j] == '0')
-			// 	put_grass(game, i, j);
-
+			else if (game->map[i][j] == 'P')
+				put_hero(game, i, j);
 			j++;
 		}
 		i++;
@@ -304,51 +298,76 @@ void loop_hero(t_game *game)
 {
 	int i = 0;
 	int j;
-	if (game->flag)
+	int static fps = 0;
+	int static p;
+
+	if (!p)
+		i = 0;
+
+	while (i < ROWS)
 	{
-		while (i < ROWS)
+		j = 0;
+		while (game->map[i][j])
 		{
-			j = 0;
-			while (game->map[i][j])
+			if (game->map[i][j] == 'P')
+			// put_hero(game, i, j);
 			{
-				if (game->map[i][j] == 'P')
-				// put_hero(game, i, j);
+				// mlx_put_image_to_window(game->mlx, game->win, game->textures[GRASS], j * 32, i * 32);
+
+				if (!(fps % 25))
 				{
-					// mlx_put_image_to_window(game->mlx, game->win, game->textures[GRASS], j * 32, i * 32);
-					mlx_put_image_to_window(game->mlx, game->win, game->hero[0], j * 32, i * 32);
+					mlx_put_image_to_window(game->mlx, game->win, game->hero[p], j * 32, i * 32);
+					if (p == 3)
+						p = 0;
+					p++;
+					fps = 1;
 				}
-				if (game->map[i][j] == '0')
-					put_grass(game, i, j);
-				j++;
+				else
+				{
+					fps++;
+				}
 			}
-			i++;
+
+			if (game->map[i][j] == '0')
+				put_grass(game, i, j);
+			j++;
 		}
-		game->flag = 0;
+		i++;
+	}
+}
+
+void loop_mom(t_game *game)
+{
+	int w;
+	int h;
+	int static i;
+	int static fps = 0;
+
+	if (!i)
+		i = 0;
+	// x *= 32;
+	// y *= 32;
+
+	if (!(fps % 25))
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->mom[i], 0, 0);
+		if (i == 4)
+			i = 0;
+		i++;
+		fps = 1;
+	}
+	else
+	{
+		fps++;
 	}
 }
 
 int los_dos(t_game *game)
 {
 	// windows(game);
-	loop_hero(game);
 	loop_logo(game);
-	return (0);
-}
-int loop_mom(t_game *game)
-{
-	int w;
-	int h;
-	int static i;
-	if (!i)
-		i = 0;
-	// x *= 32;
-	// y *= 32;
-	mlx_put_image_to_window(game->mlx, game->win, game->mom[i], 90, 30);
-
-	usleep(80000);
-	if (i == 4)
-		i = 0;
-	i++;
+	loop_mom(game);
+	// loop_hero(game);
 	return (0);
 }
 
@@ -356,27 +375,27 @@ int main(void)
 {
 	t_game game;
 	ft_bzero(&game, sizeof(t_game));
-
-	// char **map = ft_file_to_dptr("min.ber", 0);
 	game.map = ft_file_to_dptr("min.ber", 0);
-
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 20 * 32, ROWS * 32, "nach131 So Long");
 	load_images(&game);
-	windows(&game);
-	// mlx_put_image_to_window(game.mlx, game.win, game.mom[0], 0, 0);
 
-	mlx_string_put(game.mlx, game.win, 10, 12, 00001010, "toma");	// NACH ESTO ES EL MARCADOR
+	windows(&game);
+
+	// mlx_put_image_to_window(game.mlx, game.win, game.mom[1], 64, 64);
+
+	mlx_string_put(game.mlx, game.win, 10, 12, 00001010, "TRES");	// NACH ESTO ES EL MARCADOR
 	mlx_string_put(game.mlx, game.win, 10, 22, 0xffffffff, "0/12"); // NACH ESTO ES EL MARCADOR
 	mlx_key_hook(game.win, key_hook, &game);
+	mlx_loop_hook(game.mlx, los_dos, &game);
+
+	//===========================================================================================
 	// mlx_expose_hook(game.win, loop_mom, &game);
 	// mlx_loop_hook(game.mlx, loop_hero, &game);
-	// mlx_loop_hook(game.mlx, loop_mom, &game);
-	mlx_loop_hook(game.mlx, los_dos, &game);
 
 	mlx_loop(game.mlx);
 }
 
-// gcc -framework OpenGL -framework AppKit move_dos.c  ../../../sources/mlx/libmlx.a ../../../sources/libft/libft.a
+// gcc -framework OpenGL -framework AppKit move_tres.c  ../../../sources/mlx/libmlx.a ../../../sources/libft/libft.a
 
 // ESTUDIAR CLEAR DE MLX
