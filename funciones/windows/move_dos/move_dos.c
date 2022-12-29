@@ -14,7 +14,7 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include <mlx.h>
+#include "../../../sources/mlx/mlx.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -142,8 +142,8 @@ void filter(t_game *game, int x, int y, char ch)
 		mlx_put_image_to_window(game->mlx, game->win, game->textures[GRASS], y, x);
 	if (ch == 'P')
 		mlx_put_image_to_window(game->mlx, game->win, game->hero[0], y, x);
-	if (ch == 'C')
-		mlx_put_image_to_window(game->mlx, game->win, game->logo[0], y, x);
+	// if (ch == 'C')
+	// 	mlx_put_image_to_window(game->mlx, game->win, game->logo[0], y, x);
 	if (ch == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->mom[0], y, x);
 }
@@ -230,16 +230,27 @@ void put_logo(t_game *game, int x, int y)
 	int w;
 	int h;
 	int static i;
+	int static fps = 0;
+
 	if (!i)
 		i = 0;
 	x *= 32;
 	y *= 32;
-	mlx_put_image_to_window(game->mlx, game->win, game->logo[i], y, x);
 
-	// usleep(40000);
-	if (i == 38)
-		i = 0;
-	i++;
+	if (!(fps % 25))
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->logo[i], y, x);
+
+		// usleep(40000);
+		if (i == 38)
+			i = 0;
+		i++;
+		fps = 1;
+	}
+	else
+	{
+		fps++;
+	}
 	// ft_printf(RED "\tloop" WHITE);
 }
 
@@ -321,7 +332,7 @@ void loop_hero(t_game *game)
 
 int los_dos(t_game *game)
 {
-	windows(game);
+	// windows(game);
 	loop_hero(game);
 	loop_logo(game);
 	return (0);
@@ -341,6 +352,7 @@ int loop_mom(t_game *game)
 	if (i == 4)
 		i = 0;
 	i++;
+	return (0);
 }
 
 int main(void)
@@ -362,10 +374,12 @@ int main(void)
 	mlx_key_hook(game.win, key_hook, &game);
 	// mlx_expose_hook(game.win, loop_mom, &game);
 	// mlx_loop_hook(game.mlx, loop_hero, &game);
-	mlx_loop_hook(game.mlx, loop_mom, &game);
-	// mlx_loop_hook(game.mlx, loop_logo, &game);
+	// mlx_loop_hook(game.mlx, loop_mom, &game);
+	mlx_loop_hook(game.mlx, los_dos, &game);
 
 	mlx_loop(game.mlx);
 }
 
 // gcc -framework OpenGL -framework AppKit put_arr_img.c ../../../sources/mlx/libmlx.a ../../../sources/libft/libft.a
+
+// ESTUDIAR CLEAR DE MLX

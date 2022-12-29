@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/11 03:57:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:03:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include <mlx.h>
+#include "../../../sources/mlx/mlx.h"
 #include <unistd.h>
 
 enum
@@ -60,7 +60,7 @@ int key_push(int key, void *mlx, void *win)
 {
 	if (key == KEY_ESC)
 		ft_free_map(mlx);
-	if (key == KEY_A || KEY_LEFT)
+	if (key == KEY_A)
 		write(1, "A", 1);
 	if (key == KEY_1)
 	{
@@ -75,7 +75,7 @@ int key_pull(int key, void *mlx, void *win)
 {
 	if (key == KEY_ESC)
 		ft_free_map(mlx);
-	if (key == KEY_A || KEY_LEFT)
+	if (key == KEY_A)
 		write(1, "B", 1);
 	if (key == KEY_1)
 	{

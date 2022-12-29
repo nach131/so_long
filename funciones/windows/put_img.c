@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 00:53:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:23:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include <mlx.h>
+#include "../../sources/mlx/mlx.h"
+#include <stdlib.h>
+
 int ft_free_map(void *mlx)
 {
 

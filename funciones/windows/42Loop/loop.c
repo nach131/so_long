@@ -14,7 +14,7 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
-#include <mlx.h>
+#include "../../../sources/mlx/mlx.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
