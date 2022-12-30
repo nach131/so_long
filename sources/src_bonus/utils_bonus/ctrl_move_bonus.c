@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:49:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 16:30:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:35:28 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,40 @@
 #include "so_long_bonus.h"
 #include "../mlx/mlx.h"
 
+char *collections(t_objs colec)
+{
+	char *total;
+	char *get;
+	char *s1;
+	char *s2;
+
+	total = ft_itoa(colec.goals);
+	get = ft_itoa(colec.get);
+	s1 = ft_strjoin(total, "/");
+	s2 = ft_strjoin(s1, get);
+	free(s1);
+	return (s2);
+}
+
 void ctrl_move(t_game *game)
 {
 	int i;
-	char *total;
+	char *marcador;
+	char *activity;
 
-	total = ft_itoa(game->map.objets.goals);
+	marcador = collections(game->map.objets);
+	// ft_printf(RED "\t%s\n", marcador);
+
 	game->map.objets.move++;
-	ft_printf(ORANGE "Movements: %d" WHITE, game->map.objets.move);
-	game->map.objets.movements = ft_itoa(game->map.objets.move);
+	activity = ft_itoa(game->map.objets.move);
 	i = -1;
-	while (++i < (ft_strlen(game->map.objets.movements) + 11))
-		write(1, "\b", 1);
-	// mlx_string_put(game->grafic.mlx, game->grafic.win, 80, 30, 0xFFFFFFFF,
-	// 			   game->map.objets.movements);									   // NACH ESTO ES EL MARCADOR
-	// mlx_string_put(game->grafic.mlx, game->grafic.win, 80, 55, 0xffffffff, total); // NACH ESTO ES EL MARCADOR
 
-	free(total);
-	free(game->map.objets.movements);
+	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+							game->images.header[3], 75, 43);
+	// NACH ESTO ES EL MARCADOR
+	mlx_string_put(game->grafic.mlx, game->grafic.win, 119, 55, 0xFFFFFFFF, activity);
+	mlx_string_put(game->grafic.mlx, game->grafic.win, 80, 55, 0xffffffff, marcador);
+
+	free(marcador);
+	free(activity);
 }

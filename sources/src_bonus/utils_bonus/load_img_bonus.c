@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 18:21:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:22:01 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ void init_img(t_game *game)
 	load_img(game, "rabbit", 4, HERO);
 	load_img(game, "door", 2, DOOR);
 	load_img(game, "logo", 1, LOGO);
-	load_img(game, "header", 3, IHEADER);
+	load_img(game, "header", 4, IHEADER);
 	load_img(game, "mom", 4, MOM);
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 20:29:45 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 18:29:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:26:41 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 #include "so_long_bonus.h"
 #include "images_bonus.h"
 #include "../../mlx/mlx.h"
-
-// HACER LOS IF DEL TAMAŃO DEL MAPA
-//  PORNER SOLO EL MARCADO
-//  PONER EL TITULO
 
 void put_sea(t_game *game, int row)
 {

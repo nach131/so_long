@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 18:44:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:22:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_images
 	char *hero[4];
 	char *door[2];
 	char *logo[1];
-	char *header[3];
+	char *header[4];
 	char *mom[4];
 } t_images;
 
@@ -64,7 +64,6 @@ typedef struct s_objs
 	int goals;
 	int get;
 	int move;
-	char *movements;
 	t_scp player;
 	t_scp exit;
 	t_scp enemy;

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 18:39:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:25:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 #include "so_long_bonus.h"
 #include "images_bonus.h"
 #include "../mlx/mlx.h"
+
+// 2-124  D
+// 0-123  A
+// 1-125  S
+// 13-126 W
 
 int key_hook(int keycode, t_game *game)
 {
@@ -87,7 +92,6 @@ int main(int argc, char **argv)
 	game.map.map = ft_file_to_dptr(argv[1], 0);
 	ctrl_map(&game);
 	ctrl_path(&game);
-	// ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 
 	game.grafic.mlx = mlx_init();
 	init_img(&game);
@@ -96,9 +100,18 @@ int main(int argc, char **argv)
 	lap_map(&game, filter_map);
 	lap_map(&game, locate);
 
+	// PRUEBA DE MOM
+	mlx_put_image_to_window(game.grafic.mlx, game.grafic.win,
+							game.images.mom[1],
+							game.map.objets.enemy.y * SQUARE,
+							(game.map.objets.enemy.x * SQUARE) + HEADER);
+	mlx_put_image_to_window(game.grafic.mlx, game.grafic.win,
+							game.images.header[3], 69, 43);
+
 	//=============================================================================
 	// reload_loop(&game);
 
+	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	// ft_printf("coleccion:%d\n", game.map.objets.goals);
 	// ft_printf("conseguidos:%d\n", game.map.objets.get);
 	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);

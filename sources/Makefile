@@ -112,6 +112,9 @@ fclean : clean
 re: fclean all
 			@echo "$(YELLOW) Borrado todo y recompilado...✌🏼$(WHITE)"
 
+reb: fclean bonus
+			@echo "$(YELLOW) Borrado todo y recompilado...✌🏼$(WHITE)"
+
 norm:
 			@norminette $(SRCS_MAIN) $(SRCS_UTILS) $(INCLUDES) | grep -v Norme -B1 || true
 
