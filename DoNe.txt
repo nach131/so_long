@@ -23,7 +23,34 @@ ERRORS
 get next line	segunda pasada
 	colocar el mapa en la array
 
+colocación ramdom
+mancha rotar 90,180
+
 
 	printf("\nVALOR DE BOOL: |%zu|\n", sizeof(_Bool));
 	printf("\nVALOR DE TRUE: |%zu|\n", sizeof(TRUE));
 	printf("\nVALOR DE game: |%zu|\n", sizeof(game));
+
+//===========================================================================================
+
+	Moviemiento enemigos y busqueda del camino correcto
+https://es.wikipedia.org/wiki/Algoritmo_de_Dijkstra 
+
+//===========================================================================================
+
+hacer structuras por coleccionable y guardar la posicion de el
+com lista;
+X = 7
+Y = 19
+
+//===========================================================================================
+
+get next line par leer map
+	primera pasada para calcular tamaño del arry mapa
+	detectar los errores del mapa
+		falta algun elemento, player, salida
+		empty map
+    error si no es un rectangulo
+		Controlar el camino
+
+listas para introducir cada Linea	

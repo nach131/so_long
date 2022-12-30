@@ -6,41 +6,18 @@ https://ezgif.com/
 1024×768	->	32x24
 2048×1024	->	64x32
 
-50x7
-
 Pantalla inicio selecionnado hero. tamaño fijo toda una immagen ,1,2,3
 	personajes saltando esperando a ser elejidos
 Pantalla final con game over triste, game won contento saltando
 
-colocación ramdom
-mancha rotar 90,180
+Error del mapa cuando no hay nada en el archivo
+Error de busqueda del path en el caso de que la salida bloque
+Cuenta las pulsaciones de teclado no los moviementos
 
-
-get next line par leer map
-	primera pasada para calcular tamaño del arry mapa
-	detectar los errores del mapa
-		falta algun elemento, player, salida
-		empty map
-    error si no es un rectangulo
-		Controlar el camino
-
-listas para introducir cada Linea	
-
-//===========================================================================================
-Moviemiento enemigos y busqueda del camino correcto
-https://es.wikipedia.org/wiki/Algoritmo_de_Dijkstra 
 
 //===========================================================================================
 
 	https://stackoverflow.com/questions/3911400/how-to-pass-2d-array-matrix-in-a-function-in-c
-
-
-
-hacer structuras por coleccionable y guardar la posicion de el
-com lista;
-X = 7
-Y = 19
-
 
 
 
