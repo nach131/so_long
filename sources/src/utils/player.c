@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 20:18:34 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:56:15 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void locate(t_game *game, int x, int y, char ch)
 	{
 		game->map.objets.player.x = x;
 		game->map.objets.player.y = y;
+	}
+	else if (ch == 'E')
+	{
+		game->map.objets.exit.x = x;
+		game->map.objets.exit.y = y;
 	}
 }
 
@@ -46,6 +51,21 @@ void put_player(t_game *game, int type)
 							game->map.objets.player.x * SQUARE + HEADER);
 }
 
+void open_door(t_game *game)
+{
+	int static finished = FALSE;
+
+	if (!finished)
+
+	{
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+								game->images.door[1],
+								game->map.objets.exit.y * SQUARE,
+								game->map.objets.exit.x * SQUARE + HEADER);
+		finished = TRUE;
+	}
+}
+
 void move(t_game *game, int x, int y, int type)
 {
 	if (game->map.map[x][y] == 'C')
@@ -56,7 +76,10 @@ void move(t_game *game, int x, int y, int type)
 		put_player(game, type);
 	}
 	if (game->map.objets.goals == game->map.objets.get)
-		ft_printf(MAGENTA "ya puedes salir melon");
+	{
+		// ft_printf(MAGENTA "ya puedes salir melon");
+		open_door(game);
+	}
 
 	if (game->map.map[x][y] == 'E' &&
 		(game->map.objets.get == game->map.objets.goals))
