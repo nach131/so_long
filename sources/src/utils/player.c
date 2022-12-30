@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 18:39:29 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:58:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void move(t_game *game, int x, int y, int type)
 	{
 		game->map.map[x][y] = 'P';
 		put_player(game, type);
+		ctrl_move(game);
 	}
 	if (game->map.objets.goals == game->map.objets.get)
 	{

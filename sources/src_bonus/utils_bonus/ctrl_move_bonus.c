@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:49:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 23:51:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/31 00:03:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ char *collections(t_objs colec)
 
 	total = ft_itoa(colec.goals);
 	get = ft_itoa(colec.get);
-	s1 = ft_strjoin(total, "/");
-	s2 = ft_strjoin(s1, get);
+	s1 = ft_strjoin(get, "/");
+	s2 = ft_strjoin(s1, total);
 	free(s1);
 	return (s2);
 }

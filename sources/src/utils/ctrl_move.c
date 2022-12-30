@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:49:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 23:45:47 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 23:57:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ void ctrl_move(t_game *game)
 	i = -1;
 	while (++i < (ft_strlen(game->map.objets.movements) + 11))
 		write(1, "\b", 1);
-	// mlx_string_put(game->grafic.mlx, game->grafic.win, 80, 30, 0xFFFFFFFF,
-	// 			   game->map.objets.movements);									   // NACH ESTO ES EL MARCADOR
-	// mlx_string_put(game->grafic.mlx, game->grafic.win, 80, 55, 0xffffffff, total); // NACH ESTO ES EL MARCADOR
-
 	free(total);
 	free(game->map.objets.movements);
 }
