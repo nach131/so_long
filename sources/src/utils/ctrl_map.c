@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 20:26:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:58:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,10 @@ void static different_char(t_game *game)
 		j = 0;
 		while (game->map.map[i][j])
 		{
-			if (game->map.map[i][j] != '1' && game->map.map[i][j] != '0' && game->map.map[i][j] != 'C' && game->map.map[i][j] != 'E' && game->map.map[i][j] != 'X' && game->map.map[i][j] != 'P')
+			if (game->map.map[i][j] != '1' && game->map.map[i][j] != '0' && game->map.map[i][j] != 'C' && game->map.map[i][j] != 'E' && game->map.map[i][j] != 'P')
 			{
 				ft_message(WARNING, MSG_WAR_4);
+				ft_printf(MAGENTA "\trow:%d col:%d ➟ '%c'\n", i, j, game->map.map[i][j]);
 				exit(EXIT_FAILURE);
 			}
 			j++;

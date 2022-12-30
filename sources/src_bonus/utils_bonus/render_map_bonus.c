@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 16:31:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:35:28 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void static wall(t_game *game, int x, int y)
 		put_wall(game, game->images.wall[WALL_TC], x + HEADER, y);
 	else
 		put_gwall(game, x + HEADER, y, GWALL);
-	// if (x == 0 && y == SQUARE)
-	// 	put_wall(game, game->images.wall[WALL_SP], x, y);
 }
 
 void filter_map(t_game *game, int x, int y, char ch)
@@ -94,4 +92,7 @@ void filter_map(t_game *game, int x, int y, char ch)
 	if (ch == 'C')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 								game->images.logo[0], y, x + HEADER);
+	if (ch == 'X')
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+								game->images.mom[0], y, x + HEADER);
 }

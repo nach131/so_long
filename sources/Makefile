@@ -102,7 +102,7 @@ clean :
 			@make clean -s -C $(LIBFT_DIR)
 			@$(RM) $(OBJ_DIR)
 			@$(RM) $(OBJ_DIR_BONUS)
-			@echo "$(RED)\n ✗ Archivos objetos Minitalk borrados.‼️\n$(WHITE)";
+			@echo "$(RED)\n ✗ Archivos objetos So_Long borrados.‼️\n$(WHITE)";
 
 fclean : clean
 			@$(RM) $(NAME)
@@ -122,4 +122,4 @@ norm_bonus:
 
 # ▄▄▄▄▄▄▄▄▄▄▄▄▄▄ Non-file targets ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄#
 
-.PHONY: all clean fclean re norm bonus
+.PHONY: all clean fclean re norm bonus norm_bonus

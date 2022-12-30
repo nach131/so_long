@@ -10,6 +10,7 @@ enum
 	DOOR,
 	LOGO,
 	IHEADER,
+	MOM,
 };
 
 enum

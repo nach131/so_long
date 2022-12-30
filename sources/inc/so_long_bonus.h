@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 16:31:29 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:44:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #define MSG_WAR_4 "Warning 4: Invalid character in map"
 #define MSG_WAR_5 "Warning 5: The map is not closed"
 #define MSG_WAR_6 "Warning 6: The map does not have a correct path"
+#define MSG_WAR_7 "Warning 7: Need one 'X' for enemy on the map"
 
 #define SQUARE 32
 #define HEADER 64
@@ -49,6 +50,7 @@ typedef struct s_images
 	char *door[2];
 	char *logo[1];
 	char *header[3];
+	char *mom[4];
 } t_images;
 
 typedef struct s_scp
@@ -65,6 +67,7 @@ typedef struct s_objs
 	char *movements;
 	t_scp player;
 	t_scp exit;
+	t_scp enemy;
 } t_objs;
 
 typedef struct s_map

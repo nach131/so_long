@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 16:30:03 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:55:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void static different_char(t_game *game)
 			if (game->map.map[i][j] != '1' && game->map.map[i][j] != '0' && game->map.map[i][j] != 'C' && game->map.map[i][j] != 'E' && game->map.map[i][j] != 'X' && game->map.map[i][j] != 'P')
 			{
 				ft_message(WARNING, MSG_WAR_4);
+				ft_printf(MAGENTA "\trow:%d col:%d ➟ '%c'\n", i, j, game->map.map[i][j]);
 				exit(EXIT_FAILURE);
 			}
 			j++;
@@ -104,6 +105,11 @@ void ctrl_map(t_game *game)
 	if (lap_map_count(game, 'E') != 1)
 	{
 		ft_message(WARNING, MSG_WAR_2);
+		exit(EXIT_FAILURE);
+	}
+	if (lap_map_count(game, 'X') != 1)
+	{
+		ft_message(WARNING, MSG_WAR_7);
 		exit(EXIT_FAILURE);
 	}
 	game->map.objets.goals = lap_map_count(game, 'C');

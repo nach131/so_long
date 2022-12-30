@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 16:30:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:40:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void locate(t_game *game, int x, int y, char ch)
 	{
 		game->map.objets.exit.x = x;
 		game->map.objets.exit.y = y;
+	}
+	else if (ch == 'X')
+	{
+		game->map.objets.enemy.x = x;
+		game->map.objets.enemy.y = y;
 	}
 }
 
