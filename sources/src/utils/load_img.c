@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/01 16:16:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/01 16:22:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,27 @@ void static load_img(t_game *game, char *name, int num, int type)
 	int i;
 	int w;
 	int h;
+	void *mlx = game->grafic.mlx;
+	char *path;
 
 	i = -1;
 	while (++i < num)
 	{
-		char *path = path_img(name, i);
+		path = path_img(name, i);
 		if (type == GWALL)
-			game->images.gwall[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														  path, &w, &h);
+			game->images.gwall[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == FLOOR)
-			game->images.floor[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														  path, &w, &h);
+			game->images.floor[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == WALL)
-			game->images.wall[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
+			game->images.wall[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == HERO)
-			game->images.hero[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
+			game->images.hero[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == DOOR)
-			game->images.door[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
+			game->images.door[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == LOGO)
-			game->images.logo[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
+			game->images.logo[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == IHEADER)
-			game->images.header[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														   path, &w, &h);
+			game->images.header[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		free(path);
 	}
 }

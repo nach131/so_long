@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 23:22:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/01 16:53:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,35 +43,29 @@ void static load_img(t_game *game, char *name, int num, int type)
 	int i;
 	int w;
 	int h;
+	void *mlx = game->grafic.mlx;
+	char *path;
 
 	i = -1;
 	while (++i < num)
 	{
-		char *path = path_img(name, i);
-		if (type == 0)
-			game->images.gwall[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														  path, &w, &h);
-		else if (type == 1)
-			game->images.floor[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														  path, &w, &h);
-		else if (type == 2)
-			game->images.wall[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
-		else if (type == 3)
-			game->images.hero[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
-		else if (type == 4)
-			game->images.door[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
-		else if (type == 5)
-			game->images.logo[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														 path, &w, &h);
-		else if (type == 6)
-			game->images.header[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														   path, &w, &h);
-		else if (type == 7)
-			game->images.mom[i] = mlx_xpm_file_to_image(game->grafic.mlx,
-														path, &w, &h);
+		path = path_img(name, i);
+		if (type == GWALL)
+			game->images.gwall[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == FLOOR)
+			game->images.floor[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == WALL)
+			game->images.wall[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == HERO)
+			game->images.hero[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == DOOR)
+			game->images.door[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == LOGO)
+			game->images.logo[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == IHEADER)
+			game->images.header[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == MOM)
+			game->images.mom[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		free(path);
 	}
 }
