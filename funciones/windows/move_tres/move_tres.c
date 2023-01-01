@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:04:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 16:40:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2022/12/31 17:29:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ enum
 	TGREEN,
 	DOORC,
 	COL,
-	PLAYER,
+	ROJO,
 };
 
 typedef struct s_game
@@ -132,6 +132,8 @@ void filter(t_game *game, int x, int y, char ch)
 		y *= 32;
 	}
 
+	if (ch == 'X')
+		mlx_put_image_to_window(game->mlx, game->win, game->mom[3], y, x);
 	if (ch == '1')
 		mlx_put_image_to_window(game->mlx, game->win, game->textures[ROCKS], y, x);
 	if (ch == '0')
@@ -141,7 +143,7 @@ void filter(t_game *game, int x, int y, char ch)
 	// if (ch == 'C')
 	// 	mlx_put_image_to_window(game->mlx, game->win, game->logo[0], y, x);
 	if (ch == 'E')
-		mlx_put_image_to_window(game->mlx, game->win, game->mom[0], y, x);
+		mlx_put_image_to_window(game->mlx, game->win, game->textures[DOORC], y, x);
 }
 
 void load_images(t_game *game)
@@ -149,10 +151,11 @@ void load_images(t_game *game)
 	int width;
 	int height;
 
-	game->textures[ROCKS] = mlx_xpm_file_to_image(game->mlx, "../xpm/rocks.xpm", &width, &height);
+	game->textures[ROCKS] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/gwall/gwall0.xpm", &width, &height);
 	game->textures[TGREEN] = mlx_xpm_file_to_image(game->mlx, "../xpm/tree_GREEN.xpm", &width, &height);
-	game->textures[GRASS] = mlx_xpm_file_to_image(game->mlx, "../xpm/central.xpm", &width, &height);
+	game->textures[GRASS] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/floor/floor0.xpm", &width, &height);
 	game->textures[DOORC] = mlx_xpm_file_to_image(game->mlx, "../xpm/door_closed.xpm", &width, &height);
+	game->textures[ROJO] = mlx_xpm_file_to_image(game->mlx, "../xpm/rojo.xpm", &width, &height);
 	game->logo[0] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo0.xpm", &width, &height);
 	game->logo[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo1.xpm", &width, &height);
 	game->logo[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo2.xpm", &width, &height);
@@ -197,10 +200,10 @@ void load_images(t_game *game)
 	game->hero[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/move_r/frog1.xpm", &width, &height);
 	game->hero[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/move_r/frog2.xpm", &width, &height);
 	game->hero[3] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/frog/move_r/frog3.xpm", &width, &height);
-	game->mom[0] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom0.xpm", &width, &height);
-	game->mom[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom1.xpm", &width, &height);
-	game->mom[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom2.xpm", &width, &height);
-	game->mom[3] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom3.xpm", &width, &height);
+	game->mom[0] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom4.xpm", &width, &height);
+	game->mom[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom5.xpm", &width, &height);
+	game->mom[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom6.xpm", &width, &height);
+	game->mom[3] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom7.xpm", &width, &height);
 }
 
 void windows(t_game *game)
@@ -218,6 +221,8 @@ void windows(t_game *game)
 		}
 		i++;
 	}
+	// mlx_put_image_to_window(game->mlx, game->win, game->mom[3], 32, 32);
+
 	mlx_hook(game->win, ON_DESTROY, 1L << 0, ft_free_map, game->mlx);
 }
 
@@ -336,7 +341,7 @@ void loop_hero(t_game *game)
 	}
 }
 
-void loop_mom(t_game *game)
+int loop_mom(t_game *game)
 {
 	int w;
 	int h;
@@ -348,24 +353,36 @@ void loop_mom(t_game *game)
 	// x *= 32;
 	// y *= 32;
 
-	if (!(fps % 25))
+	if (!(fps % 90))
 	{
-		mlx_put_image_to_window(game->mlx, game->win, game->mom[i], 0, 0);
+
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 0, 0);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 0, 32);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 0, 64);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 32, 0);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 32, 32);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 32, 64);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 64, 0);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 64, 32);
+		// mlx_put_image_to_window(game->mlx, game->win, game->textures[ROJO], 64, 64);
+		windows(game);
+
+		mlx_put_image_to_window(game->mlx, game->win, game->mom[i], 32, 32);
 		if (i == 4)
 			i = 0;
 		i++;
 		fps = 1;
 	}
 	else
-	{
 		fps++;
-	}
+	return (0);
 }
 
 int los_dos(t_game *game)
 {
-	// windows(game);
+
 	loop_logo(game);
+	// windows(game);
 	loop_mom(game);
 	// loop_hero(game);
 	return (0);
@@ -382,15 +399,11 @@ int main(void)
 
 	windows(&game);
 
-	// mlx_put_image_to_window(game.mlx, game.win, game.mom[1], 64, 64);
-
-	mlx_string_put(game.mlx, game.win, 10, 12, 00001010, "TRES");	// NACH ESTO ES EL MARCADOR
-	mlx_string_put(game.mlx, game.win, 10, 22, 0xffffffff, "0/12"); // NACH ESTO ES EL MARCADOR
-	mlx_key_hook(game.win, key_hook, &game);
 	mlx_loop_hook(game.mlx, los_dos, &game);
+	mlx_key_hook(game.win, key_hook, &game);
 
 	//===========================================================================================
-	// mlx_expose_hook(game.win, loop_mom, &game);
+	mlx_expose_hook(game.win, loop_mom, &game);
 	// mlx_loop_hook(game.mlx, loop_hero, &game);
 
 	mlx_loop(game.mlx);

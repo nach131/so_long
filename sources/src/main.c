@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 23:59:33 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/01 16:18:49 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int main(int argc, char **argv)
 
 	// ft_printf("coleccion:%d\n", game.map.objets.goals);
 	// ft_printf("conseguidos:%d\n", game.map.objets.get);
-	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
-	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
+	// ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
+	// ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
 
 	// hay que pasar gols a string y juntara todo como con los archivos
 	mlx_key_hook(game.grafic.win, key_hook, &game);

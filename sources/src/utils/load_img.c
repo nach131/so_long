@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 23:20:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/01 16:16:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,25 @@ void static load_img(t_game *game, char *name, int num, int type)
 	while (++i < num)
 	{
 		char *path = path_img(name, i);
-		if (type == 0)
+		if (type == GWALL)
 			game->images.gwall[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														  path, &w, &h);
-		else if (type == 1)
+		else if (type == FLOOR)
 			game->images.floor[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														  path, &w, &h);
-		else if (type == 2)
+		else if (type == WALL)
 			game->images.wall[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														 path, &w, &h);
-		else if (type == 3)
+		else if (type == HERO)
 			game->images.hero[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														 path, &w, &h);
-		else if (type == 4)
+		else if (type == DOOR)
 			game->images.door[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														 path, &w, &h);
-		else if (type == 5)
+		else if (type == LOGO)
 			game->images.logo[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														 path, &w, &h);
-		else if (type == 6)
+		else if (type == IHEADER)
 			game->images.header[i] = mlx_xpm_file_to_image(game->grafic.mlx,
 														   path, &w, &h);
 		free(path);
