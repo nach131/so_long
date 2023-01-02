@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:04:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/31 17:29:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:12:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,7 +279,7 @@ void put_grass(t_game *game, int x, int y)
 	mlx_put_image_to_window(game->mlx, game->win, game->textures[GRASS], y * 32, x * 32);
 }
 
-void loop_logo(t_game *game)
+void loop_logo_hero(t_game *game)
 {
 	int i = 0;
 	int j;
@@ -381,9 +381,9 @@ int loop_mom(t_game *game)
 int los_dos(t_game *game)
 {
 
-	loop_logo(game);
+	loop_logo_hero(game);
 	// windows(game);
-	loop_mom(game);
+	// loop_mom(game);
 	// loop_hero(game);
 	return (0);
 }

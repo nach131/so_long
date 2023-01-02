@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 23:56:47 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:14:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,8 @@ int main(int argc, char **argv)
 	init_img(&game);
 	window(&game);
 	header(&game);
-	lap_map(&game, filter_map);
 	lap_map(&game, locate);
+	lap_map(&game, filter_wall);
 
 	// PRUEBA DE MOM
 	mlx_put_image_to_window(game.grafic.mlx, game.grafic.win,
@@ -118,7 +118,7 @@ int main(int argc, char **argv)
 	ft_printf("enemy: x:%d, y:%d\n", game.map.objets.enemy.x, game.map.objets.enemy.y);
 
 	// hay que pasar gols a string y juntara todo como con los archivos
+	mlx_loop_hook(game.grafic.mlx, reload, &game);
 	mlx_key_hook(game.grafic.win, key_hook, &game);
-	// mlx_loop_hook(game.grafic.mlx, reload, &game);
 	mlx_loop(game.grafic.mlx);
 }

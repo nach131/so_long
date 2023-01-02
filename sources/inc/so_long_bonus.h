@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 23:22:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:18:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ typedef struct s_images
 	char *gwall[8];
 	char *floor[1];
 	char *wall[8];
-	char *hero[4];
+	char *hero[8];
 	char *door[2];
-	char *logo[1];
+	char *logo[39];
 	char *header[4];
 	char *mom[4];
+	char *red[1];
 } t_images;
 
 typedef struct s_scp
@@ -87,6 +88,8 @@ typedef struct s_grafic
 
 typedef struct s_game
 {
+	int fps;
+	int reload;
 	t_grafic grafic;
 	t_map map;
 	t_images images;
@@ -94,7 +97,7 @@ typedef struct s_game
 
 void err_file(int n, char *file);
 void init_img(t_game *game);
-void filter_map(t_game *game, int x, int y, char ch);
+void filter_wall(t_game *game, int x, int y, char ch);
 void ctrl_map(t_game *game);
 int ctrl_wall(t_map map, int rows, int cols, char ch);
 void ctrl_path(t_game *game);
@@ -106,7 +109,7 @@ void header(t_game *game);
 
 //	CUIDA SIN USO
 int reload(t_game *game);
-void pasada_dos(t_game *game, int x, int y, char ch);
-void re_floor(t_game *game, int x, int y, char ch);
+// void pasada_dos(t_game *game, int x, int y, char ch);
+// void re_floor(t_game *game, int x, int y, char ch);
 int free_map(t_game *game);
 #endif

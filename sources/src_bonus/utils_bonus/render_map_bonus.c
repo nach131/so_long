@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 20:01:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/02 17:24:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void static wall(t_game *game, int x, int y)
 		put_gwall(game, x + HEADER, y, GWALL);
 }
 
-void filter_map(t_game *game, int x, int y, char ch)
+void filter_wall(t_game *game, int x, int y, char ch)
 {
 	if (x != 0 || y != 0)
 	{
@@ -80,19 +80,20 @@ void filter_map(t_game *game, int x, int y, char ch)
 	}
 	if (ch == '1')
 		wall(game, x, y);
-	if (ch == '0')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.floor[0], y, x + HEADER);
-	if (ch == 'P')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.hero[0], y, x + HEADER);
+	// if (ch == '0')
+	// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 							game->images.floor[0], y, x + HEADER);
+	// if (ch == 'P')
+	// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 							game->images.hero[0], y, x + HEADER);
 	if (ch == 'E')
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 								game->images.door[0], y, x + HEADER);
-	if (ch == 'C')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.logo[0], y, x + HEADER);
-	if (ch == 'X')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.mom[0], y, x + HEADER);
+	// if (ch == 'C')
+	// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 							game->images.logo[0], y, x + HEADER);
+	// if (ch == 'X')
+	// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 							game->images.mom[0], y, x + HEADER);
 }
+

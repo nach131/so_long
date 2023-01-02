@@ -35,7 +35,7 @@ static char *result[] = {
 "w c #E3DADA",
 "e c #E4E3E0",
 "r c white",
-"t c None",
+"t c #6a9150",
 /* pixels */
 "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",
 "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",
