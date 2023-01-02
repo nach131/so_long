@@ -24,6 +24,17 @@
       // "args": ["${workspaceFolder}/sources/maps/fail/multi_player.ber"],
       "stopOnEntry": false,
       "cwd": "${fileDirname}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "bonus",
+      "program": "${workspaceFolder}/sources/so_long_bonus",
+      "args": ["${workspaceFolder}/sources/maps/enemy/enemy4.ber"],
+      // "args": ["${workspaceFolder}/sources/maps/fail/_no_player.ber"],
+      // "args": ["${workspaceFolder}/sources/maps/fail/multi_player.ber"],
+      "stopOnEntry": false,
+      "cwd": "${fileDirname}"
     }
 	]
 }

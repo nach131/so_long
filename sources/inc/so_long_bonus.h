@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/02 18:18:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/02 23:39:43 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_grafic
 typedef struct s_game
 {
 	int fps;
-	int reload;
+	int re_draw;
 	t_grafic grafic;
 	t_map map;
 	t_images images;
