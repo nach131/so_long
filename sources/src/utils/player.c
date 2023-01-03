@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 23:58:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:14:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void put_player(t_game *game, int type)
 							game->images.floor[0],
 							game->map.objets.player.y * SQUARE,
 							game->map.objets.player.x * SQUARE + HEADER);
-	if (type == 0)
+	if (type == RIGHT)
 		game->map.objets.player.y += 1;
-	else if (type == 1)
+	else if (type == LEFT)
 		game->map.objets.player.y -= 1;
-	else if (type == 2)
+	else if (type == DOWN)
 		game->map.objets.player.x += 1;
-	else if (type == 3)
+	else if (type == UP)
 		game->map.objets.player.x -= 1;
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 							game->images.hero[type],
@@ -53,17 +53,10 @@ void put_player(t_game *game, int type)
 
 void open_door(t_game *game)
 {
-	int static finished = FALSE;
-
-	if (!finished)
-
-	{
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.door[1],
-								game->map.objets.exit.y * SQUARE,
-								game->map.objets.exit.x * SQUARE + HEADER);
-		finished = TRUE;
-	}
+	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+							game->images.door[1],
+							game->map.objets.exit.y * SQUARE,
+							game->map.objets.exit.x * SQUARE + HEADER);
 }
 
 void move(t_game *game, int x, int y, int type)
@@ -77,10 +70,7 @@ void move(t_game *game, int x, int y, int type)
 		ctrl_move(game);
 	}
 	if (game->map.objets.goals == game->map.objets.get)
-	{
-		// ft_printf(MAGENTA "ya puedes salir melon");
 		open_door(game);
-	}
 
 	if (game->map.map[x][y] == 'E' &&
 		(game->map.objets.get == game->map.objets.goals))

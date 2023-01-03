@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/02 23:39:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:00:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ enum
 	ON_KEYRELEASE = 3,
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
+};
+
+enum
+{
+	RIGHT,
+	LEFT,
+	DOWN,
+	UP,
 };
 
 typedef struct s_images
@@ -109,6 +117,7 @@ void header(t_game *game);
 
 //	CUIDA SIN USO
 int reload(t_game *game);
+
 // void pasada_dos(t_game *game, int x, int y, char ch);
 // void re_floor(t_game *game, int x, int y, char ch);
 int free_map(t_game *game);

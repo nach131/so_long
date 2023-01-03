@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/02 23:23:05 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:04:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 #include "images_bonus.h"
 #include "../mlx/mlx.h"
 
-// 2-124  D
-// 0-123  A
-// 1-125  S
-// 13-126 W
-
 int key_hook(int keycode, t_game *game)
 {
 	int x = game->map.objets.player.x;
@@ -32,13 +27,13 @@ int key_hook(int keycode, t_game *game)
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 2 || keycode == 124)
-		move(game, x, y + 1, 0);
+		move(game, x, y + 1, RIGHT);
 	if (keycode == 0 || keycode == 123)
-		move(game, x, y - 1, 1);
+		move(game, x, y - 1, LEFT);
 	if (keycode == 1 || keycode == 125)
-		move(game, x + 1, y, 2);
+		move(game, x + 1, y, DOWN);
 	if (keycode == 13 || keycode == 126)
-		move(game, x - 1, y, 3);
+		move(game, x - 1, y, UP);
 	return (0);
 }
 
@@ -118,6 +113,7 @@ int main(int argc, char **argv)
 	ft_printf("enemy: x:%d, y:%d\n", game.map.objets.enemy.x, game.map.objets.enemy.y);
 
 	// hay que pasar gols a string y juntara todo como con los archivos
+
 	mlx_loop_hook(game.grafic.mlx, reload, &game);
 	mlx_key_hook(game.grafic.win, key_hook, &game);
 	mlx_loop(game.grafic.mlx);

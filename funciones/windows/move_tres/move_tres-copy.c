@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:04:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 11:46:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/02 18:12:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -399,10 +399,10 @@ int main(void)
 
 	windows(&game);
 
-	mlx_loop_hook(game.mlx, (char *)loop_logo_hero, &game);
+	mlx_loop_hook(game.mlx, los_dos, &game);
 	mlx_key_hook(game.win, key_hook, &game);
 
-	// ===========================================================================================
+	//===========================================================================================
 	mlx_expose_hook(game.win, loop_mom, &game);
 	// mlx_loop_hook(game.mlx, loop_hero, &game);
 

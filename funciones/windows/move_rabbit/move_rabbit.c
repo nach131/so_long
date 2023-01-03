@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:13:34 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/02 18:00:58 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:35:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int key_hook(int keycode, t_game *game)
 	else if (keycode == 2) // D
 	{
 		ft_printf(ORANGE "%c\n" WHITE, game->map[4][1]);
-		// game->map[4][1] = '0';
-		// game->map[4][2] = 'P';
+		game->map[4][1] = '0';
+		game->map[4][2] = 'P';
 		// move_r(game);
 	}
 	else if (keycode == 0) // A
 	{
 		ft_printf(ORANGE "%c\n" WHITE, game->map[4][2]);
-		// game->map[4][2] = '0';
-		// game->map[4][1] = 'P';
+		game->map[4][2] = '0';
+		game->map[4][1] = 'P';
 		// move_l(game);
 	}
 	else if (keycode == 1)
@@ -140,7 +140,7 @@ int main(void)
 	// printf("x:%d, y:%d\n", game.enemy.x, game.enemy.y);
 	// windows(&game);
 
-	mlx_loop_hook(game.mlx, loop_logo, &game);
+	mlx_loop_hook(game.mlx, (void *)loop_logo, &game);
 	mlx_key_hook(game.win, key_hook, &game);
 
 	//===========================================================================================

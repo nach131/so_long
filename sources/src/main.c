@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/01 16:18:49 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:02:40 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int key_hook(int keycode, t_game *game)
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 2 || keycode == 124)
-		move(game, x, y + 1, 0);
+		move(game, x, y + 1, RIGHT);
 	if (keycode == 0 || keycode == 123)
-		move(game, x, y - 1, 1);
+		move(game, x, y - 1, LEFT);
 	if (keycode == 1 || keycode == 125)
-		move(game, x + 1, y, 2);
+		move(game, x + 1, y, DOWN);
 	if (keycode == 13 || keycode == 126)
-		move(game, x - 1, y, 3);
+		move(game, x - 1, y, UP);
 	return (0);
 }
 
