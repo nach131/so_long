@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 20:33:12 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 22:58:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_images
 	char *hero_l[8];
 	char *hero_r[8];
 	char *hero_d[8];
+	char *hero_u[8];
 	char *door[2];
 	char *logo[39];
 	char *header[4];

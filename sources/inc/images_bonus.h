@@ -13,6 +13,7 @@ enum
 	HERO_R,
 	HERO_L,
 	HERO_D,
+	HERO_U,
 };
 
 enum
