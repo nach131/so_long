@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/02 23:49:58 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:57:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void static load_img(t_game *game, char *name, int num, int type)
 			game->images.floor[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == WALL)
 			game->images.wall[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
-		else if (type == HERO)
-			game->images.hero[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == DOOR)
 			game->images.door[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == LOGO)
@@ -66,6 +64,10 @@ void static load_img(t_game *game, char *name, int num, int type)
 			game->images.header[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == MOM)
 			game->images.mom[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == HERO_L)
+			game->images.hero_l[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == HERO_R)
+			game->images.hero_r[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		free(path);
 	}
 }
@@ -75,11 +77,12 @@ void init_img(t_game *game)
 	load_img(game, "gwall", 8, GWALL);
 	load_img(game, "floor", 1, FLOOR);
 	load_img(game, "wall", 8, WALL);
-	load_img(game, "rabbit", 8, HERO);
 	load_img(game, "door", 2, DOOR);
 	load_img(game, "logo", 39, LOGO);
 	load_img(game, "header", 4, IHEADER);
 	load_img(game, "mom", 4, MOM);
+	load_img(game, "rabbit_l", 8, HERO_L);
+	load_img(game, "rabbit_r", 8, HERO_R);
 
 	int w;
 	int h;

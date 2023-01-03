@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 12:15:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:27:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,14 @@ void put_player(t_game *game, int type)
 		game->map.objets.player.x += 1;
 	else if (type == UP)
 		game->map.objets.player.x -= 1;
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.hero[type],
-							game->map.objets.player.y * SQUARE,
-							game->map.objets.player.x * SQUARE + HEADER);
+	// SI CONSIGO QUE FUNCIONE LOGO Y HERO
+	//  FLAG PARA SABER LA DIRECCION Y EN LOOP_HERO LAS IMAGENES
+	mlx_loop_hook(game->grafic.mlx, (void *)loop_hero, game);
+
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 						game->images.hero[type],
+	// 						game->map.objets.player.y * SQUARE,
+	// 						game->map.objets.player.x * SQUARE + HEADER);
 }
 
 void open_door(t_game *game)
@@ -82,8 +86,3 @@ void move(t_game *game, int x, int y, int type)
 	// free_map(game);
 	// ft_printf(RED "CONSEGUIDO");
 }
-
-// 2-124  D
-// 0-123  A
-// 1-125  S
-// 13-126 W

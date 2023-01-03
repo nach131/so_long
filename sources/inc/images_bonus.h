@@ -6,11 +6,12 @@ enum
 	GWALL,
 	FLOOR,
 	WALL,
-	HERO,
 	DOOR,
 	LOGO,
 	IHEADER,
 	MOM,
+	HERO_R,
+	HERO_L,
 };
 
 enum

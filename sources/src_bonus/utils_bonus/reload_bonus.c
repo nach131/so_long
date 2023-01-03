@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 10:48:45 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:59:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,26 +74,56 @@ void loop_hero(t_game *game)
 	int static frame = 0;
 
 	// if (!(game->fps % 200))
-	if (!(game->fps % 2))
+	if (!(frame % 400))
 	{
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.hero[i],
-								game->map.objets.player.y * SQUARE,
-								game->map.objets.player.x * SQUARE + HEADER);
+		if (game->dir.right)
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+									game->images.hero_r[i],
+									game->map.objets.player.y * SQUARE,
+									game->map.objets.player.x * SQUARE + HEADER);
+		else if (game->dir.left)
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+									game->images.hero_l[i],
+									game->map.objets.player.y * SQUARE,
+									game->map.objets.player.x * SQUARE + HEADER);
 
 		if (i == 7)
 			i = 0;
 		i++;
+		frame = 1;
 	}
 	else
 		frame++;
+}
+
+void solo_loop_hero(t_game *game)
+{
+	int static i = 0;
+	int static frame = 0;
+
+	if (!(frame % 2))
+	{
+		if (game->dir.right)
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+									game->images.hero_r[i],
+									game->map.objets.player.y * SQUARE,
+									game->map.objets.player.x * SQUARE + HEADER);
+
+		if (i == 7)
+			i = 0;
+		i++;
+		frame = 1;
+	}
+	else
+		frame++;
+	// ft_bzero(&game->dir, sizeof(t_dir));
 }
 
 int reload(t_game *game)
 {
 	// printf(GREEN "%d ", game->reload);
 	game->fps++;
-	loop_hero(game);
+	// loop_hero(game);
 	// loop_logo(game);
 	// if (game->map.objets.goals)
 	lap_map(game, filter_colecc);

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 12:00:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:53:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct s_images
 	char *gwall[8];
 	char *floor[1];
 	char *wall[8];
-	char *hero[8];
+	char *hero_l[8];
+	char *hero_r[8];
 	char *door[2];
 	char *logo[39];
 	char *header[4];
@@ -94,10 +95,19 @@ typedef struct s_grafic
 	void *img;
 } t_grafic;
 
+typedef struct s_dir
+{
+	int right;
+	int left;
+	int down;
+	int up;
+} t_dir;
+
 typedef struct s_game
 {
 	int fps;
 	int re_draw;
+	t_dir dir;
 	t_grafic grafic;
 	t_map map;
 	t_images images;
@@ -117,6 +127,8 @@ void header(t_game *game);
 
 //	CUIDA SIN USO
 int reload(t_game *game);
+void loop_hero(t_game *game);
+void solo_loop_hero(t_game *game);
 
 // void pasada_dos(t_game *game, int x, int y, char ch);
 // void re_floor(t_game *game, int x, int y, char ch);
