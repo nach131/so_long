@@ -12,6 +12,7 @@ enum
 	MOM,
 	HERO_R,
 	HERO_L,
+	HERO_D,
 };
 
 enum
