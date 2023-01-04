@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 22:59:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:12:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,19 @@ int key_hook(int keycode, t_game *game)
 {
 	int x = game->map.objets.player.x;
 	int y = game->map.objets.player.y;
-	ft_bzero(&game->dir, sizeof(t_dir));
 
+	ft_bzero(&game->dir, sizeof(t_dir));
 	game->map.map[x][y] = '0';
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 2 || keycode == 124)
-	{
-		game->dir.right = TRUE;
 		move(game, x, y + 1, RIGHT);
-	}
 	if (keycode == 0 || keycode == 123)
-	{
-		game->dir.left = TRUE;
 		move(game, x, y - 1, LEFT);
-	}
 	if (keycode == 1 || keycode == 125)
-	{
-		game->dir.down = TRUE;
 		move(game, x + 1, y, DOWN);
-	}
 	if (keycode == 13 || keycode == 126)
-	{
-		game->dir.up = TRUE;
 		move(game, x - 1, y, UP);
-	}
 	return (0);
 }
 
@@ -116,7 +104,6 @@ int main(int argc, char **argv)
 	// 						game.images.header[3], 69, 43);
 
 	//=============================================================================
-	// reload_loop(&game);
 
 	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
 	// ft_printf("coleccion:%d\n", game.map.objets.goals);
@@ -124,8 +111,6 @@ int main(int argc, char **argv)
 	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
 	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
 	ft_printf("enemy: x:%d, y:%d\n", game.map.objets.enemy.x, game.map.objets.enemy.y);
-
-	// hay que pasar gols a string y juntara todo como con los archivos
 
 	// mlx_loop_hook(game.grafic.mlx, reload, &game);
 	mlx_key_hook(game.grafic.win, key_hook, &game);

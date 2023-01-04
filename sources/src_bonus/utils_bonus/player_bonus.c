@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 17:27:30 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:12:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,21 @@ void open_door(t_game *game)
 							game->map.objets.exit.x * SQUARE + HEADER);
 }
 
+void static ctrl_dir(t_dir *dir, int type)
+{
+	if (type == RIGHT)
+		dir->right = TRUE;
+	if (type == LEFT)
+		dir->left = TRUE;
+	if (type == DOWN)
+		dir->down = TRUE;
+	if (type == UP)
+		dir->up = TRUE;
+}
+
 void move(t_game *game, int x, int y, int type)
 {
+	ctrl_dir(&game->dir, type);
 	if (game->map.map[x][y] == 'C')
 		game->map.objets.get++;
 	if (game->map.map[x][y] != '1' && game->map.map[x][y] != 'E')
