@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/04 18:12:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/04 20:07:02 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,34 @@ void put_player(t_game *game, int type)
 		game->map.objets.player.x += 1;
 	else if (type == UP)
 		game->map.objets.player.x -= 1;
-	// SI CONSIGO QUE FUNCIONE LOGO Y HERO
-	//  FLAG PARA SABER LA DIRECCION Y EN LOOP_HERO LAS IMAGENES
 	mlx_loop_hook(game->grafic.mlx, (void *)loop_hero, game);
-
-	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-	// 						game->images.hero[type],
-	// 						game->map.objets.player.y * SQUARE,
-	// 						game->map.objets.player.x * SQUARE + HEADER);
 }
 
 void open_door(t_game *game)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.door[1],
-							game->map.objets.exit.y * SQUARE,
-							game->map.objets.exit.x * SQUARE + HEADER);
+	int frame;
+	int i;
+
+	frame = 0;
+	i = 0;
+	while (i < 4)
+	{
+		while (TRUE)
+		{
+			if (!(frame % 1000))
+			{
+				mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+										game->images.door[i],
+										game->map.objets.exit.y * SQUARE,
+										game->map.objets.exit.x * SQUARE + HEADER);
+				break;
+			}
+			else
+				frame++;
+		}
+		i++;
+		frame = 1;
+	}
 }
 
 void static ctrl_dir(t_dir *dir, int type)

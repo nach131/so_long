@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 22:58:54 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/04 20:20:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_images
 	char *hero_r[8];
 	char *hero_d[8];
 	char *hero_u[8];
-	char *door[2];
+	char *door[4];
 	char *logo[39];
 	char *header[4];
 	char *mom[4];
@@ -107,8 +107,6 @@ typedef struct s_dir
 
 typedef struct s_game
 {
-	int fps;
-	int re_draw;
 	t_dir dir;
 	t_grafic grafic;
 	t_map map;
@@ -126,11 +124,10 @@ void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch)
 void locate(t_game *game, int x, int y, char ch);
 void move(t_game *game, int x, int y, int type);
 void header(t_game *game);
+void loop_hero(t_game *game);
+void loop_door(t_game *game);
 
 //	CUIDA SIN USO
-int reload(t_game *game);
-void loop_hero(t_game *game);
-void solo_loop_hero(t_game *game);
 
 // void pasada_dos(t_game *game, int x, int y, char ch);
 // void re_floor(t_game *game, int x, int y, char ch);

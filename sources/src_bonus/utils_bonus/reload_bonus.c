@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 23:00:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/04 20:19:47 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,45 +102,4 @@ void loop_hero(t_game *game)
 	}
 	else
 		frame++;
-}
-
-void solo_loop_hero(t_game *game)
-{
-	int static i = 0;
-	int static frame = 0;
-
-	if (!(frame % 2))
-	{
-		if (game->dir.right)
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-									game->images.hero_r[i],
-									game->map.objets.player.y * SQUARE,
-									game->map.objets.player.x * SQUARE + HEADER);
-
-		if (i == 7)
-			i = 0;
-		i++;
-		frame = 1;
-	}
-	else
-		frame++;
-	// ft_bzero(&game->dir, sizeof(t_dir));
-}
-
-int reload(t_game *game)
-{
-	// printf(GREEN "%d ", game->reload);
-	game->fps++;
-	// loop_hero(game);
-	// loop_logo(game);
-	// if (game->map.objets.goals)
-	lap_map(game, filter_colecc);
-		if (!game->re_draw)
-		{
-		printf(RED "RELOAD ");
-		lap_map(game, filter_cero);
-		game->re_draw = TRUE;
-	}
-
-	return (0);
 }
