@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 10:07:31 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:10:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void findA(char arr[ROWS][COLS], int row, int col, int gols)
 int main()
 {
 	char arr[ROWS][COLS] = {"1111111",
-							"10C0011",
+							"10C0X11",
 							"1P01EC1",
 							"1111111"};
 
