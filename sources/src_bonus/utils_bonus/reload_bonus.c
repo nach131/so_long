@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 19:51:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:21:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ void static loop_hero(t_game *game)
 		frame++;
 }
 
+void static moved(int move, int *px, int *py)
+{
+	if (move == RIGHT)
+		*py += 1;
+	else if (move == LEFT)
+		*py -= 1;
+	else if (move == DOWN)
+		*px += 1;
+	else if (move == UP)
+		*px -= 1;
+}
+
 void static loop_mom(t_game *game)
 {
 	int px;
@@ -72,23 +84,24 @@ void static loop_mom(t_game *game)
 		printf("\n");
 	}
 
-		// HACER FUNCION QUE DEVUELVA EL VALOR DE PY O PX
-		if (move == RIGHT)
-			py += 1;
-		else if (move == LEFT)
-			py -= 1;
-		else if (move == DOWN)
-			px += 1;
-		else if (move == UP)
-			px -= 1;
-		if (game->map.map[px][py] != '1' && game->map.map[px][py] != 'E' && game->map.map[px][py] != 'C')
-		{
-			game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] = '+';
-			game->map.map[px][py] = 'X';
-			game->map.objets.enemy.x = px;
-			game->map.objets.enemy.y = py;
-			game->key = TRUE;
-		}
+	moved(move, &px, &py);
+	if (game->map.map[px][py] != '1' && game->map.map[px][py] != 'E' && game->map.map[px][py] != 'C')
+	{
+		// esto para floor
+		game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] = '+';
+		put_floor(game, game->map.objets.enemy.y, game->map.objets.enemy.x);
+
+		// esto para mom
+		game->map.map[px][py] = 'X';
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+								game->images.mom[0],
+								py * SQUARE,
+								px * SQUARE + HEADER);
+
+		game->map.objets.enemy.x = px;
+		game->map.objets.enemy.y = py;
+		game->key = TRUE;
+	}
 		else
 		{
 			px = game->map.objets.enemy.x;
@@ -100,7 +113,6 @@ void loops(t_game *game)
 {
 		if (game->key)
 			loop_hero(game);
-
 		else if (!game->key)
 			loop_mom(game);
 }

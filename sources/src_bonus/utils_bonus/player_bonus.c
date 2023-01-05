@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 19:47:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:20:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 
 #include "so_long_bonus.h"
 #include "../mlx/mlx.h"
+
+void put_floor(t_game *game, int y, int x)
+{
+	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+							game->images.floor[0],
+							y * SQUARE, x * SQUARE + HEADER);
+}
 
 void locate(t_game *game, int x, int y, char ch)
 {
@@ -38,10 +45,7 @@ void locate(t_game *game, int x, int y, char ch)
 
 void put_player(t_game *game, int type)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.floor[0],
-							game->map.objets.player.y * SQUARE,
-							game->map.objets.player.x * SQUARE + HEADER);
+	put_floor(game, game->map.objets.player.y, game->map.objets.player.x);
 	if (type == RIGHT)
 		game->map.objets.player.y += 1;
 	else if (type == LEFT)
