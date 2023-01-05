@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 14:54:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:35:12 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int main(int argc, char **argv)
 	// mlx_hook(game.grafic.win, ON_KEYRELEASE, 0, (void *)tomate, &game);
 	// mlx_expose_hook(game.grafic.win, (void *)put_mom, &game);
 
-	mom(&game);
+	put_mom(&game, game.map.objets.enemy.y, game.map.objets.enemy.x);
 
 	mlx_loop(game.grafic.mlx);
 }

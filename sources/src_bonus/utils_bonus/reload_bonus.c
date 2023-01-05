@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 20:21:50 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:36:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,7 @@ void static loop_mom(t_game *game)
 
 		// esto para mom
 		game->map.map[px][py] = 'X';
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.mom[0],
-								py * SQUARE,
-								px * SQUARE + HEADER);
-
+		put_mom(game, py, px);
 		game->map.objets.enemy.x = px;
 		game->map.objets.enemy.y = py;
 		game->key = TRUE;

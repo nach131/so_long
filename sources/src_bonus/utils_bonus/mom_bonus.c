@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:35:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 20:00:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:35:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@
 #include "images_bonus.h"
 #include "../mlx/mlx.h"
 
-void mom(t_game *game)
+void put_mom(t_game *game, int y, int x)
 {
-
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.mom[3],
-							game->map.objets.enemy.y * SQUARE,
-							game->map.objets.enemy.x * SQUARE + HEADER);
+							game->images.mom[0],
+							y * SQUARE, x * SQUARE + HEADER);
 }
