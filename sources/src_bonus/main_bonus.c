@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 01:11:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:36:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,9 @@ int main(int argc, char **argv)
 	ft_printf("enemy: x:%d, y:%d\n", game.map.objets.enemy.x, game.map.objets.enemy.y);
 
 	mlx_key_hook(game.grafic.win, key_hook, &game);
-	mlx_expose_hook(game.grafic.win, (void *)put_mom, &game);
+	// mlx_expose_hook(game.grafic.win, (void *)put_mom, &game);
 
-	mlx_put_image_to_window(game.grafic.mlx, game.grafic.win,
-							game.images.mom[3],
-							game.map.objets.enemy.y * SQUARE,
-							game.map.objets.enemy.x * SQUARE + HEADER);
+	mom(&game);
 
 	mlx_loop(game.grafic.mlx);
 }
