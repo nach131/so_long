@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 15:26:16 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:47:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch)
 void locate(t_game *game, int x, int y, char ch);
 void move(t_game *game, int x, int y, int type);
 void header(t_game *game);
-void loop_hero(t_game *game);
+void loops(t_game *game);
 void loop_door(t_game *game);
 
 void mom(t_game *game);
