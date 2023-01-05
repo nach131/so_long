@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/04 20:21:21 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 01:11:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,10 @@ int main(int argc, char **argv)
 	lap_map(&game, filter_wall);
 
 	// PRUEBA DE MOM
-	mlx_put_image_to_window(game.grafic.mlx, game.grafic.win,
-							game.images.mom[1],
-							game.map.objets.enemy.y * SQUARE,
-							(game.map.objets.enemy.x * SQUARE) + HEADER);
 	// mlx_put_image_to_window(game.grafic.mlx, game.grafic.win,
-	// 						game.images.header[3], 69, 43);
+	// 						game.images.mom[1],
+	// 						game.map.objets.enemy.y * SQUARE,
+	// 						(game.map.objets.enemy.x * SQUARE) + HEADER);
 
 	//=============================================================================
 
@@ -109,6 +107,12 @@ int main(int argc, char **argv)
 	ft_printf("enemy: x:%d, y:%d\n", game.map.objets.enemy.x, game.map.objets.enemy.y);
 
 	mlx_key_hook(game.grafic.win, key_hook, &game);
-	// mlx_loop_hook(game.grafic.mlx, (void *)loop_door, &game);
+	mlx_expose_hook(game.grafic.win, (void *)put_mom, &game);
+
+	mlx_put_image_to_window(game.grafic.mlx, game.grafic.win,
+							game.images.mom[3],
+							game.map.objets.enemy.y * SQUARE,
+							game.map.objets.enemy.x * SQUARE + HEADER);
+
 	mlx_loop(game.grafic.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:49:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/31 00:03:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/04 23:45:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void ctrl_move(t_game *game)
 
 	if (game->map.objets.get == game->map.objets.goals)
 		color = 0x0000FF00;
+	// color = 0xadff2f;
 	else
 		color = 0xFFFFFFFF;
 	marcador = collections(game->map.objets);
@@ -47,7 +48,6 @@ void ctrl_move(t_game *game)
 	activity = ft_itoa(game->map.objets.move);
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 							game->images.header[3], 75, 43);
-	// NACH ESTO ES EL MARCADOR
 	mlx_string_put(game->grafic.mlx, game->grafic.win, 119, 55, 0xFFFFFFFF, activity);
 	mlx_string_put(game->grafic.mlx, game->grafic.win, 80, 55, color, marcador);
 	free(marcador);

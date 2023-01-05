@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/04 23:08:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 09:59:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,12 @@ void filter_colecc(t_game *game, int x, int y, char ch)
 		put_logo(game, x, y);
 }
 
-void loop_hero_next(t_game *game, int i)
+void static put_hero_loop(t_game *game, char *img)
 {
-	if (game->dir.down)
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.hero_d[i],
-								game->map.objets.player.y * SQUARE,
-								game->map.objets.player.x * SQUARE + HEADER);
-	else if (game->dir.up)
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.hero_u[i],
-								game->map.objets.player.y * SQUARE,
-								game->map.objets.player.x * SQUARE + HEADER);
+	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+							img,
+							game->map.objets.player.y * SQUARE,
+							game->map.objets.player.x * SQUARE + HEADER);
 }
 
 void loop_hero(t_game *game)
@@ -90,16 +84,13 @@ void loop_hero(t_game *game)
 	if (!(frame % 600))
 	{
 		if (game->dir.right)
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-									game->images.hero_r[i],
-									game->map.objets.player.y * SQUARE,
-									game->map.objets.player.x * SQUARE + HEADER);
+			put_hero_loop(game, game->images.hero_r[i]);
 		else if (game->dir.left)
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-									game->images.hero_l[i],
-									game->map.objets.player.y * SQUARE,
-									game->map.objets.player.x * SQUARE + HEADER);
-		loop_hero_next(game, i);
+			put_hero_loop(game, game->images.hero_l[i]);
+		else if (game->dir.down)
+			put_hero_loop(game, game->images.hero_d[i]);
+		else if (game->dir.up)
+			put_hero_loop(game, game->images.hero_u[i]);
 		if (i == 7)
 			i = 0;
 		i++;
@@ -107,4 +98,12 @@ void loop_hero(t_game *game)
 	}
 	else
 		frame++;
+}
+
+void put_mom(t_game *game)
+{
+	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+							game->images.mom[1],
+							game->map.objets.enemy.y * SQUARE,
+							game->map.objets.enemy.x * SQUARE + HEADER);
 }

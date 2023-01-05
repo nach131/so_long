@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/04 21:17:43 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 01:08:52 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void loop_hero(t_game *game);
 void loop_door(t_game *game);
 
 //	CUIDA SIN USO
-
+void put_mom(t_game *game);
 // void pasada_dos(t_game *game, int x, int y, char ch);
 // void re_floor(t_game *game, int x, int y, char ch);
 int free_map(t_game *game);

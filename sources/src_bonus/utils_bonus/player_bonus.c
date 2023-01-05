@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/04 20:07:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/04 23:36:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void move(t_game *game, int x, int y, int type)
 	ctrl_dir(&game->dir, type);
 	if (game->map.map[x][y] == 'C')
 		game->map.objets.get++;
-	if (game->map.map[x][y] != '1' && game->map.map[x][y] != 'E')
+	if (game->map.map[x][y] != '1' && game->map.map[x][y] != 'E' &&
+		game->map.map[x][y] != 'X')
 	{
 		game->map.map[x][y] = 'P';
 		put_player(game, type);
