@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/06 21:39:33 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/06 23:59:17 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,18 +118,12 @@ void print_map(t_game *game)
 	}
 }
 
-int is_ok(char ch)
+int static is_ok(char ch)
 {
 	if (ch == '0' || ch == 'C')
-	{
-		// ft_printf(MAGENTA "\t1- ch:%c\n" WHITE, ch);
 		return (1);
-	}
 	else
-	{
-		// ft_printf(RED "0- ch:%c\n" WHITE, ch);
 		return (0);
-	}
 }
 
 void loop_mom(t_game *game)
@@ -145,7 +139,7 @@ void loop_mom(t_game *game)
 	row_diff = game->map.objets.player.x - game->map.objets.enemy.x;
 	col_diff = game->map.objets.player.y - game->map.objets.enemy.y;
 
-	if (abs(row_diff) > abs(col_diff))
+	if (ft_abs(row_diff) > ft_abs(col_diff))
 	{
 		// Si P está más lejos en la columna, se mueve en la fila
 		if (row_diff > 0)
