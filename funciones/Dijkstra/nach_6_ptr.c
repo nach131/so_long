@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/28 14:30:03 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:27:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main()
 	char **arr;
 
 	// arr = ft_file_to_dptr("../../sources/maps/min.ber", 0);
-	arr = ft_file_to_dptr("../../sources/maps/fail/_imposible_col.ber", 0);
+	arr = ft_file_to_dptr("../../sources/maps/fail/imposible.ber", 0);
 
 	while (arr[ROWS])
 		ROWS++;
@@ -82,6 +82,8 @@ int main()
 	}
 
 	// Imprimimos el resultado
+	system("clear");
+
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 01:08:41 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:16:28 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,4 @@ void init_img(t_game *game)
 	load_img(game, "rabbit_r", 8, HERO_R);
 	load_img(game, "rabbit_d", 8, HERO_D);
 	load_img(game, "rabbit_u", 8, HERO_U);
-
-	//============CUIDADO================================================================
-	int w;
-	int h;
-	game->images.red[0] = mlx_xpm_file_to_image(game->grafic.mlx, "xpm/red.xpm", &w, &h);
 }

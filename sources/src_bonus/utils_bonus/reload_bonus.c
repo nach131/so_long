@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 20:36:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/05 23:01:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void static loop_mom(t_game *game)
 	if (game->map.map[px][py] != '1' && game->map.map[px][py] != 'E' && game->map.map[px][py] != 'C')
 	{
 		// esto para floor
-		game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] = '+';
+		game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] = '0';
 		put_floor(game, game->map.objets.enemy.y, game->map.objets.enemy.x);
 
 		// esto para mom
