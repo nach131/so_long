@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:11:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 14:35:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:37:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,35 +81,9 @@ void loop_mom(t_game *game)
 	col_diff = game->map.objets.player.y - game->map.objets.enemy.y;
 
 	if (ft_abs(row_diff) > ft_abs(col_diff))
-	{
-
 		major_row(game, row_diff, pre_x, pre_y);
-		// if (row_diff > 0)
-		// {
-		// 	if (is_ok(game->map.map[pre_x + 1][pre_y]))
-		// 		game->map.objets.enemy.x++;
-		// }
-		// else
-		// {
-		// 	if (is_ok(game->map.map[pre_x - 1][pre_y]))
-		// 		game->map.objets.enemy.x--;
-		// }
-	}
 	else
-	{
 		major_col(game, col_diff, pre_x, pre_y);
-		// if (col_diff > 0)
-		// {
-		// 	if (is_ok(game->map.map[pre_x][pre_y + 1]))
-		// 		game->map.objets.enemy.y++;
-		// }
-		// else
-		// {
-		// 	if (is_ok(game->map.map[pre_x][pre_y - 1]))
-		// 		game->map.objets.enemy.y--;
-		// }
-	}
-
 	if (game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] == 'C')
 	{
 		put_img(game, game->images.logo[0], pre_y, pre_x);
