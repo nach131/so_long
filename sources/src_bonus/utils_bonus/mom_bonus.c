@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:11:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 14:12:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:35:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,34 @@ int static is_ok(char ch)
 		return (0);
 }
 
+void major_row(t_game *game, int row_diff, int pre_x, int pre_y)
+{
+	if (row_diff > 0)
+	{
+		if (is_ok(game->map.map[pre_x + 1][pre_y]))
+			game->map.objets.enemy.x++;
+	}
+	else
+	{
+		if (is_ok(game->map.map[pre_x - 1][pre_y]))
+			game->map.objets.enemy.x--;
+	}
+}
+
+void major_col(t_game *game, int col_diff, int pre_x, int pre_y)
+{
+	if (col_diff > 0)
+	{
+		if (is_ok(game->map.map[pre_x][pre_y + 1]))
+			game->map.objets.enemy.y++;
+	}
+	else
+	{
+		if (is_ok(game->map.map[pre_x][pre_y - 1]))
+			game->map.objets.enemy.y--;
+	}
+}
+
 void loop_mom(t_game *game)
 {
 	int row_diff;
@@ -54,29 +82,32 @@ void loop_mom(t_game *game)
 
 	if (ft_abs(row_diff) > ft_abs(col_diff))
 	{
-		if (row_diff > 0)
-		{
-			if (is_ok(game->map.map[pre_x + 1][pre_y]))
-				game->map.objets.enemy.x++;
-		}
-		else
-		{
-			if (is_ok(game->map.map[pre_x - 1][pre_y]))
-				game->map.objets.enemy.x--;
-		}
+
+		major_row(game, row_diff, pre_x, pre_y);
+		// if (row_diff > 0)
+		// {
+		// 	if (is_ok(game->map.map[pre_x + 1][pre_y]))
+		// 		game->map.objets.enemy.x++;
+		// }
+		// else
+		// {
+		// 	if (is_ok(game->map.map[pre_x - 1][pre_y]))
+		// 		game->map.objets.enemy.x--;
+		// }
 	}
 	else
 	{
-		if (col_diff > 0)
-		{
-			if (is_ok(game->map.map[pre_x][pre_y + 1]))
-				game->map.objets.enemy.y++;
-		}
-		else
-		{
-			if (is_ok(game->map.map[pre_x][pre_y - 1]))
-				game->map.objets.enemy.y--;
-		}
+		major_col(game, col_diff, pre_x, pre_y);
+		// if (col_diff > 0)
+		// {
+		// 	if (is_ok(game->map.map[pre_x][pre_y + 1]))
+		// 		game->map.objets.enemy.y++;
+		// }
+		// else
+		// {
+		// 	if (is_ok(game->map.map[pre_x][pre_y - 1]))
+		// 		game->map.objets.enemy.y--;
+		// }
 	}
 
 	if (game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] == 'C')
