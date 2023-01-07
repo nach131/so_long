@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 20:20:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:35:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ void static ctrl_dir(t_dir *dir, int type)
 void move(t_game *game, int x, int y, int type)
 {
 	ctrl_dir(&game->dir, type);
+	// para quitar vida
+	if (game->map.map[x][y] == 'X')
+		exit(0);
 	if (game->map.map[x][y] == 'C')
 		game->map.objets.get++;
 	if (game->map.map[x][y] != '1' && game->map.map[x][y] != 'E' &&

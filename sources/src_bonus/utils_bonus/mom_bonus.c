@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:11:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 14:43:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:05:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@
 #include "images_bonus.h"
 #include "../mlx/mlx.h"
 
-void print_map(t_game *game)
-{
-	system("clear");
-	for (int i = 0; i < game->map.rows; i++)
-	{
-		for (int j = 0; j < game->map.cols; j++)
-		{
-			ft_printf("%c", game->map.map[i][j]);
-		}
-		ft_printf("\n");
-	}
-}
+// void print_map(t_game *game)
+// {
+// 	system("clear");
+// 	for (int i = 0; i < game->map.rows; i++)
+// 	{
+// 		for (int j = 0; j < game->map.cols; j++)
+// 		{
+// 			ft_printf("%c", game->map.map[i][j]);
+// 		}
+// 		ft_printf("\n");
+// 	}
+// }
 
 int static is_ok(char ch)
 {
@@ -39,7 +39,7 @@ int static is_ok(char ch)
 		return (0);
 }
 
-void major_row(t_game *game, int row_diff, int pre_x, int pre_y)
+void static major_row(t_game *game, int row_diff, int pre_x, int pre_y)
 {
 	if (row_diff > 0)
 	{
@@ -53,7 +53,7 @@ void major_row(t_game *game, int row_diff, int pre_x, int pre_y)
 	}
 }
 
-void major_col(t_game *game, int col_diff, int pre_x, int pre_y)
+void static major_col(t_game *game, int col_diff, int pre_x, int pre_y)
 {
 	if (col_diff > 0)
 	{
@@ -67,7 +67,7 @@ void major_col(t_game *game, int col_diff, int pre_x, int pre_y)
 	}
 }
 
-void reload_stepped(t_game *game, int pre_x, int pre_y)
+void static reload_stepped(t_game *game, int pre_x, int pre_y)
 {
 	if (game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] == 'C')
 	{
@@ -88,7 +88,7 @@ void loop_mom(t_game *game)
 	int pre_x;
 	int pre_y;
 
-	print_map(game); // QUITAR y BORRAR FUNCION
+	// print_map(game); // QUITAR y BORRAR FUNCION
 	pre_x = game->map.objets.enemy.x;
 	pre_y = game->map.objets.enemy.y;
 	row_diff = game->map.objets.player.x - game->map.objets.enemy.x;
@@ -98,6 +98,7 @@ void loop_mom(t_game *game)
 	else
 		major_col(game, col_diff, pre_x, pre_y);
 	reload_stepped(game, pre_x, pre_y);
+	caught(game);
 	game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] = 'X';
 	put_img(game, game->images.mom[0], game->map.objets.enemy.y, game->map.objets.enemy.x);
 	game->key = TRUE;
