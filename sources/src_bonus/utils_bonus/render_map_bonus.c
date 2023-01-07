@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/04 23:11:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 12:42:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ int random_num(int n)
 
 void static put_gwall(t_game *game, int x, int y, int type)
 {
+
 	if (type == 0)
+		// CAMBIAR PUT IMG
 		mlx_put_image_to_window(game->grafic.mlx,
 								game->grafic.win,
 								game->images.gwall[random_num(7)], y, x);
 }
 
+// ESTA QUITAR
 void static put_wall(t_game *game, char *path, int x, int y)
 {
 	mlx_put_image_to_window(game->grafic.mlx,
@@ -48,6 +51,7 @@ void static wall(t_game *game, int x, int y)
 	h = (game->map.rows * SQUARE) - SQUARE;
 	v = (game->map.cols * SQUARE) - SQUARE;
 	if (x == 0 && y == 0)
+		// CAMBIAR PUT IMG TODAS IGUAL
 		put_wall(game, game->images.wall[WALL_TL], x + HEADER, y);
 	else if (x == h && y == v && x != 0 && y != 0)
 		put_wall(game, game->images.wall[WALL_BR], x + HEADER, y);
@@ -77,19 +81,20 @@ void filter_wall(t_game *game, int x, int y, char ch)
 	if (ch == '1')
 		wall(game, x, y);
 	if (ch == '0')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.floor[0], y, x + HEADER);
+		// CAMBIAR PUT IMG TODAS IGUAL
+		put_img(game, game->images.floor[0], y / SQUARE, x / SQUARE);
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 						game->images.floor[0], y, x + HEADER);
 	if (ch == 'P')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.hero_d[0], y, x + HEADER);
+		put_img(game, game->images.hero_d[0], y / SQUARE, x / SQUARE);
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 						game->images.hero_d[0], y, x + HEADER);
 	if (ch == 'E')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.door[0], y, x + HEADER);
+		put_img(game, game->images.door[0], y / SQUARE, x / SQUARE);
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// game->images.door[0], y, x + HEADER);
 	if (ch == 'C')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.logo[0], y, x + HEADER);
-	// if (ch == 'X')
-	// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-	// 							game->images.mom[0], y, x + HEADER);
+		put_img(game, game->images.logo[0], y / SQUARE, x / SQUARE);
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	// 						game->images.logo[0], y, x + HEADER);
 }
-
