@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/06 21:03:17 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:22:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 
 int key_hook(int keycode, t_game *game)
 {
-	game->key = TRUE;
-	int x = game->map.objets.player.x;
-	int y = game->map.objets.player.y;
+	int x;
+	int y;
 
+	game->key = TRUE;
+	x = game->map.objets.player.x;
+	y = game->map.objets.player.y;
 	ft_bzero(&game->dir, sizeof(t_dir));
 	game->map.map[x][y] = '0';
 	if (keycode == 53)
@@ -36,6 +38,8 @@ int key_hook(int keycode, t_game *game)
 		move(game, x + 1, y, DOWN);
 	if (keycode == 13 || keycode == 126)
 		move(game, x - 1, y, UP);
+	// if (keycode == 117) // es Del
+	// 	exit(0);
 	return (0);
 }
 
@@ -78,42 +82,23 @@ void window(t_game *game)
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
 }
 
-// void tomate(t_game *game)
-// {
-// 	game->key = FALSE;
-// 	(void)game;
-// }
-
 int main(int argc, char **argv)
 {
 	t_game game;
+
 	ft_bzero(&game, sizeof(t_game));
 	err_file(argc, argv[1]);
 	game.map.map = ft_file_to_dptr(argv[1], 0);
 	ctrl_map(&game);
 	ctrl_path(&game);
-
 	game.grafic.mlx = mlx_init();
 	init_img(&game);
 	window(&game);
 	header(&game);
 	lap_map(&game, locate);
 	lap_map(&game, filter_wall);
-
-	//=============================================================================
-
-	ft_printf(ORANGE "\nrows:%d, cols:%d\n", game.map.rows, game.map.cols);
-	ft_printf("player: x:%d, y:%d\n", game.map.objets.player.x, game.map.objets.player.y);
-	ft_printf("exit: x:%d, y:%d\n", game.map.objets.exit.x, game.map.objets.exit.y);
-	ft_printf("enemy: x:%d, y:%d\n", game.map.objets.enemy.x, game.map.objets.enemy.y);
-
 	mlx_key_hook(game.grafic.win, key_hook, &game);
-	// mlx_hook(game.grafic.win, ON_KEYRELEASE, 0, (void *)tomate, &game);
-	// mlx_expose_hook(game.grafic.win, (void *)put_mom, &game);
-
-	// put_mom(&game, game.map.objets.enemy.y, game.map.objets.enemy.x);
 	put_img(&game, game.images.mom[0], game.map.objets.enemy.y,
 			game.map.objets.enemy.x);
-
 	mlx_loop(game.grafic.mlx);
 }
