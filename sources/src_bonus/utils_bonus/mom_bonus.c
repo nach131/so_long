@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:11:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 14:37:04 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:43:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,8 @@ void major_col(t_game *game, int col_diff, int pre_x, int pre_y)
 	}
 }
 
-void loop_mom(t_game *game)
+void reload_stepped(t_game *game, int pre_x, int pre_y)
 {
-	int row_diff;
-	int col_diff;
-	int pre_x;
-	int pre_y;
-
-	print_map(game);
-	pre_x = game->map.objets.enemy.x;
-	pre_y = game->map.objets.enemy.y;
-	row_diff = game->map.objets.player.x - game->map.objets.enemy.x;
-	col_diff = game->map.objets.player.y - game->map.objets.enemy.y;
-
-	if (ft_abs(row_diff) > ft_abs(col_diff))
-		major_row(game, row_diff, pre_x, pre_y);
-	else
-		major_col(game, col_diff, pre_x, pre_y);
 	if (game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] == 'C')
 	{
 		put_img(game, game->images.logo[0], pre_y, pre_x);
@@ -94,11 +79,26 @@ void loop_mom(t_game *game)
 		put_floor(game, pre_y, pre_x);
 		game->map.map[pre_x][pre_y] = '0';
 	}
+}
 
-	// Actualiza la posición de X en el arreglo
+void loop_mom(t_game *game)
+{
+	int row_diff;
+	int col_diff;
+	int pre_x;
+	int pre_y;
+
+	print_map(game); // QUITAR y BORRAR FUNCION
+	pre_x = game->map.objets.enemy.x;
+	pre_y = game->map.objets.enemy.y;
+	row_diff = game->map.objets.player.x - game->map.objets.enemy.x;
+	col_diff = game->map.objets.player.y - game->map.objets.enemy.y;
+	if (ft_abs(row_diff) > ft_abs(col_diff))
+		major_row(game, row_diff, pre_x, pre_y);
+	else
+		major_col(game, col_diff, pre_x, pre_y);
+	reload_stepped(game, pre_x, pre_y);
 	game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] = 'X';
 	put_img(game, game->images.mom[0], game->map.objets.enemy.y, game->map.objets.enemy.x);
-	// put_mom(game, game->map.objets.enemy.y, game->map.objets.enemy.x);
-
 	game->key = TRUE;
 }
