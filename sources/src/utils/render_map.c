@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 20:09:41 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:28:54 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int random_num(int n)
 
 void static put_gwall(t_game *game, int x, int y, int type)
 {
-	if (type == 0)
+	if (type == GWALL)
 		mlx_put_image_to_window(game->grafic.mlx,
 								game->grafic.win,
 								game->images.gwall[random_num(7)], y, x);
