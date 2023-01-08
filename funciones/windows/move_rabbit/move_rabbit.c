@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:13:34 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 11:35:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/08 22:29:38 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ void put_logo(t_game *game, int x, int y)
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->logo[i], y, x);
 		if (i == 38)
+		{
 			i = 0;
+			game->flag = 0;
+		}
 		i++;
 		fps = 1;
 	}
@@ -83,11 +86,14 @@ void put_hero(t_game *game, int x, int y)
 	x *= 32;
 	y *= 32;
 
-	if (!(fps % 20))
+	if (!(fps % 200))
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->hero[i], y, x);
 		if (i == 7)
+		{
 			i = 0;
+			game->flag = 1;
+		}
 		i++;
 		fps = 1;
 	}
@@ -97,7 +103,27 @@ void put_hero(t_game *game, int x, int y)
 	}
 }
 
-int loop_logo(t_game *game)
+int find_hero(t_game *game)
+{
+	int i = 0;
+	int j;
+
+	while (i < ROWS)
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'P')
+				put_hero(game, i, j);
+			// else if (game->map[i][j] == 'C')
+			// 	put_logo(game, i, j);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+int find_logo(t_game *game)
 {
 	int i = 0;
 	int j;
@@ -109,8 +135,6 @@ int loop_logo(t_game *game)
 		{
 			if (game->map[i][j] == 'C')
 				put_logo(game, i, j);
-			else if (game->map[i][j] == 'P')
-				put_hero(game, i, j);
 			j++;
 		}
 		i++;
@@ -120,12 +144,10 @@ int loop_logo(t_game *game)
 
 void los_dos(t_game *game)
 {
-
-	loop_logo(game);
-	// windows(game);
-	// loop_mom(game);
-	// loop_hero(game);
-	// return (0);
+	if (game->flag == 0)
+		find_hero(game);
+	else if (game->flag == 1)
+		find_logo(game);
 }
 
 int main(void)
@@ -135,28 +157,15 @@ int main(void)
 	game.map = ft_file_to_dptr("min.ber", 0);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 20 * 32, ROWS * 32, "nach131 So Long");
-	load_images(&game);
-	// init_game(&game); // localiza enemy
+	// load_images(&game);
+	load_img(&game, "rabbit_r", 8, 1);
+	load_img(&game, "logo", 39, 2);
 	// printf("x:%d, y:%d\n", game.enemy.x, game.enemy.y);
-	// windows(&game);
 
-	mlx_loop_hook(game.mlx, (void *)loop_logo, &game);
+	mlx_loop_hook(game.mlx, (void *)los_dos, &game);
 	mlx_key_hook(game.win, key_hook, &game);
 
 	//===========================================================================================
-	// mlx_expose_hook(game.win, loop_mom, &game);
-	// mlx_loop_hook(game.mlx, loop_hero, &game);
 
 	mlx_loop(game.mlx);
 }
-
-//  gcc -framework OpenGL -framework AppKit move_rabbit.c load_img.c  ../../../sources/mlx/libmlx.a ../../../sources/libft/libft.a && ./a.out
-
-// ORDEN
-
-// mlx_loop_hook(g->id, ft_update, (void *)g);
-//  SI HAY QUE REDIBUJAR
-
-// mlx_hook(g->w_id, 17, 0, end_game, (void *)g);
-// mlx_key_hook(g->w_id, key_hook, (void *)g);
-// mlx_loop(g->id);

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:17:39 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/02 14:30:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/08 22:01:12 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,43 @@ void load_images(t_game *game)
 	game->mom[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom5.xpm", &width, &height);
 	game->mom[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom6.xpm", &width, &height);
 	game->mom[3] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/mom/mom7.xpm", &width, &height);
+}
+
+char static *path_img(char *name_img, int n)
+{
+	char *nbr;
+	char *s1;
+	char *s2;
+
+	nbr = ft_itoa(n);
+	s1 = ft_strjoin("../../../sources/xpm/", name_img);
+	s2 = ft_strjoin(s1, "/");
+	free(s1);
+	s1 = ft_strjoin(s2, name_img);
+	free(s2);
+	s2 = ft_strjoin(s1, nbr);
+	free(s1);
+	s1 = ft_strjoin(s2, ".xpm");
+	free(s2);
+	free(nbr);
+	return (s1);
+}
+
+void load_img(t_game *game, char *name, int num, int type)
+{
+	int i;
+	int w;
+	int h;
+	char *path;
+
+	i = -1;
+
+	while (++i < num)
+	{
+		path = path_img(name, i);
+		if (type == 1)
+			game->hero[i] = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
+		else if (type == 2)
+			game->logo[i] = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
+	}
 }

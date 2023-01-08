@@ -41,13 +41,15 @@ typedef struct s_game
 	void *win;
 	char *textures[6];
 	char *hero[8];
-	char *logo[40];
+	char *logo[39];
 	char *mom[4];
 	char **map;
 	t_scp enemy;
+	int flag;
 } t_game;
 
 #define ROWS 6
 #define COLS 20
 
+void load_img(t_game *game, char *name, int num, int type);
 void load_images(t_game *game);

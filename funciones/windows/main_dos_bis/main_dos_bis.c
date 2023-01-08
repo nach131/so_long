@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/08 13:15:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:16:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #include "../../../sources/mlx/mlx.h"
 #include "../../../sources/libft/inc/libft.h"
+#include "../../../sources/libft/inc/colors.h"
+#include "../../../sources/libft/inc/ft_printf.h"
 
 #include <unistd.h>
 
@@ -43,7 +45,7 @@ enum
 typedef struct s_images
 {
 	void *mom;
-	char *gameover[104];
+	void *gameover[104];
 	char *won[114];
 
 } t_images;
@@ -66,11 +68,12 @@ typedef struct s_game
 void segunda(t_game *game);
 void presentacion(t_game *game);
 void tercera(t_game *game);
+void free_all(t_game *game);
 
 int key_push(int key, t_game *game)
 {
 	if (key == KEY_ESC)
-		exit(0);
+		free_all(game);
 	if (key == KEY_A)
 		write(1, "A", 1);
 	if (key == KEY_1)
@@ -95,6 +98,24 @@ int key_push(int key, t_game *game)
 // 	if (key == KEY_2)
 // 		write(1, "levantado dos\n", 14);
 // }
+
+void free_all(t_game *game)
+{
+	// ft_bzero(&game, sizeof(t_game));
+	// if (game->images.gameover)
+	// {
+	ft_printf(RED "\tFREE\n");
+
+	int i = 0;
+	while (game->images.gameover[i] != NULL)
+	{
+		ft_printf(CYAN " %d-%p", i, game->images.gameover[i]);
+		mlx_destroy_image(game->grafic.mlx, game->images.gameover[i]);
+		// free(game->images.gameover[i]);
+		i++;
+	}
+	exit(0);
+}
 
 char static *path_img(char *name_img, int n)
 {
@@ -130,7 +151,11 @@ void static load_image(t_game *game, char *name, int num)
 	{
 		path = path_img(name, i);
 		if (game->type == 1)
+		{
+
 			game->images.gameover[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+			// ft_printf(MAGENTA "%p ", game->images.gameover[i]);
+		}
 		else if (game->type == 2)
 			game->images.won[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
 	}
@@ -146,12 +171,14 @@ void loops(t_game *game)
 			if (game->type == 1)
 			{
 				mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.gameover[i], 0, 0);
+				// ft_printf(MAGENTA "%p ", game->images.gameover[i]);
 				if (i == 103)
 					i = 0;
 			}
 			else if (game->type == 2)
 			{
 				mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[i], 0, 0);
+
 				if (i == 113)
 					i = 0;
 			}
@@ -170,12 +197,11 @@ void segunda(t_game *game)
 	load_image(game, "gameover", 104);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "Game Over");
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.gameover[0], 0, 0);
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.gameover[0], 0, 0);
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
-	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
 }
-
+//
 void tercera(t_game *game)
 {
 	game->type = 2;
@@ -183,10 +209,9 @@ void tercera(t_game *game)
 	load_image(game, "won", 114);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "You Won");
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[0], 0, 0);
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[0], 0, 0);
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
-	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
 }
 
 void presentacion(t_game *game)
@@ -203,9 +228,9 @@ void presentacion(t_game *game)
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 20 * 32, 15 * 32, "nach131 So Long");
 	game->images.mom = mlx_xpm_file_to_image(game->grafic.mlx, path_rabbit, &img_width, &img_height);
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.mom, 0, 0);
+	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
 	// mlx_hook(game->grafic.win, ON_KEYRELEASE, 1L << 0, key_pull, game);
-	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
 }
 
 int main(void)
