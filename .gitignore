@@ -58,5 +58,6 @@ dkms.conf
 node_modules/
 *.psd
 images/_estudio
+images/_nach
 .gif
 so_long
