@@ -1,4 +1,5 @@
 
+// #include "../../../sources/mlx/mlx_int.h"
 #include "../../../sources/mlx/mlx.h"
 #include <unistd.h>
 #include <stdio.h>
@@ -28,6 +29,12 @@ enum
 	COL,
 	ROJO,
 };
+enum
+{
+	HERO,
+	LOGO,
+	MOM,
+};
 
 typedef struct s_scp
 {
@@ -42,7 +49,7 @@ typedef struct s_game
 	char *textures[6];
 	char *hero[8];
 	char *logo[39];
-	char *mom[4];
+	t_list *mom;
 	char **map;
 	t_scp enemy;
 	int flag;

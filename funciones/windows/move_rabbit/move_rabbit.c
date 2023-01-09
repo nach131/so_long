@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:13:34 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/09 01:17:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:07:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,14 +157,16 @@ int main(void)
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 20 * 32, ROWS * 32, "nach131 So Long");
 	// load_images(&game);
-	load_img(&game, "rabbit_r", 8, 1);
-	load_img(&game, "logo", 39, 2);
+	load_img(&game, "rabbit_r", 8, HERO);
+	load_img(&game, "logo", 39, LOGO);
+	load_img(&game, "mom", 1, MOM);
 	// printf("x:%d, y:%d\n", game.enemy.x, game.enemy.y);
+	mlx_put_image_to_window(game.mlx, game.win, game.mom->content, 4, 4);
 
 	mlx_loop_hook(game.mlx, (void *)los_dos, &game);
 	mlx_key_hook(game.win, key_hook, &game);
 
-	//===========================================================================================
-
 	mlx_loop(game.mlx);
 }
+
+// gcc -framework OpenGL -framework AppKit move_rabbit.c load_img.c ../../../sources/mlx/libmlx.a ../../../sources/libft/libft.a
