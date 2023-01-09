@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/09 12:26:10 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:06:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ enum
 typedef struct s_images
 {
 	void *mom;
-	void *gameover[104];
-	char *won[114];
 	t_list *end;
+	t_list *won;
 	t_list *tmp;
 
 } t_images;
@@ -103,10 +102,30 @@ int key_push(int key, t_game *game)
 
 void free_all(t_game *game)
 {
-	// if (game->type == 1)
+	// mlx_destroy_image(game->grafic.mlx, game->images.lwon);
+	// if (game->images.end)
 	// {
-
+	// 	ft_lstclear(&game->images.tmp, ft_lstdelone);
 	// }
+
+	if (game->images.won)
+	{
+		ft_printf(ORANGE "\tif\n");
+		ft_lstclear(&game->images.won, ft_lstdelitem);
+		// while (game->images.won)
+		// {
+		// 	// mlx_destroy_image(game->grafic.mlx, game->images.won);
+		// 	ft_printf(RED "\t\twhile");
+		// 	game->images.won = game->images.won->next;
+		// }
+	}
+
+	// if (game->images.tmp)
+	// {
+	// 	ft_printf(CYAN "\ttmp lst\n");
+	// 	ft_lstclear(&game->images.tmp, ft_lstdelitem);
+	// }
+
 	exit(0);
 }
 
@@ -145,15 +164,9 @@ void static load_image(t_game *game, char *name, int num, int type)
 		path = path_img(name, i);
 		if (type == 1)
 			ft_lstadd_back(&game->images.end, ft_lstnew(mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h)));
-		// game->images.gameover[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
 		else if (type == 2)
-			game->images.won[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+			ft_lstadd_back(&game->images.won, ft_lstnew(mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h)));
 	}
-	// while (tmp)
-	// {
-	// 	ft_printf(CYAN "%p ", tmp->content);
-	// 	tmp = tmp->next;
-	// }
 }
 
 void tokemo(t_game *game, t_list *lst)
@@ -165,7 +178,6 @@ void tokemo(t_game *game, t_list *lst)
 
 void loops(t_game *game)
 {
-	int static i = 0;
 	int static frame = 0;
 
 	if (!(frame % 600))
@@ -179,12 +191,12 @@ void loops(t_game *game)
 		}
 		else if (game->type == 2)
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[i], 0, 0);
-
-			if (i == 113)
-				i = 0;
+			// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[i], 0, 0);
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.tmp->content, 0, 0);
+			game->images.tmp = game->images.tmp->next;
+			if (game->images.tmp == NULL)
+				game->images.tmp = game->images.won;
 		}
-		i++;
 		frame = 1;
 	}
 	else
@@ -212,7 +224,9 @@ void tercera(t_game *game)
 	load_image(game, "won", 114, 2);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "You Won");
-	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[0], 0, 0);
+
+	game->images.tmp = game->images.won;
+
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
 }

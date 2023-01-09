@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:17:39 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/09 03:06:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:33:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,8 @@ void load_img(t_game *game, char *name, int num, int type)
 			game->logo[i] = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
 		else if (type == MOM)
 		{
-			// game->textures[i] = mlx_xpm_file_to_image(game->mlx, path, &w, &h);
 			tmp = ft_lstnew(mlx_xpm_file_to_image(game->mlx, path, &w, &h));
 			game->mom = tmp;
-			// ft_lstnew(mlx_xpm_file_to_image(g->id, s, &size, &size)));
-
-			// ft_lstadd_back(&game->mom, tmp);
 		}
 	}
 }

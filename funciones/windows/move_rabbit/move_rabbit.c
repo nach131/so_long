@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:13:34 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/09 03:07:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:36:29 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,28 @@
 
 #include "header.h"
 
+void free_img(t_game *game)
+{
+	int i = -1;
+	if (game->hero[0] != NULL)
+		while (++i < 8)
+			mlx_destroy_image(game->mlx, game->hero[i]);
+	mlx_destroy_window(game->mlx, game->win);
+
+	// i = -1;
+	// if (game->logo[0] == NULL)
+	// 	while (++i < 39)
+	// 		mlx_destroy_image(game->mlx, game->logo[i]);
+}
+
 int key_hook(int keycode, t_game *game)
 {
 	printf("Keycode: %d\n", keycode);
 	if (keycode == 53)
+	{
+		free_img(game);
 		exit(0);
+	}
 	else if (keycode == 13) // W
 	{
 		;
@@ -145,8 +162,8 @@ void los_dos(t_game *game)
 {
 	if (game->flag == 0)
 		find_hero(game);
-	else if (game->flag == 1)
-		find_logo(game);
+	// else if (game->flag == 1)
+	// 	find_logo(game);
 }
 
 int main(void)
@@ -156,11 +173,9 @@ int main(void)
 	game.map = ft_file_to_dptr("min.ber", 0);
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 20 * 32, ROWS * 32, "nach131 So Long");
-	// load_images(&game);
 	load_img(&game, "rabbit_r", 8, HERO);
-	load_img(&game, "logo", 39, LOGO);
+	// load_img(&game, "logo", 39, LOGO);
 	load_img(&game, "mom", 1, MOM);
-	// printf("x:%d, y:%d\n", game.enemy.x, game.enemy.y);
 	mlx_put_image_to_window(game.mlx, game.win, game.mom->content, 4, 4);
 
 	mlx_loop_hook(game.mlx, (void *)los_dos, &game);
