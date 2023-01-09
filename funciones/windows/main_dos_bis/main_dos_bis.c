@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/08 16:16:31 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/09 02:00:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,18 +101,20 @@ int key_push(int key, t_game *game)
 
 void free_all(t_game *game)
 {
-	// ft_bzero(&game, sizeof(t_game));
-	// if (game->images.gameover)
-	// {
-	ft_printf(RED "\tFREE\n");
-
 	int i = 0;
-	while (game->images.gameover[i] != NULL)
+	// mlx_img_list_t *tomate;
+	if (game->type == 1)
 	{
-		ft_printf(CYAN " %d-%p", i, game->images.gameover[i]);
-		mlx_destroy_image(game->grafic.mlx, game->images.gameover[i]);
-		// free(game->images.gameover[i]);
-		i++;
+		while (i < 104)
+		{
+			ft_printf(CYAN "\t%d-%p" RED, i, &game->images.gameover[i]);
+			// printf("\t%d-%p", i, game->images.gameover[i]);
+			// tomate->next = game->images.gameover[i];
+			// mlx_destroy_image(game->grafic.mlx, tomate);
+			mlx_destroy_image(game->grafic.mlx, game->images.gameover[i]);
+			// free(game->images.gameover[i]);
+			i++;
+		}
 	}
 	exit(0);
 }
@@ -137,7 +139,7 @@ char static *path_img(char *name_img, int n)
 	return (s1);
 }
 
-void static load_image(t_game *game, char *name, int num)
+void static load_image(t_game *game, char *name, int num, int type)
 {
 	int i;
 	int w;
@@ -150,13 +152,9 @@ void static load_image(t_game *game, char *name, int num)
 	while (++i < num)
 	{
 		path = path_img(name, i);
-		if (game->type == 1)
-		{
-
+		if (type == 1)
 			game->images.gameover[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
-			// ft_printf(MAGENTA "%p ", game->images.gameover[i]);
-		}
-		else if (game->type == 2)
+		else if (type == 2)
 			game->images.won[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
 	}
 }
@@ -194,10 +192,9 @@ void segunda(t_game *game)
 {
 	game->type = 1;
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-	load_image(game, "gameover", 104);
+	load_image(game, "gameover", 104, 1);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "Game Over");
-	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.gameover[0], 0, 0);
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
 }
@@ -206,7 +203,7 @@ void tercera(t_game *game)
 {
 	game->type = 2;
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-	load_image(game, "won", 114);
+	load_image(game, "won", 114, 2);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "You Won");
 	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[0], 0, 0);
@@ -243,4 +240,4 @@ int main(void)
 	mlx_loop(game.grafic.mlx);
 }
 
-// gcc -framework OpenGL -framework AppKit put_main.c ../../../sources/mlx/libmlx.a
+// gcc -framework OpenGL -framework AppKit main_dos_bis.c ../../../sources/mlx/libmlx.a

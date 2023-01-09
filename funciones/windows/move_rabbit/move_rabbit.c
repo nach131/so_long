@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:13:34 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/08 22:29:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/09 01:17:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void put_logo(t_game *game, int x, int y)
 	y *= 32;
 
 	// if (!(fps % 5))
-	if (!(fps % 25))
+	if (!(fps % 100))
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->logo[i], y, x);
 		if (i == 38)
@@ -86,7 +86,7 @@ void put_hero(t_game *game, int x, int y)
 	x *= 32;
 	y *= 32;
 
-	if (!(fps % 200))
+	if (!(fps % 250))
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->hero[i], y, x);
 		if (i == 7)
@@ -94,8 +94,8 @@ void put_hero(t_game *game, int x, int y)
 			i = 0;
 			game->flag = 1;
 		}
-		i++;
 		fps = 1;
+		i++;
 	}
 	else
 	{
@@ -123,7 +123,7 @@ int find_hero(t_game *game)
 	}
 	return (0);
 }
-int find_logo(t_game *game)
+void find_logo(t_game *game)
 {
 	int i = 0;
 	int j;
@@ -139,7 +139,6 @@ int find_logo(t_game *game)
 		}
 		i++;
 	}
-	return (0);
 }
 
 void los_dos(t_game *game)
