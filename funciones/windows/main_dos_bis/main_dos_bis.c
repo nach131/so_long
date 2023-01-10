@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/09 08:58:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:14:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,35 +157,34 @@ void static load_image(t_game *game, char *name, int num, int type)
 		else if (type == 2)
 			game->images.won[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
 	}
+	free(path);
 }
 
 void loops(t_game *game)
 {
 	int static i = 0;
 	int static frame = 0;
+	if (!(frame % 600))
 	{
-		if (!(frame % 600))
+		if (game->type == 1)
 		{
-			if (game->type == 1)
-			{
-				mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.gameover[i], 0, 0);
-				// ft_printf(MAGENTA "%p ", game->images.gameover[i]);
-				if (i == 103)
-					i = 0;
-			}
-			else if (game->type == 2)
-			{
-				mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[i], 0, 0);
-
-				if (i == 113)
-					i = 0;
-			}
-			i++;
-			frame = 1;
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.gameover[i], 0, 0);
+			// ft_printf(MAGENTA "%p ", game->images.gameover[i]);
+			if (i == 103)
+				i = 0;
 		}
-		else
-			frame++;
+		else if (game->type == 2)
+		{
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[i], 0, 0);
+
+			if (i == 113)
+				i = 0;
+		}
+		i++;
+		frame = 1;
 	}
+		else
+		frame++;
 }
 
 void segunda(t_game *game)

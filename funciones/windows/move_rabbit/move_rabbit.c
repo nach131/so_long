@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 14:13:34 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/09 17:36:29 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/10 08:58:01 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int key_hook(int keycode, t_game *game)
 	if (keycode == 53)
 	{
 		free_img(game);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	else if (keycode == 13) // W
 	{
