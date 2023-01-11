@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/11 12:18:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/11 21:20:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,14 @@ int key_hook(int keycode, t_game *game)
 	game->map.map[x][y] = '0';
 	if (keycode == 53)
 		exit(0);
-	if (keycode == 2 || keycode == 124)
+	else if (keycode == 2 || keycode == 124)
 		move(game, x, y + 1, RIGHT);
-	if (keycode == 0 || keycode == 123)
+	else if (keycode == 0 || keycode == 123)
 		move(game, x, y - 1, LEFT);
-	if (keycode == 1 || keycode == 125)
+	else if (keycode == 1 || keycode == 125)
 		move(game, x + 1, y, DOWN);
-	if (keycode == 13 || keycode == 126)
+	else if (keycode == 13 || keycode == 126)
 		move(game, x - 1, y, UP);
-	// if (keycode == 117) // es Del
-	// 	exit(0);
 	return (0);
 }
 
@@ -97,6 +95,7 @@ int main(int argc, char **argv)
 	header(&game);
 	lap_map(&game, locate);
 	lap_map(&game, filter_wall);
+
 	mlx_key_hook(game.grafic.win, key_hook, &game);
 	put_img(&game, game.images.mom[0], game.map.objets.enemy.y,
 			game.map.objets.enemy.x);

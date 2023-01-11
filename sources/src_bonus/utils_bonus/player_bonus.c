@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 19:02:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/11 21:46:26 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,25 @@ void static ctrl_dir(t_dir *dir, int type)
 {
 	if (type == RIGHT)
 		dir->right = TRUE;
-	if (type == LEFT)
+	else if (type == LEFT)
 		dir->left = TRUE;
-	if (type == DOWN)
+	else if (type == DOWN)
 		dir->down = TRUE;
-	if (type == UP)
+	else if (type == UP)
 		dir->up = TRUE;
 }
+
+// void free_map(t_game *game, int x, int y, )
+// {
+// 	if (game->dir == RIGHT)
+// 		;
+// 	else if (game->dir == LEFT)
+// 		;
+// 	else if (game->dir == DOWN)
+// 		;
+// 	else if (game->dir == UP)
+// 		;
+// }
 
 void move(t_game *game, int x, int y, int type)
 {
@@ -107,6 +119,7 @@ void move(t_game *game, int x, int y, int type)
 	if (game->map.map[x][y] != '1' && game->map.map[x][y] != 'E' &&
 		game->map.map[x][y] != 'X')
 	{
+
 		game->map.map[x][y] = 'P';
 		put_player(game, type);
 		ctrl_move(game);
