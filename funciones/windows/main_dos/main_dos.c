@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/10 23:36:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/11 03:52:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ enum
 #define KEY_D 2
 #define KEY_W 13
 
+int g_loop = 1;
+
 typedef struct s_grafic
 {
 	void *mlx;
@@ -59,7 +61,10 @@ void ft_free_map(t_game *game)
 	int i = -1;
 	if (game->grafic.rabbit[0])
 		while (++i < 8)
+		{
 			mlx_destroy_image(game->grafic.mlx, game->grafic.rabbit[i]);
+			game->grafic.rabbit[i] = NULL;
+		}
 	// mlx_destroy_image(game->grafic.mlx, game->grafic.rabbit[0]);
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	exit(0);
@@ -71,7 +76,15 @@ int key_push(int key, t_game *game)
 		ft_free_map(game);
 	// exit(0);
 	if (key == KEY_A)
+	{
 		write(1, "A", 1);
+		g_loop = 0;
+	}
+	if (key == KEY_S)
+	{
+		write(1, "S", 1);
+		g_loop = 1;
+	}
 	if (key == KEY_1)
 	{
 		mlx_destroy_window(game->grafic.mlx, game->grafic.win);
@@ -84,28 +97,26 @@ int key_push(int key, t_game *game)
 
 void loops(t_game *game)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[0], 0, 0);
+	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[0], 0, 0);
 
-	// int static i = 0;
-	// int static frame = 0;
+	int static i = 0;
+	int static frame = 0;
 
-	// // if (!game->flag)
+	if (g_loop)
+	{
+		if (!(frame % 600))
+		{
+			write(1, "\taki", 3);
 
-	// if (!(frame % 600))
-	// {
-	// 	write(1, "aki", 3);
-	// 	// 	game->flag = 1;
-	// 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[0], 0, 0);
-	// 	// }
-
-	// 	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 0, 0);
-	// 	// i++;
-	// 	// if (i == 2)
-	// 	// 	i = 0;
-	// 	// frame = 1;
-	// }
-	// else
-	// 	frame++;
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 0, 0);
+			i++;
+			if (i == 7)
+				i = 0;
+			frame = 1;
+		}
+		else
+			frame++;
+	}
 }
 
 char static *path_img(char *name_img, int n)
@@ -157,8 +168,7 @@ void presentacion(t_game *game)
 
 	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[7], 0, 0);
 
-	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
-	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
+	mlx_loop_hook(game->grafic.mlx, &loops, game);
 }
 
 int main(void)
@@ -167,8 +177,9 @@ int main(void)
 	ft_bzero(&game, sizeof(t_game));
 	game.grafic.mlx = mlx_init();
 	presentacion(&game);
-
+	mlx_hook(game.grafic.win, ON_KEYPRESS, 1L << 0, &key_push, &game);
 	mlx_loop(game.grafic.mlx);
+	return (0);
 }
 
 //  gcc -framework OpenGL -framework AppKit main_dos.c ../../../sources/mlx/libmlx.a ../../../sources/libft/libft.a
