@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/11 03:52:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:16:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int key_push(int key, t_game *game)
 	}
 	if (key == KEY_1)
 	{
-		mlx_destroy_window(game->grafic.mlx, game->grafic.win);
+		mlx_loop_hook(game->grafic.mlx, NULL, NULL);
+		// mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 		// ft_destroy_window(mlx, wim);
 	}
 	if (key == KEY_2)
@@ -100,22 +101,33 @@ void loops(t_game *game)
 	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[0], 0, 0);
 
 	int static i = 0;
+	int static j = 0;
 	int static frame = 0;
+	int static framea = 0;
 
 	if (g_loop)
 	{
-		if (!(frame % 600))
+		if (!(frame % 1600))
 		{
-			write(1, "\taki", 3);
-
 			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 0, 0);
 			i++;
 			if (i == 7)
 				i = 0;
 			frame = 1;
 		}
+		if (!(framea % 606))
+		{
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[j], 32, 0);
+			j++;
+			if (j == 7)
+				j = 0;
+			framea = 1;
+		}
 		else
+		{
 			frame++;
+			framea++;
+		}
 	}
 }
 
@@ -156,8 +168,8 @@ void static load_image(t_game *game, char *name, int num, int type)
 			game->grafic.rabbit[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
 		// else if (type == 2)
 		// 	game->images.won[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+		free(path);
 	}
-	free(path);
 }
 
 void presentacion(t_game *game)
@@ -165,8 +177,6 @@ void presentacion(t_game *game)
 	load_image(game, "rabbit_r", 8, 1);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 20 * 32, 15 * 32, "nach131 So Long");
-
-	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[7], 0, 0);
 
 	mlx_loop_hook(game->grafic.mlx, &loops, game);
 }
