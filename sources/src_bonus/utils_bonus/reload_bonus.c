@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/08 02:02:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:29:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,6 @@
 
 #include "so_long_bonus.h"
 #include "../../mlx/mlx.h"
-
-void static put_hero_loop(t_game *game, char *img)
-{
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							img,
-							game->map.objets.player.y * SQUARE,
-							game->map.objets.player.x * SQUARE + HEADER);
-}
 
 void static loop_hero(t_game *game)
 {
@@ -54,8 +46,13 @@ void static loop_hero(t_game *game)
 
 void loops(t_game *game)
 {
+	if (!game->gameover)
+	{
 		if (game->key)
 			loop_hero(game);
 		else if (!game->key)
 			loop_mom(game);
+	}
+	else
+		gameover(game);
 }

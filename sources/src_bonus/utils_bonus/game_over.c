@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 17:02:05 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 19:06:16 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:25:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,25 @@ void caught(t_game *game)
 	if (map[x][y + 1] == 'P' || map[x][y - 1] == 'P' || map[x + 1][y] == 'P' || map[x - 1][y] == 'P')
 	{
 		ft_printf(RED "\tPILLADO\n");
-		all_free(game);
-		exit(0);
+		game->gameover = TRUE;
+		game->key = FALSE;
+	}
+}
+
+void gameover(t_game *game)
+{
+	int static i = 0;
+	int static frame = 0;
+
+	if (i <= 4)
+	{
+		if (!(frame % 1800))
+		{
+			put_hero_loop(game, game->images.hero_g[i]);
+			i++;
+			frame = 1;
+		}
+		else
+			frame++;
 	}
 }

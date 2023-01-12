@@ -14,6 +14,7 @@ enum
 	HERO_L,
 	HERO_D,
 	HERO_U,
+	HERO_G,
 };
 
 enum

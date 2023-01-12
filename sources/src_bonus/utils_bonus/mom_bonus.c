@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:11:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/11 21:45:51 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:29:49 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ void loop_mom(t_game *game)
 	reload_stepped(game, pre_x, pre_y);
 	caught(game);
 	game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] = 'X';
-	put_img(game, game->images.mom[0], game->map.objets.enemy.y, game->map.objets.enemy.x);
+	put_mom(game);
 	game->key = TRUE;
 }

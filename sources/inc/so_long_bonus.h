@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 17:24:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:29:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ enum
 	UP,
 };
 
+enum
+{
+	MOM_ANI,
+	HERO_ANI,
+	END_ANI,
+};
+
 typedef struct s_images
 {
 	char *gwall[8];
@@ -58,6 +65,7 @@ typedef struct s_images
 	char *hero_r[8];
 	char *hero_d[8];
 	char *hero_u[8];
+	char *hero_g[5];
 	char *door[4];
 	char *logo[39];
 	char *header[4];
@@ -107,6 +115,7 @@ typedef struct s_dir
 typedef struct s_game
 {
 	int key;
+	int gameover;
 	t_dir dir;
 	t_grafic grafic;
 	t_map map;
@@ -130,6 +139,9 @@ void loop_mom(t_game *game);
 void caught(t_game *game);
 void put_floor(t_game *game, int y, int x);
 void put_img(t_game *game, char *img, int y, int x);
+void put_mom(t_game *game);
+void put_hero_loop(t_game *game, char *img);
+void gameover(t_game *game);
 
 //	CUIDA SIN USO
 int free_map(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/11 21:46:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:29:46 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void put_player(t_game *game, int type)
 		game->map.objets.player.x += 1;
 	else if (type == UP)
 		game->map.objets.player.x -= 1;
-	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 }
 
 void open_door(t_game *game)
@@ -116,6 +115,8 @@ void move(t_game *game, int x, int y, int type)
 		exit(0);
 	if (game->map.map[x][y] == 'C')
 		game->map.objets.get++;
+	// if (!game->gameover)
+	// {
 	if (game->map.map[x][y] != '1' && game->map.map[x][y] != 'E' &&
 		game->map.map[x][y] != 'X')
 	{
@@ -124,6 +125,7 @@ void move(t_game *game, int x, int y, int type)
 		put_player(game, type);
 		ctrl_move(game);
 	}
+	// }
 	if (game->map.objets.goals == game->map.objets.get)
 		open_door(game);
 	if (game->map.map[x][y] == 'E' &&

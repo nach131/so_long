@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/06 11:16:28 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:22:12 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void static load_img(t_game *game, char *name, int num, int type)
 			game->images.hero_d[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == HERO_U)
 			game->images.hero_u[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == HERO_G)
+			game->images.hero_g[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		free(path);
 	}
 }
@@ -89,4 +91,5 @@ void init_img(t_game *game)
 	load_img(game, "rabbit_r", 8, HERO_R);
 	load_img(game, "rabbit_d", 8, HERO_D);
 	load_img(game, "rabbit_u", 8, HERO_U);
+	load_img(game, "rabbit_g", 5, HERO_G);
 }

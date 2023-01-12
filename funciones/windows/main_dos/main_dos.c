@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/11 19:16:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:07:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,38 +96,84 @@ int key_push(int key, t_game *game)
 	return (0);
 }
 
+void put_uno(t_game *game)
+{
+	int static i = 0;
+	int static frame = 0;
+	if (!(frame % 100))
+	{
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 94, 0);
+		i++;
+		if (i == 7)
+			i = 0;
+		frame = 1;
+	}
+	else
+		frame++;
+}
+void put_dos(t_game *game)
+{
+	int static i = 0;
+	int static frame = 0;
+	if (!(frame % 300))
+	{
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 126, 0);
+		if (i == 7)
+			i = 0;
+		i++;
+		frame = 1;
+	}
+	else
+		frame++;
+}
+
 void loops(t_game *game)
 {
 	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[0], 0, 0);
 
-	int static i = 0;
-	int static j = 0;
-	int static frame = 0;
+	int static a = 0;
+	int static b = 0;
+	int static c = 0;
 	int static framea = 0;
+	int static frameb = 0;
+	int static framec = 0;
+
+	// CADA FUNCION DE ANIMADO TIENE QUE TENER SU PROPIO FRAME
 
 	if (g_loop)
 	{
-		if (!(frame % 1600))
+		if (!(framea % 100))
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 0, 0);
-			i++;
-			if (i == 7)
-				i = 0;
-			frame = 1;
-		}
-		if (!(framea % 606))
-		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[j], 32, 0);
-			j++;
-			if (j == 7)
-				j = 0;
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[a], 0, 0);
+			if (a == 7)
+				a = 0;
+			a++;
 			framea = 1;
+		}
+		if (!(frameb % 300))
+		{
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[b], 32, 0);
+			b++;
+			if (b == 7)
+				b = 0;
+			frameb = 1;
+		}
+		if (!(framec % 600))
+		{
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[c], 64, 0);
+			if (c == 7)
+				c = 0;
+			c++;
+			framec = 1;
 		}
 		else
 		{
-			frame++;
 			framea++;
+			frameb++;
+			framec++;
 		}
+		put_uno(game);
+		put_dos(game);
 	}
 }
 
