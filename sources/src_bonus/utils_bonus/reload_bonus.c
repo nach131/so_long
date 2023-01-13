@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 13:29:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:34:45 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,20 @@ void static loop_hero(t_game *game)
 		if (i == 7)
 		{
 			i = 0;
-			game->key = FALSE;
+			game->key = MOM_ANI;
 		}
 		i++;
 		frame = 1;
 	}
 	else
 		frame++;
+}
+
+void endgame(t_game *game)
+{
+	mlx_loop_hook(game->grafic.mlx, NULL, NULL);
+	// sleep(2);
+	ft_printf(RED "\tGAME-OVER \n");
 }
 
 void loops(t_game *game)
@@ -54,5 +61,7 @@ void loops(t_game *game)
 			loop_mom(game);
 	}
 	else
-		gameover(game);
+		thanos_loop(game);
+	if (game->key == END_ANI)
+		endgame(game);
 }

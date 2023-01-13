@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 13:29:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:19:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ enum
 	ON_KEYPRESS = 2,
 	ON_KEYRELEASE = 3,
 	ON_EXPOSE = 12,
-	ON_DESTROY = 17
+	ON_DESTROY = 17,
 };
 
 enum
@@ -116,6 +116,7 @@ typedef struct s_game
 {
 	int key;
 	int gameover;
+	int won;
 	t_dir dir;
 	t_grafic grafic;
 	t_map map;
@@ -141,7 +142,7 @@ void put_floor(t_game *game, int y, int x);
 void put_img(t_game *game, char *img, int y, int x);
 void put_mom(t_game *game);
 void put_hero_loop(t_game *game, char *img);
-void gameover(t_game *game);
+void thanos_loop(t_game *game);
 
 //	CUIDA SIN USO
 int free_map(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/10 23:14:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/13 02:32:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ enum
 #define KEY_D 2
 #define KEY_W 13
 
+#define LOSE 103
+#define WON 91
+
 typedef struct s_images
 {
 	void *mom;
-	void *gameover[104];
-	char *won[114];
+	void *lose[LOSE];
+	char *won[WON];
 
 } t_images;
 
@@ -65,23 +68,23 @@ typedef struct s_game
 	int type;
 } t_game;
 
-void segunda(t_game *game);
+void segunda_lose(t_game *game);
+void tercera_won(t_game *game);
 void presentacion(t_game *game);
-void tercera(t_game *game);
 void free_all(t_game *game);
 
 int key_push(int key, t_game *game)
 {
 	if (key == KEY_ESC)
-		free_all(game);
+		exit(0);
 	if (key == KEY_A)
 		write(1, "A", 1);
 	if (key == KEY_1)
 		presentacion(game);
 	if (key == KEY_2)
-		segunda(game);
+		segunda_lose(game);
 	if (key == KEY_3)
-		tercera(game);
+		tercera_won(game);
 	return (0);
 }
 
@@ -98,26 +101,6 @@ int key_push(int key, t_game *game)
 // 	if (key == KEY_2)
 // 		write(1, "levantado dos\n", 14);
 // }
-
-void free_all(t_game *game)
-{
-	int i = 0;
-	// mlx_img_list_t *tomate;
-	if (game->type == 1)
-	{
-		while (i < 104)
-		{
-			ft_printf(CYAN "\t%d-%p" RED, i, &game->images.gameover[i]);
-			// printf("\t%d-%p", i, game->images.gameover[i]);
-			// tomate->next = game->images.gameover[i];
-			// mlx_destroy_image(game->grafic.mlx, tomate);
-			mlx_destroy_image(game->grafic.mlx, game->images.gameover[i]);
-			// free(game->images.gameover[i]);
-			i++;
-		}
-	}
-	exit(0);
-}
 
 char static *path_img(char *name_img, int n)
 {
@@ -153,11 +136,11 @@ void static load_image(t_game *game, char *name, int num, int type)
 	{
 		path = path_img(name, i);
 		if (type == 1)
-			game->images.gameover[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+			game->images.lose[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
 		else if (type == 2)
 			game->images.won[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
-	}
 	free(path);
+	}
 }
 
 void loops(t_game *game)
@@ -168,16 +151,15 @@ void loops(t_game *game)
 	{
 		if (game->type == 1)
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.gameover[i], 0, 0);
-			// ft_printf(MAGENTA "%p ", game->images.gameover[i]);
-			if (i == 103)
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.lose[i], 0, 0);
+			if (i == LOSE - 1)
 				i = 0;
 		}
 		else if (game->type == 2)
 		{
 			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[i], 0, 0);
 
-			if (i == 113)
+			if (i == WON - 1)
 				i = 0;
 		}
 		i++;
@@ -187,22 +169,23 @@ void loops(t_game *game)
 		frame++;
 }
 
-void segunda(t_game *game)
+void segunda_lose(t_game *game)
 {
 	game->type = 1;
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-	load_image(game, "gameover", 104, 1);
+	load_image(game, "lose", LOSE, 1);
 
-	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "Game Over");
+	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "You Lose");
+
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
 }
-//
-void tercera(t_game *game)
+
+void tercera_won(t_game *game)
 {
 	game->type = 2;
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-	load_image(game, "won", 114, 2);
+	load_image(game, "won", WON, 2);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "You Won");
 	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[0], 0, 0);

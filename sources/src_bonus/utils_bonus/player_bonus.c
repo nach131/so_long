@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 11:29:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 15:58:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,6 @@ void static ctrl_dir(t_dir *dir, int type)
 	else if (type == UP)
 		dir->up = TRUE;
 }
-
-// void free_map(t_game *game, int x, int y, )
-// {
-// 	if (game->dir == RIGHT)
-// 		;
-// 	else if (game->dir == LEFT)
-// 		;
-// 	else if (game->dir == DOWN)
-// 		;
-// 	else if (game->dir == UP)
-// 		;
-// }
 
 void move(t_game *game, int x, int y, int type)
 {

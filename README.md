@@ -138,3 +138,27 @@ Destruye la imagen pasada por `img_ptr`
 unsigned int	mlx_get_color_value ( void *mlx_ptr, int color );
 ```
 Para control el color de píxel, (no lo uso).
+
+Convertir png a xpm en linux
+
+	sudo apt install imagemagick
+
+	convert a.png x.xpm
+	convert x.xpm aa.png
+
+toda una carpeta llena de png
+	 for file in *.png; do convert $file $file.xpm; done
+	 for f in */*.bmp ; do convert $f ${f%bmp}png; done
+
+//===========================================================================================
+for f in *.bmp; do convert "$f" -alpha on -fill none -draw 'color 0,0 replace' "${f%%.bmp}.png"; done
+
+"$f" is the original input filename
+"${f}" is the same, just a different way of accessing the variable
+"${f%%.bmp}.png" uses string replacement – f%%.bmp means, delete the longest match of .bmp from the back of $f.
+
+para mac
+$ brew info imagemagick
+$ brew install imagemagick
+
+https://imagemagick.org/script/download.php

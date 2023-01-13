@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 11:30:22 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:01:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int key_hook(int keycode, t_game *game)
 {
 	int x;
 	int y;
-
 	game->key = TRUE;
 	x = game->map.objets.player.x;
 	y = game->map.objets.player.y;
@@ -40,7 +39,11 @@ int key_hook(int keycode, t_game *game)
 			move(game, x + 1, y, DOWN);
 		else if (keycode == 13 || keycode == 126)
 			move(game, x - 1, y, UP);
+		// else if (keycode == 119)
+		// hacer funcion que cambie C por 0 en el mapa
+		// 	game->map.objets.get = game->map.objets.goals;
 	}
+
 	return (0);
 }
 
@@ -104,3 +107,4 @@ int main(int argc, char **argv)
 	mlx_loop_hook(game.grafic.mlx, (void *)loops, &game);
 	mlx_loop(game.grafic.mlx);
 }
+
