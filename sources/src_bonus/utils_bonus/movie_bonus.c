@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reload_bonus.c                                     :+:      :+:    :+:   */
+/*   movie_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/13 11:34:49 by nmota-bu         ###   ########.fr       */
+/*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
+/*   Updated: 2023/01/13 11:48:45 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,30 @@
 #include "so_long_bonus.h"
 #include "../../mlx/mlx.h"
 
-void static loop_hero(t_game *game)
+void static key_endgame(int key, t_game *game)
+{
+	(void)game;
+	if (key == 53)
+		exit(0);
+}
+
+void static loops_end(t_game *game)
 {
 	int static i = 0;
 	int static frame = 0;
-
 	if (!(frame % 600))
 	{
-		if (game->dir.right)
-			put_hero_loop(game, game->images.hero_r[i]);
-		else if (game->dir.left)
-			put_hero_loop(game, game->images.hero_l[i]);
-		else if (game->dir.down)
-			put_hero_loop(game, game->images.hero_d[i]);
-		else if (game->dir.up)
-			put_hero_loop(game, game->images.hero_u[i]);
-		if (i == 7)
+		if (game->won)
 		{
-			i = 0;
-			game->key = MOM_ANI;
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.endgame[i], 0, 0);
+			if (i == 90 - 1)
+				i = 0;
+		}
+		else
+		{
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.endgame[i], 0, 0);
+			if (i == 103 - 1)
+				i = 0;
 		}
 		i++;
 		frame = 1;
@@ -44,17 +49,26 @@ void static loop_hero(t_game *game)
 		frame++;
 }
 
-void loops(t_game *game)
+void static end_win(t_game *game, char *str)
 {
-	if (!game->gameover)
+	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
+	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, str);
+	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+	mlx_key_hook(game->grafic.win, (void *)key_endgame, &game);
+	mlx_loop_hook(game->grafic.mlx, (void *)loops_end, game);
+}
+
+void endgame(t_game *game)
+{
+	mlx_loop_hook(game->grafic.mlx, NULL, NULL);
+	if (game->won)
 	{
-		if (game->key)
-			loop_hero(game);
-		else if (!game->key)
-			loop_mom(game);
+		load_img_two(game, "won", 90, END_ANI);
+		end_win(game, "You won and that's Big Mom hates you with hatred");
 	}
 	else
-		thanos_loop(game);
-	if (game->key == END_ANI)
-		endgame(game);
+	{
+		load_img_two(game, "lose", 103, END_ANI);
+		end_win(game, "You lose and Big Mom don't give a f***");
+	}
 }

@@ -15,6 +15,8 @@ enum
 	HERO_D,
 	HERO_U,
 	HERO_G,
+	LOSE,
+	WON,
 };
 
 enum

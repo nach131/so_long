@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 16:19:32 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:46:01 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_images
 	char *logo[39];
 	char *header[4];
 	char *mom[4];
+	char *endgame[103];
 } t_images;
 
 typedef struct s_scp
@@ -143,6 +144,9 @@ void put_img(t_game *game, char *img, int y, int x);
 void put_mom(t_game *game);
 void put_hero_loop(t_game *game, char *img);
 void thanos_loop(t_game *game);
+void endgame(t_game *game);
+void load_img_two(t_game *game, char *name, int num, int type);
+int main(int argc, char **argv);
 
 //	CUIDA SIN USO
 int free_map(t_game *game);

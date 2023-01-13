@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 16:01:22 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:19:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "images_bonus.h"
 #include "../mlx/mlx.h"
 
-int key_hook(int keycode, t_game *game)
+int static key_hook(int keycode, t_game *game)
 {
 	int x;
 	int y;

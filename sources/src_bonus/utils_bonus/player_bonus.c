@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 15:58:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/13 10:54:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ void move(t_game *game, int x, int y, int type)
 		open_door(game);
 	if (game->map.map[x][y] == 'E' &&
 		(game->map.objets.get == game->map.objets.goals))
-		exit(0);
-	// free_map(game);
-	// ft_printf(RED "CONSEGUIDO");
+	{
+		game->won = TRUE;
+		endgame(game);
+	}
 }

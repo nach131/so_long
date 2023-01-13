@@ -59,7 +59,7 @@ DEPS_UTILS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_UTILS_FILES)))
 MAIN_FILES_BONUS	=	main_bonus
 UTILS_FILES_BONUS	= errors_bonus render_map_bonus load_img_bonus \
 ctrl_map_bonus player_bonus ctrl_move_bonus ctrl_path_bonus header_bonus \
-reload_bonus put_img_bonus mom_bonus game_over
+reload_bonus put_img_bonus mom_bonus game_over_bonus movie_bonus
 
 SRC_MAIN_FILES_BONUS	+=$(MAIN_FILES_BONUS)
 SRC_UTILS_FILES_BONUS	+=$(addprefix $(UTILS_DIR_BONUS),$(UTILS_FILES_BONUS))
