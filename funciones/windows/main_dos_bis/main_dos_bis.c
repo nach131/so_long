@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/13 02:32:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/13 03:11:37 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ void segunda_lose(t_game *game)
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	load_image(game, "lose", LOSE, 1);
 
-	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "You Lose");
+	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, "You Lose");
 
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
@@ -187,7 +187,7 @@ void tercera_won(t_game *game)
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	load_image(game, "won", WON, 2);
 
-	game->grafic.win = mlx_new_window(game->grafic.mlx, 1280, 720, "You Won");
+	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, "You Won");
 	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.won[0], 0, 0);
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
