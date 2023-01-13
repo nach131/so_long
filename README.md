@@ -146,12 +146,17 @@ Convertir png a xpm en linux
 	convert a.png x.xpm
 	convert x.xpm aa.png
 
-toda una carpeta llena de png
-	 for file in *.png; do convert $file $file.xpm; done
+	para uno
+	convert fotograma-000002.png -depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 fotograma-000002.xpm
+
+para toda una carpeta
+	 for file in *.png; do convert  $file $file.xpm; done
 	 for f in */*.bmp ; do convert $f ${f%bmp}png; done
 
-//===========================================================================================
-for f in *.bmp; do convert "$f" -alpha on -fill none -draw 'color 0,0 replace' "${f%%.bmp}.png"; done
+//================Nach way...=========COLORES CORRECTOS=======================================
+para todos los png que hay en una carpeta
+ for file in *.png; do convert $file -depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 $file.xpm; done
+ //===========================================================================================
 
 "$f" is the original input filename
 "${f}" is the same, just a different way of accessing the variable
@@ -162,3 +167,8 @@ $ brew info imagemagick
 $ brew install imagemagick
 
 https://imagemagick.org/script/download.php
+
+
+
+
+for file in *.png; do convert depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 $file $file.xpm; done
