@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 12:46:52 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 19:40:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void loops(t_game *game)
 
 void restar_game(t_game *game)
 {
-	// mlx_loop_hook(game->grafic.mlx, NULL, NULL);
-	game->key = TRUE;
+	game->won = FALSE;
 	game->gameover = FALSE;
+	game->key = FALSE;
 	game->map.map = ft_cp_dptr(game->map.tmp);
 	game->map.objets.get = 0;
 	ctrl_map(game);
