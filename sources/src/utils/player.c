@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 12:14:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 20:10:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void put_player(t_game *game, int type)
 void open_door(t_game *game)
 {
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.door[1],
+							game->images.door[3],
 							game->map.objets.exit.y * SQUARE,
 							game->map.objets.exit.x * SQUARE + HEADER);
 }
@@ -71,15 +71,7 @@ void move(t_game *game, int x, int y, int type)
 	}
 	if (game->map.objets.goals == game->map.objets.get)
 		open_door(game);
-
 	if (game->map.map[x][y] == 'E' &&
 		(game->map.objets.get == game->map.objets.goals))
 		exit(0);
-	// free_map(game);
-	// ft_printf(RED "CONSEGUIDO");
 }
-
-// 2-124  D
-// 0-123  A
-// 1-125  S
-// 13-126 W

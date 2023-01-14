@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/10 23:49:16 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 20:16:25 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_images
 	char	*floor[1];
 	char	*wall[8];
 	char	*hero[4];
-	char	*door[2];
+	char *door[4];
 	char	*logo[1];
 	char	*header[3];
 }	t_images;
@@ -111,9 +111,4 @@ void	locate(t_game *game, int x, int y, char ch);
 void	move(t_game *game, int x, int y, int type);
 void	header(t_game *game);
 
-//	CUIDA SIN USO
-int		reload(t_game *game);
-void	pasada_dos(t_game *game, int x, int y, char ch);
-void	re_floor(t_game *game, int x, int y, char ch);
-int		free_map(t_game *game);
 #endif
