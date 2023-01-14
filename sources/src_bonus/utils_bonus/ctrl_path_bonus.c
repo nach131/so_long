@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 14:02:37 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:52:26 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void	ctrl_path(t_game *game)
 		i++;
 	}
 	err_path(game);
+	game->map.tmp = ft_cp_dptr(game->map.map);
 }

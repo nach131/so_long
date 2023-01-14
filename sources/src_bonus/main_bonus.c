@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 00:29:36 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 12:16:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "images_bonus.h"
 #include "../mlx/mlx.h"
 
-int static key_hook(int keycode, t_game *game)
+int key_hook(int keycode, t_game *game)
 {
 	int x;
 	int y;
@@ -39,24 +39,13 @@ int static key_hook(int keycode, t_game *game)
 			move(game, x + 1, y, DOWN);
 		else if (keycode == 13 || keycode == 126)
 			move(game, x - 1, y, UP);
+
 		// else if (keycode == 119)
 		// para el egg
 		// hacer funcion que cambie C por 0 en el mapa
 		// 	game->map.objets.get = game->map.objets.goals;
 	}
-
 	return (0);
-}
-
-// no hace nada
-int free_map(t_game *game)
-{
-	ft_free_dptr(game->map.map);
-	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-	free(game->grafic.mlx);
-	free(game->map.map);
-	exit(0); // CUIDADO
-	return (EXIT_SUCCESS);
 }
 
 void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch))
@@ -91,6 +80,7 @@ void window(t_game *game)
 
 void star_game(t_game *game)
 {
+
 	init_img(game);
 	window(game);
 	header(game);
@@ -111,15 +101,6 @@ int main(int argc, char **argv)
 	ctrl_path(&game);
 	game.grafic.mlx = mlx_init();
 	intro(&game);
-
-	// init_img(&game);
-	// window(&game);
-	// header(&game);
-	// lap_map(&game, locate);
-	// lap_map(&game, filter_wall);
-	// mlx_key_hook(game.grafic.win, key_hook, &game);
-	// mlx_loop_hook(game.grafic.mlx, (void *)loops, &game);
-
 	mlx_loop(game.grafic.mlx);
 }
 

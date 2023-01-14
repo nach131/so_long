@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/07 13:36:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 12:49:19 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,6 @@ void	filter_wall(t_game *game, int x, int y, char ch)
 		put_img(game, game->images.door[0], y / SQUARE, x / SQUARE);
 	if (ch == 'C')
 		put_img(game, game->images.logo[0], y / SQUARE, x / SQUARE);
+	if (ch == 'X')
+		put_img(game, game->images.mom[0], y / SQUARE, x / SQUARE);
 }
