@@ -54,3 +54,7 @@ get next line par leer map
 		Controlar el camino
 
 listas para introducir cada Linea	
+
+Pantalla final con game over triste, game won contento saltando
+Error del mapa cuando no hay nada en el archivo
+Cuenta las pulsaciones de teclado no los moviementos

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/13 11:19:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 00:29:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int static key_hook(int keycode, t_game *game)
 		else if (keycode == 13 || keycode == 126)
 			move(game, x - 1, y, UP);
 		// else if (keycode == 119)
+		// para el egg
 		// hacer funcion que cambie C por 0 en el mapa
 		// 	game->map.objets.get = game->map.objets.goals;
 	}
@@ -47,6 +48,7 @@ int static key_hook(int keycode, t_game *game)
 	return (0);
 }
 
+// no hace nada
 int free_map(t_game *game)
 {
 	ft_free_dptr(game->map.map);
@@ -79,11 +81,23 @@ void window(t_game *game)
 {
 	char *str;
 
+	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	str = "github.com/nach131";
 	game->grafic.win = mlx_new_window(game->grafic.mlx,
 									  game->map.cols * SQUARE,
 									  game->map.rows * SQUARE + HEADER, str);
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+}
+
+void star_game(t_game *game)
+{
+	init_img(game);
+	window(game);
+	header(game);
+	lap_map(game, locate);
+	lap_map(game, filter_wall);
+	mlx_key_hook(game->grafic.win, key_hook, game);
+	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 }
 
 int main(int argc, char **argv)
@@ -96,15 +110,16 @@ int main(int argc, char **argv)
 	ctrl_map(&game);
 	ctrl_path(&game);
 	game.grafic.mlx = mlx_init();
-	init_img(&game);
-	window(&game);
-	header(&game);
-	lap_map(&game, locate);
-	lap_map(&game, filter_wall);
-	mlx_key_hook(game.grafic.win, key_hook, &game);
-	put_img(&game, game.images.mom[0], game.map.objets.enemy.y,
-			game.map.objets.enemy.x);
-	mlx_loop_hook(game.grafic.mlx, (void *)loops, &game);
+	intro(&game);
+
+	// init_img(&game);
+	// window(&game);
+	// header(&game);
+	// lap_map(&game, locate);
+	// lap_map(&game, filter_wall);
+	// mlx_key_hook(game.grafic.win, key_hook, &game);
+	// mlx_loop_hook(game.grafic.mlx, (void *)loops, &game);
+
 	mlx_loop(game.grafic.mlx);
 }
 

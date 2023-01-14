@@ -8,11 +8,11 @@ https://ezgif.com/
 
 Pantalla inicio selecionnado hero. tamaño fijo toda una immagen ,1,2,3
 	personajes saltando esperando a ser elejidos
-Pantalla final con game over triste, game won contento saltando
 
-Error del mapa cuando no hay nada en el archivo
-Error de busqueda del path en el caso de que la salida bloque
-Cuenta las pulsaciones de teclado no los moviementos
+Error de busqueda del path en el caso de que la salida bloque, hacer que se pueda atravesar
+la puerta
+
+mom hacer que controle las esquinas para poder seguir la persecucucion
 
 
 //===========================================================================================

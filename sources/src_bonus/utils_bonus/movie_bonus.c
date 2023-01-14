@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/13 11:48:45 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/13 21:10:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "so_long_bonus.h"
 #include "../../mlx/mlx.h"
 
-void static key_endgame(int key, t_game *game)
+void simple_key(int key, t_game *game)
 {
 	(void)game;
 	if (key == 53)
@@ -54,7 +54,7 @@ void static end_win(t_game *game, char *str)
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, str);
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
-	mlx_key_hook(game->grafic.win, (void *)key_endgame, &game);
+	mlx_key_hook(game->grafic.win, (void *)simple_key, &game);
 	mlx_loop_hook(game->grafic.mlx, (void *)loops_end, game);
 }
 

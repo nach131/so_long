@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/13 11:04:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:48:14 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void load_img_two(t_game *game, char *name, int num, int type)
 			game->images.hero_g[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == END_ANI)
 			game->images.endgame[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == INTRO)
+			game->images.intro[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		free(path);
 	}
 }

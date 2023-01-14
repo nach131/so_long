@@ -17,6 +17,7 @@ enum
 	HERO_G,
 	LOSE,
 	WON,
+	INTRO,
 };
 
 enum
