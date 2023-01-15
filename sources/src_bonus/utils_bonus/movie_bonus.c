@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:47:33 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:58:04 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void static	end_win(t_game *game, char *str)
 
 void	endgame(t_game *game)
 {
-	mlx_loop_hook(game->grafic.mlx, NULL, NULL);
+	// mlx_loop_hook(game->grafic.mlx, NULL, NULL);
 	if (game->won)
 	{
 		load_img_two(game, "won", 90, END_ANI);

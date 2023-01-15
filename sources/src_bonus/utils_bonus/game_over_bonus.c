@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 17:02:05 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 15:55:50 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:03:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	thanos_loop(t_game *game)
 	int static	i = 0;
 	int static	frame = 0;
 
-	if (i <= 4)
+	if (i <= 5)
 	{
 		if (!(frame % 1800))
 		{
@@ -50,6 +50,6 @@ void	thanos_loop(t_game *game)
 		else
 			frame++;
 	}
-	if (i > 4)
+	if (i > 5)
 		game->key = END_ANI;
 }

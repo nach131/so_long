@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:41:21 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:55:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ void	restar_game(t_game *game)
 	game->won = FALSE;
 	game->gameover = FALSE;
 	game->key = FALSE;
-	game->map.map = ft_cp_dptr(game->map.tmp);
 	game->map.objets.get = 0;
+	game->map.objets.move = 0;
+	game->map.map = ft_cp_dptr(game->map.tmp);
 	ctrl_map(game);
 	star_game(game);
 }
