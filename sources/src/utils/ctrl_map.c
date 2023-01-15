@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 14:35:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:43:08 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int static	lap_map_count(t_game *game, char ch)
 	int	i;
 	int	j;
 	int	count;
-	
+
 	i = 0;
 	count = 0;
 	while (i < game->map.rows)

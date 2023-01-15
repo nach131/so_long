@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:29:37 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 19:40:14 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:41:21 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "so_long_bonus.h"
 #include "../../mlx/mlx.h"
 
-void static loop_hero(t_game *game)
+void static	loop_hero(t_game *game)
 {
-	int static i = 0;
-	int static frame = 0;
+	int static	i = 0;
+	int static	frame = 0;
 
 	if (!(frame % 600))
 	{
@@ -44,7 +44,7 @@ void static loop_hero(t_game *game)
 		frame++;
 }
 
-void loops(t_game *game)
+void	loops(t_game *game)
 {
 	if (!game->gameover)
 	{
@@ -59,7 +59,7 @@ void loops(t_game *game)
 		endgame(game);
 }
 
-void restar_game(t_game *game)
+void	restar_game(t_game *game)
 {
 	game->won = FALSE;
 	game->gameover = FALSE;

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:33:41 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:43:53 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	header(t_game *game);
 void	loops(t_game *game);
 void	loop_door(t_game *game);
 void	loop_mom(t_game *game);
-void caught(t_game *game);
+void	caught(t_game *game);
 void	put_img(t_game *game, char *img, int y, int x);
 void	put_mom(t_game *game);
 void	put_hero_loop(t_game *game, char *img);

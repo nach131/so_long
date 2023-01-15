@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:25:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:47:33 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void static	loops_end(t_game *game)
 {
 	int static	i = 0;
 	int static	frame = 0;
-	
+
 	if (!(frame % 600))
 	{
 		if (game->won)

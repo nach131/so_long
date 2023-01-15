@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 12:16:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:46:31 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 #include "images_bonus.h"
 #include "../mlx/mlx.h"
 
-int key_hook(int keycode, t_game *game)
+int	key_hook(int keycode, t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
+
 	game->key = TRUE;
 	x = game->map.objets.player.x;
 	y = game->map.objets.player.y;
@@ -39,19 +40,15 @@ int key_hook(int keycode, t_game *game)
 			move(game, x + 1, y, DOWN);
 		else if (keycode == 13 || keycode == 126)
 			move(game, x - 1, y, UP);
-
-		// else if (keycode == 119)
-		// para el egg
-		// hacer funcion que cambie C por 0 en el mapa
-		// 	game->map.objets.get = game->map.objets.goals;
 	}
 	return (0);
 }
 
-void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch))
+void	lap_map(t_game *game,
+		void (*function)(t_game *game, int x, int y, char ch))
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->map.rows)
@@ -66,21 +63,19 @@ void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch)
 	}
 }
 
-void window(t_game *game)
+void	window(t_game *game)
 {
-	char *str;
+	char	*str;
 
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	str = "github.com/nach131";
 	game->grafic.win = mlx_new_window(game->grafic.mlx,
-									  game->map.cols * SQUARE,
-									  game->map.rows * SQUARE + HEADER, str);
+			game->map.cols * SQUARE, game->map.rows * SQUARE + HEADER, str);
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
 }
 
-void star_game(t_game *game)
+void	star_game(t_game *game)
 {
-
 	init_img(game);
 	window(game);
 	header(game);
@@ -90,9 +85,9 @@ void star_game(t_game *game)
 	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	ft_bzero(&game, sizeof(t_game));
 	err_file(argc, argv[1]);
@@ -103,4 +98,3 @@ int main(int argc, char **argv)
 	intro(&game);
 	mlx_loop(game.grafic.mlx);
 }
-

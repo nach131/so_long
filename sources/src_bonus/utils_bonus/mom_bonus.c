@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:11:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:33:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:35:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 // 	}
 // }
 
-int static is_ok(char ch)
+int static	is_ok(char ch)
 {
 	if (ch == '0' || ch == 'C')
 		return (1);
@@ -39,7 +39,7 @@ int static is_ok(char ch)
 		return (0);
 }
 
-void static major_row(t_game *game, int row_diff, int pre_x, int pre_y)
+void static	major_row(t_game *game, int row_diff, int pre_x, int pre_y)
 {
 	if (row_diff > 0)
 	{
@@ -53,7 +53,7 @@ void static major_row(t_game *game, int row_diff, int pre_x, int pre_y)
 	}
 }
 
-void static major_col(t_game *game, int col_diff, int pre_x, int pre_y)
+void static	major_col(t_game *game, int col_diff, int pre_x, int pre_y)
 {
 	if (col_diff > 0)
 	{
@@ -67,10 +67,10 @@ void static major_col(t_game *game, int col_diff, int pre_x, int pre_y)
 	}
 }
 
-void static reload_stepped(t_game *game, int pre_x, int pre_y)
+void static	reload_stepped(t_game *game, int pre_x, int pre_y)
 {
 	if (game->map.map[game->map.objets.enemy.x]
-					 [game->map.objets.enemy.y] == 'C')
+		[game->map.objets.enemy.y] == 'C')
 	{
 		put_img(game, game->images.logo[0], pre_y, pre_x);
 		game->map.map[pre_x][pre_y] = 'C';
@@ -82,12 +82,12 @@ void static reload_stepped(t_game *game, int pre_x, int pre_y)
 	}
 }
 
-void loop_mom(t_game *game)
+void	loop_mom(t_game *game)
 {
-	int row_diff;
-	int col_diff;
-	int pre_x;
-	int pre_y;
+	int	row_diff;
+	int	col_diff;
+	int	pre_x;
+	int	pre_y;
 
 	pre_x = game->map.objets.enemy.x;
 	pre_y = game->map.objets.enemy.y;

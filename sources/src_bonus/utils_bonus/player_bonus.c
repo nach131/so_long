@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:33:57 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:38:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "so_long_bonus.h"
 #include "../mlx/mlx.h"
 
-void locate(t_game *game, int x, int y, char ch)
+void	locate(t_game *game, int x, int y, char ch)
 {
 	if (ch == 'P')
 	{
@@ -36,9 +36,10 @@ void locate(t_game *game, int x, int y, char ch)
 	}
 }
 
-void put_player(t_game *game, int type)
+void	put_player(t_game *game, int type)
 {
-	put_img(game, game->images.floor[0], game->map.objets.player.y, game->map.objets.player.x);
+	put_img(game, game->images.floor[0], game->map.objets.player.y,
+		game->map.objets.player.x);
 	if (type == RIGHT)
 		game->map.objets.player.y += 1;
 	else if (type == LEFT)
@@ -49,10 +50,10 @@ void put_player(t_game *game, int type)
 		game->map.objets.player.x -= 1;
 }
 
-void open_door(t_game *game)
+void	open_door(t_game *game)
 {
-	int frame;
-	int i;
+	int	frame;
+	int	i;
 
 	frame = 0;
 	i = 0;
@@ -63,10 +64,9 @@ void open_door(t_game *game)
 			if (!(frame % 1000))
 			{
 				mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-										game->images.door[i],
-										game->map.objets.exit.y * SQUARE,
-										game->map.objets.exit.x * SQUARE + HEADER);
-				break;
+					game->images.door[i], game->map.objets.exit.y * SQUARE,
+					game->map.objets.exit.x * SQUARE + HEADER);
+				break ;
 			}
 			else
 				frame++;
@@ -76,7 +76,7 @@ void open_door(t_game *game)
 	}
 }
 
-void static ctrl_dir(t_dir *dir, int type)
+void static	ctrl_dir(t_dir *dir, int type)
 {
 	if (type == RIGHT)
 		dir->right = TRUE;
@@ -88,7 +88,7 @@ void static ctrl_dir(t_dir *dir, int type)
 		dir->up = TRUE;
 }
 
-void move(t_game *game, int x, int y, int type)
+void	move(t_game *game, int x, int y, int type)
 {
 	ctrl_dir(&game->dir, type);
 	if (game->map.map[x][y] == 'X')

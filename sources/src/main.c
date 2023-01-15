@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 14:07:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:42:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	star_game(t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	game;
+
 	ft_bzero(&game, sizeof(t_game));
 	err_file(argc, argv[1]);
 	game.map.map = ft_file_to_dptr(argv[1], 0);
