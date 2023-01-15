@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 00:11:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:17:17 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void static	find_path(t_game *game, int row, int col, int *gols)
 	rows = game->map.rows;
 	cols = game->map.cols;
 	arr = game->map.tmp;
-	if (row < 0 || row >= rows || col < 0 || col >= cols ||
+	if (row < 0 || row >= rows || col < 0 || col >= cols || \
 		arr[row][col] == '1' || arr[row][col] == '@' ||
 		(arr[row][col] == 'E' && gols))
 		return ;
