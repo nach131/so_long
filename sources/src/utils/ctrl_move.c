@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:49:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 23:57:59 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:15:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "so_long.h"
 #include "../mlx/mlx.h"
 
-void ctrl_move(t_game *game)
+void	ctrl_move(t_game *game)
 {
-	int i;
-	char *total;
+	int		i;
+	char	*total;
 
 	total = ft_itoa(game->map.objets.goals);
 	game->map.objets.move++;

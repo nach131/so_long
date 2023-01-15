@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 20:30:07 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:29:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "so_long.h"
 #include "../mlx/mlx.h"
 
-void locate(t_game *game, int x, int y, char ch)
+void	locate(t_game *game, int x, int y, char ch)
 {
 	if (ch == 'P')
 	{
@@ -31,12 +31,12 @@ void locate(t_game *game, int x, int y, char ch)
 	}
 }
 
-void static put_player(t_game *game, int type)
+void static	put_player(t_game *game, int type)
 {
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.floor[0],
-							game->map.objets.player.y * SQUARE,
-							game->map.objets.player.x * SQUARE + HEADER);
+		game->images.floor[0],
+		game->map.objets.player.y * SQUARE,
+		game->map.objets.player.x * SQUARE + HEADER);
 	if (type == RIGHT)
 		game->map.objets.player.y += 1;
 	else if (type == LEFT)
@@ -46,20 +46,20 @@ void static put_player(t_game *game, int type)
 	else if (type == UP)
 		game->map.objets.player.x -= 1;
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.hero[type],
-							game->map.objets.player.y * SQUARE,
-							game->map.objets.player.x * SQUARE + HEADER);
+		game->images.hero[type],
+		game->map.objets.player.y * SQUARE,
+		game->map.objets.player.x * SQUARE + HEADER);
 }
 
-void open_door(t_game *game)
+void	open_door(t_game *game)
 {
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.door[3],
-							game->map.objets.exit.y * SQUARE,
-							game->map.objets.exit.x * SQUARE + HEADER);
+		game->images.door[3],
+		game->map.objets.exit.y * SQUARE,
+		game->map.objets.exit.x * SQUARE + HEADER);
 }
 
-void move(t_game *game, int x, int y, int type)
+void	move(t_game *game, int x, int y, int type)
 {
 	if (game->map.map[x][y] == 'C')
 		game->map.objets.get++;

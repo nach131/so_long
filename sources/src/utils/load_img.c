@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 02:21:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:27:47 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 #include "images.h"
 #include "../../mlx/mlx.h"
 
-char static *path_img(char *name_img, int n)
+char static	*path_img(char *name_img, int n)
 {
-	char *nbr;
-	char *s1;
-	char *s2;
+	char	*nbr;
+	char	*s1;
+	char	*s2;
 
 	nbr = ft_itoa(n);
 	s1 = ft_strjoin("xpm/", name_img);
@@ -38,14 +38,34 @@ char static *path_img(char *name_img, int n)
 	return (s1);
 }
 
-void load_img(t_game *game, char *name, int num, int type)
+void	load_img(t_game *game, char *name, int num, int type)
 {
-	int i;
-	int w;
-	int h;
-	void *mlx = game->grafic.mlx;
-	char *path;
+	int		i;
+	int		w;
+	int		h;
+	void	*mlx;
+	char	*path;
 
+	mlx = game->grafic.mlx;
+	i = -1;
+	while (++i < num)
+	{
+		path = path_img(name, i);
+		if (type == HERO)
+			game->images.hero[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		free(path);
+	}
+}
+
+void static	load_img_two(t_game *game, char *name, int num, int type)
+{
+	int		i;
+	int		w;
+	int		h;
+	void	*mlx;
+	char	*path;
+
+	mlx = game->grafic.mlx;
 	i = -1;
 	while (++i < num)
 	{
@@ -56,8 +76,6 @@ void load_img(t_game *game, char *name, int num, int type)
 			game->images.floor[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == WALL)
 			game->images.wall[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
-		else if (type == HERO)
-			game->images.hero[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == DOOR)
 			game->images.door[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == LOGO)
@@ -68,12 +86,12 @@ void load_img(t_game *game, char *name, int num, int type)
 	}
 }
 
-void init_img(t_game *game)
+void	init_img(t_game *game)
 {
-	load_img(game, "gwall", 8, GWALL);
-	load_img(game, "floor", 1, FLOOR);
-	load_img(game, "wall", 8, WALL);
-	load_img(game, "door", 4, DOOR);
-	load_img(game, "logo", 1, LOGO);
-	load_img(game, "header", 3, IHEADER);
+	load_img_two(game, "gwall", 8, GWALL);
+	load_img_two(game, "floor", 1, FLOOR);
+	load_img_two(game, "wall", 8, WALL);
+	load_img_two(game, "door", 4, DOOR);
+	load_img_two(game, "logo", 1, LOGO);
+	load_img_two(game, "header", 3, IHEADER);
 }

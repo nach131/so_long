@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 22:31:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 18:58:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:35:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 #include "so_long.h"
 
-int static len_rows(char **map)
+int static	len_rows(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i])
@@ -26,9 +26,9 @@ int static len_rows(char **map)
 	return (i);
 }
 
-void static len_cols(t_map *map)
+void static	len_cols(t_map *map)
 {
-	int i;
+	int	i;
 
 	if (!map->cols)
 		map->cols = ft_strlen(map->map[0]);
@@ -44,13 +44,14 @@ void static len_cols(t_map *map)
 	}
 }
 
-int static lap_map_count(t_game *game, char ch)
+int static	lap_map_count(t_game *game, char ch)
 {
-	int i;
-	int j;
-	int count = 0;
-
+	int	i;
+	int	j;
+	int	count;
+	
 	i = 0;
+	count = 0;
 	while (i < game->map.rows)
 	{
 		j = 0;
@@ -70,10 +71,10 @@ int static lap_map_count(t_game *game, char ch)
 	return (count);
 }
 
-void static different_char(t_game *game)
+void static	different_char(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->map.rows)
@@ -81,10 +82,11 @@ void static different_char(t_game *game)
 		j = 0;
 		while (game->map.map[i][j])
 		{
-			if (game->map.map[i][j] != '1' && game->map.map[i][j] != '0' && game->map.map[i][j] != 'C' && game->map.map[i][j] != 'E' && game->map.map[i][j] != 'P')
+			if (game->map.map[i][j] != '1' && game->map.map[i][j] != '0' \
+					&& game->map.map[i][j] != 'C' && \
+					game->map.map[i][j] != 'E' && game->map.map[i][j] != 'P')
 			{
 				ft_message(WARNING, MSG_WAR_4);
-				ft_printf(MAGENTA "\trow:%d col:%d ➟ '%c'\n", i, j, game->map.map[i][j]);
 				exit(EXIT_FAILURE);
 			}
 			j++;
@@ -93,7 +95,7 @@ void static different_char(t_game *game)
 	}
 }
 
-void ctrl_map(t_game *game)
+void	ctrl_map(t_game *game)
 {
 	game->map.rows = len_rows(game->map.map);
 	len_cols(&game->map);
