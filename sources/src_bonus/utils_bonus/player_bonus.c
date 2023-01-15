@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 11:35:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:33:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 
 #include "so_long_bonus.h"
 #include "../mlx/mlx.h"
-
-void put_floor(t_game *game, int y, int x)
-{
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-							game->images.floor[0],
-							y * SQUARE, x * SQUARE + HEADER);
-}
 
 void locate(t_game *game, int x, int y, char ch)
 {
@@ -45,7 +38,7 @@ void locate(t_game *game, int x, int y, char ch)
 
 void put_player(t_game *game, int type)
 {
-	put_floor(game, game->map.objets.player.y, game->map.objets.player.x);
+	put_img(game, game->images.floor[0], game->map.objets.player.y, game->map.objets.player.x);
 	if (type == RIGHT)
 		game->map.objets.player.y += 1;
 	else if (type == LEFT)
@@ -98,7 +91,6 @@ void static ctrl_dir(t_dir *dir, int type)
 void move(t_game *game, int x, int y, int type)
 {
 	ctrl_dir(&game->dir, type);
-	// para quitar vida
 	if (game->map.map[x][y] == 'X')
 		exit(0);
 	if (game->map.map[x][y] == 'C')

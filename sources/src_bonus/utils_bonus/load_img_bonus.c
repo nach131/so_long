@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:09:35 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:21:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 #include "images_bonus.h"
 #include "../../mlx/mlx.h"
 
-char static *path_img(char *name_img, int n)
+char static	*path_img(char *name_img, int n)
 {
-	char *nbr;
-	char *s1;
-	char *s2;
+	char	*nbr;
+	char	*s1;
+	char	*s2;
 
 	nbr = ft_itoa(n);
 	s1 = ft_strjoin("xpm/", name_img);
@@ -38,13 +38,13 @@ char static *path_img(char *name_img, int n)
 	return (s1);
 }
 
-void static load_img_one(t_game *game, char *name, int num, int type)
+void static	load_img_one(t_game *game, char *name, int num, int type)
 {
-	int i;
-	int w;
-	int h;
-	void *mlx;
-	char *path;
+	int		i;
+	int		w;
+	int		h;
+	void	*mlx;
+	char	*path;
 
 	mlx = game->grafic.mlx;
 	i = -1;
@@ -63,18 +63,46 @@ void static load_img_one(t_game *game, char *name, int num, int type)
 			game->images.logo[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == IHEADER)
 			game->images.header[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		free(path);
+	}
+}
+
+void	load_img_two(t_game *game, char *name, int num, int type)
+{
+	int		i;
+	int		w;
+	int		h;
+	void	*mlx;
+	char	*path;
+
+	mlx = game->grafic.mlx;
+	i = -1;
+	while (++i < num)
+	{
+		path = path_img(name, i);
+		if (type == HERO_D)
+			game->images.hero_d[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == HERO_U)
+			game->images.hero_u[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == HERO_G)
+			game->images.hero_g[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == END_ANI)
+			game->images.endgame[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
+		else if (type == INTRO)
+			game->images.intro[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == MOM)
 			game->images.mom[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		free(path);
 	}
 }
-void load_img_two(t_game *game, char *name, int num, int type)
+
+void static	load_img_three(t_game *game, char *name, int num, int type)
 {
-	int i;
-	int w;
-	int h;
-	void *mlx;
-	char *path;
+	int		i;
+	int		w;
+	int		h;
+	void	*mlx;
+	char	*path;
 
 	mlx = game->grafic.mlx;
 	i = -1;
@@ -85,21 +113,11 @@ void load_img_two(t_game *game, char *name, int num, int type)
 			game->images.hero_l[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		else if (type == HERO_R)
 			game->images.hero_r[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
-		else if (type == HERO_D)
-			game->images.hero_d[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
-		else if (type == HERO_U)
-			game->images.hero_u[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
-		else if (type == HERO_G)
-			game->images.hero_g[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
-		else if (type == END_ANI)
-			game->images.endgame[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
-		else if (type == INTRO)
-			game->images.intro[i] = mlx_xpm_file_to_image(mlx, path, &w, &h);
 		free(path);
 	}
 }
 
-void init_img(t_game *game)
+void	init_img(t_game *game)
 {
 	load_img_one(game, "gwall", 8, GWALL);
 	load_img_one(game, "floor", 1, FLOOR);
@@ -107,10 +125,10 @@ void init_img(t_game *game)
 	load_img_one(game, "door", 4, DOOR);
 	load_img_one(game, "logo", 39, LOGO);
 	load_img_one(game, "header", 4, IHEADER);
-	load_img_one(game, "mom_h", 4, MOM);
-	load_img_two(game, "rabbit_l", 8, HERO_L);
-	load_img_two(game, "rabbit_r", 8, HERO_R);
+	load_img_two(game, "mom_h", 4, MOM);
 	load_img_two(game, "rabbit_d", 8, HERO_D);
 	load_img_two(game, "rabbit_u", 8, HERO_U);
 	load_img_two(game, "rabbit_g", 5, HERO_G);
+	load_img_three(game, "rabbit_l", 8, HERO_L);
+	load_img_three(game, "rabbit_r", 8, HERO_R);
 }

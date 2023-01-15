@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 12:19:26 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:25:56 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,33 @@
 #include "so_long_bonus.h"
 #include "../../mlx/mlx.h"
 
-void simple_key(int key, t_game *game)
+void	simple_key(int key, t_game *game)
 {
 	(void)game;
 	if (key == 53)
 		exit(0);
 	if (key == 15)
 		restar_game(game);
-	// aqui q para quitar la intro ir directo al juego
 }
 
-void static loops_end(t_game *game)
+void static	loops_end(t_game *game)
 {
-	int static i = 0;
-	int static frame = 0;
+	int static	i = 0;
+	int static	frame = 0;
+	
 	if (!(frame % 600))
 	{
 		if (game->won)
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.endgame[i], 0, 0);
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+				game->images.endgame[i], 0, 0);
 			if (i == 90 - 1)
 				i = 0;
 		}
 		else
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.endgame[i], 0, 0);
+			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+				game->images.endgame[i], 0, 0);
 			if (i == 103 - 1)
 				i = 0;
 		}
@@ -52,7 +54,7 @@ void static loops_end(t_game *game)
 		frame++;
 }
 
-void static end_win(t_game *game, char *str)
+void static	end_win(t_game *game, char *str)
 {
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, str);
@@ -61,7 +63,7 @@ void static end_win(t_game *game, char *str)
 	mlx_loop_hook(game->grafic.mlx, (void *)loops_end, game);
 }
 
-void endgame(t_game *game)
+void	endgame(t_game *game)
 {
 	mlx_loop_hook(game->grafic.mlx, NULL, NULL);
 	if (game->won)

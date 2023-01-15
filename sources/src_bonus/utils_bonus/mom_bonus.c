@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:11:27 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/12 15:52:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:33:44 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,15 @@ void static major_col(t_game *game, int col_diff, int pre_x, int pre_y)
 
 void static reload_stepped(t_game *game, int pre_x, int pre_y)
 {
-	if (game->map.map[game->map.objets.enemy.x][game->map.objets.enemy.y] == 'C')
+	if (game->map.map[game->map.objets.enemy.x]
+					 [game->map.objets.enemy.y] == 'C')
 	{
 		put_img(game, game->images.logo[0], pre_y, pre_x);
 		game->map.map[pre_x][pre_y] = 'C';
 	}
 	else
 	{
-		put_floor(game, pre_y, pre_x);
+		put_img(game, game->images.floor[0], pre_y, pre_x);
 		game->map.map[pre_x][pre_y] = '0';
 	}
 }
@@ -88,7 +89,6 @@ void loop_mom(t_game *game)
 	int pre_x;
 	int pre_y;
 
-	// print_map(game); // QUITAR y BORRAR FUNCION
 	pre_x = game->map.objets.enemy.x;
 	pre_y = game->map.objets.enemy.y;
 	row_diff = game->map.objets.player.x - game->map.objets.enemy.x;
