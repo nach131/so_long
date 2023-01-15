@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 23:44:08 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/10 23:44:20 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 21:04:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ enum
 	DOOR,
 	LOGO,
 	IHEADER,
+};
+
+enum
+{
+	FROG,
+	RABBIT,
 };
 
 enum

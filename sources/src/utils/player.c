@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 20:10:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/14 20:30:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void locate(t_game *game, int x, int y, char ch)
 	}
 }
 
-void put_player(t_game *game, int type)
+void static put_player(t_game *game, int type)
 {
 	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
 							game->images.floor[0],

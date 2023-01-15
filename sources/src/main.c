@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 20:03:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 01:51:30 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,9 @@ int main(int argc, char **argv)
 	ctrl_map(&game);
 	ctrl_path(&game);
 	game.grafic.mlx = mlx_init();
+
+	// intro(&game);
+
 	init_img(&game);
 	window(&game);
 	header(&game);

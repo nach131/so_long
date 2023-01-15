@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 20:16:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 01:48:03 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_grafic
 
 typedef struct s_game
 {
+	int type_hero;
 	t_grafic	grafic;
 	t_map		map;
 	t_images	images;
@@ -110,5 +111,6 @@ void	lap_map(t_game *game, void (*function)(t_game *game, int x,
 void	locate(t_game *game, int x, int y, char ch);
 void	move(t_game *game, int x, int y, int type);
 void	header(t_game *game);
+void intro(t_game *game);
 
 #endif

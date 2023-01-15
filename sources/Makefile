@@ -42,7 +42,7 @@ LIBSFT = $(LIBFT_DIR)libft.a
 
 MAIN_FILES	=	main
 UTILS_FILES	= errors render_map load_img ctrl_map player ctrl_move \
-			  ctrl_path header
+			  ctrl_path header intro
 
 SRC_MAIN_FILES	+=$(MAIN_FILES)
 SRC_UTILS_FILES	+=$(addprefix $(UTILS_DIR),$(UTILS_FILES))
