@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 01:51:30 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 02:25:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,23 @@ void lap_map(t_game *game, void (*function)(t_game *game, int x, int y, char ch)
 void window(t_game *game)
 {
 	char *str;
+	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 
 	str = "github.com/nach131";
 	game->grafic.win = mlx_new_window(game->grafic.mlx,
 									  game->map.cols * SQUARE,
 									  game->map.rows * SQUARE + HEADER, str);
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+}
+
+void star_game(t_game *game)
+{
+	init_img(game);
+	window(game);
+	header(game);
+	lap_map(game, filter_map);
+	lap_map(game, locate);
+	mlx_key_hook(game->grafic.win, key_hook, game);
 }
 
 int main(int argc, char **argv)
@@ -75,14 +86,6 @@ int main(int argc, char **argv)
 	ctrl_map(&game);
 	ctrl_path(&game);
 	game.grafic.mlx = mlx_init();
-
-	// intro(&game);
-
-	init_img(&game);
-	window(&game);
-	header(&game);
-	lap_map(&game, filter_map);
-	lap_map(&game, locate);
-	mlx_key_hook(game.grafic.win, key_hook, &game);
+	intro(&game);
 	mlx_loop(game.grafic.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 01:48:03 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 02:15:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ enum
 	ON_KEYPRESS = 2,
 	ON_KEYRELEASE = 3,
 	ON_EXPOSE = 12,
-	ON_DESTROY = 17
+	ON_DESTROY = 17,
+	KEY_ONE = 18,
+	KEY_TWO = 19,
+	KEY_THREE = 20,
 };
 
 enum
@@ -112,5 +115,7 @@ void	locate(t_game *game, int x, int y, char ch);
 void	move(t_game *game, int x, int y, int type);
 void	header(t_game *game);
 void intro(t_game *game);
+void star_game(t_game *game);
+void load_img(t_game *game, char *name, int num, int type);
 
 #endif
