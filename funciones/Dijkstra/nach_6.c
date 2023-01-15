@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/05 12:10:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:05:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define ROWS 4
+#define ROWS 5
 #define COLS 7
 
 void findA(char arr[ROWS][COLS], int row, int col, int gols)
 {
 	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols))
+	// if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols == 0))
 	{
 		// Si el índice está fuera del rango del arreglo, si encontramos un muro o si ya hemos visitado esta celda, entonces retornamos
 		return;
@@ -42,8 +43,9 @@ void findA(char arr[ROWS][COLS], int row, int col, int gols)
 int main()
 {
 	char arr[ROWS][COLS] = {"1111111",
-							"10C0X11",
-							"1P01EC1",
+							"10000C1",
+							"111E111",
+							"1P000C1",
 							"1111111"};
 
 	int gols;

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/06 11:27:48 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:08:39 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 
 // #define ROWS 10
 // #define COLS 5
+// ya las cuento en la funcion
 int ROWS = 0;
 int COLS = 0;
 
 void findA(char **arr, int row, int col, int *gols)
 {
-	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols < 0))
+	// if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols < 0))
+	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols))
 	{
 		// Si el índice está fuera del rango del arreglo, si encontramos un muro o si ya hemos visitado esta celda, entonces retornamos
 		return;
@@ -49,7 +51,8 @@ int main()
 	char **arr;
 
 	// arr = ft_file_to_dptr("../../sources/maps/min.ber", 0);
-	arr = ft_file_to_dptr("../../sources/maps/fail/imposible.ber", 0);
+	// arr = ft_file_to_dptr("../../sources/maps/fail/imposible.ber", 0);
+	arr = ft_file_to_dptr("../../sources/maps/fail/imposible-wall.ber", 0);
 
 	while (arr[ROWS])
 		ROWS++;
