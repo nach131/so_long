@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 02:24:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 13:59:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@
 
 void intro_key(int key, t_game *game)
 {
-	(void)game;
 	if (key == 53)
 		exit(0);
 	else if (key == KEY_ONE)
 		load_img(game, "rabbit", 4, HERO);
 	else if (key == KEY_TWO)
 		load_img(game, "frog", 4, HERO);
+	else if (key == KEY_THREE)
+		load_img(game, "penguin", 4, HERO);
+	else
+		load_img(game, "pink", 4, HERO);
 	star_game(game);
 }
 

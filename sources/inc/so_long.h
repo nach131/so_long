@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 02:15:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:00:44 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ enum
 	KEY_ONE = 18,
 	KEY_TWO = 19,
 	KEY_THREE = 20,
+	KEY_FOUR = 21,
 };
 
 enum
@@ -96,11 +97,10 @@ typedef struct s_grafic
 
 typedef struct s_game
 {
-	int type_hero;
 	t_grafic	grafic;
 	t_map		map;
 	t_images	images;
-}	t_game;
+} t_game;
 
 void	err_file(int n, char *file);
 void	init_img(t_game *game);
