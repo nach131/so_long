@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 14:00:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:39:09 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_images
 	char	*floor[1];
 	char	*wall[8];
 	char	*hero[4];
-	char *door[4];
+	char	*door[4];
 	char	*logo[1];
 	char	*header[3];
 }	t_images;
@@ -100,7 +100,7 @@ typedef struct s_game
 	t_grafic	grafic;
 	t_map		map;
 	t_images	images;
-} t_game;
+}	t_game;
 
 void	err_file(int n, char *file);
 void	init_img(t_game *game);
@@ -114,8 +114,8 @@ void	lap_map(t_game *game, void (*function)(t_game *game, int x,
 void	locate(t_game *game, int x, int y, char ch);
 void	move(t_game *game, int x, int y, int type);
 void	header(t_game *game);
-void intro(t_game *game);
-void star_game(t_game *game);
-void load_img(t_game *game, char *name, int num, int type);
+void	intro(t_game *game);
+void	star_game(t_game *game);
+void	load_img(t_game *game, char *name, int num, int type);
 
 #endif

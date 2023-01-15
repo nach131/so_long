@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 17:02:05 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/13 11:31:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:55:50 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,27 @@
 #include "so_long_bonus.h"
 #include "../../mlx/mlx.h"
 
-void caught(t_game *game)
+void	caught(t_game *game)
 {
-	char **map = game->map.map;
-	int x = game->map.objets.enemy.x;
-	int y = game->map.objets.enemy.y;
+	char	**map;
+	int		x;
+	int		y;
 
-	if (map[x][y + 1] == 'P' || map[x][y - 1] == 'P' || map[x + 1][y] == 'P' || map[x - 1][y] == 'P')
+	map = game->map.map;
+	x = game->map.objets.enemy.x;
+	y = game->map.objets.enemy.y;
+	if (map[x][y + 1] == 'P' || map[x][y - 1] == 'P' || map[x + 1][y] == 'P'\
+			|| map[x - 1][y] == 'P')
 	{
 		game->gameover = TRUE;
 		game->key = FALSE;
 	}
 }
 
-void thanos_loop(t_game *game)
+void	thanos_loop(t_game *game)
 {
-	int static i = 0;
-	int static frame = 0;
+	int static	i = 0;
+	int static	frame = 0;
 
 	if (i <= 4)
 	{

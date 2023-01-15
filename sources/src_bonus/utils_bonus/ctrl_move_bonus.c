@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:49:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/11 21:45:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:47:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*collections(t_objs colec)
 
 void	ctrl_move(t_game *game)
 {
-	char *marcador;
+	char	*marcador;
 	char	*activity;
 	int		color;
 

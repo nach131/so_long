@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:01:07 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/30 16:30:21 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:49:05 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 #include "so_long_bonus.h"
 
-void err_file(int n, char *file)
+void	err_file(int n, char *file)
 {
-	int len;
+	int	len;
 
 	if (n < 2)
 	{
@@ -41,11 +41,13 @@ void err_file(int n, char *file)
 	}
 }
 
-int ctrl_wall(t_map map, int rows, int cols, char ch)
+int	ctrl_wall(t_map map, int rows, int cols, char ch)
 {
-	int h = map.rows - 1;
-	int v = map.cols - 1;
+	int	h;
+	int	v;
 
+	h = map.rows - 1;
+	v = map.cols - 1;
 	if ((rows == 0 && cols <= v) && ch != '1')
 		ft_printf(GREEN "\trow:%d col:%d\n" WHITE, rows, cols);
 	else if ((rows > 0 && cols == 0) && ch != '1')

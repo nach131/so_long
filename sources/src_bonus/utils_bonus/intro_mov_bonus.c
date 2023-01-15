@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:09:35 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 11:29:31 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/15 15:55:22 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 #include "images_bonus.h"
 #include "../../mlx/mlx.h"
 
-void static loop_intro(t_game *game)
+void static	loop_intro(t_game *game)
 {
-	int static i = 0;
-	int static frame = 0;
+	int static	i = 0;
+	int static	frame = 0;
+
 	if (!(frame % 300))
 	{
-
 		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
-								game->images.intro[i], 0, 0);
+			game->images.intro[i], 0, 0);
 		if (i == 148)
 			star_game(game);
 		i++;
@@ -36,10 +36,10 @@ void static loop_intro(t_game *game)
 		frame++;
 }
 
-void intro(t_game *game)
+void	intro(t_game *game)
 {
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480,
-									  "42 Barcelona");
+			"42 Barcelona");
 	load_img_two(game, "intro", 149, INTRO);
 	mlx_loop_hook(game->grafic.mlx, (void *)loop_intro, game);
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
