@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 23:30:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 20:42:24 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "so_long_bonus.h"
 
-void static find_path(t_game *game, int row, int col, int **collected)
+void static	find_path(t_game *game, int row, int col, int *gols)
 {
 	int		rows;
 	int		cols;
@@ -25,25 +25,31 @@ void static find_path(t_game *game, int row, int col, int **collected)
 	rows = game->map.rows;
 	cols = game->map.cols;
 	arr = game->map.tmp;
-	if (row < 0 || row >= rows || col < 0 || col >= cols || arr[row][col] == '1' || arr[row][col] == '@')
+	if (row < 0 || row >= rows || col < 0 || col >= cols ||
+		arr[row][col] == '1' || arr[row][col] == '@' ||
+		// (arr[row][col] == 'E' && gols<0)
+		(arr[row][col] == 'E' && gols < 0))
+
 		return ;
-	if (arr[row][col] == 'E')
-		return;
-	if (arr[row][col] == 'C' && !collected[row][col])
-		collected[row][col] = TRUE;
+	if (arr[row][col] == 'C')
+		*gols -= 1;
 	arr[row][col] = '@';
-	find_path(game, row - 1, col, collected);
-	find_path(game, row, col + 1, collected);
-	find_path(game, row + 1, col, collected);
-	find_path(game, row, col - 1, collected);
+	find_path(game, row - 1, col, gols);
+	find_path(game, row, col + 1, gols);
+	find_path(game, row + 1, col, gols);
+	find_path(game, row, col - 1, gols);
 }
 
-void static err_exit(t_game *game, int x, int y)
+void print_map(t_game *game)
 {
-	if (game->map.tmp[x - 1][y] != '@' && game->map.tmp[x + 1][y] != '@' && game->map.tmp[x][y + 1] != '@' && game->map.tmp[x][y - 1] != '@')
+	system("clear");
+	for (int i = 0; i < game->map.rows; i++)
 	{
-		ft_message(WARNING, MSG_WAR_6);
-		exit(EXIT_FAILURE);
+		for (int j = 0; j < game->map.cols; j++)
+		{
+			ft_printf("%c", game->map.tmp[i][j]);
+		}
+		ft_printf("\n");
 	}
 }
 
@@ -58,32 +64,25 @@ void static	err_path(t_game *game)
 		j = 0;
 		while (j < game->map.cols)
 		{
-			if (game->map.tmp[i][j] == 'C')
+			if (game->map.tmp[i][j] == 'P' || game->map.tmp[i][j] == 'C' || \
+					game->map.tmp[i][j] == 'E')
 			{
 				ft_message(WARNING, MSG_WAR_6);
 				exit(EXIT_FAILURE);
 			}
-			if (game->map.tmp[i][j] == 'E')
-				err_exit(game, i, j);
 			j++;
 		}
 		i++;
 	}
 }
 
-void ctrl_path(t_game *game)
+void	ctrl_path(t_game *game)
 {
-	int i;
-	int j;
-	int **collected;
+	int	gols;
+	int	i;
+	int	j;
 
-	collected = (int **)ft_calloc(game->map.rows + 1, sizeof(int *));
-	i = 0;
-	while (i < game->map.rows)
-	{
-		collected[i] = (int *)ft_calloc(game->map.cols + 1, sizeof(int *));
-		i++;
-	}
+	gols = game->map.objets.goals;
 	game->map.tmp = ft_cp_dptr(game->map.map);
 	i = 0;
 	while (i < game->map.rows)
@@ -92,7 +91,7 @@ void ctrl_path(t_game *game)
 		while (j < game->map.cols)
 		{
 			if (game->map.tmp[i][j] == 'P')
-				find_path(game, i, j, collected);
+				find_path(game, i, j, &gols);
 			j++;
 		}
 		i++;
