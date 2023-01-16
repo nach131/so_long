@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 00:16:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:26:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,17 @@ void static	find_path(t_game *game, int row, int col, int *gols)
 	rows = game->map.rows;
 	cols = game->map.cols;
 	arr = game->map.tmp;
-	if (row < 0 || row >= rows || col < 0 || col >= cols || \
-		arr[row][col] == '1' || arr[row][col] == '@' ||
-		(arr[row][col] == 'E' && gols))
+	if (row < 0 || row >= rows || col < 0 || col >= cols || arr[row][col] == '1' || arr[row][col] == '@')
+		// if (row < 0 || row >= rows || col < 0 || col >= cols ||
+		// 	arr[row][col] == '1' || arr[row][col] == '@' ||
+		// 	(arr[row][col] == 'E' && gols == 0))
+		// 	// (arr[row][col] == 'E' && gols < 0))
 		return ;
+	if (arr[row][col] == 'E' && gols != 0)
+	{
+		// Si encontramos la salida y no todas las 'C' han sido recogidas, retornamos
+		return;
+	}
 	if (arr[row][col] == 'C')
 		*gols -= 1;
 	arr[row][col] = '@';
@@ -36,6 +43,19 @@ void static	find_path(t_game *game, int row, int col, int *gols)
 	find_path(game, row, col + 1, gols);
 	find_path(game, row + 1, col, gols);
 	find_path(game, row, col - 1, gols);
+}
+
+void print_map(t_game *game)
+{
+	system("clear");
+	for (int i = 0; i < game->map.rows; i++)
+	{
+		for (int j = 0; j < game->map.cols; j++)
+		{
+			ft_printf("%c", game->map.tmp[i][j]);
+		}
+		ft_printf("\n");
+	}
 }
 
 void static	err_path(t_game *game)
@@ -49,8 +69,9 @@ void static	err_path(t_game *game)
 		j = 0;
 		while (j < game->map.cols)
 		{
-			if (game->map.tmp[i][j] == 'P' || game->map.tmp[i][j] == 'C' || \
-					game->map.tmp[i][j] == 'E')
+			if (game->map.tmp[i][j] == 'C')
+			// if (game->map.tmp[i][j] == 'P' || game->map.tmp[i][j] == 'C' || \
+			// 		game->map.tmp[i][j] == 'E')
 			{
 				ft_message(WARNING, MSG_WAR_6);
 				exit(EXIT_FAILURE);
@@ -81,5 +102,6 @@ void	ctrl_path(t_game *game)
 		}
 		i++;
 	}
+	print_map(game);
 	err_path(game);
 }
