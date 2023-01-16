@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 00:08:39 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:16:57 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int main()
 	// int COLS = 0;
 	char **arr;
 
-	// arr = ft_file_to_dptr("../../sources/maps/min.ber", 0);
+	// arr = ft_file_to_dptr("../../sources/maps/42Barcelona.ber", 0);
 	// arr = ft_file_to_dptr("../../sources/maps/fail/imposible.ber", 0);
-	arr = ft_file_to_dptr("../../sources/maps/fail/imposible-wall.ber", 0);
+	arr = ft_file_to_dptr("../../sources/maps/fail/imposible_exit2.ber", 0);
 
+	// contamos ROWS y COLS
 	while (arr[ROWS])
 		ROWS++;
 	while (arr[0][COLS])
@@ -78,9 +79,7 @@ int main()
 		for (int j = 0; j < COLS; j++)
 		{
 			if (arr[i][j] == 'P')
-			{
 				findA(arr, i, j, &gols);
-			}
 		}
 	}
 

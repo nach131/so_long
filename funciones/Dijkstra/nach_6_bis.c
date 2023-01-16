@@ -1,41 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nach_6.c                                           :+:      :+:    :+:   */
+/*   nach_6_bis.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 14:34:01 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:51:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* ╔════════════════════════════════════════════════════════════════════════╗ */
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
+
 #include <stdio.h>
 #include <stdbool.h>
 
 #define ROWS 6
 #define COLS 8
 
+bool collected[ROWS][COLS];
+
 void findA(char arr[ROWS][COLS], int row, int col, int gols, int total_gols)
 {
-	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@')
-	// if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@' || (arr[row][col] == 'E' && gols == 0))
+	// Agregar esta línea de código
+	if (gols != total_gols)
 	{
-		// Si el índice está fuera del rango del arreglo, si encontramos un muro o si ya hemos visitado esta celda, entonces retornamos
 		return;
 	}
-
-	if (arr[row][col] == 'E' && gols != total_gols)
+	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@')
 	{
-		// Si encontramos la salida y no todas las 'C' han sido recogidas, retornamos
+		return;
+	}
+	if (arr[row][col] == 'E')
+	{
 		return;
 	}
 	// Marcamos la celda como visitada
-	if (arr[row][col] == 'C')
-		gols--;
+	if (arr[row][col] == 'C' && !collected[row][col])
+	{
+		collected[row][col] = true;
+		gols++;
+	}
 	arr[row][col] = '@';
 
 	// Buscamos A en las celdas adyacentes
@@ -44,18 +51,16 @@ void findA(char arr[ROWS][COLS], int row, int col, int gols, int total_gols)
 	findA(arr, row + 1, col, gols, total_gols); // abajo
 	findA(arr, row, col - 1, gols, total_gols); // izquierda
 }
-
 int main()
 {
-	char arr[ROWS][COLS] = {"11111111",
-							"10C010C1",
-							"1101E101",
-							"1P0100C1",
-							"00000000",
-							"11111111"};
-
-	int gols;
-
+	char arr[ROWS][COLS] = {
+		"11111111",
+		"10C000C1",
+		"1111E111",
+		"1P0110C1",
+		"00000000",
+		"11111111"};
+	int gols = 0;
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
@@ -66,17 +71,8 @@ int main()
 			}
 		}
 	}
-	int total_gols = 0;
-	for (int i = 0; i < ROWS; i++)
-	{
-		for (int j = 0; j < COLS; j++)
-		{
-			if (arr[i][j] == 'C')
-			{
-				total_gols++;
-			}
-		}
-	}
+	int total_gols = gols;
+
 	// Buscamos A desde P hasta E
 	for (int i = 0; i < ROWS; i++)
 	{
