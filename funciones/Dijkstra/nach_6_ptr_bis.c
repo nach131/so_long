@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:18:32 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 15:46:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:47:36 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,45 +26,33 @@ int COLS = 0;
 // bool collected[ROWS][COLS];
 bool **collected;
 
-void findA(char **arr, int row, int col, int gols, int total_gols)
+void findA(char **arr, int x, int y)
 {
-	// Agregar esta línea de código
-	if (gols != total_gols)
-	{
+
+	if (x < 0 || x >= ROWS || y < 0 || y >= COLS || arr[x][y] == '1' || arr[x][y] == '@')
 		return;
-	}
-	if (row < 0 || row >= ROWS || col < 0 || col >= COLS || arr[row][col] == '1' || arr[row][col] == '@')
-	{
+	if (arr[x][y] == 'E')
 		return;
-	}
-	if (arr[row][col] == 'E')
-	{
-		return;
-	}
 	// Marcamos la celda como visitada
-	if (arr[row][col] == 'C' && !collected[row][col])
-	{
-		collected[row][col] = true;
-		gols++;
-	}
-	arr[row][col] = '@';
+	if (arr[x][y] == 'C' && !collected[x][y])
+		collected[x][y] = true;
+	arr[x][y] = '@';
 
 	// Buscamos A en las celdas adyacentes
-	findA(arr, row - 1, col, gols, total_gols); // arriba
-	findA(arr, row, col + 1, gols, total_gols); // derecha
-	findA(arr, row + 1, col, gols, total_gols); // abajo
-	findA(arr, row, col - 1, gols, total_gols); // izquierda
+	findA(arr, x - 1, y); // arriba
+	findA(arr, x, y + 1); // derecha
+	findA(arr, x + 1, y); // abajo
+	findA(arr, x, y - 1); // izquierda
 }
 
 int main()
 {
-	// int ROWS = 0;
-	// int COLS = 0;
+
 	char **arr;
 
 	// arr = ft_file_to_dptr("../../sources/maps/42Barcelona.ber", 0);
+	// arr = ft_file_to_dptr("../../sources/maps/fail/imposible_exit.ber", 0);
 	arr = ft_file_to_dptr("../../sources/maps/fail/imposible_exit2.ber", 0);
-	// arr = ft_file_to_dptr("../../sources/maps/fail/imposible_exit2.ber", 0);
 
 	// contamos ROWS y COLS
 	while (arr[ROWS])
@@ -100,7 +88,7 @@ int main()
 		for (int j = 0; j < COLS; j++)
 		{
 			if (arr[i][j] == 'P')
-				findA(arr, i, j, gols, total_gols);
+				findA(arr, i, j);
 		}
 	}
 
@@ -121,7 +109,7 @@ int main()
 	// {
 	// 	for (int j = 0; j < COLS; j++)
 	// 	{
-	// 		printf("%c ", collected[i][j]);
+	// 		printf("%d ", collected[i][j]);
 	// 	}
 	// 	printf("\n");
 	// }
