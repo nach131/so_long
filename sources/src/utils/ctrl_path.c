@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 20:22:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 20:32:18 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
 #include "so_long.h"
-#include <stdbool.h>
 
-bool **collected;
-
-void static find_path(t_game *game, int row, int col)
+void static find_path(t_game *game, int row, int col, int **collected)
 {
 	int rows;
 	int cols;
@@ -33,12 +30,12 @@ void static find_path(t_game *game, int row, int col)
 	if (arr[row][col] == 'E')
 		return;
 	if (arr[row][col] == 'C' && !collected[row][col])
-		collected[row][col] = true;
+		collected[row][col] = TRUE;
 	arr[row][col] = '@';
-	find_path(game, row - 1, col);
-	find_path(game, row, col + 1);
-	find_path(game, row + 1, col);
-	find_path(game, row, col - 1);
+	find_path(game, row - 1, col, collected);
+	find_path(game, row, col + 1, collected);
+	find_path(game, row + 1, col, collected);
+	find_path(game, row, col - 1, collected);
 }
 
 void print_map(t_game *game)
@@ -90,15 +87,15 @@ void ctrl_path(t_game *game)
 {
 	int i;
 	int j;
+	int **collected;
 
-	collected = (bool **)ft_calloc(game->map.rows + 1, sizeof(bool *));
+	collected = (int **)ft_calloc(game->map.rows + 1, sizeof(int *));
 	i = 0;
 	while (i < game->map.rows)
 	{
-		collected[i] = (bool *)ft_calloc(game->map.cols + 1, sizeof(bool *));
+		collected[i] = (int *)ft_calloc(game->map.cols + 1, sizeof(int *));
 		i++;
 	}
-
 	game->map.tmp = ft_cp_dptr(game->map.map);
 	i = 0;
 	while (i < game->map.rows)
@@ -107,7 +104,7 @@ void ctrl_path(t_game *game)
 		while (j < game->map.cols)
 		{
 			if (game->map.tmp[i][j] == 'P')
-				find_path(game, i, j);
+				find_path(game, i, j, collected);
 			j++;
 		}
 		i++;
