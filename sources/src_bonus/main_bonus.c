@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:46:31 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:40:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	main(int argc, char **argv)
 	game.map.map = ft_file_to_dptr(argv[1], 0);
 	ctrl_map(&game);
 	ctrl_path(&game);
+	game.map.tmp = ft_cp_dptr(game.map.map);
 	game.grafic.mlx = mlx_init();
 	intro(&game);
 	mlx_loop(game.grafic.mlx);

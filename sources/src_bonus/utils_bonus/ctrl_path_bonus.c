@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 23:30:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:42:58 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "so_long_bonus.h"
 
-void static find_path(t_game *game, int row, int col, int **collected)
+void static	find_path(t_game *game, int row, int col, int **collected)
 {
 	int		rows;
 	int		cols;
@@ -25,10 +25,11 @@ void static find_path(t_game *game, int row, int col, int **collected)
 	rows = game->map.rows;
 	cols = game->map.cols;
 	arr = game->map.tmp;
-	if (row < 0 || row >= rows || col < 0 || col >= cols || arr[row][col] == '1' || arr[row][col] == '@')
+	if (row < 0 || row >= rows || col < 0 || col >= cols
+		|| arr[row][col] == '1' || arr[row][col] == '@')
 		return ;
 	if (arr[row][col] == 'E')
-		return;
+		return ;
 	if (arr[row][col] == 'C' && !collected[row][col])
 		collected[row][col] = TRUE;
 	arr[row][col] = '@';
@@ -38,9 +39,10 @@ void static find_path(t_game *game, int row, int col, int **collected)
 	find_path(game, row, col - 1, collected);
 }
 
-void static err_exit(t_game *game, int x, int y)
+void static	err_exit(t_game *game, int x, int y)
 {
-	if (game->map.tmp[x - 1][y] != '@' && game->map.tmp[x + 1][y] != '@' && game->map.tmp[x][y + 1] != '@' && game->map.tmp[x][y - 1] != '@')
+	if (game->map.tmp[x - 1][y] != '@' && game->map.tmp[x + 1][y] != '@'
+		&& game->map.tmp[x][y + 1] != '@' && game->map.tmp[x][y - 1] != '@')
 	{
 		ft_message(WARNING, MSG_WAR_6);
 		exit(EXIT_FAILURE);
@@ -71,11 +73,11 @@ void static	err_path(t_game *game)
 	}
 }
 
-void ctrl_path(t_game *game)
+void	ctrl_path(t_game *game)
 {
-	int i;
-	int j;
-	int **collected;
+	int	i;
+	int	j;
+	int	**collected;
 
 	collected = (int **)ft_calloc(game->map.rows + 1, sizeof(int *));
 	i = 0;
@@ -98,5 +100,4 @@ void ctrl_path(t_game *game)
 		i++;
 	}
 	err_path(game);
-	game->map.tmp = ft_cp_dptr(game->map.map);
 }
