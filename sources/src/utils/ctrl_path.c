@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 20:32:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/16 20:36:02 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@
 
 #include "so_long.h"
 
-void static find_path(t_game *game, int row, int col, int **collected)
+void static	find_path(t_game *game, int row, int col, int **collected)
 {
-	int rows;
-	int cols;
-	char **arr;
+	int		rows;
+	int		cols;
+	char	**arr;
 
 	rows = game->map.rows;
 	cols = game->map.cols;
 	arr = game->map.tmp;
-	if (row < 0 || row >= rows || col < 0 || col >= cols || arr[row][col] == '1' || arr[row][col] == '@')
-		return;
+	if (row < 0 || row >= rows || col < 0 || col >= cols
+		|| arr[row][col] == '1' || arr[row][col] == '@')
+		return ;
 	if (arr[row][col] == 'E')
-		return;
+		return ;
 	if (arr[row][col] == 'C' && !collected[row][col])
 		collected[row][col] = TRUE;
 	arr[row][col] = '@';
@@ -38,31 +39,20 @@ void static find_path(t_game *game, int row, int col, int **collected)
 	find_path(game, row, col - 1, collected);
 }
 
-void print_map(t_game *game)
+void static	err_exit(t_game *game, int x, int y)
 {
-	system("clear");
-	for (int i = 0; i < game->map.rows; i++)
-	{
-		for (int j = 0; j < game->map.cols; j++)
-		{
-			ft_printf("%c", game->map.tmp[i][j]);
-		}
-		ft_printf("\n");
-	}
-}
-void static err_exit(t_game *game, int x, int y)
-{
-
-	if (game->map.tmp[x - 1][y] != '@' && game->map.tmp[x + 1][y] != '@' && game->map.tmp[x][y + 1] != '@' && game->map.tmp[x][y - 1] != '@')
+	if (game->map.tmp[x - 1][y] != '@' && game->map.tmp[x + 1][y] != '@'
+		&& game->map.tmp[x][y + 1] != '@' && game->map.tmp[x][y - 1] != '@')
 	{
 		ft_message(WARNING, MSG_WAR_6);
 		exit(EXIT_FAILURE);
 	}
 }
-void static err_path(t_game *game)
+
+void static	err_path(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < game->map.rows)
@@ -83,11 +73,11 @@ void static err_path(t_game *game)
 	}
 }
 
-void ctrl_path(t_game *game)
+void	ctrl_path(t_game *game)
 {
-	int i;
-	int j;
-	int **collected;
+	int	i;
+	int	j;
+	int	**collected;
 
 	collected = (int **)ft_calloc(game->map.rows + 1, sizeof(int *));
 	i = 0;
@@ -109,6 +99,5 @@ void ctrl_path(t_game *game)
 		}
 		i++;
 	}
-	print_map(game);
 	err_path(game);
 }
