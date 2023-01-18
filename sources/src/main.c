@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:42:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:55:16 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	key_hook(int keycode, t_game *game)
 	x = game->map.objets.player.x;
 	y = game->map.objets.player.y;
 	game->map.map[x][y] = '0';
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 		exit(0);
 	if (keycode == 2 || keycode == 124)
 		move(game, x, y + 1, RIGHT);

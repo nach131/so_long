@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 23:40:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:32:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ int	key_hook(int keycode, t_game *game)
 	y = game->map.objets.player.y;
 	ft_bzero(&game->dir, sizeof(t_dir));
 	game->map.map[x][y] = '0';
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 		exit(0);
 	if (!game->gameover)
 	{
-		if (keycode == 2 || keycode == 124)
+		if (keycode == KEY_D || keycode == KEY_RIGHT)
 			move(game, x, y + 1, RIGHT);
-		else if (keycode == 0 || keycode == 123)
+		else if (keycode == KEY_A || keycode == KEY_LEFT)
 			move(game, x, y - 1, LEFT);
-		else if (keycode == 1 || keycode == 125)
+		else if (keycode == KEY_S || keycode == KEY_DOWN)
 			move(game, x + 1, y, DOWN);
-		else if (keycode == 13 || keycode == 126)
+		else if (keycode == KEY_W || keycode == KEY_UP)
 			move(game, x - 1, y, UP);
 	}
 	return (0);
@@ -94,6 +94,8 @@ int	main(int argc, char **argv)
 	game.map.map = ft_file_to_dptr(argv[1], 0);
 	ctrl_map(&game);
 	ctrl_path(&game);
+	if (game.map.tmp)
+		ft_free_dptr(game.map.tmp);
 	game.map.tmp = ft_cp_dptr(game.map.map);
 	game.grafic.mlx = mlx_init();
 	intro(&game);

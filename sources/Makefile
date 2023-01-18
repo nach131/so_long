@@ -86,7 +86,8 @@ $(OBJ_DIR_BONUS)%.o : $(SRC_DIR_BONUS)%.c
 
 all: LIBFS $(NAME)
 
-bonus: LIBFS $(NAME_BONUS)
+bonus: $(NAME_BONUS)
+# bonus: LIBFS $(NAME_BONUS)
 
 LIBFS:
 			@make -C $(LIBFT_DIR)

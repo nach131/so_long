@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 15:39:09 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:04:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@
 enum
 {
 	ON_KEYPRESS = 2,
-	ON_KEYRELEASE = 3,
-	ON_EXPOSE = 12,
 	ON_DESTROY = 17,
+}
+
+enum
+{
 	KEY_ONE = 18,
 	KEY_TWO = 19,
 	KEY_THREE = 20,
 	KEY_FOUR = 21,
+	KEY_ESC = 53,
 };
 
 enum

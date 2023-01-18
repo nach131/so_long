@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/18 19:31:38 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:48:48 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void static	err_path(t_game *game)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < game->map.rows)
+	i = -1;
+	while (++i < game->map.rows)
 	{
-		j = 0;
-		while (j < game->map.cols)
+		j = -1;
+		while (++j < game->map.cols)
 		{
 			if (game->map.tmp[i][j] == 'C')
 			{
@@ -67,9 +67,7 @@ void static	err_path(t_game *game)
 			}
 			if (game->map.tmp[i][j] == 'E')
 				err_exit(game, i, j);
-			j++;
 		}
-		i++;
 	}
 }
 
@@ -94,6 +92,7 @@ void	ctrl_path(t_game *game)
 	while (++i < game->map.rows)
 		collected[i] = (int *)ft_calloc(game->map.cols + 1, sizeof(int *));
 	game->map.tmp = ft_cp_dptr(game->map.map);
+
 	i = -1;
 	while (++i < game->map.rows)
 	{

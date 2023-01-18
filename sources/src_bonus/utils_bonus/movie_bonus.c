@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 00:17:44 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:53:06 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 void	simple_key(int key, t_game *game)
 {
 	(void)game;
-	if (key == 53)
+	if (key == KEY_ESC)
 		exit(0);
-	if (key == 15)
+	if (key == KEY_R)
 		restar_game(game);
 }
 
