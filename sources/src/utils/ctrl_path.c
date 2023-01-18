@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 10:33:11 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/16 20:36:02 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:32:11 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,37 @@ void static	err_path(t_game *game)
 	}
 }
 
-void	ctrl_path(t_game *game)
+void free_arr_int(int **arr)
+{
+	int i;
+
+	i = -1;
+	while (arr[++i])
+		free(arr[i]);
+	free(arr);
+}
+
+void ctrl_path(t_game *game)
 {
 	int	i;
 	int	j;
 	int	**collected;
 
 	collected = (int **)ft_calloc(game->map.rows + 1, sizeof(int *));
-	i = 0;
-	while (i < game->map.rows)
-	{
+	i = -1;
+	while (++i < game->map.rows)
 		collected[i] = (int *)ft_calloc(game->map.cols + 1, sizeof(int *));
-		i++;
-	}
 	game->map.tmp = ft_cp_dptr(game->map.map);
-	i = 0;
-	while (i < game->map.rows)
+	i = -1;
+	while (++i < game->map.rows)
 	{
-		j = 0;
-		while (j < game->map.cols)
+		j = -1;
+		while (++j < game->map.cols)
 		{
 			if (game->map.tmp[i][j] == 'P')
 				find_path(game, i, j, collected);
-			j++;
 		}
-		i++;
 	}
 	err_path(game);
+	free_arr_int(collected);
 }
