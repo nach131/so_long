@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/18 20:53:06 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void static	loops_end(t_game *game)
 	{
 		if (game->won)
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+			mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 				game->images.endgame[i], 0, 0);
 			if (i == 90 - 1)
 				i = 0;
 		}
 		else
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+			mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 				game->images.endgame[i], 0, 0);
 			if (i == 103 - 1)
 				i = 0;
@@ -56,11 +56,11 @@ void static	loops_end(t_game *game)
 
 void static	end_win(t_game *game, char *str)
 {
-	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, str);
-	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
-	mlx_key_hook(game->grafic.win, (void *)simple_key, game);
-	mlx_loop_hook(game->grafic.mlx, (void *)loops_end, game);
+	mlx_destroy_window(game->graphic.mlx, game->graphic.win);
+	game->graphic.win = mlx_new_window(game->graphic.mlx, 854, 480, str);
+	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+	mlx_key_hook(game->graphic.win, (void *)simple_key, game);
+	mlx_loop_hook(game->graphic.mlx, (void *)loops_end, game);
 }
 
 void	endgame(t_game *game)

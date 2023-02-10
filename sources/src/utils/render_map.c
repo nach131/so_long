@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 14:31:08 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	random_num(int n)
 void static	put_gwall(t_game *game, int x, int y, int type)
 {
 	if (type == GWALL)
-		mlx_put_image_to_window(game->grafic.mlx,
-			game->grafic.win,
+		mlx_put_image_to_window(game->graphic.mlx,
+			game->graphic.win,
 			game->images.gwall[random_num(7)], y, x);
 }
 
 void static	put_wall(t_game *game, char *path, int x, int y)
 {
-	mlx_put_image_to_window(game->grafic.mlx,
-		game->grafic.win, path, y, x);
+	mlx_put_image_to_window(game->graphic.mlx,
+		game->graphic.win, path, y, x);
 }
 
 void static	wall(t_game *game, int x, int y)
@@ -77,15 +77,15 @@ void	filter_map(t_game *game, int x, int y, char ch)
 	if (ch == '1')
 		wall(game, x, y);
 	if (ch == '0')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+		mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 			game->images.floor[0], y, x + HEADER);
 	if (ch == 'P')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+		mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 			game->images.hero[0], y, x + HEADER);
 	if (ch == 'E')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+		mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 			game->images.door[0], y, x + HEADER);
 	if (ch == 'C')
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+		mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 			game->images.logo[0], y, x + HEADER);
 }

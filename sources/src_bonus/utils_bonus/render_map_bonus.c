@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:04:01 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/14 12:49:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	random_num(int n)
 void static	put_gwall(t_game *game, int x, int y, int type)
 {
 	if (type == GWALL)
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+		mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 			game->images.gwall[random_num(7)], y, x);
 }
 
 // ESTA QUITAR
 void static	put_wall(t_game *game, char *path, int x, int y)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, path, y, x);
+	mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, path, y, x);
 }
 
 void static	wall(t_game *game, int x, int y)

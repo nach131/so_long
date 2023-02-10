@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 14:27:47 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	load_img(t_game *game, char *name, int num, int type)
 	void	*mlx;
 	char	*path;
 
-	mlx = game->grafic.mlx;
+	mlx = game->graphic.mlx;
 	i = -1;
 	while (++i < num)
 	{
@@ -65,7 +65,7 @@ void static	load_img_two(t_game *game, char *name, int num, int type)
 	void	*mlx;
 	char	*path;
 
-	mlx = game->grafic.mlx;
+	mlx = game->graphic.mlx;
 	i = -1;
 	while (++i < num)
 	{

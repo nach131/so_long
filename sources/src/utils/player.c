@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 14:29:11 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	locate(t_game *game, int x, int y, char ch)
 
 void static	put_player(t_game *game, int type)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 		game->images.floor[0],
 		game->map.objets.player.y * SQUARE,
 		game->map.objets.player.x * SQUARE + HEADER);
@@ -45,7 +45,7 @@ void static	put_player(t_game *game, int type)
 		game->map.objets.player.x += 1;
 	else if (type == UP)
 		game->map.objets.player.x -= 1;
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 		game->images.hero[type],
 		game->map.objets.player.y * SQUARE,
 		game->map.objets.player.x * SQUARE + HEADER);
@@ -53,7 +53,7 @@ void static	put_player(t_game *game, int type)
 
 void	open_door(t_game *game)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 		game->images.door[3],
 		game->map.objets.exit.y * SQUARE,
 		game->map.objets.exit.x * SQUARE + HEADER);

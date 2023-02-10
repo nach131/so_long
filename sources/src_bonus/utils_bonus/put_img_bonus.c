@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:35:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:40:19 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void	put_img(t_game *game, char *img, int y, int x)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 		img, y * SQUARE, x * SQUARE + HEADER);
 }
 
@@ -38,7 +38,7 @@ void	put_mom(t_game *game)
 
 void	put_hero_loop(t_game *game, char *img)
 {
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+	mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 		img, game->map.objets.player.y * SQUARE,
 		game->map.objets.player.x * SQUARE + HEADER);
 }

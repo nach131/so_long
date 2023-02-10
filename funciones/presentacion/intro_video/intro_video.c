@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/13 23:45:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/10 20:16:07 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,7 @@ typedef struct s_game
 } t_game;
 
 void segunda_lose(t_game *game);
-void tercera_intro(t_game *game);
 void presentacion(t_game *game);
-void free_all(t_game *game);
 
 int key_push(int key, t_game *game)
 {
@@ -80,27 +78,14 @@ int key_push(int key, t_game *game)
 	if (key == KEY_A)
 		write(1, "A", 1);
 	if (key == KEY_1)
+		// ;
 		presentacion(game);
 	if (key == KEY_2)
 		segunda_lose(game);
 	if (key == KEY_3)
-		tercera_intro(game);
+
 	return (0);
 }
-
-// int key_pull(int key, t_game *game)
-// {
-// 	if (key == KEY_ESC)
-// 		exit(0);
-// 	if (key == KEY_A)
-// 		write(1, "A", 1);
-// 	if (key == KEY_1)
-// 	{
-// 		write(1, "levantado uno\n", 14);
-// 	}
-// 	if (key == KEY_2)
-// 		write(1, "levantado dos\n", 14);
-// }
 
 char static *path_img(char *name_img, int n)
 {
@@ -134,34 +119,42 @@ void static load_image(t_game *game, char *name, int num, int type)
 
 	while (++i < num)
 	{
-		path = path_img(name, i);
-		if (type == 1)
-			game->images.lose[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
-		else if (type == 2)
-			game->images.intro[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
-		free(path);
+	path = path_img(name, i);
+	if (type == 1)
+		game->images.lose[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+	else if (type == 2)
+		game->images.intro[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+	free(path);
 	}
 }
 
-void loops(t_game *game)
+void loop_intro(t_game *game)
 {
 	int static i = 0;
 	int static frame = 0;
 	if (!(frame % 300))
 	{
-		if (game->type == 1)
-		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.lose[i], 0, 0);
-			if (i == LOSE - 1)
-				i = 0;
-		}
-		else if (game->type == 2)
-		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.intro[i], 0, 0);
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.intro[i], 0, 0);
 
-			if (i == INTRO - 1)
-				i = 0;
-		}
+		if (i == INTRO - 1)
+			segunda_lose(game);
+
+		i++;
+		frame = 1;
+	}
+	else
+		frame++;
+}
+
+void loop_lose(t_game *game)
+{
+	int static i = 0;
+	int static frame = 0;
+	if (!(frame % 600))
+	{
+		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.lose[i], 0, 0);
+		if (i == LOSE - 1)
+			i = 0;
 		i++;
 		frame = 1;
 	}
@@ -171,43 +164,23 @@ void loops(t_game *game)
 
 void segunda_lose(t_game *game)
 {
-	game->type = 1;
 	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
 	load_image(game, "lose", LOSE, 1);
 
 	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, "You Lose");
 
-	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
-	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
-}
-
-void tercera_intro(t_game *game)
-{
-	game->type = 2;
-	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-	load_image(game, "intro", INTRO, 2);
-
-	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, "You intro");
-	mlx_loop_hook(game->grafic.mlx, (void *)loops, game);
-	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
+	mlx_loop_hook(game->grafic.mlx, (void *)loop_lose, game);
+	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, (void *)key_push, game);
+	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
 }
 
 void presentacion(t_game *game)
 {
-	if (game->grafic.win)
-	{
-		mlx_destroy_window(game->grafic.mlx, game->grafic.win);
-		mlx_clear_window(game->grafic.mlx, game->grafic.win);
-	}
-	char *path_rabbit = "fotograma-000001.png.xpm";
-	int img_width;
-	int img_height;
-	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, "nach131 So Long");
-	game->images.mom = mlx_xpm_file_to_image(game->grafic.mlx, path_rabbit, &img_width, &img_height);
-	mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->images.mom, 0, 0);
+	load_image(game, "intro", INTRO, 2);
+	game->grafic.win = mlx_new_window(game->grafic.mlx, 854, 480, "You intro");
+	mlx_loop_hook(game->grafic.mlx, (void *)loop_intro, game);
 	mlx_hook(game->grafic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
-	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, key_push, game);
-	// mlx_hook(game->grafic.win, ON_KEYRELEASE, 1L << 0, key_pull, game);
+	mlx_hook(game->grafic.win, ON_KEYPRESS, 1L << 0, (void *)key_push, game);
 }
 
 int main(void)
@@ -220,4 +193,4 @@ int main(void)
 	mlx_loop(game.grafic.mlx);
 }
 
-// gcc -framework OpenGL -framework AppKit intro_video.c ../../../sources/mlx/libmlx.a
+// gcc -framework OpenGL -framework AppKit intro_video.c ../../../sources/mlx/libmlx.a ../../../sources/libft/libft.a

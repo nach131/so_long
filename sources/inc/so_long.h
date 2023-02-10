@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:37:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/10 19:51:18 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,16 @@ typedef struct s_map
 	t_objs	objets;
 }	t_map;
 
-typedef struct s_grafic
+typedef struct s_graphic
 {
 	void	*mlx;
 	void	*win;
 	void	*img;
-}	t_grafic;
+}	t_graphic;
 
 typedef struct s_game
 {
-	t_grafic	grafic;
+	t_graphic	graphic;
 	t_map		map;
 	t_images	images;
 }	t_game;

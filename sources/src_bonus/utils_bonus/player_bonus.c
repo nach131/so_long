@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:40:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/15 16:38:56 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	open_door(t_game *game)
 		{
 			if (!(frame % 1000))
 			{
-				mlx_put_image_to_window(game->grafic.mlx, game->grafic.win,
+				mlx_put_image_to_window(game->graphic.mlx, game->graphic.win,
 					game->images.door[i], game->map.objets.exit.y * SQUARE,
 					game->map.objets.exit.x * SQUARE + HEADER);
 				break ;
