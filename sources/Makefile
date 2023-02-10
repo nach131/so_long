@@ -109,6 +109,7 @@ clean :
 fclean : clean
 			@$(RM) $(NAME)
 			@$(RM) $(NAME_BONUS)
+			@make clean -s -C $(LIBMLX_DIR)
 			@echo "$(BLUE) Todo Super limpito...✌🏼 $(WHITE)" 
 
 re: fclean all
