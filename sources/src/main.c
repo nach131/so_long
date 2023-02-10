@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/18 20:55:16 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/10 19:54:12 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	key_hook(int keycode, t_game *game)
 	game->map.map[x][y] = '0';
 	if (keycode == KEY_ESC)
 		exit(0);
-	if (keycode == 2 || keycode == 124)
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 		move(game, x, y + 1, RIGHT);
-	if (keycode == 0 || keycode == 123)
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
 		move(game, x, y - 1, LEFT);
-	if (keycode == 1 || keycode == 125)
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
 		move(game, x + 1, y, DOWN);
-	if (keycode == 13 || keycode == 126)
+	else if (keycode == KEY_W || keycode == KEY_UP)
 		move(game, x - 1, y, UP);
 	return (0);
 }
