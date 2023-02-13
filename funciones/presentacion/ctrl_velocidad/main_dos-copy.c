@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_dos.c                                         :+:      :+:    :+:   */
+/*   main_dos-copy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:55:59 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/10 20:22:25 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/11 00:36:35 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ enum
 
 int g_loop = 1;
 
-typedef struct s_grafic
+typedef struct s_graphic
 {
 	void *mlx;
 	void *win;
 	void *img;
 	void *rabbit[8];
-} t_grafic;
+} t_graphic;
 
 typedef struct s_game
 {
-	t_grafic grafic;
+	t_graphic graphic;
 	int flag;
 	int type;
 } t_game;
@@ -59,13 +59,13 @@ typedef struct s_game
 void ft_free_map(t_game *game)
 {
 	int i = -1;
-	if (game->grafic.rabbit[0])
+	if (game->graphic.rabbit[0])
 		while (++i < 8)
 		{
-			mlx_destroy_image(game->grafic.mlx, game->grafic.rabbit[i]);
-			game->grafic.rabbit[i] = NULL;
+			mlx_destroy_image(game->graphic.mlx, game->graphic.rabbit[i]);
+			game->graphic.rabbit[i] = NULL;
 		}
-	mlx_destroy_window(game->grafic.mlx, game->grafic.win);
+	mlx_destroy_window(game->graphic.mlx, game->graphic.win);
 	exit(0);
 }
 
@@ -85,7 +85,7 @@ int key_push(int key, t_game *game)
 		g_loop = 1;
 	}
 	if (key == KEY_1)
-		mlx_loop_hook(game->grafic.mlx, NULL, NULL);
+		mlx_loop_hook(game->graphic.mlx, NULL, NULL);
 	if (key == KEY_2)
 		write(1, "Es dos\n", 7);
 	return (0);
@@ -97,7 +97,7 @@ void put_uno(t_game *game)
 	int static frame = 0;
 	if (!(frame % 100))
 	{
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 94, 0);
+		mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, game->graphic.rabbit[i], 94, 0);
 		i++;
 		if (i == 7)
 			i = 0;
@@ -112,7 +112,7 @@ void put_dos(t_game *game)
 	int static frame = 0;
 	if (!(frame % 300))
 	{
-		mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[i], 126, 0);
+		mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, game->graphic.rabbit[i], 126, 0);
 		if (i == 7)
 			i = 0;
 		i++;
@@ -124,7 +124,7 @@ void put_dos(t_game *game)
 
 void loops(t_game *game)
 {
-	// mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[0], 0, 0);
+	// mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, game->graphic.rabbit[0], 0, 0);
 
 	int static a = 0;
 	int static b = 0;
@@ -139,7 +139,7 @@ void loops(t_game *game)
 	{
 		if (!(framea % 100))
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[a], 0, 0);
+			mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, game->graphic.rabbit[a], 0, 0);
 			if (a == 7)
 				a = 0;
 			a++;
@@ -147,7 +147,7 @@ void loops(t_game *game)
 		}
 		if (!(frameb % 300))
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[b], 32, 0);
+			mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, game->graphic.rabbit[b], 32, 0);
 			b++;
 			if (b == 7)
 				b = 0;
@@ -155,7 +155,7 @@ void loops(t_game *game)
 		}
 		if (!(framec % 600))
 		{
-			mlx_put_image_to_window(game->grafic.mlx, game->grafic.win, game->grafic.rabbit[c], 64, 0);
+			mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, game->graphic.rabbit[c], 64, 0);
 			if (c == 7)
 				c = 0;
 			c++;
@@ -197,7 +197,7 @@ void static load_image(t_game *game, char *name, int num, int type)
 	int i;
 	int w;
 	int h;
-	void *mlx = game->grafic.mlx;
+	void *mlx = game->graphic.mlx;
 	char *path;
 
 	i = -1;
@@ -206,9 +206,9 @@ void static load_image(t_game *game, char *name, int num, int type)
 	{
 		path = path_img(name, i);
 		if (type == 1)
-			game->grafic.rabbit[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+			game->graphic.rabbit[i] = mlx_xpm_file_to_image(game->graphic.mlx, path, &w, &h);
 		// else if (type == 2)
-		// 	game->images.won[i] = mlx_xpm_file_to_image(game->grafic.mlx, path, &w, &h);
+		// 	game->images.won[i] = mlx_xpm_file_to_image(game->graphic.mlx, path, &w, &h);
 		free(path);
 	}
 }
@@ -217,19 +217,19 @@ void presentacion(t_game *game)
 {
 	load_image(game, "rabbit_r", 8, 1);
 
-	game->grafic.win = mlx_new_window(game->grafic.mlx, 20 * 32, 15 * 32, "nach131 So Long");
+	game->graphic.win = mlx_new_window(game->graphic.mlx, 20 * 32, 15 * 32, "nach131 So Long");
 
-	mlx_loop_hook(game->grafic.mlx, &loops, game);
+	mlx_loop_hook(game->graphic.mlx, &loops, game);
 }
 
 int main(void)
 {
 	t_game game;
 	ft_bzero(&game, sizeof(t_game));
-	game.grafic.mlx = mlx_init();
+	game.graphic.mlx = mlx_init();
 	presentacion(&game);
-	mlx_hook(game.grafic.win, ON_KEYPRESS, 1L << 0, &key_push, &game);
-	mlx_loop(game.grafic.mlx);
+	mlx_hook(game.graphic.win, ON_KEYPRESS, 1L << 0, &key_push, &game);
+	mlx_loop(game.graphic.mlx);
 	return (0);
 }
 

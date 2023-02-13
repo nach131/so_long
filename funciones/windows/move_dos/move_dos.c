@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:04:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2022/12/29 15:04:53 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:25:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,10 +153,10 @@ void load_images(t_game *game)
 	int width;
 	int height;
 
-	game->textures[ROCKS] = mlx_xpm_file_to_image(game->mlx, "../xpm/rocks.xpm", &width, &height);
-	game->textures[TGREEN] = mlx_xpm_file_to_image(game->mlx, "../xpm/tree_GREEN.xpm", &width, &height);
-	game->textures[GRASS] = mlx_xpm_file_to_image(game->mlx, "../xpm/central.xpm", &width, &height);
-	game->textures[DOORC] = mlx_xpm_file_to_image(game->mlx, "../xpm/door_closed.xpm", &width, &height);
+	// game->textures[ROCKS] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/gwall/gwall0.xpm", &width, &height);
+	// game->textures[TGREEN] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/gwall/gwall1.xpm", &width, &height);
+	// game->textures[GRASS] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/floor/floor0.xpm", &width, &height);
+	// game->textures[DOORC] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/door/door0.xpm", &width, &height);
 	game->logo[0] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo0.xpm", &width, &height);
 	game->logo[1] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo1.xpm", &width, &height);
 	game->logo[2] = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/logo/logo2.xpm", &width, &height);

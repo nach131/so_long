@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:04:31 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/01/03 11:46:46 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:41:01 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,14 +378,13 @@ int loop_mom(t_game *game)
 	return (0);
 }
 
-int los_dos(t_game *game)
+void los_dos(t_game *game)
 {
 
 	loop_logo_hero(game);
 	// windows(game);
 	// loop_mom(game);
 	// loop_hero(game);
-	return (0);
 }
 
 int main(void)
@@ -399,7 +398,7 @@ int main(void)
 
 	windows(&game);
 
-	mlx_loop_hook(game.mlx, (char *)loop_logo_hero, &game);
+	mlx_loop_hook(game.mlx, (void *)loop_logo_hero, &game);
 	mlx_key_hook(game.win, key_hook, &game);
 
 	// ===========================================================================================
