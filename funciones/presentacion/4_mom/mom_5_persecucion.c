@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:15:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/13 10:23:15 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:19:00 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ void print_array()
 	for (int i = 0; i < ROWS; i++)
 	{
 		for (int j = 0; j < COLS; j++)
-		{
 			printf("%c ", arr[i][j]);
-		}
 		printf("\n");
 	}
 }
@@ -66,29 +64,21 @@ int main()
 		{
 			// Si P está más lejos en la columna, se mueve en la fila
 			if (row_diff > 0)
-			{
 				// Si P está debajo de X, X se mueve hacia abajo
 				x_row++;
-			}
 			else
-			{
 				// Si P está arriba de X, X se mueve hacia arriba
 				x_row--;
-			}
 		}
 		else
 		{
 			// Si P está más lejos en la fila, se mueve en la columna
 			if (col_diff > 0)
-			{
 				// Si P está a la derecha de X, X se mueve hacia la derecha
 				x_col++;
-			}
 			else
-			{
 				// Si P está a la izquierda de X, X se mueve hacia la izquierda
 				x_col--;
-			}
 		}
 
 		// Actualiza la posición de X en el array

@@ -2,3 +2,7 @@ Ejecución so_long
 1_utilizadas
 mostrar xpm floor ,gwall, intro
 Keynote
+so_long_bonus sin floor (solo negro)
+Explicar codigo so_long (mandatory)
+3_control velocidad
+4_mom
