@@ -172,3 +172,42 @@ https://imagemagick.org/script/download.php
 
 
 for file in *.png; do convert depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 $file $file.xpm; done
+
+<details>
+  <summary>Click to expand/collapse</summary>
+  
+  Your content goes here...
+  
+</details>
+
+<details open>
+
+  <summary>click to collapse</summary>
+
+  this one starts expanded because of the "open"
+
+</details>
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Usage](#usage)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+Your introduction text goes here...
+
+## Features
+
+Your list of features goes here...
+
+## Usage
+
+Your usage instructions go here...
+
+## Installation
+
