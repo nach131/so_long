@@ -14,6 +14,8 @@
 /* ║                 https://github.com/nach131/42Barcelona                 ║ */
 /* ╚════════════════════════════════════════════════════════════════════════╝ */
 
+vim: syntax=java
+
 #include "../sources/libft/inc/libft.h"
 #include "../sources/libft/inc/ft_printf.h"
 #include "../sources/libft/inc/get_next_line.h"
