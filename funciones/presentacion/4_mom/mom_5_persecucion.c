@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:15:33 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/14 12:19:00 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/14 23:31:42 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int main()
 		}
 
 		// Actualiza la posición de X en el array
-		arr[x_row][x_col] = 'X';
+		arr[x_row][x_col] = '-';
 		arr[p_row][p_col] = 'P';
 
 		// Pausa el programa por 1 segundo

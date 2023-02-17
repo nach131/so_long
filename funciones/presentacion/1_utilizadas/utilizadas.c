@@ -6,24 +6,63 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:55:25 by nacho             #+#    #+#             */
-/*   Updated: 2023/02/13 14:52:42 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:49:13 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../sources/mlx/mlx.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct s_game
 {
 	void *mlx;
 	void *win;
-	void *logo;
+	void *img;
 } t_game;
 
 enum
 {
-	ON_DESTROY = 17
+	ON_KEYPRESS = 2,
+	ON_DESTROY = 17,
+	KEY_1 = 18, // new img & put img to windows
+	KEY_2 = 19,
+	KEY_3 = 20,
+	KEY_ESC = 53,
 };
+
+void ft_new_img(t_game *game)
+{
+	int len;
+
+	mlx_destroy_image(game->mlx, game->img);
+	game->img = mlx_xpm_file_to_image(game->mlx, "../../../sources/xpm/rabbit/rabbit2.xpm", &len, &len);
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 2 * 32, 32);
+}
+
+void ft_move_img(t_game *game)
+{
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 2 * 32, 2 * 32);
+}
+
+void ft_move_clean(t_game *game)
+{
+	mlx_clear_window(game->mlx, game->win);
+	mlx_put_image_to_window(game->mlx, game->win, game->img, 2 * 32, 0);
+}
+
+void key_push(int key, t_game *game)
+{
+	printf("%d\n", key);
+	if (key == KEY_1)
+		ft_new_img(game);
+	else if (key == KEY_2)
+		ft_move_img(game);
+	else if (key == KEY_3)
+		ft_move_clean(game);
+	else if (key == KEY_ESC)
+		exit(0);
+}
 
 int main(void)
 {
@@ -33,9 +72,10 @@ int main(void)
 
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 32 * 5, 32 * 3, "nach131 So Long");
-	game.logo = mlx_xpm_file_to_image(game.mlx, "../../../sources/xpm/logo/logo0.xpm", &len, &len);
-	mlx_put_image_to_window(game.mlx, game.win, game.logo, 2 * 32, 32);
+	game.img = mlx_xpm_file_to_image(game.mlx, "../../../sources/xpm/logo/logo0.xpm", &len, &len);
+	mlx_put_image_to_window(game.mlx, game.win, game.img, 2 * 32, 32);
 	mlx_hook(game.win, ON_DESTROY, 1L << 0, (void *)exit, &game);
+	mlx_hook(game.win, ON_KEYPRESS, 1L << 0, (void *)key_push, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
