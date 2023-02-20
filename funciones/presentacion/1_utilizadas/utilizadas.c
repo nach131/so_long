@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:55:25 by nacho             #+#    #+#             */
-/*   Updated: 2023/02/20 16:12:55 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/20 20:29:10 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int main(void)
 	game.img = mlx_xpm_file_to_image(game.mlx, "../../../sources/xpm/logo/logo0.xpm", &len, &len);
 	mlx_put_image_to_window(game.mlx, game.win, game.img, 2 * 32, 32);
 	mlx_hook(game.win, ON_DESTROY, 1L << 0, (void *)exit, &game);
-	mlx_hook(game.win, ON_KEYPRESS, 1L << 0, (void *)key_push, &game);
+	// mlx_hook(game.win, ON_KEYPRESS, 1L << 0, (void *)key_push, &game);
+	mlx_key_hook(game.win, (void *)key_push, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
