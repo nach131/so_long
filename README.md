@@ -148,15 +148,40 @@ void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*funct_ptr)
 
 Yo solo he utilizado el evento "17" `DestroyNotify` que controla el click de cerrar la venta.
 
-con la función `exit`casteada en void
+con la función `exit` casteada en void, y `NULL` como parametro ya que exit no necesita.
 
-mlx_hook(game.win, 17, 1L << 0, (void *)exit, &game);
+```c
+mlx_hook(game.win, 17, 1L << 0, (void *)exit, NULL);
+```
+Para controlar las teclas pulsadas por el usuario
+
+```c
+void mlx_key_hook(mlx_win_list_t *win_ptr, int (*funct_ptr)(), void *param)
+
 mlx_key_hook(game->graphic.win, key_hook, game);
+```
+
+En mi caso yo paso la funcion `key_hook`, que recibe el parametro `game` pasado mediante la función `mlx_key_hook` y recibe `keycode` que es el numero de tecla pulsado.
+
+```c
+int	key_hook(int keycode, t_game *game)
+```
+
+## Animaciones
+
+Para conseguir las animaciones utililzo el loop `mlx_loop_hook`
+
+```c
+int mlx_loop_hook(mlx_ptr_t *mlx_ptr, void (*fct)(void *), void *param)
+```
 
 ## mlx_loop
-: handle keyboard or mouse events
 
--------
+Para que la libreria MiniLibX funcione es necesario poner como ultima función `mlx_loop`
+
+```c
+void mlx_loop(mlx_ptr_t *mlx_ptr)
+```
 
 <!-- ### mlx_get_color_value()
 ```c
