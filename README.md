@@ -44,11 +44,11 @@ Permite crear software gráfico de una manera sencilla y con simples funciones. 
 
 flag de compilación.
 
-> -lmlx -lXext -lX11
+> -framework OpenGL -framework AppKit
 
 Para inicialiar la conexión entre el software y la pantalla, asignaremos ```mlx_init```, de esta manera se creara una conexión entre la ventana y los evento realiados por el usuario.
 
-```mlx_ptr``` es el parametro identificador devuelto por ```mlx_int()```
+```mlx_ptr``` es el argumento identificador devuelto por ```mlx_int()```
 
 ```c
 void *mlx_init();
@@ -63,40 +63,28 @@ int	mlx_clear_window ( void *mlx_ptr, void *win_ptr );
 int	mlx_destroy_window ( void *mlx_ptr, void *win_ptr );
 ```
 
-La función ```mlx_new_window()``` crea una nueva ventana en la pantalla, utilizando los parametros ```size_x``` y ```size_y``` para determinar el tamaño y `*title` para el título de la ventana.
+La función ```mlx_new_window()``` crea una nueva ventana en la pantalla, utilizando los argumtos ```size_x``` y ```size_y``` para determinar el tamaño y `*title` para el título de la ventana.
 
 ```mlx_new_window()``` devuelve un indicador de ventana ```void *``` que se pude usar con otras llamadas de MiniLibX, ya que la libreria puede usar un numero arbitrario de ventanas separadas.
 
-`mlx_clear_window() `y `mlx_destroy_window()` respectivamente limpian (en negro) y destruyen la ventana dada.
+`mlx_clear_window() `y `mlx_destroy_window()` respectivamente limpian (en negro) y destruyen la ventana.
 
-`mlx_ptr` es el identificador de conexión de pantalla y `win_ptr` es un identificador de ventana.
-
-## mlx_new_image
-
-Control de imagenes.
-
-```c
+`mlx_ptr` es el identificador de la conexión y `win_ptr` es un identificador de ventana.
 
 
-
-
-
-
-```
-### mlx_new_image()
+<!-- ### mlx_new_image()
 ```c
 void	*mlx_new_image ( void *mlx_ptr, int width, int height );
 ```
-Pone una imagen en la memoria, devolviendo un puntero, para poder procesar la imagen, necesita el tamaño de la imagen y el conector de `mlx_ptr`
+Pone una imagen en la memoria, devolviendo un puntero, para poder procesar la imagen, necesita el tamaño de la imagen y el conector de `mlx_ptr` -->
 
 ### XPM images
 
 ```c
-void	*mlx_xpm_to_image ( void *mlx_ptr, char **xpm_data, int *width, int *height );
-
 void	*mlx_xpm_file_to_image ( void *mlx_ptr, char *filename, int *width, int *height );
 ```
 
+Devuelve el puntero de la estructura `"mlx_img_list_t"` en la cual esta un char puntero con los datos del archivo xpm que le hemos pasado en `"filename"`.
 
 
 ### mlx_put_image_to_window
@@ -104,9 +92,9 @@ void	*mlx_xpm_file_to_image ( void *mlx_ptr, char *filename, int *width, int *he
 ```c
 int	mlx_put_image_to_window ( void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y );
 ```
-La imagen se podra mostrar en cualquier ventana especificando el identificador de la conexión, la ventana y la imagen `(mlx_ptr, win_ptr, and img_ptr)` con  `mlx_put_image_to_window() `, son necesarios las cordenadas x,y para definir donde debe colocarse la imagen.
+La imagen almacenada se podra mostrar en cualquier ventana especificando el identificador de la conexión, la ventana y la imagen `(mlx_ptr, win_ptr, and img_ptr)` son necesarios las cordenadas x, y para definir donde debe colocarse la imagen.
 
-### mlx_get_data_addr()
+<!-- ### mlx_get_data_addr()
 ```c
 char	*mlx_get_data_addr ( void *img_ptr, int *bits_per_pixel, int *size_line, int *endian );
 ```
@@ -122,92 +110,86 @@ Devuelve una dirección de `char *` que representa el comienzo del área de mom
 
 Apartir de esta dirección, los primeros `bits_per_pixel` representan el color del primer pixel en la primera linea de la imagen.
 
-El segundo grupo de `bits_per_pixel` representan el segundo pixel de la primera línea y asi...
+El segundo grupo de `bits_per_pixel` representan el segundo pixel de la primera línea y asi... -->
 
 ### int	mlx_destroy_image()
+
+Si vamos a volver a utilizar la variable donde se ha guardado el archivo xpm, es necesario liberar esa varible con `mlx_destroy_image`.
+
 ```c
 int	mlx_destroy_image ( void *mlx_ptr, void *img_ptr );
 ```
-Destruye la imagen pasada por `img_ptr`
+Destruye la imagen pasada por `img_ptr` y livera la variable.
+
+## Eventos
+
+Para controlar los eventos, utilizaremos `mlx_hook`, MiniLibx utiliza los eventos de la libreria X11, podemos saber mas sobre ellos en el siguiente enlace.
+
+[Tipos de eventos](https://tronche.com/gui/x/xlib/events/types.html)
+
+Una lista con todos los evento y las mascaras para utilizar en el siguiente enlace:
+
+[42Doc](https://harm-smits.github.io/42docs/libs/minilibx/events.html)
+
+
+```c
+void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*funct_ptr)(), void *param)
+```
+
+`win_ptr` Identificador de la wentana a controlar.
+
+`x_event` El evento a controlar.
+
+`x_mask` La mascara para el evento a controlar,
+
+`funct_ptr` La función que se ejecutara cuendo el evento se active.
+
+`param` Parametros que se le pasaran a la función a ejecutar.
+
+Yo solo he utilizado el evento "17" `DestroyNotify` que controla el click de cerrar la venta.
+
+con la función `exit`casteada en void
+
+mlx_hook(game.win, 17, 1L << 0, (void *)exit, &game);
+mlx_key_hook(game->graphic.win, key_hook, game);
 
 ## mlx_loop
 : handle keyboard or mouse events
 
-### mlx_get_color_value()
+-------
+
+<!-- ### mlx_get_color_value()
 ```c
 unsigned int	mlx_get_color_value ( void *mlx_ptr, int color );
 ```
-Para control el color de píxel, (no lo uso).
+Para control el color de píxel, (no lo uso). -->
 
-Convertir png a xpm en linux
+## Convertir png a xpm en linux
 
 	sudo apt install imagemagick
 
 	convert a.png x.xpm
 	convert x.xpm aa.png
 
-	para uno
-	convert fotograma-000002.png -depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 fotograma-000002.xpm
+Mejorando la calidad y definiendo cantidad de colores
 
+	convert fotograma-000001.png -depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 fotograma-000001.xpm
+
+<!-- 
 para toda una carpeta
 	 for file in *.png; do convert  $file $file.xpm; done
-	 for f in */*.bmp ; do convert $f ${f%bmp}png; done
+	 for f in */*.bmp ; do convert $f ${f%bmp}png;
+ done -->
 
-//================Nach way...=========COLORES CORRECTOS=======================================
-para todos los png que hay en una carpeta
- for file in *.png; do convert $file -depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 $file.xpm; done
- //===========================================================================================
+## Carpeta de png
 
-"$f" is the original input filename
-"${f}" is the same, just a different way of accessing the variable
-"${f%%.bmp}.png" uses string replacement – f%%.bmp means, delete the longest match of .bmp from the back of $f.
+Para convertir a xpm todos los png que hay en una carpeta
 
-para mac
-$ brew info imagemagick
-$ brew install imagemagick
+	for file in *.png; do convert $file -depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 $file.xpm; done
+
+## para mac
+
+	$ brew info imagemagick
+	$ brew install imagemagick
 
 https://imagemagick.org/script/download.php
-
-
-
-
-for file in *.png; do convert depth 8 -colors 256 -colorspace RGB -define XPM:color-format='6c' -define XPM:sort=True -define XPM:string=1 -define XPM:mime=1 $file $file.xpm; done
-
-<details>
-  <summary>Click to expand/collapse</summary>
-  
-  Your content goes here...
-  
-</details>
-
-<details open>
-
-  <summary>click to collapse</summary>
-
-  this one starts expanded because of the "open"
-
-</details>
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Usage](#usage)
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Introduction
-
-Your introduction text goes here...
-
-## Features
-
-Your list of features goes here...
-
-## Usage
-
-Your usage instructions go here...
-
-## Installation
-

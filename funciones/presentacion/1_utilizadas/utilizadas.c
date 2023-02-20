@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 11:55:25 by nacho             #+#    #+#             */
-/*   Updated: 2023/02/15 11:49:13 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:12:55 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int main(void)
 // void	*mlx_init();
 // void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
 // void	*mlx_xpm_file_to_image(void *xvar,char *file,int *width,int *height)
-// void	*mlx_new_image(void *mlx_ptr, int width, int height);
 // int		mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);
 
 // int		mlx_hook(void *win_ptr, int x_event, int x_mask, int (*funct)(), void *param);

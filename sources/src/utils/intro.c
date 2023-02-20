@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 14:30:14 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:35:58 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	intro(t_game *game)
 			"xpm/choose/choose.xpm", &w, &h);
 	mlx_put_image_to_window(game->graphic.mlx, game->graphic.win, img, 0, 0);
 	mlx_key_hook(game->graphic.win, (void *)intro_key, game);
-	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, NULL);
 }

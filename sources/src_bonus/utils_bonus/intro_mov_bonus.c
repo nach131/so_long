@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:09:35 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:36:59 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	intro(t_game *game)
 			"42 Barcelona");
 	load_img_two(game, "intro", 149, INTRO);
 	mlx_loop_hook(game->graphic.mlx, (void *)loop_intro, game);
-	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, NULL);
 	mlx_hook(game->graphic.win, ON_KEYPRESS, 1L << 0, (void *)simple_key, game);
 }

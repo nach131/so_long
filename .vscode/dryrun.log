@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C2/so_long'
+make: Leaving directory `/Volumes/1TB/Dropbox/00_42Barcelona/42Barcelona/C2/so_long'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+

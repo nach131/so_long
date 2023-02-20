@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:33:52 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:40:20 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void static	end_win(t_game *game, char *str)
 {
 	mlx_destroy_window(game->graphic.mlx, game->graphic.win);
 	game->graphic.win = mlx_new_window(game->graphic.mlx, 854, 480, str);
-	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, NULL);
 	mlx_key_hook(game->graphic.win, (void *)simple_key, game);
 	mlx_loop_hook(game->graphic.mlx, (void *)loops_end, game);
 }

@@ -6,7 +6,7 @@
 /*   By: nmota-bu <nmota-bu@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:13:28 by nmota-bu          #+#    #+#             */
-/*   Updated: 2023/02/11 00:31:27 by nmota-bu         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:36:32 by nmota-bu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	window(t_game *game)
 	str = "github.com/nach131";
 	game->graphic.win = mlx_new_window(game->graphic.mlx,
 			game->map.cols * SQUARE, game->map.rows * SQUARE + HEADER, str);
-	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, game);
+	mlx_hook(game->graphic.win, ON_DESTROY, 1L << 0, (void *)exit, NULL);
 }
 
 void	star_game(t_game *game)
