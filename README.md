@@ -45,7 +45,9 @@ Instalar man de MLX en MacOs.
 ## MiniLibX
 
 <h1 align="center">
-![utilizadas](utilizadas.png)
+
+![utilizadas](https://github.com/nach131/so_long/blob/doble-puntero/utilizadas.png)
+
 </h1>
 
 Permite crear software gráfico de una manera sencilla y con simples funciones. Permitiendo dibujar y gestionar imagenes con eventos básicos (teclado, ratón).
