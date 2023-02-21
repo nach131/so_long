@@ -16,7 +16,7 @@
 
 ![minitalk](https://github.com/nach131/42Barcelona/blob/main/images/125.png)
 
-![gif](images/so_long.gif)
+![gif](https://github.com/nach131/so_long/blob/doble-puntero/gif/so_long.gif)
 </h1>
 
 
@@ -45,7 +45,9 @@ Instalar man de MLX en MacOs.
 ## MiniLibX
 
 <h1 align="center">
-![utilizadas](utilizadas.png)
+
+![utilizadas](https://github.com/nach131/so_long/blob/doble-puntero/utilizadas.png)
+
 </h1>
 
 Permite crear software gráfico de una manera sencilla y con simples funciones. Permitiendo dibujar y gestionar imagenes con eventos básicos (teclado, ratón).
