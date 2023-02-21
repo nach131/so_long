@@ -16,7 +16,7 @@
 
 ![minitalk](https://github.com/nach131/42Barcelona/blob/main/images/125.png)
 
-![gif](images/so_long.gif)
+![gif](https://github.com/nach131/so_long/blob/doble-puntero/gif/so_long.gif)
 </h1>
 
 
