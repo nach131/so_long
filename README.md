@@ -13,8 +13,12 @@
 </p>
 
 <h1 align="center">
-<!-- ![mapa](so_long.png) -->
+
+![minitalk](https://github.com/nach131/42Barcelona/blob/main/images/125.png)
+
+![gif](images/so_long.gif)
 </h1>
+
 
 ## instalar MiniLibX en MacOs
 
@@ -39,6 +43,10 @@ Instalar man de MLX en MacOs.
 	sudo cp minilibx-linux/man/man3/* /usr/share/man/man3/
 
 ## MiniLibX
+
+<h1 align="center">
+![utilizadas](utilizadas.png)
+</h1>
 
 Permite crear software gráfico de una manera sencilla y con simples funciones. Permitiendo dibujar y gestionar imagenes con eventos básicos (teclado, ratón).
 
