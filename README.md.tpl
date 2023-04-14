@@ -3,6 +3,7 @@
   
 	so_long
 </h1>
+
  <p align="center">
 <img alt="total-views" src="https://img.shields.io/badge/views-total_views-blue">
 <img alt="total-clone" src="https://img.shields.io/badge/clone-total_clone-blue">
@@ -12,12 +13,15 @@
 <img alt="license-MIT" src="https://img.shields.io/badge/license-MIT-blue">
 </p>
 
-<h1 align="center">
+<span align="center">
 
-![minitalk](https://github.com/nach131/42Barcelona/blob/main/images/125.png)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=nach131.so_long&left_color=green&right_color=blue)
 
-![gif](images/so_long.gif)
-</h1>
+![125](https://github.com/nach131/42Barcelona/blob/main/images/125.png)
+
+![gif](https://github.com/nach131/so_long/blob/doble-puntero/gif/so_long.gif)
+
+</span>
 
 
 ## instalar MiniLibX en MacOs
@@ -45,7 +49,9 @@ Instalar man de MLX en MacOs.
 ## MiniLibX
 
 <h1 align="center">
-![utilizadas](utilizadas.png)
+
+![utilizadas](https://github.com/nach131/so_long/blob/doble-puntero/utilizadas.png)
+
 </h1>
 
 Permite crear software gráfico de una manera sencilla y con simples funciones. Permitiendo dibujar y gestionar imagenes con eventos básicos (teclado, ratón).
